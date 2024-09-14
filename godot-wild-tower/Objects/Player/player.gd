@@ -23,13 +23,14 @@ func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
-func _input(event):
-	if event.is_action_pressed("ui_cancel"):
-		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-			#TODO go to a pause screen and pause it
-		else:
-			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+#func _input(event):
+	#if event.is_action_pressed("ui_cancel"):
+		#if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+			#Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+			##TO/DO go to a pause screen and pause it
+			#
+		#else:
+			#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
 func _unhandled_input(event: InputEvent):
@@ -173,9 +174,6 @@ func move(direction: Vector3, delta, on_floor: bool):
 	#if stepping_up:
 		#velocity.y = step_up_speed * delta * speed_mult
 		#on_steps = true
-		##stepping_up = true
-		##update_head_bob(delta, on_floor)
-		##return
 		#
 	#if !is_crouching: #check if temp crouch needed
 		#camera_forward.y = 0

@@ -9,9 +9,6 @@ extends CanvasLayer
 # as well as a save system
 @export var main_game_scene: PackedScene
 
-#TODO stats screen (also integrated into save system)
-#TODO add a credits screen
-
 
 func _ready():
 	%StartButton.pressed.connect(on_start_pressed)
