@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://fshkr347rlb0"]
+[gd_scene load_steps=3 format=3 uid="uid://fshkr347rlb0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ttc4u"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_jbor8"]
 
 [node name="BasicEnemy" type="Node3D"]
 
@@ -8,3 +10,6 @@
 
 [node name="BasicEnemyCollider" type="CollisionShape3D" parent="BasicEnemy"]
 shape = SubResource("BoxShape3D_ttc4u")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BasicEnemy"]
+mesh = SubResource("BoxMesh_jbor8")
