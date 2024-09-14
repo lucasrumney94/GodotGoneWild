@@ -4,13 +4,11 @@
 
 [sub_resource type="BoxMesh" id="BoxMesh_jbor8"]
 
-[node name="BasicEnemy" type="Node3D"]
-
-[node name="BasicEnemy" type="CharacterBody3D" parent="."]
+[node name="BasicEnemy" type="CharacterBody3D"]
 collision_layer = 2
 
-[node name="BasicEnemyCollider" type="CollisionShape3D" parent="BasicEnemy"]
+[node name="BasicEnemyCollider" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_ttc4u")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="BasicEnemy"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_jbor8")

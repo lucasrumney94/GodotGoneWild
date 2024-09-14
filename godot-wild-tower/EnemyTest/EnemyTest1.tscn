@@ -22,3 +22,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.83345, 0.732493, 0)
 transform = Transform3D(1, 0, 0, 0, 0.380861, 0.924632, 0, -0.924632, 0.380861, 0, 5.15927, 0)
 
 [node name="MobileEnemy" parent="." instance=ExtResource("3_vbu8n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.236995, 0.824196, -3.43477)

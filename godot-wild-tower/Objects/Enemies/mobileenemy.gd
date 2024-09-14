@@ -8,12 +8,13 @@ var direction: float
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	direction = 1.0
+	
 	
 	
 func _physics_process(delta: float) -> void:
-	position.x += distance * direction * delta
-
+	velocity.x = direction * delta * 1000
+	move_and_slide()
 
 func switch_dir():
 	direction *= -1
