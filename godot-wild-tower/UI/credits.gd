@@ -5,8 +5,9 @@ signal closing
 
 func _ready():
 	%BackButton.pressed.connect(on_back_pressed)
-	
 	%BackButton.grab_focus()
+	
+	#TODO add achievement for viewing credits
 
 
 func _input(event: InputEvent):
