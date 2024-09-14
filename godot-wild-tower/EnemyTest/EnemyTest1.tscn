@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://ld24biyy5xkj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_al1jp"]
+
+[node name="BasicEnemyScene" type="Node3D"]
+
+[node name="BasicEnemy" type="CharacterBody3D" parent="."]
+
+[node name="BasicEnemyCollider" type="CollisionShape3D" parent="BasicEnemy"]
+shape = SubResource("BoxShape3D_al1jp")
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+skeleton = NodePath("../BasicEnemy")
