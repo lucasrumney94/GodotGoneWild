@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://fshkr347rlb0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ttc4u"]
+
+[node name="BasicEnemy" type="Node3D"]
+
+[node name="BasicEnemy" type="CharacterBody3D" parent="."]
+
+[node name="BasicEnemyCollider" type="CollisionShape3D" parent="BasicEnemy"]
+shape = SubResource("BoxShape3D_ttc4u")

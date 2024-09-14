@@ -1,13 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://ld24biyy5xkj"]
+[gd_scene load_steps=4 format=3 uid="uid://ld24biyy5xkj"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_al1jp"]
+[ext_resource type="PackedScene" uid="uid://vssvdtmx3jx7" path="res://Objects/Player/player.tscn" id="1_01si0"]
+[ext_resource type="PackedScene" uid="uid://fshkr347rlb0" path="res://Objects/Enemies/BasicEnemy.tscn" id="1_mvpe4"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_dfukr"]
+size = Vector3(25, 0.1, 25)
 
 [node name="BasicEnemyScene" type="Node3D"]
 
-[node name="BasicEnemy" type="CharacterBody3D" parent="."]
-
-[node name="BasicEnemyCollider" type="CollisionShape3D" parent="BasicEnemy"]
-shape = SubResource("BoxShape3D_al1jp")
-
 [node name="Ground" type="MeshInstance3D" parent="."]
-skeleton = NodePath("../BasicEnemy")
+mesh = SubResource("BoxMesh_dfukr")
+skeleton = NodePath("")
+
+[node name="Player" parent="." instance=ExtResource("1_01si0")]
+
+[node name="BasicEnemy" parent="." instance=ExtResource("1_mvpe4")]
