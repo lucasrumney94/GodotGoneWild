@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://ld24biyy5xkj"]
+[gd_scene load_steps=5 format=3 uid="uid://ld24biyy5xkj"]
 
 [ext_resource type="PackedScene" uid="uid://vssvdtmx3jx7" path="res://Objects/Player/player.tscn" id="1_01si0"]
 [ext_resource type="PackedScene" uid="uid://fshkr347rlb0" path="res://Objects/Enemies/BasicEnemy.tscn" id="1_mvpe4"]
+[ext_resource type="PackedScene" uid="uid://bojfdf4dyc8ng" path="res://Objects/Enemies/MobileEnemy.tscn" id="3_vbu8n"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_dfukr"]
 size = Vector3(25, 0.1, 25)
@@ -19,3 +20,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.83345, 0.732493, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.380861, 0.924632, 0, -0.924632, 0.380861, 0, 5.15927, 0)
+
+[node name="MobileEnemy" parent="." instance=ExtResource("3_vbu8n")]

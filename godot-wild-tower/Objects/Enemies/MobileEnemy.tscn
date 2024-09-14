@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bojfdf4dyc8ng"]
+
+[ext_resource type="Script" path="res://Objects/Enemies/mobileenemy.gd" id="1_mogi5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ttc4u"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_jbor8"]
+
+[node name="MobileEnemy" type="CharacterBody3D"]
+collision_layer = 2
+script = ExtResource("1_mogi5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_ttc4u")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_jbor8")
