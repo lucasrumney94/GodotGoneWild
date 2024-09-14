@@ -15,6 +15,9 @@ var mouse_rotation: Vector3
 var is_jumping: bool = false
 var is_dashing: bool = false
 
+var dash_tween: Tween = null
+var time_tween: Tween = null
+
 var acceleration: float = 5
 var current_acceleration: float = 0.0
 var speed_mult: float = 1.0
@@ -165,6 +168,7 @@ func _physics_process(delta):
 
 
 func update_camera(delta: float, rotation_input: float, tilt_input: float):
+	delta = delta / Engine.time_scale
 	mouse_rotation.x += tilt_input * delta
 	mouse_rotation.x = clamp(mouse_rotation.x, tilt_lower_limit, tilt_upper_limit)
 	mouse_rotation.y += rotation_input * delta
@@ -240,11 +244,14 @@ func dash_enemy(enemy: Object):
 		return
 		
 	is_dashing = true
-	var tween: Tween = create_tween()
-	tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
-	tween.chain()
-	tween.tween_property(self, "global_position", enemy.position, 0.3)
-	tween.tween_callback(dash_end)
+	if dash_tween != null:
+		dash_tween.kill()
+	kill_time_tween()
+	dash_tween = create_tween()
+	dash_tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
+	dash_tween.chain()
+	dash_tween.tween_property(self, "global_position", enemy.position, 0.3)
+	dash_tween.tween_callback(dash_end.bind(true))
 
 
 func dash_forward():
@@ -258,17 +265,36 @@ func dash_forward():
 	if shapecast.is_colliding():
 		var collision_frac: float = shapecast.get_closest_collision_safe_fraction()
 		target_vec = target_vec * collision_frac
-	var tween: Tween = create_tween()
-	tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
-	tween.chain()
-	tween.tween_property(self, "global_position", global_position + target_vec, 0.3)
-	tween.tween_callback(dash_end)
+	if dash_tween != null:
+		dash_tween.kill()
+	kill_time_tween()
+	dash_tween = create_tween()
+	dash_tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
+	dash_tween.chain()
+	dash_tween.tween_property(self, "global_position", global_position + target_vec, 0.3)
+	dash_tween.tween_callback(dash_end)
 
 
-func dash_end():
+func dash_end(do_temporal_shift: bool = false):
 	is_dashing = false
 	%BodyShapeCast.target_position = Vector3.ZERO
-	#TODO possibly start a brief temporal slowdown
+	#TO/DO possibly start a brief temporal slowdown
+	if do_temporal_shift:
+		temporal_shift()
+
+
+func temporal_shift():
+	if time_tween != null:
+		time_tween.kill()
+	Engine.time_scale = 0.1
+	time_tween = create_tween()
+	time_tween.tween_property(Engine, "time_scale", 1.0, 1.0).set_ease(Tween.EASE_IN)
+
+
+func kill_time_tween():
+	if time_tween != null:
+		time_tween.kill()
+	Engine.time_scale = 1.0
 
 
 func check_eye_ray():
