@@ -12,10 +12,10 @@ func _input(event):
 			add_child(pause_menu)
 			pause_menu.closing.connect(on_unpause)
 			get_tree().paused = true
-		else:
-			pause_menu.queue_free()
-			pause_menu = null
-			on_unpause()
+		#else:
+			#pause_menu.queue_free()
+			#pause_menu = null
+			#on_unpause()
 
 
 func on_unpause():

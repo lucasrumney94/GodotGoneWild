@@ -11,7 +11,7 @@ func _ready():
 
 func _input(event: InputEvent):
 	if event.is_action_pressed("ui_cancel"):
-		on_back_pressed()
+		Callable(on_back_pressed).call_deferred()
 
 
 func on_back_pressed():

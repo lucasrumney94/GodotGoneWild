@@ -4,12 +4,16 @@ extends CharacterBody3D
 @export var tilt_lower_limit: float = deg_to_rad((-89))
 @export var tilt_upper_limit: float = deg_to_rad(89)
 
-@export var SPEED = 5.0
-@export var JUMP_VELOCITY = 4.5
+@export var SPEED: float = 5.0
+@export var JUMP_VELOCITY: float = 4.5
+
+@export var dash_distance: float = 5
+@export var enemy_dash_distance: float = 10
 
 var mouse_rotation: Vector3
 
 var is_jumping: bool = false
+var is_dashing: bool = false
 
 var acceleration: float = 5
 var current_acceleration: float = 0.0
@@ -21,6 +25,8 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
+	%RayCastEyes.target_position.z = -1 * enemy_dash_distance
 
 
 #func _input(event):
@@ -35,13 +41,25 @@ func _ready():
 
 func _unhandled_input(event: InputEvent):
 	var mouse_input: bool = event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED
-	if mouse_input:
+	if mouse_input && !is_dashing:
 		var rotation_input: float = -event.relative.x * mouse_sensitivity
 		var tilt_input: float = -event.relative.y * mouse_sensitivity
 		update_camera(get_process_delta_time(), rotation_input, tilt_input)
+	
+	if event.is_action("dash") && !is_dashing:
+		if event.is_pressed():
+			try_dash()
+
+
+func _process(delta):
+	check_eye_ray()
 
 
 func _physics_process(delta):
+	if is_dashing: 
+		#move_and_slide()
+		return
+	
 	var on_floor: bool = is_on_floor()
 	#if ladder != null:
 		#on_floor = true
@@ -203,3 +221,61 @@ func accelerate_in_direction(direction: Vector3, delta: float, mult: float) -> V
 	var desired_velocity: Vector3 = direction * SPEED * mult
 	var adjusted_velocity = velocity.lerp(desired_velocity, 1 - exp(-acceleration * delta))
 	return adjusted_velocity#Vector2(adjusted_velocity.x, adjusted_velocity.z)
+
+
+func try_dash():
+	#TODO if %RayCastEyes is hitting an enemy
+	#	and enemy can be dashed
+	#		dash that enemy
+	#else do some piddly little half dash
+	if %RayCastEyes.is_colliding():
+		dash_enemy(%RayCastEyes.get_collider())
+	else:
+		dash_forward()
+
+
+func dash_enemy(enemy: Object):
+	if enemy == null || !(enemy.get_collision_layer() & 2):
+		dash_forward()
+		return
+		
+	is_dashing = true
+	var tween: Tween = create_tween()
+	tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
+	tween.chain()
+	tween.tween_property(self, "global_position", enemy.position, 0.3)
+	tween.tween_callback(dash_end)
+
+
+func dash_forward():
+	is_dashing = true
+	
+	var target_vec: Vector3 = -%RayCastEyes.global_basis.z * dash_distance
+	#ShapeCast to intended position, stopping on shapecast collision and using distance as dash distance
+	var shapecast: ShapeCast3D = %BodyShapeCast
+	shapecast.target_position = target_vec
+	shapecast.force_shapecast_update()
+	if shapecast.is_colliding():
+		var collision_frac: float = shapecast.get_closest_collision_safe_fraction()
+		target_vec = target_vec * collision_frac
+	var tween: Tween = create_tween()
+	tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
+	tween.chain()
+	tween.tween_property(self, "global_position", global_position + target_vec, 0.3)
+	tween.tween_callback(dash_end)
+
+
+func dash_end():
+	is_dashing = false
+	%BodyShapeCast.target_position = Vector3.ZERO
+	#TODO possibly start a brief temporal slowdown
+
+
+func check_eye_ray():
+	if !%RayCastEyes.is_colliding():
+		%Crosshair.modulate = Color.WHITE
+	else:
+		var collider = %RayCastEyes.get_collider()
+		if (collider.get_collision_layer() & 2):
+			%Crosshair.modulate = Color.RED
+		else: %Crosshair.modulate = Color.WHITE
