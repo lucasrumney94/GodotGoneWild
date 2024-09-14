@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://vssvdtmx3jx7"]
+
+[ext_resource type="Script" path="res://Objects/Player/player.gd" id="1_l1h35"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_574yh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_etn5c"]
+albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_m7h0s"]
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_l1h35")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_574yh")
+
+[node name="CameraRoot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="CameraRotationRoot" type="Node3D" parent="CameraRoot"]
+unique_name_in_owner = true
+
+[node name="Camera3D" type="Camera3D" parent="CameraRoot/CameraRotationRoot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.249485, -0.296954)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+material_override = SubResource("StandardMaterial3D_etn5c")
+mesh = SubResource("CapsuleMesh_m7h0s")

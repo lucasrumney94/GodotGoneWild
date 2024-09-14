@@ -2,6 +2,14 @@ extends CanvasLayer
 
 @export var options_scene: PackedScene
 
+#TODO we'll need to sophisticate this a bit, just doing this to get things running
+# down line should have multiple scenes for each level
+# as well as a save system
+@export var main_game_scene: PackedScene
+
+#TODO stats screen (also integrated into save system)
+#TODO add a credits screen
+
 
 func _ready():
 	%StartButton.pressed.connect(on_start_pressed)
@@ -19,7 +27,7 @@ func focus_on_button(button: Button):
 
 func on_start_pressed():
 	#MOVE TO MAIN GAME SCENE
-	pass
+	get_tree().change_scene_to_packed(main_game_scene)
 
 
 func on_options_pressed():
@@ -32,5 +40,5 @@ func on_options_pressed():
 
 func on_quit_pressed():
 	#CLOSE THE APPLICATION
-	# TODO POSSIBLY WITH CONFIRMATION/FEEDBACK LINK
+	# TODO POSSIBLY WITH CONFIRMATION POPUP/FEEDBACK LINK
 	get_tree().quit()
