@@ -1,8 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://bxfwjbkk62asb"]
+[gd_scene load_steps=7 format=3 uid="uid://bxfwjbkk62asb"]
 
 [ext_resource type="PackedScene" uid="uid://vssvdtmx3jx7" path="res://Objects/Player/player.tscn" id="1_27g07"]
+[ext_resource type="Texture2D" uid="uid://dt1l7laaw1wqw" path="res://TestingGrid.png" id="1_pei67"]
+[ext_resource type="PackedScene" path="res://Objects/Enemies/BasicEnemy.tscn" id="2_7gwpu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ibbg3"]
+size = Vector3(28, 1, 28)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d0miy"]
+albedo_texture = ExtResource("1_pei67")
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 2
 
 [sub_resource type="BoxMesh" id="BoxMesh_hlqw6"]
 
@@ -11,12 +20,15 @@
 [node name="Floor" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
-transform = Transform3D(28, 0, 0, 0, 28, 0, 0, 0, 28, 0, 0, 0)
 shape = SubResource("BoxShape3D_ibbg3")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
 transform = Transform3D(28, 0, 0, 0, 1, 0, 0, 0, 28, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_d0miy")
 mesh = SubResource("BoxMesh_hlqw6")
+
+[node name="BasicEnemy" parent="Floor" instance=ExtResource("2_7gwpu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.05701, 1.3938, -5.21895)
 
 [node name="Player" parent="." instance=ExtResource("1_27g07")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.39197, 0.749502, 4.78003)
