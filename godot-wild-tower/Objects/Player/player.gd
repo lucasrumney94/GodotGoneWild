@@ -25,6 +25,9 @@ var last_velocity: Vector3
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+var current_enemy: Object = null
+var enemy_mesh: MeshInstance3D = null
+
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -168,6 +171,7 @@ func _physics_process(delta):
 
 
 func update_camera(delta: float, rotation_input: float, tilt_input: float):
+	
 	delta = delta / Engine.time_scale
 	mouse_rotation.x += tilt_input * delta
 	mouse_rotation.x = clamp(mouse_rotation.x, tilt_lower_limit, tilt_upper_limit)
@@ -178,8 +182,8 @@ func update_camera(delta: float, rotation_input: float, tilt_input: float):
 	
 	#shapecast_look_root.rotation.y = camera_rotation_root.rotation.y + PI
 	
-	rotation_input = 0.0
-	tilt_input = 0.0
+	#rotation_input = 0.0
+	#tilt_input = 0.0
 
 
 func move(direction: Vector3, delta, on_floor: bool):
@@ -300,8 +304,36 @@ func kill_time_tween():
 func check_eye_ray():
 	if !%RayCastEyes.is_colliding():
 		%Crosshair.modulate = Color.WHITE
+		effect_enemy_mesh(false)
 	else:
 		var collider = %RayCastEyes.get_collider()
 		if (collider.get_collision_layer() & 2):
+			if current_enemy != collider:
+				effect_enemy_mesh(false)
+				current_enemy = collider
+				for child in collider.get_children():
+					if child is MeshInstance3D:
+						enemy_mesh = child
+						break
 			%Crosshair.modulate = Color.RED
-		else: %Crosshair.modulate = Color.WHITE
+			effect_enemy_mesh(true)
+			#set outline on next_pass shader of enemy material
+			
+		else: 
+			%Crosshair.modulate = Color.WHITE
+			effect_enemy_mesh(false)
+
+
+func effect_enemy_mesh(setting: bool):
+	if enemy_mesh == null: return
+	
+	var base_material = enemy_mesh.get_surface_override_material(0)
+	if base_material == null: return
+	
+	var outline_material = base_material.next_pass
+	if setting:
+		outline_material.set_shader_parameter("size", 1.1)
+	else: 
+		outline_material.set_shader_parameter("size", 1.0)
+		enemy_mesh = null
+		current_enemy = null

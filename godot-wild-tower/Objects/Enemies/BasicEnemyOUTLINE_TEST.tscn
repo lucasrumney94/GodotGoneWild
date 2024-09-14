@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://5x1047hex40t"]
+
+[ext_resource type="Shader" path="res://Objects/Enemies/outline_shader.gdshader" id="1_peusp"]
+[ext_resource type="Shader" path="res://Objects/Enemies/basic_shader.gdshader" id="2_m1ntn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ttc4u"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_jbor8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gv040"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_peusp")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/size = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dr681"]
+resource_local_to_scene = true
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_gv040")
+shader = ExtResource("2_m1ntn")
+
+[node name="BasicEnemy" type="CharacterBody3D"]
+collision_layer = 2
+
+[node name="BasicEnemyCollider" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_ttc4u")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_jbor8")
+surface_material_override/0 = SubResource("ShaderMaterial_dr681")
