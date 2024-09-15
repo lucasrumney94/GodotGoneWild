@@ -31,6 +31,7 @@ func on_resume_pressed():
 func on_restart_pressed():
 	#TODO TWO WAYS TO GO ABOUT THIS
 	get_tree().paused = false
+	Engine.time_scale = 1.0
 	get_tree().change_scene_to_file(get_tree().current_scene.scene_file_path)
 	#2. RESET ALL OBJECTS TO STARTING POSITION
 

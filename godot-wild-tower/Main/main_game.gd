@@ -16,6 +16,11 @@ func _input(event):
 			#pause_menu.queue_free()
 			#pause_menu = null
 			#on_unpause()
+	
+	if event.is_action_pressed("restart") && pause_menu == null:
+		get_tree().paused = false
+		Engine.time_scale = 1.0
+		get_tree().change_scene_to_file(get_tree().current_scene.scene_file_path)
 
 
 func on_unpause():
