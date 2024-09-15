@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://vssvdtmx3jx7"]
+[gd_scene load_steps=8 format=3 uid="uid://vssvdtmx3jx7"]
 
 [ext_resource type="Script" path="res://Objects/Player/player.gd" id="1_l1h35"]
 [ext_resource type="Texture2D" uid="uid://dt1l7laaw1wqw" path="res://TestingGrid.png" id="2_0lo3m"]
+[ext_resource type="Script" path="res://Objects/Player/timer_hud.gd" id="3_n01tu"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_574yh"]
 
@@ -15,7 +16,10 @@ albedo_color = Color(0, 1, 1, 1)
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 4
+platform_floor_layers = 4294967289
 script = ExtResource("1_l1h35")
+SPEED = 10.0
+JUMP_VELOCITY = 8.0
 
 [node name="PlayerHUD" type="Control" parent="."]
 layout_mode = 3
@@ -44,6 +48,51 @@ grow_vertical = 2
 texture = ExtResource("2_0lo3m")
 expand_mode = 1
 
+[node name="DebugHUD" type="CanvasLayer" parent="PlayerHUD"]
+
+[node name="PanelContainer" type="PanelContainer" parent="PlayerHUD/DebugHUD"]
+custom_minimum_size = Vector2(100, 0)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerHUD/DebugHUD/PanelContainer"]
+layout_mode = 2
+
+[node name="DebugOnFloorLabel" type="Label" parent="PlayerHUD/DebugHUD/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Not On Floor"
+
+[node name="DebugJumpsLabel" type="Label" parent="PlayerHUD/DebugHUD/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Jumps: 0"
+
+[node name="DebugDashesLabel" type="Label" parent="PlayerHUD/DebugHUD/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Dashes: 0"
+
+[node name="TimerHUD" type="CanvasLayer" parent="PlayerHUD"]
+script = ExtResource("3_n01tu")
+
+[node name="TimerLabel" type="Label" parent="PlayerHUD/TimerHUD"]
+custom_minimum_size = Vector2(64, 0)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 16.4
+offset_right = 20.0
+offset_bottom = 39.4
+grow_horizontal = 2
+text = "00:00:00"
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_574yh")
@@ -66,6 +115,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.249485, -0.296954)
 unique_name_in_owner = true
 target_position = Vector3(0, 0, -30)
 collision_mask = 3
+hit_back_faces = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

@@ -7,8 +7,16 @@ extends CharacterBody3D
 @export var SPEED: float = 5.0
 @export var JUMP_VELOCITY: float = 4.5
 
+@export var air_speed_mult: float = 0.5
+
 @export var dash_distance: float = 5
 @export var enemy_dash_distance: float = 10
+@export var dash_speed: float = 0.2
+
+@export var slow_time_duration: float = 1.0
+
+var short_dash_count: int = 1
+var jump_count: int = 0
 
 var mouse_rotation: Vector3
 
@@ -24,9 +32,12 @@ var speed_mult: float = 1.0
 var last_velocity: Vector3
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+var gravity_mult: float = 1.0
 
 var current_enemy: Object = null
 var enemy_mesh: MeshInstance3D = null
+
+var started: bool = false
 
 
 func _ready():
@@ -54,19 +65,29 @@ func _unhandled_input(event: InputEvent):
 	
 	if event.is_action("dash") && !is_dashing:
 		if event.is_pressed():
+			if !started: start()
 			try_dash()
 
 
 func _process(delta):
 	check_eye_ray()
+	
+	%DebugJumpsLabel.text = "Jumps: " + str(jump_count)
+	%DebugDashesLabel.text = "Dashes: " + str(short_dash_count)
 
 
 func _physics_process(delta):
-	if is_dashing: 
-		#move_and_slide()
-		return
+	
 	
 	var on_floor: bool = is_on_floor()
+	
+	if is_dashing: 
+		if on_floor:%DebugOnFloorLabel.text = "On Floor"
+		else: %DebugOnFloorLabel.text = "Not on Floor"
+		move_and_slide()
+		return
+	
+	
 	#if ladder != null:
 		#on_floor = true
 	#CHECK IF SHOULD DO HEAD BOB ON LANDING
@@ -80,20 +101,31 @@ func _physics_process(delta):
 	
 	# Add the gravity.
 	if !on_floor:# && !is_clambering:
-		velocity.y -= gravity * delta
+		speed_mult = air_speed_mult
+		velocity.y -= gravity * delta * gravity_mult
 		last_velocity = velocity
 		if is_jumping && velocity.y < 0:
 			is_jumping = false
 		#if on_steps && velocity.y < -5:
 			#on_steps = false
-	#else:
+		%DebugOnFloorLabel.text = "Not on Floor"
+	else:
+		speed_mult = 1.0
+		short_dash_count = 1
+		jump_count = 0
+		%DebugOnFloorLabel.text = "On Floor"
 		#if crouched_up:
 			#animation_player.play("crouch_reset")
 			#GameEvents.emit_player_crouch(false)
 
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") and on_floor:
-		velocity.y = JUMP_VELOCITY
+	if Input.is_action_just_pressed("jump") and (on_floor || jump_count > 0):
+		if !started: start()
+		if jump_count > 0 && !on_floor:
+			velocity.y = JUMP_VELOCITY * 0.5
+			jump_count -= 1
+			#print("DOING AIR JUMP")
+		else: velocity.y = JUMP_VELOCITY
 		is_jumping = true
 		on_floor = false
 		
@@ -113,6 +145,9 @@ func _physics_process(delta):
 	
 	
 	var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
+	if !started:
+		if input_dir.length_squared() > 0:
+			start()
 	#if input_dir.y > 0:
 		#is_sprinting = false
 	#else:
@@ -168,6 +203,11 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	#last_velocity = velocity
+
+
+func start():
+	started = true
+	GameEvents.emit_level_started()
 
 
 func update_camera(delta: float, rotation_input: float, tilt_input: float):
@@ -232,7 +272,7 @@ func accelerate_in_direction(direction: Vector3, delta: float, mult: float) -> V
 
 
 func try_dash():
-	#TODO if %RayCastEyes is hitting an enemy
+	#TO/DO if %RayCastEyes is hitting an enemy
 	#	and enemy can be dashed
 	#		dash that enemy
 	#else do some piddly little half dash
@@ -254,11 +294,19 @@ func dash_enemy(enemy: Object):
 	dash_tween = create_tween()
 	dash_tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 	dash_tween.chain()
-	dash_tween.tween_property(self, "global_position", enemy.position, 0.3)
-	dash_tween.tween_callback(dash_end.bind(true))
+	dash_tween.tween_property(self, "global_position", enemy.position, dash_speed)
+	dash_tween.tween_callback(dash_end.bind(Vector3.ZERO, true))
+	
+	jump_count = 1
+	short_dash_count = 1
 
 
 func dash_forward():
+	if short_dash_count <= 0:
+		return
+	short_dash_count -= 1
+	jump_count = 0
+	
 	is_dashing = true
 	
 	var target_vec: Vector3 = -%RayCastEyes.global_basis.z * dash_distance
@@ -275,15 +323,19 @@ func dash_forward():
 	dash_tween = create_tween()
 	dash_tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 	dash_tween.chain()
-	dash_tween.tween_property(self, "global_position", global_position + target_vec, 0.3)
-	dash_tween.tween_callback(dash_end)
+	dash_tween.tween_property(self, "global_position", global_position + target_vec, dash_speed)
+	dash_tween.tween_callback(dash_end.bind(-%RayCastEyes.global_basis.z * SPEED * 0.5))
 
 
-func dash_end(do_temporal_shift: bool = false):
+func dash_end(final_velocity: Vector3, do_temporal_shift: bool = false):
 	is_dashing = false
 	%BodyShapeCast.target_position = Vector3.ZERO
+	
+	velocity = final_velocity
+	last_velocity = final_velocity
 	#TO/DO possibly start a brief temporal slowdown
 	if do_temporal_shift:
+		
 		temporal_shift()
 
 
@@ -292,13 +344,27 @@ func temporal_shift():
 		time_tween.kill()
 	Engine.time_scale = 0.1
 	time_tween = create_tween()
-	time_tween.tween_property(Engine, "time_scale", 1.0, 1.0).set_ease(Tween.EASE_IN)
+	time_tween.tween_method(set_time_scale, 0.1, 1.0, slow_time_duration).set_ease(Tween.EASE_IN)
+	#time_tween.tween_property(Engine, "time_scale", 1.0, 1.0).set_ease(Tween.EASE_IN)
+	
+	gravity_mult = 0.1
+	time_tween.tween_property(self, "gravity_mult", 1.0, slow_time_duration).set_ease(Tween.EASE_IN)
+
+
+func set_time_scale(time_scale: float):
+	Engine.time_scale = time_scale
+	readjust_tween_time_scale(time_scale)
+
+
+func readjust_tween_time_scale(time_scale: float):
+	time_tween.set_speed_scale(1.0 / time_scale)
 
 
 func kill_time_tween():
 	if time_tween != null:
 		time_tween.kill()
 	Engine.time_scale = 1.0
+	gravity_mult = 1.0
 
 
 func check_eye_ray():

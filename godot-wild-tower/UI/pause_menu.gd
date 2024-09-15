@@ -30,9 +30,9 @@ func on_resume_pressed():
 
 func on_restart_pressed():
 	#TODO TWO WAYS TO GO ABOUT THIS
-	#1. RELOAD THE WHOLE SCENE
+	get_tree().paused = false
+	get_tree().change_scene_to_file(get_tree().current_scene.scene_file_path)
 	#2. RESET ALL OBJECTS TO STARTING POSITION
-	pass
 
 
 func on_options_pressed():
