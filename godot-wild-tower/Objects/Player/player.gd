@@ -35,7 +35,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var gravity_mult: float = 1.0
 
 var current_enemy: Object = null
-var enemy_mesh: MeshInstance3D = null
+var enemy_outliner: Outliner = null
 
 var started: bool = false
 
@@ -370,36 +370,31 @@ func kill_time_tween():
 func check_eye_ray():
 	if !%RayCastEyes.is_colliding():
 		%Crosshair.modulate = Color.WHITE
-		effect_enemy_mesh(false)
+		effect_enemy_outline(false)
 	else:
 		var collider = %RayCastEyes.get_collider()
 		if (collider.get_collision_layer() & 2):
 			if current_enemy != collider:
-				effect_enemy_mesh(false)
+				effect_enemy_outline(false)
 				current_enemy = collider
 				for child in collider.get_children():
-					if child is MeshInstance3D:
-						enemy_mesh = child
+					if child is Outliner:
+						enemy_outliner = child
 						break
 			%Crosshair.modulate = Color.RED
-			effect_enemy_mesh(true)
+			effect_enemy_outline(true)
 			#set outline on next_pass shader of enemy material
 			
 		else: 
 			%Crosshair.modulate = Color.WHITE
-			effect_enemy_mesh(false)
+			effect_enemy_outline(false)
 
 
-func effect_enemy_mesh(setting: bool):
-	if enemy_mesh == null: return
+func effect_enemy_outline(setting: bool):
+	if enemy_outliner == null: return
 	
-	var base_material = enemy_mesh.get_surface_override_material(0)
-	if base_material == null: return
+	enemy_outliner.set_mesh_outlines(setting)
 	
-	var outline_material = base_material.next_pass
-	if setting:
-		outline_material.set_shader_parameter("size", 1.1)
-	else: 
-		outline_material.set_shader_parameter("size", 1.0)
-		enemy_mesh = null
+	if !setting:
+		enemy_outliner = null
 		current_enemy = null

@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bio0jujhqeko5"]
+
+[ext_resource type="Shader" path="res://Objects/Enemies/outline_shader.gdshader" id="1_342i0"]
+
+[resource]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_342i0")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/size = 1.0

@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bonck86xrxwj0"]
+
+[ext_resource type="Script" path="res://Objects/Enemies/outliner_component.gd" id="1_kl5yc"]
+[ext_resource type="Material" uid="uid://bio0jujhqeko5" path="res://Objects/Enemies/outline_material.tres" id="2_7kpy2"]
+
+[node name="OutlinerComponent" type="Node"]
+script = ExtResource("1_kl5yc")
+outline_material = ExtResource("2_7kpy2")

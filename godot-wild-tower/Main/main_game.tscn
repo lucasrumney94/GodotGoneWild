@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bxfwjbkk62asb"]
+[gd_scene load_steps=15 format=3 uid="uid://bxfwjbkk62asb"]
 
 [ext_resource type="Script" path="res://Main/main_game.gd" id="1_14x2i"]
 [ext_resource type="PackedScene" uid="uid://vssvdtmx3jx7" path="res://Objects/Player/player.tscn" id="1_27g07"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://do1pmtbmc423e" path="res://UI/pause_menu.tscn" id="2_2vuh2"]
 [ext_resource type="PackedScene" uid="uid://y00sgnh5ws4h" path="res://Objects/Environment/finish_area.tscn" id="6_ga075"]
 [ext_resource type="PackedScene" uid="uid://5x1047hex40t" path="res://Objects/Enemies/BasicEnemyOUTLINE_TEST.tscn" id="6_kji67"]
+[ext_resource type="PackedScene" uid="uid://c08aetbdbnjbc" path="res://Objects/Enemies/MobileEnemy_OUTLINE.tscn" id="7_7tlvw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m2u75"]
 sky_top_color = Color(0, 0.446616, 0.82605, 1)
@@ -18,6 +19,9 @@ sky_material = SubResource("ProceduralSkyMaterial_m2u75")
 background_mode = 2
 sky = SubResource("Sky_2t8uw")
 
+[sub_resource type="SphereMesh" id="SphereMesh_aawc2"]
+radius = 0.2
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_ibbg3"]
 size = Vector3(28, 1, 28)
 
@@ -26,9 +30,6 @@ size = Vector3(28, 1, 28)
 [sub_resource type="BoxShape3D" id="BoxShape3D_8aowc"]
 size = Vector3(1, 5, 10)
 
-[sub_resource type="SphereMesh" id="SphereMesh_aawc2"]
-radius = 0.2
-
 [node name="MainGame" type="Node3D"]
 script = ExtResource("1_14x2i")
 pause_menu_scene = ExtResource("2_2vuh2")
@@ -36,56 +37,12 @@ pause_menu_scene = ExtResource("2_2vuh2")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_clk17")
 
-[node name="Floor" type="StaticBody3D" parent="."]
+[node name="Environment" type="Node3D" parent="."]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
-shape = SubResource("BoxShape3D_ibbg3")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
-transform = Transform3D(28, 0, 0, 0, 1, 0, 0, 0, 28, 0, 0, 0)
-material_override = ExtResource("1_ywoid")
-mesh = SubResource("BoxMesh_hlqw6")
-
-[node name="Floor3" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.2435, 20.4398, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor3"]
-shape = SubResource("BoxShape3D_ibbg3")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor3"]
-transform = Transform3D(28, 0, 0, 0, 1, 0, 0, 0, 28, 0, 0, 0)
-material_override = ExtResource("1_ywoid")
-mesh = SubResource("BoxMesh_hlqw6")
-
-[node name="Floor2" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 37.8598, 18.5612)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor2"]
-shape = SubResource("BoxShape3D_ibbg3")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor2"]
-transform = Transform3D(28, 0, 0, 0, 1, 0, 0, 0, 28, 0, 0, 0)
-material_override = ExtResource("1_ywoid")
-mesh = SubResource("BoxMesh_hlqw6")
-
-[node name="Wall" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0784936, 1.58037, -2.15353)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall"]
-shape = SubResource("BoxShape3D_8aowc")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall"]
-transform = Transform3D(1, 0, 0, 0, 5, 0, 0, 0, 10, 0, 0, 0)
-material_override = ExtResource("1_ywoid")
-mesh = SubResource("BoxMesh_hlqw6")
-
-[node name="Player" parent="." instance=ExtResource("1_27g07")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.39197, 0.749502, 4.78003)
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
 transform = Transform3D(1, 0, 0, 0, -0.455545, 0.890213, 0, -0.890213, -0.455545, 0, 0, 0)
 
-[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+[node name="CPUParticles3D" type="CPUParticles3D" parent="Environment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 69.3802, 0)
 layers = 4
 amount = 500
@@ -93,6 +50,54 @@ lifetime = 5.0
 mesh = SubResource("SphereMesh_aawc2")
 emission_shape = 3
 emission_box_extents = Vector3(28, 1, 28)
+
+[node name="Floor" type="StaticBody3D" parent="Environment"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Floor"]
+shape = SubResource("BoxShape3D_ibbg3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Floor"]
+transform = Transform3D(28, 0, 0, 0, 1, 0, 0, 0, 28, 0, 0, 0)
+material_override = ExtResource("1_ywoid")
+mesh = SubResource("BoxMesh_hlqw6")
+
+[node name="Floor3" type="StaticBody3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.2435, 20.4398, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Floor3"]
+shape = SubResource("BoxShape3D_ibbg3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Floor3"]
+transform = Transform3D(28, 0, 0, 0, 1, 0, 0, 0, 28, 0, 0, 0)
+material_override = ExtResource("1_ywoid")
+mesh = SubResource("BoxMesh_hlqw6")
+
+[node name="Floor2" type="StaticBody3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 37.8598, 18.5612)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Floor2"]
+shape = SubResource("BoxShape3D_ibbg3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Floor2"]
+transform = Transform3D(28, 0, 0, 0, 1, 0, 0, 0, 28, 0, 0, 0)
+material_override = ExtResource("1_ywoid")
+mesh = SubResource("BoxMesh_hlqw6")
+
+[node name="Wall" type="StaticBody3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0784936, 1.58037, -2.15353)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Wall"]
+shape = SubResource("BoxShape3D_8aowc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Wall"]
+transform = Transform3D(1, 0, 0, 0, 5, 0, 0, 0, 10, 0, 0, 0)
+material_override = ExtResource("1_ywoid")
+mesh = SubResource("BoxMesh_hlqw6")
+
+[node name="FinishArea" parent="Environment" instance=ExtResource("6_ga075")]
+
+[node name="Player" parent="." instance=ExtResource("1_27g07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.39197, 0.749502, 4.78003)
 
 [node name="BasicEnemy4" parent="." instance=ExtResource("6_kji67")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.29282, 1.22017, -5.2885)
@@ -115,4 +120,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.69269, 35.0774, -10.7121)
 [node name="BasicEnemy10" parent="." instance=ExtResource("6_kji67")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.69269, 45.0464, 4.66635)
 
-[node name="FinishArea" parent="." instance=ExtResource("6_ga075")]
+[node name="MobileEnemy_OUTLINE" parent="." instance=ExtResource("7_7tlvw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.53243, 1.70001, -2.06288)
