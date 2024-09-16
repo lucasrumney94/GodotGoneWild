@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://fshkr347rlb0"]
+[gd_scene load_steps=5 format=3 uid="uid://fshkr347rlb0"]
 
 [ext_resource type="PackedScene" uid="uid://dpsgthsbj685l" path="res://Objects/Enemies/Cherubim.glb" id="1_thbhj"]
+[ext_resource type="PackedScene" uid="uid://ch6t48k1kbfcn" path="res://Objects/Enemies/BasicEnemy.glb" id="2_qtgfc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ttc4u"]
 
@@ -14,7 +15,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_ttc4u")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 visible = false
 mesh = SubResource("BoxMesh_jbor8")
 
 [node name="Cherubim" parent="." instance=ExtResource("1_thbhj")]
+visible = false
+
+[node name="BasicEnemy" parent="." instance=ExtResource("2_qtgfc")]

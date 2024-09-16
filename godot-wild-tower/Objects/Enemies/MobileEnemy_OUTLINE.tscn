@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://c08aetbdbnjbc"]
+[gd_scene load_steps=9 format=3 uid="uid://c08aetbdbnjbc"]
 
 [ext_resource type="Script" path="res://Objects/Enemies/mobileenemy.gd" id="1_ou6b6"]
 [ext_resource type="PackedScene" uid="uid://bonck86xrxwj0" path="res://Objects/Enemies/outliner_component.tscn" id="2_7bmx8"]
 [ext_resource type="PackedScene" uid="uid://cvtcfxlkl0fw6" path="res://Objects/Enemies/Elohim.glb" id="2_sq8n4"]
 [ext_resource type="Shader" path="res://Objects/Enemies/outline_shader.gdshader" id="3_gibdk"]
 [ext_resource type="Script" path="res://Objects/Enemies/death_component.gd" id="5_dc7gb"]
+[ext_resource type="PackedScene" uid="uid://f3bed502wbku" path="res://Objects/Enemies/MobileEnemy.glb" id="6_b6a8x"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_l2acr"]
 resource_local_to_scene = true
@@ -14,7 +15,7 @@ shader_parameter/color = Color(1, 0, 0, 1)
 shader_parameter/size = 1.0
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_8n1er"]
-height = 1.5
+height = 1.2
 radius = 0.6
 
 [node name="MobileEnemy_OUTLINE" type="CharacterBody3D"]
@@ -28,11 +29,15 @@ outline_material = SubResource("ShaderMaterial_l2acr")
 script = ExtResource("5_dc7gb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 shape = SubResource("CylinderShape3D_8n1er")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 visible = false
 
 [node name="Elohim" parent="." instance=ExtResource("2_sq8n4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.05)
+visible = false
+
+[node name="MobileEnemy" parent="." instance=ExtResource("6_b6a8x")]

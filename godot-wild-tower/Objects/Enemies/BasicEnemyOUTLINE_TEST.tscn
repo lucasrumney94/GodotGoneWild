@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://5x1047hex40t"]
+[gd_scene load_steps=12 format=3 uid="uid://5x1047hex40t"]
 
 [ext_resource type="Material" uid="uid://bio0jujhqeko5" path="res://Objects/Enemies/outline_material.tres" id="1_1twxw"]
 [ext_resource type="Shader" path="res://Objects/Enemies/outline_shader.gdshader" id="1_peusp"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Objects/Enemies/death_component.gd" id="3_0yons"]
 [ext_resource type="PackedScene" uid="uid://dpsgthsbj685l" path="res://Objects/Enemies/Cherubim.glb" id="3_8yv4s"]
 [ext_resource type="PackedScene" uid="uid://bonck86xrxwj0" path="res://Objects/Enemies/outliner_component.tscn" id="4_5e2qh"]
+[ext_resource type="PackedScene" uid="uid://ch6t48k1kbfcn" path="res://Objects/Enemies/BasicEnemy.glb" id="6_4bvba"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qalsm"]
 resource_local_to_scene = true
@@ -38,8 +39,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_ttc4u")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 visible = false
 mesh = SubResource("BoxMesh_jbor8")
 surface_material_override/0 = SubResource("ShaderMaterial_dr681")
 
+[node name="BasicEnemy" parent="." instance=ExtResource("6_4bvba")]
+
 [node name="Cherubim" parent="." instance=ExtResource("3_8yv4s")]
+visible = false
