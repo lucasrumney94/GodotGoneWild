@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c08aetbdbnjbc"]
+[gd_scene load_steps=8 format=3 uid="uid://c08aetbdbnjbc"]
 
 [ext_resource type="Script" path="res://Objects/Enemies/mobileenemy.gd" id="1_ou6b6"]
 [ext_resource type="PackedScene" uid="uid://bonck86xrxwj0" path="res://Objects/Enemies/outliner_component.tscn" id="2_7bmx8"]
 [ext_resource type="PackedScene" uid="uid://cvtcfxlkl0fw6" path="res://Objects/Enemies/Elohim.glb" id="2_sq8n4"]
 [ext_resource type="Shader" path="res://Objects/Enemies/outline_shader.gdshader" id="3_gibdk"]
+[ext_resource type="Script" path="res://Objects/Enemies/death_component.gd" id="5_dc7gb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_l2acr"]
 resource_local_to_scene = true
@@ -22,6 +23,9 @@ script = ExtResource("1_ou6b6")
 
 [node name="OutlinerComponent" parent="." instance=ExtResource("2_7bmx8")]
 outline_material = SubResource("ShaderMaterial_l2acr")
+
+[node name="DeathComponent" type="Node" parent="."]
+script = ExtResource("5_dc7gb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
