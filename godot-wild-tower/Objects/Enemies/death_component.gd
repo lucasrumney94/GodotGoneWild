@@ -11,10 +11,9 @@ func die():
 
 func explode_meshes(base_node: Node):
 	for child in base_node.get_children():
-		if child is MeshInstance3D:
-			if child.visible:
+		if (child is Node3D) && child.visible:
+			if child is MeshInstance3D:
 				explode_mesh(child)
-		else:
 			explode_meshes(child)
 
 
@@ -23,7 +22,7 @@ func explode_mesh(mesh: MeshInstance3D):
 	rb.position = mesh.global_position
 	rb.collision_layer = 8
 	rb.collision_mask = 1
-	rb.gravity_scale = 0.1
+	#rb.gravity_scale = 0.1
 	var col: CollisionShape3D = CollisionShape3D.new()
 	col.shape = BoxShape3D.new()
 	col.shape.size = mesh.get_aabb().size

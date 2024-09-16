@@ -12,17 +12,17 @@ func _ready():
 
 func find_meshes(base_node: Node):
 	for child in base_node.get_children():
-		if child is MeshInstance3D:
-			if child.visible:
+		if (child is Node3D) && child.visible:
+			if child is MeshInstance3D:
 				meshes.append(child)
 				override_surface_material(child)
-		else:
 			find_meshes(child)
 
 
 func override_surface_material(mesh_instance: MeshInstance3D):
 	var mat: Material = mesh_instance.mesh.surface_get_material(0).duplicate()
 	mat.next_pass = outline_material
+	outline_material.render_priority = -1
 	mesh_instance.set_surface_override_material(0, mat)
 
 

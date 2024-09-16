@@ -45,6 +45,7 @@ transform = Transform3D(1, 0, 0, 0, -0.455545, 0.890213, 0, -0.890213, -0.455545
 [node name="CPUParticles3D" type="CPUParticles3D" parent="Environment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 69.3802, 0)
 layers = 4
+emitting = false
 amount = 500
 lifetime = 5.0
 mesh = SubResource("SphereMesh_aawc2")
