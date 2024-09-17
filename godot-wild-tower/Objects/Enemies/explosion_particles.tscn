@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://deydyoodbbk77"]
+
+[ext_resource type="Script" path="res://Objects/Enemies/explosion_particles.gd" id="1_5h6kx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_thdkq"]
+emission_enabled = true
+emission = Color(0, 0.992157, 0.992157, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_vkpy7"]
+material = SubResource("StandardMaterial3D_thdkq")
+
+[node name="ExplosionParticles" type="CPUParticles3D"]
+cast_shadow = 0
+emitting = false
+amount = 200
+one_shot = true
+explosiveness = 1.0
+lifetime_randomness = 0.48
+mesh = SubResource("PrismMesh_vkpy7")
+emission_shape = 1
+emission_sphere_radius = 0.1
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_max = 20.0
+scale_amount_min = 0.1
+scale_amount_max = 0.3
+color = Color(1, 1, 0, 1)
+script = ExtResource("1_5h6kx")

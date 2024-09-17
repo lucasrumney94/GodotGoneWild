@@ -295,7 +295,7 @@ func dash_enemy(enemy: Object):
 	dash_tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 	dash_tween.chain()
 	dash_tween.tween_property(self, "global_position", enemy.position, dash_speed)
-	dash_tween.tween_callback(dash_end.bind(Vector3.ZERO, true, enemy))
+	dash_tween.tween_callback(dash_end.bind(-%RayCastEyes.global_basis.z, true, enemy))
 	
 	jump_count = 1
 	short_dash_count = 1
@@ -331,16 +331,20 @@ func dash_end(final_velocity: Vector3, do_temporal_shift: bool = false, enemy: O
 	is_dashing = false
 	%BodyShapeCast.target_position = Vector3.ZERO
 	
-	velocity = final_velocity
-	last_velocity = final_velocity
+	
 	
 	if do_temporal_shift:
 		temporal_shift()
+		velocity = Vector3.ZERO
+		last_velocity = Vector3.ZERO
+	else: #is just dash forward
+		velocity = final_velocity
+		last_velocity = final_velocity
 	
 	if enemy != null:
 		for child in enemy.get_children():
 			if child is DeathComponent:
-				child.die()
+				child.die(final_velocity)
 				break
 
 
