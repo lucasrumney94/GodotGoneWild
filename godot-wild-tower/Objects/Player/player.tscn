@@ -138,7 +138,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 material_override = SubResource("StandardMaterial3D_etn5c")
 mesh = SubResource("CapsuleMesh_m7h0s")
 
-[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+[node name="TrailParticles" type="CPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 material_override = SubResource("StandardMaterial3D_cj8j1")
 amount = 500

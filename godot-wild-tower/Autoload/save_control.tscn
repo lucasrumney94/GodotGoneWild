@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvs37qkms430p"]
+
+[ext_resource type="Script" path="res://Autoload/save_control.gd" id="1_xslvd"]
+
+[node name="SaveControl" type="Node"]
+script = ExtResource("1_xslvd")

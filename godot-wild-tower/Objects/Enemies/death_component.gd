@@ -1,6 +1,8 @@
 extends Node
 class_name DeathComponent
 
+@export var enemy_type: Constants.EnemyType
+
 
 func die():
 	#find all visible mesh instance 3d

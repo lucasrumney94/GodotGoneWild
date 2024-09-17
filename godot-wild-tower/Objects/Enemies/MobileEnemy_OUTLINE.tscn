@@ -27,6 +27,7 @@ outline_material = SubResource("ShaderMaterial_l2acr")
 
 [node name="DeathComponent" type="Node" parent="."]
 script = ExtResource("5_dc7gb")
+enemy_type = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
