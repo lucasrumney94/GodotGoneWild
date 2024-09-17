@@ -1,0 +1,117 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvvlygjue7a11"]
+
+[ext_resource type="Script" path="res://UI/level_stats_container.gd" id="1_8e00t"]
+
+[node name="LevelStatsContainer" type="PanelContainer"]
+custom_minimum_size = Vector2(600, 300)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("1_8e00t")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="LevelLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Level 0"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="HBoxContainer8" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer8"]
+layout_mode = 2
+text = "Fastest Playthrough:"
+
+[node name="FastestPlayLabel" type="Label" parent="VBoxContainer/HBoxContainer8"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+text = "00:00:00"
+horizontal_alignment = 2
+
+[node name="HBoxContainer9" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer9"]
+layout_mode = 2
+text = "Total Angels Killed:"
+
+[node name="AngelsKilledLabel" type="Label" parent="VBoxContainer/HBoxContainer9"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="HBoxContainer10" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer10"]
+layout_mode = 2
+text = "Cherubim Killed:"
+
+[node name="CherubimKilledLabel" type="Label" parent="VBoxContainer/HBoxContainer10"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="HBoxContainer11" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer11"]
+layout_mode = 2
+text = "Malakim Killed:"
+
+[node name="MalakimKilledLabel" type="Label" parent="VBoxContainer/HBoxContainer11"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="HBoxContainer12" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer12"]
+layout_mode = 2
+text = "Seraphim Killed:"
+
+[node name="SeraphimKilledLabel" type="Label" parent="VBoxContainer/HBoxContainer12"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer7"]
+layout_mode = 2
+text = "Ophanim Killed:"
+
+[node name="OphanimKilledLabel" type="Label" parent="VBoxContainer/HBoxContainer7"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+text = "0"
+horizontal_alignment = 2

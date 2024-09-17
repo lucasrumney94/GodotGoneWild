@@ -50,4 +50,5 @@ func on_options_closed():
 func on_quit_pressed():
 	#quit back to main menu
 	get_tree().paused = false
+	SaveControl.save()
 	get_tree().change_scene_to_file("res://Main/main_menu.tscn")
