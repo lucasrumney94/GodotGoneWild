@@ -2,6 +2,7 @@ extends CanvasLayer
 
 @export var options_scene: PackedScene
 @export var stats_scene: PackedScene
+@export var achievements_scene: PackedScene
 @export var credits_scene: PackedScene
 
 #TODO we'll need to sophisticate this a bit, just doing this to get things running
@@ -13,6 +14,7 @@ extends CanvasLayer
 func _ready():
 	%StartButton.pressed.connect(on_start_pressed)
 	%StatsButton.pressed.connect(on_stats_pressed)
+	%AchievementsButton.pressed.connect(on_achievements_pressed)
 	%OptionsButton.pressed.connect(on_options_pressed)
 	%CreditsButton.pressed.connect(on_credits_pressed)
 	%QuitButton.pressed.connect(on_quit_pressed)
@@ -35,6 +37,12 @@ func on_stats_pressed():
 	var stats = stats_scene.instantiate()
 	add_child(stats)
 	stats.closing.connect(focus_on_button.bind(%StatsButton))
+
+
+func on_achievements_pressed():
+	var ach = achievements_scene.instantiate()
+	add_child(ach)
+	ach.closing.connect(focus_on_button.bind(%AchievementsButton))
 
 
 func on_options_pressed():

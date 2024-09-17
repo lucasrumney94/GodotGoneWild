@@ -8,6 +8,21 @@
 [ext_resource type="PackedScene" uid="uid://bonck86xrxwj0" path="res://Objects/Enemies/outliner_component.tscn" id="4_5e2qh"]
 [ext_resource type="PackedScene" uid="uid://deydyoodbbk77" path="res://Objects/Enemies/explosion_particles.tscn" id="4_06s14"]
 
+[sub_resource type="Animation" id="Animation_wocma"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BasicEnemy/Core/RotationRoot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_bfy0i"]
 resource_name = "rotate"
 length = 4.0
@@ -23,21 +38,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 3.14159, 0), Vector3(0, 6.28319, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_wocma"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("BasicEnemy/Core/RotationRoot:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2mxik"]

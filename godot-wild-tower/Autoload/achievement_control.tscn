@@ -1,8 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://7c5o71oyrx52"]
+[gd_scene load_steps=5 format=3 uid="uid://7c5o71oyrx52"]
 
 [ext_resource type="Script" path="res://Autoload/achievement_control.gd" id="1_lvx2p"]
 [ext_resource type="PackedScene" uid="uid://b1hxkyiomflv0" path="res://UI/Achievements/achievement_popup.tscn" id="2_uwhnw"]
+[ext_resource type="Script" path="res://UI/Achievements/achievement.gd" id="3_wmop3"]
+[ext_resource type="Resource" uid="uid://qbhxgfjtb32q" path="res://UI/Achievements/Resources/view_credits.tres" id="4_c77lf"]
 
 [node name="AchievementControl" type="Node"]
 script = ExtResource("1_lvx2p")
 achievement_popup_scene = ExtResource("2_uwhnw")
+achievements = Array[ExtResource("3_wmop3")]([ExtResource("4_c77lf")])

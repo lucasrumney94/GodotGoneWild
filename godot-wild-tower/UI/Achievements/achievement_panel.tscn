@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=3 uid="uid://63qe8ib3fixo"]
+
+[ext_resource type="Script" path="res://UI/Achievements/achievement_panel.gd" id="1_nuv0b"]
+[ext_resource type="Texture2D" uid="uid://c4agc4wxn88u2" path="res://icon.svg" id="1_wbrr4"]
+[ext_resource type="Texture2D" uid="uid://dt1l7laaw1wqw" path="res://TestingGrid.png" id="2_j1v05"]
+
+[node name="AchievementPanel" type="PanelContainer"]
+script = ExtResource("1_nuv0b")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+
+[node name="IconTextureRect" type="TextureRect" parent="HBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+texture = ExtResource("1_wbrr4")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="HBoxContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Name"
+uppercase = true
+
+[node name="DescriptionLabel" type="Label" parent="HBoxContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+text = "Dante's Divine Comedy was written in a single ether-drenched fugue state"
+autowrap_mode = 2
+
+[node name="CheckTextureRect" type="TextureRect" parent="HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_j1v05")
+expand_mode = 1

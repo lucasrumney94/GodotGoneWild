@@ -8,6 +8,12 @@ func _ready():
 	%BackButton.grab_focus()
 	
 	#TODO add achievement for viewing credits
+	Callable(init).call_deferred()
+
+
+func init():
+	print("should be earning credit achievement")
+	AchievementControl.earn_achievement("view_credits")
 
 
 func _input(event: InputEvent):

@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://UI/stats.gd" id="1_erpfg"]
 
 [node name="Stats" type="CanvasLayer"]
+layer = 10
 script = ExtResource("1_erpfg")
 
 [node name="Control" type="Control" parent="."]
@@ -45,3 +46,12 @@ offset_top = 37.085
 offset_right = 87.37
 offset_bottom = 68.085
 text = "BACK"
+
+[node name="ResetButton" type="Button" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1046.0
+offset_top = 37.0
+offset_right = 1100.0
+offset_bottom = 68.0
+text = "RESET"

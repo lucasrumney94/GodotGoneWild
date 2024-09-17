@@ -36,6 +36,22 @@ func clear_save_data():
 	save_data_reset.emit()
 
 
+func clear_achievement_data():
+	old_data = save_data.duplicate()
+	var file = FileAccess.open(SAVE_FILE_PATH, FileAccess.WRITE)
+	save_data.erase("achievements")
+	file.store_var(save_data)
+	save_data_reset.emit()
+
+
+func clear_stats_data():
+	old_data = save_data.duplicate()
+	var file = FileAccess.open(SAVE_FILE_PATH, FileAccess.WRITE)
+	save_data.erase("stats")
+	file.store_var(save_data)
+	save_data_reset.emit()
+
+
 func check_achievement(achievement_id: String) -> bool:
 	if !save_data.has("achievements"):
 		return false
@@ -53,43 +69,49 @@ func add_achievement(achievement_id: String):
 	save_data["achievements"].append(achievement_id)
 
 
-func get_earned_achievements():
+func get_earned_achievements() -> Array:
 	if save_data.has("achievements"):
 		return save_data["achievements"]
-	return null
+	return []
 
 
 func get_stat(level: int, stat_name: String) -> float:
-	var level_string = "level_" + str(level)
-	if !save_data.has(level_string):
+	if !save_data.has("stats"):
 		return 0
-	if save_data[level_string].has(stat_name):
-		return save_data[level_string][stat_name]
+	
+	var level_string = "level_" + str(level)
+	if !save_data["stats"].has(level_string):
+		return 0
+	if save_data["stats"][level_string].has(stat_name):
+		return save_data["stats"][level_string][stat_name]
 	else: 
 		return 0
 
 
 #ADD STAT TO SAVE_DATA, RETURN TRUE IF IS NEW HIGH SCORE
 func add_stat(level: int, stat_name: String, value) -> bool:
+	if !save_data.has("stats"):
+		save_data["stats"] = {}
+	
 	#TODO maybe if level < 0 it is intended as global stat
 	#or are we just double adding everything, one for level and one for global
 	#may need to save a current playthrough general stat as well to later compare for determining best time
 	var level_string = "level_" + str(level)
-	if !save_data.has(level_string):
-		save_data[level_string] = {}
+	if !save_data["stats"].has(level_string):
+		save_data["stats"][level_string] = {}
 	
 	var current_saved_value = get_stat(level, stat_name)
 		
 	match stat_name:
 		"time": #compare time to current saved time
 			if current_saved_value > 0 && value < current_saved_value:
-				save_data[level_string][stat_name] = value
+				save_data["stats"][level_string][stat_name] = value
 				return true
 		"kill":
 			#OKAY SO WE'LL ALWAYS ADD 1 HERE, SO CAN USE VALUE TO SEND ENEMY TYPE
-			save_data[level_string][stat_name] = current_saved_value + 1
+			save_data["stats"][level_string][stat_name] = current_saved_value + 1
 			var enemy = stat_name + str(value)
-			save_data[level_string][enemy] = get_stat(level, enemy) + 1
+			save_data["stats"][level_string][enemy] = get_stat(level, enemy) + 1
 		_: #DEFAULT
 			print(stat_name + " IS NOT A STAT NAME KNOWN TO SAVE CONTROL")
 			

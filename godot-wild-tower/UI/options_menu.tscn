@@ -8,6 +8,8 @@ process_mode = 3
 layer = 10
 script = ExtResource("1_wsu2s")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
@@ -63,19 +65,47 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 16
 
-[node name="ResetButton" type="Button" parent="Control/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Main Volume"
+horizontal_alignment = 1
+
+[node name="MasterVolumeSlider" type="HSlider" parent="Control/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "RESET PROGRESS"
+max_value = 1.0
+step = 0.01
 
-[node name="HSlider" type="HSlider" parent="Control/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="HSlider2" type="HSlider" parent="Control/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="Control/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Sound Effects"
+horizontal_alignment = 1
+
+[node name="SfxSlider" type="HSlider" parent="Control/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="Control/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="HSlider3" type="HSlider" parent="Control/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="Control/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer3"]
 layout_mode = 2
+text = "Music Volume"
+horizontal_alignment = 1
+
+[node name="MusicSlider" type="HSlider" parent="Control/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 1.0
+step = 0.01
 
 [node name="BackButton" type="Button" parent="Control/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true

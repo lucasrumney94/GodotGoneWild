@@ -14,6 +14,33 @@ shader = ExtResource("3_gibdk")
 shader_parameter/color = Color(1, 0, 0, 1)
 shader_parameter/size = 1.0
 
+[sub_resource type="Animation" id="Animation_tsleh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MobileEnemy/Core/WingRootL:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.0472, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MobileEnemy/Core/WingRootR:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.0472, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_vv0ar"]
 resource_name = "flap"
 loop_mode = 1
@@ -41,33 +68,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 1.0472, 0), Vector3(0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_tsleh"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MobileEnemy/Core/WingRootL:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, -1.0472, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("MobileEnemy/Core/WingRootR:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 1.0472, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ursxx"]
@@ -652,7 +652,7 @@ mesh = SubResource("ArrayMesh_v1mh1")
 skeleton = NodePath("")
 
 [node name="WingRootL" type="Node3D" parent="MobileEnemy/Core"]
-transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 0.35, 0, 0)
+transform = Transform3D(0.499998, 0, -0.866026, 0, 1, 0, 0.866026, 0, 0.499998, 0.35, 0, 0)
 
 [node name="Wing Base L" type="MeshInstance3D" parent="MobileEnemy/Core/WingRootL"]
 transform = Transform3D(0.939693, 0.321394, 0.116978, -0.34202, 0.883022, 0.321394, -7.45058e-09, -0.34202, 0.939693, 0.15, 0.4, -0.175)
@@ -675,7 +675,7 @@ mesh = SubResource("ArrayMesh_3xilg")
 skeleton = NodePath("")
 
 [node name="WingRootR" type="Node3D" parent="MobileEnemy/Core"]
-transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, -0.35, 0, 0)
+transform = Transform3D(0.499998, 0, 0.866026, 0, 1, 0, -0.866026, 0, 0.499998, -0.35, 0, 0)
 
 [node name="Wing Base R" type="MeshInstance3D" parent="MobileEnemy/Core/WingRootR"]
 transform = Transform3D(5.96046e-08, -0.34202, 0.939693, -0.34202, 0.883022, 0.321394, -0.939693, -0.321394, -0.116978, -0.15, 0.4, -0.175)
