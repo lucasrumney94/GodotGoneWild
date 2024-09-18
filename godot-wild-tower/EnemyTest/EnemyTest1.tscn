@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://ld24biyy5xkj"]
 
 [ext_resource type="PackedScene" uid="uid://vssvdtmx3jx7" path="res://Objects/Player/player.tscn" id="1_01si0"]
-[ext_resource type="PackedScene" uid="uid://fshkr347rlb0" path="res://Objects/Enemies/BasicEnemy_OLD.tscn" id="1_mvpe4"]
+[ext_resource type="PackedScene" uid="uid://5x1047hex40t" path="res://Objects/Enemies/BasicEnemy.tscn" id="1_mvpe4"]
 [ext_resource type="Script" path="res://Main/main_game.gd" id="1_ps2pb"]
 [ext_resource type="PackedScene" path="res://UI/pause_menu.tscn" id="2_xwaog"]
-[ext_resource type="PackedScene" uid="uid://bojfdf4dyc8ng" path="res://Objects/Enemies/MobileEnemy_OLD.tscn" id="3_vbu8n"]
+[ext_resource type="PackedScene" uid="uid://c08aetbdbnjbc" path="res://Objects/Enemies/MobileEnemy.tscn" id="3_vbu8n"]
 [ext_resource type="Material" uid="uid://5dqiqxr4arwd" path="res://Materials/grid_material.tres" id="4_7eoc8"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_dfukr"]
@@ -19,6 +19,20 @@ size = Vector3(28, 1, 28)
 script = ExtResource("1_ps2pb")
 pause_menu_scene = ExtResource("2_xwaog")
 
+[node name="BasicEnemy" parent="." instance=ExtResource("1_mvpe4")]
+
+[node name="MobileEnemy" parent="." instance=ExtResource("3_vbu8n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.3083)
+period = 5.0
+distance = 10.0
+
+[node name="MobileEnemy2" parent="." instance=ExtResource("3_vbu8n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.84827)
+period = 5.0
+distance = 10.0
+direction = Vector3(1, 1, 1)
+turnSpeed = 0.05
+
 [node name="Ground" type="MeshInstance3D" parent="."]
 visible = false
 mesh = SubResource("BoxMesh_dfukr")
@@ -26,23 +40,8 @@ skeleton = NodePath("")
 
 [node name="Player" parent="." instance=ExtResource("1_01si0")]
 
-[node name="BasicEnemy" parent="." instance=ExtResource("1_mvpe4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0237244, 1.22055, -3.48084)
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.380861, 0.924632, 0, -0.924632, 0.380861, 0, 5.15927, 0)
-
-[node name="MobileEnemy" parent="." instance=ExtResource("3_vbu8n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -4)
-period = 2.0
-distance = 15.0
-
-[node name="MobileEnemy2" parent="." instance=ExtResource("3_vbu8n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -4)
-period = 2.0
-distance = 15.0
-direction = Vector3(-1, 1, 1)
-turnSpeed = 0.01
 
 [node name="Floor" type="StaticBody3D" parent="."]
 

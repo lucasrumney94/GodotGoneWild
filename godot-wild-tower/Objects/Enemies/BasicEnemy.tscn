@@ -525,7 +525,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 visible = false
 mesh = SubResource("BoxMesh_jbor8")
 surface_material_override/0 = SubResource("ShaderMaterial_dr681")
-script = ExtResource("1_fl0t5")
 
 [node name="BasicEnemy" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

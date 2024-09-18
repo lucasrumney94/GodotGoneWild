@@ -586,6 +586,7 @@ shadow_mesh = SubResource("ArrayMesh_2fep8")
 [node name="MobileEnemy" type="CharacterBody3D"]
 collision_layer = 2
 script = ExtResource("1_mogi5")
+period = 3.0
 
 [node name="OutlinerComponent" parent="." instance=ExtResource("2_ols3i")]
 outline_material = SubResource("ShaderMaterial_l2acr")

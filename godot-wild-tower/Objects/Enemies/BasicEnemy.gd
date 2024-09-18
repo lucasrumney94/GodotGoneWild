@@ -1,6 +1,6 @@
-extends Node
+extends CharacterBody3D
 
-@export rotationSpeed = 1.0
+@export var rotationSpeed:float = 1.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -8,5 +8,5 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	rotation.y += rotationSpeed * delta

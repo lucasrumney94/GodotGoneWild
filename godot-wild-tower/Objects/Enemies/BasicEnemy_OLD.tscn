@@ -8,7 +8,7 @@
 
 [sub_resource type="BoxMesh" id="BoxMesh_jbor8"]
 
-[node name="BasicEnemy" type="CharacterBody3D"]
+[node name="BasicEnemy_OLD" type="CharacterBody3D"]
 collision_layer = 2
 script = ExtResource("1_xecyg")
 

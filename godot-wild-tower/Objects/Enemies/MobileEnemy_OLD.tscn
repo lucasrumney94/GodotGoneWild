@@ -8,7 +8,7 @@
 height = 1.2
 radius = 0.6
 
-[node name="MobileEnemy" type="CharacterBody3D"]
+[node name="MobileEnemy_OLD" type="CharacterBody3D"]
 collision_layer = 2
 script = ExtResource("1_gsr34")
 
