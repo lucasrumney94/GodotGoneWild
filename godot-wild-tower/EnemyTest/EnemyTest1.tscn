@@ -1,25 +1,50 @@
-[gd_scene load_steps=5 format=3 uid="uid://ld24biyy5xkj"]
+[gd_scene load_steps=8 format=3 uid="uid://ld24biyy5xkj"]
 
 [ext_resource type="PackedScene" uid="uid://vssvdtmx3jx7" path="res://Objects/Player/player.tscn" id="1_01si0"]
 [ext_resource type="PackedScene" uid="uid://fshkr347rlb0" path="res://Objects/Enemies/BasicEnemy.tscn" id="1_mvpe4"]
 [ext_resource type="PackedScene" uid="uid://bojfdf4dyc8ng" path="res://Objects/Enemies/MobileEnemy.tscn" id="3_vbu8n"]
+[ext_resource type="Material" uid="uid://5dqiqxr4arwd" path="res://Materials/grid_material.tres" id="4_7eoc8"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_dfukr"]
 size = Vector3(25, 0.1, 25)
 
-[node name="BasicEnemyScene" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_pho78"]
+size = Vector3(28, 1, 28)
+
+[sub_resource type="BoxMesh" id="BoxMesh_w7lxu"]
+
+[node name="EnemyTestScene" type="Node3D"]
 
 [node name="Ground" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("BoxMesh_dfukr")
 skeleton = NodePath("")
 
 [node name="Player" parent="." instance=ExtResource("1_01si0")]
 
 [node name="BasicEnemy" parent="." instance=ExtResource("1_mvpe4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.83345, 0.732493, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0237244, 1.22055, -3.48084)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.380861, 0.924632, 0, -0.924632, 0.380861, 0, 5.15927, 0)
 
 [node name="MobileEnemy" parent="." instance=ExtResource("3_vbu8n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.236995, 0.824196, -3.43477)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -4)
+period = 2.0
+distance = 15.0
+
+[node name="MobileEnemy2" parent="." instance=ExtResource("3_vbu8n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -4)
+period = 2.0
+distance = 15.0
+direction = Vector3(-1, 1, 1)
+
+[node name="Floor" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("BoxShape3D_pho78")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+transform = Transform3D(28, 0, 0, 0, 1, 0, 0, 0, 28, 0, 0, 0)
+material_override = ExtResource("4_7eoc8")
+mesh = SubResource("BoxMesh_w7lxu")
