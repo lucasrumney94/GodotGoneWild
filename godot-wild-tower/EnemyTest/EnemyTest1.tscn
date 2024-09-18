@@ -38,6 +38,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -4)
 period = 2.0
 distance = 15.0
 direction = Vector3(-1, 1, 1)
+turnSpeed = 0.01
 
 [node name="Floor" type="StaticBody3D" parent="."]
 
