@@ -307,7 +307,7 @@ func dash_enemy(enemy: Object):
 	dash_tween = create_tween()
 	dash_tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 	dash_tween.chain()
-	dash_tween.tween_property(self, "global_position", enemy.position, dash_speed)
+	dash_tween.tween_property(self, "global_position", enemy.global_position, dash_speed)
 	dash_tween.tween_callback(dash_end.bind(-%RayCastEyes.global_basis.z, true, enemy))
 	
 	jump_count = 1

@@ -1,12 +1,12 @@
-[gd_scene load_steps=44 format=4 uid="uid://5x1047hex40t"]
+[gd_scene load_steps=44 format=4 uid="uid://b2oiak8dl30w2"]
 
 [ext_resource type="Script" path="res://Objects/Enemies/BasicEnemy.gd" id="1_fl0t5"]
 [ext_resource type="PackedScene" uid="uid://dpsgthsbj685l" path="res://Objects/Enemies/Cherubim.glb" id="1_thbhj"]
-[ext_resource type="PackedScene" path="res://Objects/Enemies/outliner_component.tscn" id="2_4lbli"]
+[ext_resource type="PackedScene" uid="uid://bonck86xrxwj0" path="res://Objects/Enemies/outliner_component.tscn" id="2_4lbli"]
 [ext_resource type="Shader" path="res://Objects/Enemies/outline_shader.gdshader" id="3_6y85t"]
 [ext_resource type="Script" path="res://Objects/Enemies/death_component.gd" id="4_75mlk"]
-[ext_resource type="PackedScene" path="res://Objects/Enemies/explosion_particles.tscn" id="5_wd5gh"]
-[ext_resource type="Material" path="res://Objects/Enemies/outline_material.tres" id="6_3y0l8"]
+[ext_resource type="PackedScene" uid="uid://deydyoodbbk77" path="res://Objects/Enemies/explosion_particles.tscn" id="5_wd5gh"]
+[ext_resource type="Material" uid="uid://bio0jujhqeko5" path="res://Objects/Enemies/outline_material.tres" id="6_3y0l8"]
 [ext_resource type="Shader" path="res://Objects/Enemies/basic_shader.gdshader" id="7_1sqmy"]
 
 [sub_resource type="Animation" id="Animation_wocma"]
