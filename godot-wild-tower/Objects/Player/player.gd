@@ -20,6 +20,8 @@ var jump_count: int = 0
 
 var mouse_rotation: Vector3
 
+var move_direction: Vector3 = Vector3.ZERO
+
 var is_jumping: bool = false
 var is_dashing: bool = false
 
@@ -67,6 +69,11 @@ func _unhandled_input(event: InputEvent):
 		if event.is_pressed():
 			if !started: start()
 			try_dash()
+	
+	if event.is_action("dash_short") && !is_dashing:
+		if event.is_pressed():
+			if !started: start()
+			dash_forward()
 
 
 func _process(delta):
@@ -145,9 +152,12 @@ func _physics_process(delta):
 	
 	
 	var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
-	if !started:
-		if input_dir.length_squared() > 0:
+	if input_dir.length_squared() > 0:
+		move_direction = %CameraRotationRoot.transform.basis * Vector3(input_dir.x, 0, input_dir.y).normalized()
+		if !started:
 			start()
+	else:
+		move_direction = Vector3.ZERO
 	#if input_dir.y > 0:
 		#is_sprinting = false
 	#else:
@@ -278,13 +288,13 @@ func try_dash():
 	#else do some piddly little half dash
 	if %RayCastEyes.is_colliding():
 		dash_enemy(%RayCastEyes.get_collider())
-	else:
-		dash_forward()
+	#else:
+		#dash_forward()
 
 
 func dash_enemy(enemy: Object):
 	if enemy == null || !(enemy.get_collision_layer() & 2):
-		dash_forward()
+		#dash_forward()
 		return
 		
 	is_dashing = true
@@ -309,7 +319,10 @@ func dash_forward():
 	
 	is_dashing = true
 	
-	var target_vec: Vector3 = -%RayCastEyes.global_basis.z * dash_distance
+	var move_vec: Vector3 = move_direction
+	if move_vec == Vector3.ZERO:
+		move_vec = -%RayCastEyes.global_basis.z
+	var target_vec: Vector3 = move_vec * dash_distance
 	#ShapeCast to intended position, stopping on shapecast collision and using distance as dash distance
 	var shapecast: ShapeCast3D = %BodyShapeCast
 	shapecast.target_position = target_vec
@@ -324,7 +337,7 @@ func dash_forward():
 	dash_tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 	dash_tween.chain()
 	dash_tween.tween_property(self, "global_position", global_position + target_vec, dash_speed)
-	dash_tween.tween_callback(dash_end.bind(-%RayCastEyes.global_basis.z * SPEED * 0.5))
+	dash_tween.tween_callback(dash_end.bind(move_vec * SPEED * 0.5))
 
 
 func dash_end(final_velocity: Vector3, do_temporal_shift: bool = false, enemy: Object = null):
