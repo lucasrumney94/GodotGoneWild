@@ -7,6 +7,8 @@ extends CharacterBody3D
 @export var SPEED: float = 5.0
 @export var JUMP_VELOCITY: float = 4.5
 
+@export var dash_pop: float = 2.5
+
 @export var air_speed_mult: float = 0.5
 
 @export var dash_distance: float = 5
@@ -14,6 +16,7 @@ extends CharacterBody3D
 @export var dash_speed: float = 0.2
 
 @export var slow_time_duration: float = 1.0
+@export var slow_time_delay: float = 0.5
 
 var short_dash_count: int = 1
 var jump_count: int = 0
@@ -349,6 +352,7 @@ func dash_end(final_velocity: Vector3, do_temporal_shift: bool = false, enemy: O
 	if do_temporal_shift:
 		temporal_shift()
 		velocity = Vector3.ZERO
+		velocity.y = dash_pop
 		last_velocity = Vector3.ZERO
 	else: #is just dash forward
 		velocity = final_velocity
@@ -366,10 +370,14 @@ func temporal_shift():
 		time_tween.kill()
 	Engine.time_scale = 0.1
 	time_tween = create_tween()
+	time_tween.chain()
+	time_tween.tween_property(self, "scale", Vector3.ONE, slow_time_duration)
+	gravity_mult = 0.1
+	time_tween.set_parallel()
 	time_tween.tween_method(set_time_scale, 0.1, 1.0, slow_time_duration).set_ease(Tween.EASE_IN)
 	#time_tween.tween_property(Engine, "time_scale", 1.0, 1.0).set_ease(Tween.EASE_IN)
 	
-	gravity_mult = 0.1
+	
 	time_tween.tween_property(self, "gravity_mult", 1.0, slow_time_duration).set_ease(Tween.EASE_IN)
 
 

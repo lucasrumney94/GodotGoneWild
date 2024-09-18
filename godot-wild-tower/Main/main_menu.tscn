@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://Main/main_menu.gd" id="1_vjgni"]
 [ext_resource type="PackedScene" uid="uid://b714sttnt1435" path="res://UI/options_menu.tscn" id="2_tcw0l"]
-[ext_resource type="PackedScene" path="res://UI/stats.tscn" id="3_1c0mp"]
+[ext_resource type="PackedScene" uid="uid://cdt8805lofan4" path="res://UI/stats.tscn" id="3_1c0mp"]
 [ext_resource type="PackedScene" uid="uid://bxfwjbkk62asb" path="res://Main/main_game.tscn" id="3_wr465"]
-[ext_resource type="PackedScene" path="res://UI/achievements_menu.tscn" id="4_p23ep"]
-[ext_resource type="PackedScene" path="res://UI/credits.tscn" id="4_rv6un"]
+[ext_resource type="PackedScene" uid="uid://48n404mji4ep" path="res://UI/achievements_menu.tscn" id="4_p23ep"]
+[ext_resource type="PackedScene" uid="uid://cvo2k0ochbnw" path="res://UI/credits.tscn" id="4_rv6un"]
 [ext_resource type="Script" path="res://Main/level_menu.gd" id="7_7du86"]
 
 [node name="MainMenu" type="CanvasLayer"]
