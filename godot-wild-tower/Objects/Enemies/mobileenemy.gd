@@ -13,6 +13,11 @@ func _ready():
 	pass
 	
 func _physics_process(delta: float) -> void:
+	# calculate velocity
 	velocity = direction * distance * (sin(Time.get_ticks_msec() / 1000 / period)) * delta;
-	#position = originalPos + direction * distance * sin(Time.get_ticks_msec() / 1000 / period) * delta 
+	
+	# calculate look direction
+	
+	var lookdir = atan2(velocity.x, velocity.z)
+	rotation.y = lookdir # TODO: use tweening instead of a set
 	move_and_slide()
