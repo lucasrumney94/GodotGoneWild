@@ -95,6 +95,17 @@ func get_stat(level: int, stat_name: String) -> float:
 		return 0
 
 
+func get_stat_cumulative(stat_name: String) -> float:
+	if !save_data.has("stats"):
+		return 0
+	
+	var result = 0
+	for i in MissionControl.missions.size():
+		result += get_stat(i, stat_name)
+	
+	return result
+
+
 #ADD STAT TO SAVE_DATA, RETURN TRUE IF IS NEW HIGH SCORE
 func add_stat(level: int, stat_name: String, value) -> bool:
 	if !save_data.has("stats"):
@@ -111,14 +122,17 @@ func add_stat(level: int, stat_name: String, value) -> bool:
 		
 	match stat_name:
 		"time": #compare time to current saved time
-			if current_saved_value > 0 && value < current_saved_value:
+			if (current_saved_value > 0 && value < current_saved_value) || current_saved_value <= 0:
 				save_data["stats"][level_string][stat_name] = value
+				save()
 				return true
 		"kill":
 			#OKAY SO WE'LL ALWAYS ADD 1 HERE, SO CAN USE VALUE TO SEND ENEMY TYPE
 			save_data["stats"][level_string][stat_name] = current_saved_value + 1
 			var enemy = stat_name + str(value)
 			save_data["stats"][level_string][enemy] = get_stat(level, enemy) + 1
+		"restart", "death":
+			save_data["stats"][level_string][stat_name] = current_saved_value + 1
 		_: #DEFAULT
 			print(stat_name + " IS NOT A STAT NAME KNOWN TO SAVE CONTROL")
 			

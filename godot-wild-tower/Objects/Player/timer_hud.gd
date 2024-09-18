@@ -12,6 +12,7 @@ func _ready():
 func init():
 	GameEvents.level_started.connect(on_level_started)
 	GameEvents.level_finished.connect(on_level_finished)
+	GameEvents.restarting.connect(on_restarting)
 
 
 func _process(delta):
@@ -33,4 +34,11 @@ func on_level_started():
 
 
 func on_level_finished():
+	if accrue_time:
+		GameEvents.emit_level_finished_time(elapsed_time)
 	accrue_time = false
+
+
+func on_restarting():
+	if accrue_time:
+		GameEvents.emit_partial_time(elapsed_time)

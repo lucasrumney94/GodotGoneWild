@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bxfwjbkk62asb"]
+[gd_scene load_steps=16 format=3 uid="uid://bxfwjbkk62asb"]
 
 [ext_resource type="Script" path="res://Main/main_game.gd" id="1_14x2i"]
 [ext_resource type="PackedScene" uid="uid://vssvdtmx3jx7" path="res://Objects/Player/player.tscn" id="1_27g07"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://y00sgnh5ws4h" path="res://Objects/Environment/finish_area.tscn" id="6_ga075"]
 [ext_resource type="PackedScene" uid="uid://5x1047hex40t" path="res://Objects/Enemies/BasicEnemyOUTLINE_TEST.tscn" id="6_kji67"]
 [ext_resource type="PackedScene" uid="uid://c08aetbdbnjbc" path="res://Objects/Enemies/MobileEnemy_OUTLINE.tscn" id="7_7tlvw"]
+[ext_resource type="PackedScene" uid="uid://bnylytkg3vk0w" path="res://Objects/Enemies/TurretEnemy.tscn" id="8_7ah3a"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m2u75"]
 sky_top_color = Color(0, 0.446616, 0.82605, 1)
@@ -123,3 +124,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.69269, 45.0464, 4.66635)
 
 [node name="MobileEnemy_OUTLINE" parent="." instance=ExtResource("7_7tlvw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.53243, 1.70001, -2.06288)
+
+[node name="TurretEnemy" parent="." instance=ExtResource("8_7ah3a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.09844, 0.5, -4.59492)

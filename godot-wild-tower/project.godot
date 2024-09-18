@@ -24,6 +24,7 @@ buses/default_bus_layout="res://Audio/audio_bus.tres"
 GameEvents="*res://Autoload/game_events.tscn"
 AchievementControl="*res://Autoload/achievement_control.tscn"
 SaveControl="*res://Autoload/save_control.tscn"
+MissionControl="*res://Autoload/mission_control.tscn"
 
 [dotnet]
 

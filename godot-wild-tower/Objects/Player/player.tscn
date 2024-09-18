@@ -15,7 +15,7 @@ albedo_color = Color(0, 1, 1, 1)
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_m7h0s"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cj8j1"]
-transparency = 1
+transparency = 4
 albedo_color = Color(1, 1, 0, 0.188235)
 emission_enabled = true
 emission = Color(1, 1, 0, 1)
@@ -99,7 +99,7 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Dashes: 0"
 
-[node name="TimerHUD" type="CanvasLayer" parent="PlayerHUD"]
+[node name="TimerHUD" type="CanvasLayer" parent="PlayerHUD" groups=["player"]]
 script = ExtResource("3_n01tu")
 
 [node name="TimerLabel" type="Label" parent="PlayerHUD/TimerHUD"]

@@ -3,8 +3,8 @@ extends CanvasLayer
 signal closing
 
 var focused_level: int = 0
-#TODO this should probably be based on array of possible levels
-var level_max: int = 3
+#TO/DO this should probably be based on array of possible levels
+#var level_max: int = 3
 
 
 func _ready():
@@ -25,8 +25,15 @@ func _input(event: InputEvent):
 
 
 func populate_stats():
-	#TODO get stats from SaveControl
-	#Fill out some shiz
+	%FastestPlayLabel.text = Constants.format_time(SaveControl.get_stat(-1, "time"))
+	%AngelsKilledLabel.text = str(SaveControl.get_stat_cumulative("kill"))
+	%CherubimKilledLabel.text = str(SaveControl.get_stat_cumulative("kill" + str(Constants.EnemyType.CHERUBIM)))
+	%MalakimKilledLabel.text = str(SaveControl.get_stat_cumulative("kill" + str(Constants.EnemyType.MALAKIM)))
+	%SeraphimKilledLabel.text = str(SaveControl.get_stat_cumulative("kill" + str(Constants.EnemyType.SERAPHIM)))
+	%OphanimKilledLabel.text = str(SaveControl.get_stat_cumulative("kill" + str(Constants.EnemyType.OPHANIM)))
+	#TODO Restarts
+	#Deaths
+	
 	%LevelStatsContainer.populate_stats(focused_level)
 
 
@@ -43,5 +50,5 @@ func on_reset_pressed():
 
 func on_level_changed(dir: int):
 	focused_level += dir
-	focused_level = clampi(focused_level, 0, level_max)
+	focused_level = clampi(focused_level, 0, MissionControl.missions.size() - 1)
 	%LevelStatsContainer.populate_stats(focused_level)

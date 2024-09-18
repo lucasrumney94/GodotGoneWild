@@ -20,7 +20,12 @@ func _input(event):
 	if event.is_action_pressed("restart") && pause_menu == null:
 		get_tree().paused = false
 		Engine.time_scale = 1.0
-		get_tree().change_scene_to_file(get_tree().current_scene.scene_file_path)
+		GameEvents.emit_restarting()
+		Callable(restart_level).call_deferred()
+
+
+func restart_level():
+	get_tree().change_scene_to_file(get_tree().current_scene.scene_file_path)
 
 
 func on_unpause():

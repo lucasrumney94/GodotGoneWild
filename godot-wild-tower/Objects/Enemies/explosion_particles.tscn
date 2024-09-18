@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Objects/Enemies/explosion_particles.gd" id="1_5h6kx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_thdkq"]
+albedo_color = Color(1, 1, 1, 0.952941)
 emission_enabled = true
 emission = Color(0, 0.992157, 0.992157, 1)
 
@@ -10,6 +11,7 @@ emission = Color(0, 0.992157, 0.992157, 1)
 material = SubResource("StandardMaterial3D_thdkq")
 
 [node name="ExplosionParticles" type="CPUParticles3D"]
+transparency = 0.5
 cast_shadow = 0
 emitting = false
 amount = 200

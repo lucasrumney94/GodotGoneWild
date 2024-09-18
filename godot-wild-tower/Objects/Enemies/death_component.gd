@@ -11,7 +11,8 @@ func die(push_vector: Vector3):
 	#for each, instantiate a RigidBody3D at their location
 	#add a child of type CollisionShape3D to the rb the size of mesh bounding box
 	explode_meshes(get_parent(), push_vector)
-	SaveControl.add_stat(GameEvents.current_level, "kill", enemy_type)
+	#SaveControl.add_stat(GameEvents.current_level, "kill", enemy_type)
+	GameEvents.emit_enemy_killed(enemy_type)
 	owner.queue_free()
 
 

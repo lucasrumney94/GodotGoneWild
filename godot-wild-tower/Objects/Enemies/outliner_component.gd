@@ -30,6 +30,6 @@ func set_mesh_outlines(setting: bool):
 	for mesh in meshes:
 		var outline_mat = mesh.get_surface_override_material(0).next_pass
 		if setting:
-			outline_mat.set_shader_parameter("size", 1.1)
+			outline_mat.set_shader_parameter("size", 1.2)
 		else:
 			outline_mat.set_shader_parameter("size", 1.0)

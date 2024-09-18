@@ -23,6 +23,10 @@ func _input(event: InputEvent):
 		Callable(on_resume_pressed).call_deferred()
 
 
+func restart_level():
+	get_tree().change_scene_to_file(get_tree().current_scene.scene_file_path)
+
+
 func on_resume_pressed():
 	closing.emit()
 	queue_free()
@@ -32,8 +36,10 @@ func on_restart_pressed():
 	#TODO TWO WAYS TO GO ABOUT THIS
 	get_tree().paused = false
 	Engine.time_scale = 1.0
-	get_tree().change_scene_to_file(get_tree().current_scene.scene_file_path)
+	GameEvents.emit_restarting()
 	#2. RESET ALL OBJECTS TO STARTING POSITION
+	
+	Callable(restart_level).call_deferred()
 
 
 func on_options_pressed():
