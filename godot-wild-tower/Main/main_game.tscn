@@ -3,11 +3,11 @@
 [ext_resource type="Script" path="res://Main/main_game.gd" id="1_14x2i"]
 [ext_resource type="PackedScene" uid="uid://vssvdtmx3jx7" path="res://Objects/Player/player.tscn" id="1_27g07"]
 [ext_resource type="Material" uid="uid://5dqiqxr4arwd" path="res://Materials/grid_material.tres" id="1_ywoid"]
-[ext_resource type="PackedScene" uid="uid://do1pmtbmc423e" path="res://UI/pause_menu.tscn" id="2_2vuh2"]
+[ext_resource type="PackedScene" path="res://UI/pause_menu.tscn" id="2_2vuh2"]
 [ext_resource type="PackedScene" uid="uid://y00sgnh5ws4h" path="res://Objects/Environment/finish_area.tscn" id="6_ga075"]
-[ext_resource type="PackedScene" uid="uid://5x1047hex40t" path="res://Objects/Enemies/BasicEnemyOUTLINE_TEST.tscn" id="6_kji67"]
-[ext_resource type="PackedScene" uid="uid://c08aetbdbnjbc" path="res://Objects/Enemies/MobileEnemy_OUTLINE.tscn" id="7_7tlvw"]
-[ext_resource type="PackedScene" uid="uid://bnylytkg3vk0w" path="res://Objects/Enemies/TurretEnemy.tscn" id="8_7ah3a"]
+[ext_resource type="PackedScene" path="res://Objects/Enemies/BasicEnemyOUTLINE_TEST.tscn" id="6_kji67"]
+[ext_resource type="PackedScene" path="res://Objects/Enemies/MobileEnemy_OUTLINE.tscn" id="7_7tlvw"]
+[ext_resource type="PackedScene" path="res://Objects/Enemies/TurretEnemy.tscn" id="8_7ah3a"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m2u75"]
 sky_top_color = Color(0, 0.446616, 0.82605, 1)

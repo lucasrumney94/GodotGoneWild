@@ -1,8 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://24dwd4so5sk"]
+[gd_scene load_steps=4 format=3 uid="uid://24dwd4so5sk"]
 
 [ext_resource type="Script" path="res://Autoload/mission_control.gd" id="1_dop84"]
 [ext_resource type="PackedScene" uid="uid://bxfwjbkk62asb" path="res://Main/main_game.tscn" id="2_v0ewe"]
+[ext_resource type="PackedScene" uid="uid://ld24biyy5xkj" path="res://EnemyTest/EnemyTest1.tscn" id="3_61w4b"]
 
 [node name="MissionControl" type="Node"]
 script = ExtResource("1_dop84")
-missions = Array[PackedScene]([ExtResource("2_v0ewe"), ExtResource("2_v0ewe"), ExtResource("2_v0ewe")])
+missions = Array[PackedScene]([ExtResource("2_v0ewe"), ExtResource("3_61w4b"), ExtResource("2_v0ewe")])
