@@ -16,8 +16,12 @@ func _physics_process(delta: float) -> void:
 	# calculate velocity
 	velocity = direction * distance * (sin(Time.get_ticks_msec() / 1000 / period)) * delta;
 	
-	# calculate look direction
+	# SNAP calculate look direction
+	# var lookdir = atan2(velocity.x, velocity.z)
+	# rotation.y = lookdir # TODO: use tweening instead of a set
 	
-	var lookdir = atan2(velocity.x, velocity.z)
-	rotation.y = lookdir # TODO: use tweening instead of a set
+	if velocity != Vector3.ZERO:
+		var lookdir = atan2(velocity.x, velocity.z)
+		rotation.y = lerp(rotation.y, lookdir, 0.1)
+	
 	move_and_slide()
