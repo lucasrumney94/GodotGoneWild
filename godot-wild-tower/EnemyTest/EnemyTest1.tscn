@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://ld24biyy5xkj"]
+[gd_scene load_steps=10 format=3 uid="uid://ld24biyy5xkj"]
 
 [ext_resource type="PackedScene" uid="uid://vssvdtmx3jx7" path="res://Objects/Player/player.tscn" id="1_01si0"]
 [ext_resource type="PackedScene" uid="uid://fshkr347rlb0" path="res://Objects/Enemies/BasicEnemy.tscn" id="1_mvpe4"]
+[ext_resource type="Script" path="res://Main/main_game.gd" id="1_ps2pb"]
+[ext_resource type="PackedScene" path="res://UI/pause_menu.tscn" id="2_xwaog"]
 [ext_resource type="PackedScene" uid="uid://bojfdf4dyc8ng" path="res://Objects/Enemies/MobileEnemy.tscn" id="3_vbu8n"]
 [ext_resource type="Material" uid="uid://5dqiqxr4arwd" path="res://Materials/grid_material.tres" id="4_7eoc8"]
 
@@ -14,6 +16,8 @@ size = Vector3(28, 1, 28)
 [sub_resource type="BoxMesh" id="BoxMesh_w7lxu"]
 
 [node name="EnemyTestScene" type="Node3D"]
+script = ExtResource("1_ps2pb")
+pause_menu_scene = ExtResource("2_xwaog")
 
 [node name="Ground" type="MeshInstance3D" parent="."]
 visible = false
