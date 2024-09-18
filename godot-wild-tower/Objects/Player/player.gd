@@ -15,6 +15,8 @@ extends CharacterBody3D
 @export var enemy_dash_distance: float = 10
 @export var dash_speed: float = 0.2
 
+@export var vertical_dash_limit: float = 5
+
 @export var slow_time_duration: float = 1.0
 @export var slow_time_delay: float = 0.5
 
@@ -298,6 +300,9 @@ func try_dash():
 func dash_enemy(enemy: Object):
 	if enemy == null || !(enemy.get_collision_layer() & 2):
 		#dash_forward()
+		return
+	
+	if abs(enemy.global_position.z - global_position.z) > vertical_dash_limit:
 		return
 		
 	is_dashing = true

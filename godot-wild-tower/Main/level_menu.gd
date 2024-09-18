@@ -14,6 +14,7 @@ func _ready():
 
 func on_pressed(id: int):
 	#var focused_item: int = get_popup().get_focused_item()
+	MissionControl.current_level = id
 	get_tree().change_scene_to_packed(MissionControl.missions[id])
 	
 	
