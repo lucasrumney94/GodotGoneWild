@@ -19,7 +19,7 @@ func _physics_process(delta: float) -> void:
 	
 	# SNAP calculate look direction
 	# var lookdir = atan2(velocity.x, velocity.z)
-	# rotation.y = lookdir # TODO: use tweening instead of a set
+	# rotation.y = lookdir # used tweening instead of a set
 	
 	if velocity != Vector3.ZERO:
 		var lookdir = atan2(velocity.x, velocity.z)
