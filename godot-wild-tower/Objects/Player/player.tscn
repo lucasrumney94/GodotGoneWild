@@ -40,9 +40,7 @@ platform_floor_layers = 4294967289
 script = ExtResource("1_l1h35")
 SPEED = 10.0
 JUMP_VELOCITY = 8.0
-dash_pop = 4.0
 slow_time_duration = 2.0
-slow_time_delay = 1.0
 
 [node name="PlayerHUD" type="Control" parent="."]
 layout_mode = 3
