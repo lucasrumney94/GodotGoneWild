@@ -54,6 +54,7 @@ func emit_player_hit_floor(global_pos: Vector3):
 
 
 func emit_player_jump(global_pos: Vector3):
+	print("PLAYER JUMPED!")
 	player_jump.emit(global_pos)
 
 
@@ -66,6 +67,7 @@ func emit_player_enemy_dash():
 
 
 func emit_long_fall_started():
+	print("player long fall started!")
 	long_fall_started.emit()
 
 

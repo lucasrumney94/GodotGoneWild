@@ -1,0 +1,34 @@
+[gd_scene load_steps=10 format=3 uid="uid://cjlspnq6r61nc"]
+
+[ext_resource type="Script" path="res://Autoload/audio_control.gd" id="1_1dob2"]
+[ext_resource type="AudioStream" uid="uid://cjcjooyaeu3jq" path="res://Audio/GodotWildJamSFX_LEVELSTART.wav" id="2_7murf"]
+[ext_resource type="AudioStream" uid="uid://bvh0pypffuogw" path="res://Audio/player_jump_PLACEHOLDER.wav" id="2_h1ngu"]
+[ext_resource type="AudioStream" uid="uid://dobepvt0fx486" path="res://Audio/GodotWildJam2024Music_Pass1.wav" id="2_nu51f"]
+[ext_resource type="AudioStream" uid="uid://cynr7cmcqp3mu" path="res://Audio/GodotWildJamSFX_LEVELFINISH.wav" id="3_06mfg"]
+[ext_resource type="AudioStream" uid="uid://7wfkdjqob7ni" path="res://Audio/GodotWildJamSFX_DashFASTER.wav" id="5_isu52"]
+[ext_resource type="AudioStream" uid="uid://dyr54hpvhqujr" path="res://Audio/GodotWildJamSFX_PDASH.wav" id="5_vhifl"]
+[ext_resource type="AudioStream" uid="uid://x7xwd4g7a6uu" path="res://Audio/GodotWildJamSFX_restart.wav" id="6_ptvqt"]
+[ext_resource type="AudioStream" uid="uid://b6dq3lmhb6x3r" path="res://Audio/GodotWildJamSFX_LONGFALL.wav" id="7_k7kpr"]
+
+[node name="AudioControl" type="Node" node_paths=PackedStringArray("music_player")]
+script = ExtResource("1_1dob2")
+music_player = NodePath("MusicPlayer")
+pause_duck_music_percent = null
+level_started_sound = ExtResource("2_7murf")
+level_started_gain = -12.0
+level_finish_sound = ExtResource("3_06mfg")
+level_finished_gain = null
+player_jump_sound = ExtResource("2_h1ngu")
+player_jump_gain = -12.0
+player_dash_sound = ExtResource("5_vhifl")
+player_dash_sound_gain = -3.388
+player_enemy_dash_sound = ExtResource("5_isu52")
+player_enemy_dash_sound_gain = -2.447
+restarting_sound = ExtResource("6_ptvqt")
+restarting_sound_gain = -3.18
+long_fall_sound = ExtResource("7_k7kpr")
+long_fall_sound_gain = -3.78
+
+[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_nu51f")
+bus = &"music"
