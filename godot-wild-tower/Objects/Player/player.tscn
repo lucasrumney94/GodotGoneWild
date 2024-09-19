@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://vssvdtmx3jx7"]
+[gd_scene load_steps=15 format=3 uid="uid://vssvdtmx3jx7"]
 
 [ext_resource type="Script" path="res://Objects/Player/player.gd" id="1_l1h35"]
 [ext_resource type="Texture2D" uid="uid://dt1l7laaw1wqw" path="res://Materials/Textures/TestingGrid.png" id="2_0lo3m"]
+[ext_resource type="PackedScene" uid="uid://bueww8nstwpfl" path="res://UI/death_screen.tscn" id="2_l6nbw"]
 [ext_resource type="Script" path="res://Objects/Player/timer_hud.gd" id="3_n01tu"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_574yh"]
@@ -34,11 +35,14 @@ point_count = 2
 offsets = PackedFloat32Array(0, 0.361233, 1)
 colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1)
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dxmwe"]
+
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 4
 floor_max_angle = 0.523599
 platform_floor_layers = 4294967289
 script = ExtResource("1_l1h35")
+death_screen = ExtResource("2_l6nbw")
 SPEED = 10.0
 JUMP_VELOCITY = 8.0
 dash_pop = 2.0
@@ -158,3 +162,11 @@ direction = Vector3(0, 0, 0)
 gravity = Vector3(0, 0, 0)
 scale_amount_curve = SubResource("Curve_f2jtv")
 color_ramp = SubResource("Gradient_g5dtd")
+
+[node name="Hitbox" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_dxmwe")

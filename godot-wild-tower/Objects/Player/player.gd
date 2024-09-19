@@ -1,5 +1,8 @@
 extends CharacterBody3D
 
+#THIS MAYBE NOT BEST PLACE, JUST GETTING IT IN THERE
+@export var death_screen: PackedScene
+
 @export var mouse_sensitivity: float = 0.5
 @export var tilt_lower_limit: float = deg_to_rad((-89))
 @export var tilt_upper_limit: float = deg_to_rad(89)
@@ -21,6 +24,7 @@ extends CharacterBody3D
 
 @export var slow_time_duration: float = 1.0
 @export var slow_time_delay: float = 0.5
+@export var death_look_mult: float = 0.2
 
 var short_dash_count: int = 1
 var jump_count: int = 0
@@ -50,11 +54,18 @@ var started: bool = false
 
 var was_on_floor: bool = false
 
+var fall_time: float = 0
+var long_fall: bool = false
+
+var alive: bool = true
+
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
 	%RayCastEyes.target_position.z = -1 * enemy_dash_distance
+	
+	$Hitbox.area_entered.connect(on_hitbox_area_entered)
 
 
 #func _input(event):
@@ -74,6 +85,8 @@ func _unhandled_input(event: InputEvent):
 		var tilt_input: float = -event.relative.y * mouse_sensitivity
 		update_camera(get_process_delta_time(), rotation_input, tilt_input)
 	
+	if !alive: return
+	
 	if event.is_action("dash") && !is_dashing:
 		if event.is_pressed():
 			if !started: start()
@@ -85,7 +98,9 @@ func _unhandled_input(event: InputEvent):
 			dash_forward()
 
 
-func _process(delta):
+func _process(_delta):
+	if !alive: return
+	
 	check_eye_ray()
 	
 	%DebugJumpsLabel.text = "Jumps: " + str(jump_count)
@@ -93,6 +108,8 @@ func _process(delta):
 
 
 func _physics_process(delta):
+	if !alive: return
+	
 	var on_floor: bool = is_on_floor()
 	if !was_on_floor:
 		GameEvents.emit_player_hit_floor(global_position)
@@ -123,10 +140,16 @@ func _physics_process(delta):
 		last_velocity = velocity
 		if is_jumping && velocity.y < 0:
 			is_jumping = false
+			fall_time += delta
+			if fall_time > 3.0 && !long_fall:
+				long_fall = true
+				GameEvents.emit_long_fall_started()
 		#if on_steps && velocity.y < -5:
 			#on_steps = false
 		%DebugOnFloorLabel.text = "Not on Floor"
 	else:
+		fall_time = 0
+		long_fall = false
 		speed_mult = 1.0
 		short_dash_count = 1
 		jump_count = 0
@@ -203,7 +226,7 @@ func _physics_process(delta):
 		#if ladder != null:
 			#move_on_ladder(input_dir, direction, delta)
 		#else: move(direction, delta, on_floor)
-		move(direction, delta, on_floor)
+		move(direction, delta)#, on_floor)
 		
 	else:
 		if on_floor:
@@ -234,6 +257,9 @@ func start():
 
 
 func update_camera(delta: float, rotation_input: float, tilt_input: float):
+	if !alive:
+		#print("ATTEMPTING TO MOVE HEAD AFTER DEATH")
+		delta *= death_look_mult
 	
 	delta = delta / Engine.time_scale
 	mouse_rotation.x += tilt_input * delta
@@ -249,7 +275,7 @@ func update_camera(delta: float, rotation_input: float, tilt_input: float):
 	#tilt_input = 0.0
 
 
-func move(direction: Vector3, delta, on_floor: bool):
+func move(direction: Vector3, delta): #, on_floor: bool):
 	#rotate shapecast_move_root in direction of movement
 	#shapecast_move_root.look_at(shapecast_move_root.global_position + Vector3(direction.x, 0, direction.z))
 	#
@@ -314,6 +340,7 @@ func dash_enemy(enemy: Object):
 		return
 		
 	is_dashing = true
+	$Hitbox.monitoring = false
 	GameEvents.emit_player_enemy_dash()
 	if dash_tween != null:
 		dash_tween.kill()
@@ -336,6 +363,7 @@ func dash_forward():
 	jump_count = 0
 	
 	is_dashing = true
+	#$Hitbox.monitoring = false
 	GameEvents.emit_player_dash()
 	var move_vec: Vector3 = move_direction
 	if move_vec == Vector3.ZERO:
@@ -362,9 +390,8 @@ func dash_forward():
 
 func dash_end(final_velocity: Vector3, do_temporal_shift: bool = false, enemy: Object = null):
 	is_dashing = false
+	$Hitbox.monitoring = true
 	%BodyShapeCast.target_position = Vector3.ZERO
-	
-	
 	
 	if do_temporal_shift:
 		temporal_shift()
@@ -465,3 +492,20 @@ func effect_enemy_outline(setting: bool):
 	if !setting:
 		enemy_outliner = null
 		current_enemy = null
+
+
+func take_damage():
+	#if is_dashing: return
+	if !alive: return
+	
+	#slow time, show death screen
+	is_dashing = false
+	alive = false
+	Engine.time_scale = 0.1
+	GameEvents.emit_player_death()
+	var ds = death_screen.instantiate()
+	get_parent().add_child(ds)
+
+
+func on_hitbox_area_entered(_area: Area3D):
+	take_damage()

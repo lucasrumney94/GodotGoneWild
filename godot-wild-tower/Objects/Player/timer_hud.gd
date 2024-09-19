@@ -12,6 +12,7 @@ func _ready():
 func init():
 	GameEvents.level_started.connect(on_level_started)
 	GameEvents.level_finished.connect(on_level_finished)
+	GameEvents.player_death.connect(on_player_death)
 	GameEvents.restarting.connect(on_restarting)
 
 
@@ -42,3 +43,8 @@ func on_level_finished():
 func on_restarting():
 	if accrue_time:
 		GameEvents.emit_partial_time(elapsed_time)
+
+
+func on_player_death():
+	accrue_time = false
+	GameEvents.emit_partial_time(elapsed_time)

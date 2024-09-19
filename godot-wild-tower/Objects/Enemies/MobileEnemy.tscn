@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=4 uid="uid://c08aetbdbnjbc"]
+[gd_scene load_steps=44 format=4 uid="uid://c08aetbdbnjbc"]
 
 [ext_resource type="Script" path="res://Objects/Enemies/mobileenemy.gd" id="1_mogi5"]
 [ext_resource type="PackedScene" uid="uid://bonck86xrxwj0" path="res://Objects/Enemies/outliner_component.tscn" id="2_ols3i"]
@@ -582,6 +582,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_2fep8")
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_pfqvo"]
+
 [node name="MobileEnemy" type="CharacterBody3D"]
 collision_layer = 2
 script = ExtResource("1_mogi5")
@@ -688,3 +690,11 @@ skeleton = NodePath("")
 transform = Transform3D(0.786141, 0.616308, 0.046329, -0.576947, 0.704919, 0.412579, 0.221617, -0.351074, 0.909743, 0.264807, 0.217524, -0.160268)
 mesh = SubResource("ArrayMesh_qinq4")
 skeleton = NodePath("")
+
+[node name="Hitbox" type="Area3D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("SphereShape3D_pfqvo")

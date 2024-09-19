@@ -111,6 +111,7 @@ dash_short={
 3d_physics/layer_2="Enemy"
 3d_physics/layer_3="Player"
 3d_physics/layer_4="Debris"
+3d_physics/layer_5="EnemyHitbox"
 
 [rendering]
 

@@ -62,6 +62,6 @@ func _physics_process(delta: float) -> void:
 	
 	if velocity != Vector3.ZERO:
 		var lookdir = atan2(velocity.x, velocity.z)
-		rotation.y = lerp(rotation.y, lookdir, turnSpeed)
+		rotation.y = lerp(rotation.y, lookdir, turnSpeed * 50 * delta)
 	
 	move_and_slide()

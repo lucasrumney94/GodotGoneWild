@@ -11,6 +11,8 @@ signal player_hit_floor(global_pos: Vector3)
 signal player_jump(global_pos: Vector3)
 signal player_dash
 signal player_enemy_dash
+signal long_fall_started
+signal player_death
 
 #TODO this might not be the best place for this
 #update when we have some way of changing levels
@@ -61,3 +63,12 @@ func emit_player_dash():
 
 func emit_player_enemy_dash():
 	player_enemy_dash.emit()
+
+
+func emit_long_fall_started():
+	long_fall_started.emit()
+
+
+func emit_player_death():
+	player_death.emit()
+	SaveControl.add_stat(MissionControl.current_level, "death", 1)
