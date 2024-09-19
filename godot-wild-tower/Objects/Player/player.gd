@@ -164,7 +164,8 @@ func _physics_process(delta):
 	
 	var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 	if input_dir.length_squared() > 0:
-		move_direction = %CameraRotationRoot.transform.basis * Vector3(input_dir.x, 0, input_dir.y).normalized()
+		move_direction = %CameraRotationRoot.transform.basis * Vector3(input_dir.x, 0, input_dir.y)
+		move_direction = Vector3(move_direction.x, 0, move_direction.z).normalized()
 		if !started:
 			start()
 	else:
