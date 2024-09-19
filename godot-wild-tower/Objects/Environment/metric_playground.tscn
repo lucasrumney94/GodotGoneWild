@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c6l5ryse4oype"]
+[gd_scene load_steps=16 format=3 uid="uid://c6l5ryse4oype"]
 
 [ext_resource type="Script" path="res://Main/main_game.gd" id="1_2rjk1"]
 [ext_resource type="Material" uid="uid://5dqiqxr4arwd" path="res://Materials/grid_material.tres" id="1_e4dbs"]
@@ -27,6 +27,9 @@ size = Vector3(1, 1, 0.2)
 [sub_resource type="BoxMesh" id="BoxMesh_qhgdj"]
 material = ExtResource("1_e4dbs")
 size = Vector3(0.2, 40, 40)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ybluk"]
+size = Vector3(1, 1, 0.25)
 
 [sub_resource type="BoxMesh" id="BoxMesh_xxebt"]
 
@@ -276,6 +279,9 @@ use_collision = true
 size = Vector3(8, 0.5, 2)
 material = ExtResource("2_btsx0")
 
+[node name="BasicEnemy" parent="Jump Distance/Jump Dash Base" instance=ExtResource("3_glqun")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.25, -20)
+
 [node name="10m H Platform" type="CSGBox3D" parent="Jump Distance/Jump Dash Base"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 10.5, -7)
 use_collision = true
@@ -286,15 +292,23 @@ material = ExtResource("2_btsx0")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.1)
 text = "10m+"
 
-[node name="20m Platform" type="CSGBox3D" parent="Jump Distance/Jump Dash Base"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -22)
+[node name="22m Platform" type="CSGBox3D" parent="Jump Distance/Jump Dash Base"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -24)
 use_collision = true
 size = Vector3(2, 0.5, 2)
 material = ExtResource("2_btsx0")
 
-[node name="Label3D" type="Label3D" parent="Jump Distance/Jump Dash Base/20m Platform"]
+[node name="Label3D" type="Label3D" parent="Jump Distance/Jump Dash Base/22m Platform"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00780201, 0.0102992, 1.09999)
-text = "20m"
+text = "22m"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Jump Distance/Jump Dash Base"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.25, 1.75, -20)
+mesh = SubResource("BoxMesh_ybluk")
+
+[node name="Label3D" type="Label3D" parent="Jump Distance/Jump Dash Base/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.15)
+text = "19m"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_xxebt")
