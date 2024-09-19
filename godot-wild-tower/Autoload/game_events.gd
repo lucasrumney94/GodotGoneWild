@@ -14,6 +14,8 @@ signal player_enemy_dash
 signal long_fall_started
 signal player_death
 
+signal projectile_impact(global_pos: Vector3)
+
 #TODO this might not be the best place for this
 #update when we have some way of changing levels
 #var current_level: int = 0
@@ -74,3 +76,7 @@ func emit_long_fall_started():
 func emit_player_death():
 	player_death.emit()
 	SaveControl.add_stat(MissionControl.current_level, "death", 1)
+
+
+func emit_projectile_impact(global_pos: Vector3):
+	projectile_impact.emit(global_pos)

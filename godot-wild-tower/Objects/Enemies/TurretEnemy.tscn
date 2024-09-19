@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=4 uid="uid://bnylytkg3vk0w"]
+[gd_scene load_steps=41 format=4 uid="uid://bnylytkg3vk0w"]
 
 [ext_resource type="Script" path="res://Objects/Enemies/turret_enemy.gd" id="1_lnmb2"]
 [ext_resource type="PackedScene" uid="uid://bonck86xrxwj0" path="res://Objects/Enemies/outliner_component.tscn" id="2_p5d0b"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Objects/Enemies/death_component.gd" id="4_odgkf"]
 [ext_resource type="PackedScene" uid="uid://deydyoodbbk77" path="res://Objects/Enemies/explosion_particles.tscn" id="5_34nv2"]
 [ext_resource type="Script" path="res://Objects/Enemies/projectile_emitter.gd" id="6_p1v71"]
+[ext_resource type="PackedScene" uid="uid://dpiq8w2bumil1" path="res://Objects/Enemies/projectile.tscn" id="7_lyiv6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j60eg"]
 resource_local_to_scene = true
@@ -511,6 +512,9 @@ script = ExtResource("4_odgkf")
 enemy_type = 2
 explosion_particles = ExtResource("5_34nv2")
 
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
 shape = SubResource("CylinderShape3D_hojeo")
@@ -531,12 +535,19 @@ skeleton = NodePath("")
 [node name="RotationRoot" type="Node3D" parent="HostileEnemy/Foot Base/Core"]
 unique_name_in_owner = true
 
-[node name="Gun Body" type="MeshInstance3D" parent="HostileEnemy/Foot Base/Core/RotationRoot"]
+[node name="Gun Body" type="MeshInstance3D" parent="HostileEnemy/Foot Base/Core/RotationRoot" node_paths=PackedStringArray("audio_player")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.3)
 mesh = SubResource("ArrayMesh_lk70y")
 skeleton = NodePath("")
 script = ExtResource("6_p1v71")
+projectile_scene = ExtResource("7_lyiv6")
+audio_player = NodePath("AudioStreamPlayer3D")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="HostileEnemy/Foot Base/Core/RotationRoot/Gun Body"]
+transform = Transform3D(0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, 0, 0, 0)
+max_distance = 200.0
+bus = &"effects"
 
 [node name="Gun Core" type="MeshInstance3D" parent="HostileEnemy/Foot Base/Core/RotationRoot/Gun Body"]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0.3)

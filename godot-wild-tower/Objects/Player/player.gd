@@ -507,5 +507,7 @@ func take_damage():
 	get_parent().add_child(ds)
 
 
-func on_hitbox_area_entered(_area: Area3D):
+func on_hitbox_area_entered(area: Area3D):
 	take_damage()
+	if area is Projectile:
+		area.emit_projectile_impact()
