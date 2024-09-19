@@ -17,6 +17,7 @@ extends CharacterBody3D
 @export var dash_speed: float = 0.3
 
 @export var vertical_dash_limit: float = 5
+@export var constrain_dash_y: bool = true
 
 @export var slow_time_duration: float = 1.0
 @export var slow_time_delay: float = 0.5
@@ -339,6 +340,8 @@ func dash_forward():
 	var move_vec: Vector3 = move_direction
 	if move_vec == Vector3.ZERO:
 		move_vec = -%RayCastEyes.global_basis.z
+		if constrain_dash_y:
+			move_vec = Vector3(move_vec.x, 0, move_vec.z).normalized()
 	var target_vec: Vector3 = move_vec * dash_distance
 	#ShapeCast to intended position, stopping on shapecast collision and using distance as dash distance
 	var shapecast: ShapeCast3D = %BodyShapeCast
