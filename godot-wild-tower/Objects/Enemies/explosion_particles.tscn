@@ -18,6 +18,7 @@ amount = 200
 one_shot = true
 explosiveness = 1.0
 lifetime_randomness = 0.48
+local_coords = true
 mesh = SubResource("PrismMesh_vkpy7")
 emission_shape = 1
 emission_sphere_radius = 0.1

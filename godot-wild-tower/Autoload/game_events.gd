@@ -7,6 +7,8 @@ signal level_finished_time(seconds: float)
 signal partial_time(seconds: float)
 signal enemy_killed(enemy_type: Constants.EnemyType)
 
+signal player_hit_floor(global_pos: Vector3)
+
 #TODO this might not be the best place for this
 #update when we have some way of changing levels
 #var current_level: int = 0
@@ -40,3 +42,7 @@ func emit_partial_time(seconds: float):
 func emit_enemy_killed(enemy_type: Constants.EnemyType):
 	enemy_killed.emit(enemy_type)
 	SaveControl.add_stat(MissionControl.current_level, "kill", enemy_type)
+
+
+func emit_player_hit_floor(global_pos: Vector3):
+	player_hit_floor.emit(global_pos)

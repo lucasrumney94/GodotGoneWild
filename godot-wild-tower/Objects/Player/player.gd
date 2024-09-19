@@ -13,7 +13,8 @@ extends CharacterBody3D
 
 @export var dash_distance: float = 5
 @export var enemy_dash_distance: float = 10
-@export var dash_speed: float = 0.2
+@export var enemy_dash_speed: float = 0.2
+@export var dash_speed: float = 0.3
 
 @export var vertical_dash_limit: float = 5
 
@@ -45,6 +46,8 @@ var current_enemy: Object = null
 var enemy_outliner: Outliner = null
 
 var started: bool = false
+
+var was_on_floor: bool = false
 
 
 func _ready():
@@ -89,9 +92,10 @@ func _process(delta):
 
 
 func _physics_process(delta):
-	
-	
 	var on_floor: bool = is_on_floor()
+	if !was_on_floor:
+		GameEvents.emit_player_hit_floor(global_position)
+		was_on_floor = on_floor
 	
 	if is_dashing: 
 		if on_floor:%DebugOnFloorLabel.text = "On Floor"
@@ -312,10 +316,11 @@ func dash_enemy(enemy: Object):
 	dash_tween = create_tween()
 	dash_tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 	dash_tween.chain()
-	dash_tween.tween_property(self, "global_position", enemy.global_position, dash_speed)
+	var dash_time = (global_position.distance_to(enemy.global_position) / enemy_dash_distance) * enemy_dash_speed
+	dash_tween.tween_property(self, "global_position", enemy.global_position, dash_time)
 	dash_tween.tween_callback(dash_end.bind(-%RayCastEyes.global_basis.z, true, enemy))
 	
-	jump_count = 1
+	#jump_count = 1
 	short_dash_count = 1
 
 

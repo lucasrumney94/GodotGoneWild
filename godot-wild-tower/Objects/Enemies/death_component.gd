@@ -27,12 +27,12 @@ func explode_meshes(base_node: Node, push_vector: Vector3):
 func explode_mesh(mesh: MeshInstance3D, push_vector: Vector3):
 	if mesh.is_in_group("explode") && explosion_particles != null:
 		var ep = explosion_particles.instantiate()
-		ep.position = mesh.global_position
 		owner.get_parent().add_child(ep)
+		ep.global_position = mesh.global_position
 		mesh.queue_free()
 	
 	var rb: RigidBody3D = RigidBody3D.new()
-	rb.position = mesh.global_position
+	#rb.position = mesh.global_position
 	rb.collision_layer = 8
 	rb.collision_mask = 1
 	#rb.gravity_scale = 0.1
@@ -41,6 +41,8 @@ func explode_mesh(mesh: MeshInstance3D, push_vector: Vector3):
 	col.shape.size = mesh.get_aabb().size
 	rb.add_child(col)
 	owner.get_parent().add_child(rb)
+	rb.global_position = mesh.global_position
+	rb.global_rotation = mesh.global_rotation
 	mesh.reparent(rb)
 	
 	rb.set_inertia(Vector3.ZERO)
