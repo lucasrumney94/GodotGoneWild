@@ -8,6 +8,9 @@ signal partial_time(seconds: float)
 signal enemy_killed(enemy_type: Constants.EnemyType)
 
 signal player_hit_floor(global_pos: Vector3)
+signal player_jump(global_pos: Vector3)
+signal player_dash
+signal player_enemy_dash
 
 #TODO this might not be the best place for this
 #update when we have some way of changing levels
@@ -46,3 +49,15 @@ func emit_enemy_killed(enemy_type: Constants.EnemyType):
 
 func emit_player_hit_floor(global_pos: Vector3):
 	player_hit_floor.emit(global_pos)
+
+
+func emit_player_jump(global_pos: Vector3):
+	player_jump.emit(global_pos)
+
+
+func emit_player_dash():
+	player_dash.emit()
+
+
+func emit_player_enemy_dash():
+	player_enemy_dash.emit()

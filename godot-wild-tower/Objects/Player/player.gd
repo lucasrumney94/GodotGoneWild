@@ -145,6 +145,8 @@ func _physics_process(delta):
 		is_jumping = true
 		on_floor = false
 		
+		GameEvents.emit_player_jump(global_position)
+		
 	#was_on_floor = on_floor
 	
 	#if !crouch_toggle:
@@ -310,6 +312,7 @@ func dash_enemy(enemy: Object):
 		return
 		
 	is_dashing = true
+	GameEvents.emit_player_enemy_dash()
 	if dash_tween != null:
 		dash_tween.kill()
 	kill_time_tween()
@@ -331,7 +334,7 @@ func dash_forward():
 	jump_count = 0
 	
 	is_dashing = true
-	
+	GameEvents.emit_player_dash()
 	var move_vec: Vector3 = move_direction
 	if move_vec == Vector3.ZERO:
 		move_vec = -%RayCastEyes.global_basis.z
