@@ -302,7 +302,7 @@ func dash_enemy(enemy: Object):
 		#dash_forward()
 		return
 	
-	if abs(enemy.global_position.z - global_position.z) > vertical_dash_limit:
+	if abs(enemy.global_position.y - global_position.y) > vertical_dash_limit:
 		return
 		
 	is_dashing = true
@@ -373,20 +373,30 @@ func dash_end(final_velocity: Vector3, do_temporal_shift: bool = false, enemy: O
 func temporal_shift():
 	if time_tween != null:
 		time_tween.kill()
-	Engine.time_scale = 0.1
-	time_tween = create_tween()
-	time_tween.chain()
-	time_tween.tween_property(self, "scale", Vector3.ONE, slow_time_duration)
+	#Engine.time_scale = 0.1
 	gravity_mult = 0.1
-	time_tween.set_parallel()
+	
+	time_tween = create_tween()
+	
+	#...Hopefully we don't change the scale, this is just a delay timer
+	time_tween.tween_property(self, "scale", Vector3.ONE, slow_time_delay)
+	time_tween.parallel().tween_method(slow_time, 1.0, 0.1, slow_time_delay)
+	#time_tween.chain()
+	#time_tween.set_parallel()
+	
 	time_tween.tween_method(set_time_scale, 0.1, 1.0, slow_time_duration).set_ease(Tween.EASE_IN)
 	#time_tween.tween_property(Engine, "time_scale", 1.0, 1.0).set_ease(Tween.EASE_IN)
 	
-	
-	time_tween.tween_property(self, "gravity_mult", 1.0, slow_time_duration).set_ease(Tween.EASE_IN)
+	time_tween.parallel().tween_property(self, "gravity_mult", 1.0, slow_time_duration).set_ease(Tween.EASE_IN)
 
 
 func set_time_scale(time_scale: float):
+	Engine.time_scale = time_scale
+	#gravity_mult = time_scale
+	readjust_tween_time_scale(time_scale)
+	
+
+func slow_time(time_scale: float):
 	Engine.time_scale = time_scale
 	readjust_tween_time_scale(time_scale)
 
@@ -408,9 +418,19 @@ func check_eye_ray():
 		effect_enemy_outline(false)
 	else:
 		var collider = %RayCastEyes.get_collider()
+		if collider != current_enemy && current_enemy != null:
+			%Crosshair.modulate = Color.WHITE
+			effect_enemy_outline(false)
+		if collider == null:
+			return
 		if (collider.get_collision_layer() & 2):
+			if abs(collider.global_position.y - global_position.y) > vertical_dash_limit:
+				if collider == current_enemy:
+					%Crosshair.modulate = Color.WHITE
+					effect_enemy_outline(false)
+				return
 			if current_enemy != collider:
-				effect_enemy_outline(false)
+				#effect_enemy_outline(false)
 				current_enemy = collider
 				for child in collider.get_children():
 					if child is Outliner:
