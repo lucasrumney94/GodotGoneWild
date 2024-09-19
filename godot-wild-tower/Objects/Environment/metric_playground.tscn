@@ -1,11 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://c6l5ryse4oype"]
+[gd_scene load_steps=15 format=3 uid="uid://c6l5ryse4oype"]
 
 [ext_resource type="Script" path="res://Main/main_game.gd" id="1_2rjk1"]
 [ext_resource type="Material" uid="uid://5dqiqxr4arwd" path="res://Materials/grid_material.tres" id="1_e4dbs"]
 [ext_resource type="Material" uid="uid://3byi41uuwvq8" path="res://Materials/LD_grid.tres" id="2_btsx0"]
 [ext_resource type="PackedScene" uid="uid://do1pmtbmc423e" path="res://UI/pause_menu.tscn" id="2_htue1"]
-[ext_resource type="PackedScene" uid="uid://5x1047hex40t" path="res://Objects/Enemies/BasicEnemy.tscn" id="3_glqun"]
+[ext_resource type="PackedScene" uid="uid://b2oiak8dl30w2" path="res://Objects/Enemies/BasicEnemy.tscn" id="3_glqun"]
 [ext_resource type="PackedScene" uid="uid://vssvdtmx3jx7" path="res://Objects/Player/player.tscn" id="4_31eio"]
+[ext_resource type="PackedScene" uid="uid://c08aetbdbnjbc" path="res://Objects/Enemies/MobileEnemy.tscn" id="6_p4fx6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_b6p51"]
 
@@ -65,6 +66,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 6.25, 2)
 
 [node name="10m H Enemy" parent="Targeting Range" instance=ExtResource("3_glqun")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 8.25, 2)
+
+[node name="MobileEnemy" parent="Targeting Range" instance=ExtResource("6_p4fx6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -9)
+period = 5.0
+distance = 10.0
+direction = Vector3(0, 0, 10)
+turnSpeed = 0.2
 
 [node name="5m Marker L" type="MeshInstance3D" parent="Targeting Range"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.75, 5)
@@ -156,13 +164,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.15)
 pixel_size = 0.01
 text = "10m"
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Targeting Range"]
+[node name="Player Box" type="CSGBox3D" parent="Targeting Range"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.75)
 use_collision = true
 size = Vector3(2, 2, 2)
 material = ExtResource("2_btsx0")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Targeting Range/CSGBox3D"]
+[node name="CSGBox3D" type="CSGBox3D" parent="Targeting Range/Player Box"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.25)
 operation = 2
 use_collision = true
@@ -241,6 +249,16 @@ material = ExtResource("2_btsx0")
 [node name="Label3D" type="Label3D" parent="Jump Distance/8m Platform"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.008, 0.01, 1.1)
 text = "8m 0.5m-"
+
+[node name="20m Platform" type="CSGBox3D" parent="Jump Distance"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2.75, 5)
+use_collision = true
+size = Vector3(2, 0.5, 2)
+material = ExtResource("2_btsx0")
+
+[node name="Label3D" type="Label3D" parent="Jump Distance/20m Platform"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00780201, 0.0102992, 1.09999)
+text = "7m 0m"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_xxebt")
