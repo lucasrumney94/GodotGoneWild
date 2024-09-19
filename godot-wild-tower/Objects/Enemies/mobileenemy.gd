@@ -9,13 +9,52 @@ extends CharacterBody3D
 
 var originalPos: Vector3
 
-# Called when the node enters the scene tree for the first time.
+@export var path_points: Array[Node3D] = []
+@export var loop_path: bool = false
+@export var path_node_tolerance: float = 0.5
+var path_index: int = 0
+var path_direction: int = 1
+
+
 func _ready():
-	pass
+	originalPos = global_position
+	
 	
 func _physics_process(delta: float) -> void:
-	# calculate velocity
-	velocity = direction * distance * (sin(Time.get_ticks_msec() / 1000 / period)) * delta;
+	if path_points.size() <= 0:
+		# calculate velocity
+		velocity = direction * distance * (sin(Time.get_ticks_msec() / 1000 / period)) * delta;
+	else:
+		#follow path
+		var target_pos: Vector3 = Vector3.ZERO
+		if path_points.size() == 1:
+			if path_index == 1:
+				target_pos = originalPos
+			else: target_pos = path_points[path_index].global_position
+		else:
+			target_pos = path_points[path_index].global_position
+		
+		if global_position.distance_to(target_pos) < path_node_tolerance:
+			if path_points.size() == 1:
+				if path_index == 0:
+					path_index = 1
+				else: path_index = 0
+			else:
+				path_index += path_direction
+				if path_index >= path_points.size():
+					if loop_path:
+						path_index = 0
+					else: 
+						path_index -= 2
+						path_direction = -1
+				elif path_index < 0:
+					if loop_path:
+						path_index = path_points.size() - 1
+					else:
+						path_index += 2
+						path_direction = 1
+		var dir = (target_pos - global_position).normalized()
+		velocity = dir * distance * (sin(Time.get_ticks_msec() / 1000 / period)) * delta;
 	
 	# SNAP calculate look direction
 	# var lookdir = atan2(velocity.x, velocity.z)
