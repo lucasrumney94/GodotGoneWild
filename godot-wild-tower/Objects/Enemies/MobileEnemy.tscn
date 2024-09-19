@@ -1,8 +1,7 @@
-[gd_scene load_steps=44 format=4 uid="uid://c08aetbdbnjbc"]
+[gd_scene load_steps=43 format=4 uid="uid://c08aetbdbnjbc"]
 
 [ext_resource type="Script" path="res://Objects/Enemies/mobileenemy.gd" id="1_mogi5"]
 [ext_resource type="PackedScene" uid="uid://bonck86xrxwj0" path="res://Objects/Enemies/outliner_component.tscn" id="2_ols3i"]
-[ext_resource type="PackedScene" path="res://Objects/Enemies/Elohim.glb" id="2_qkh8i"]
 [ext_resource type="Shader" path="res://Objects/Enemies/outline_shader.gdshader" id="3_bpq0n"]
 [ext_resource type="Script" path="res://Objects/Enemies/death_component.gd" id="4_f2uvk"]
 [ext_resource type="PackedScene" uid="uid://deydyoodbbk77" path="res://Objects/Enemies/explosion_particles.tscn" id="5_x5ve6"]
@@ -606,19 +605,11 @@ autoplay = "flap"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35, 0)
 shape = SubResource("CylinderShape3D_8n1er")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-visible = false
-
-[node name="Elohim" parent="." instance=ExtResource("2_qkh8i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.05)
-visible = false
-
 [node name="MobileEnemy" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 
 [node name="Core" type="MeshInstance3D" parent="MobileEnemy" groups=["explode"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0.05)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0.05)
 mesh = SubResource("ArrayMesh_kxcgi")
 skeleton = NodePath("")
 
