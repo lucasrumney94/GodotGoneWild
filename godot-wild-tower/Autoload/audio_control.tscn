@@ -11,13 +11,13 @@
 [ext_resource type="AudioStream" uid="uid://b6dq3lmhb6x3r" path="res://Audio/GodotWildJamSFX_LONGFALL.wav" id="7_k7kpr"]
 
 [node name="AudioControl" type="Node" node_paths=PackedStringArray("music_player")]
+process_mode = 3
 script = ExtResource("1_1dob2")
 music_player = NodePath("MusicPlayer")
-pause_duck_music_percent = null
+music_player_pause_gain = -12.0
 level_started_sound = ExtResource("2_7murf")
 level_started_gain = -12.0
 level_finish_sound = ExtResource("3_06mfg")
-level_finished_gain = null
 player_jump_sound = ExtResource("4_msq2p")
 player_jump_gain = -10.69
 player_dash_sound = ExtResource("5_vhifl")
@@ -28,6 +28,8 @@ restarting_sound = ExtResource("6_ptvqt")
 restarting_sound_gain = -3.18
 long_fall_sound = ExtResource("7_k7kpr")
 long_fall_sound_gain = -3.78
+low_pass_cutoff_lower_bound = 140.0
+pitch_shift_cutoff_lower_bound = 0.8
 
 [node name="MusicPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_nu51f")

@@ -1,4 +1,17 @@
-[gd_resource type="AudioBusLayout" format=3 uid="uid://bq5mvufbpync7"]
+[gd_resource type="AudioBusLayout" load_steps=5 format=3 uid="uid://bq5mvufbpync7"]
+
+[sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_orykd"]
+resource_name = "LowPassFilter"
+cutoff_hz = 8000.0
+
+[sub_resource type="AudioEffectPitchShift" id="AudioEffectPitchShift_md5k3"]
+resource_name = "PitchShift"
+
+[sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_d8ki7"]
+resource_name = "LowPassFilter"
+
+[sub_resource type="AudioEffectPitchShift" id="AudioEffectPitchShift_w2qy5"]
+resource_name = "PitchShift"
 
 [resource]
 bus/1/name = &"effects"
@@ -7,9 +20,17 @@ bus/1/mute = false
 bus/1/bypass_fx = false
 bus/1/volume_db = 0.0
 bus/1/send = &"Master"
+bus/1/effect/0/effect = SubResource("AudioEffectLowPassFilter_orykd")
+bus/1/effect/0/enabled = true
+bus/1/effect/1/effect = SubResource("AudioEffectPitchShift_md5k3")
+bus/1/effect/1/enabled = true
 bus/2/name = &"music"
 bus/2/solo = false
 bus/2/mute = false
 bus/2/bypass_fx = false
 bus/2/volume_db = 0.0
 bus/2/send = &"Master"
+bus/2/effect/0/effect = SubResource("AudioEffectLowPassFilter_d8ki7")
+bus/2/effect/0/enabled = true
+bus/2/effect/1/effect = SubResource("AudioEffectPitchShift_w2qy5")
+bus/2/effect/1/enabled = true
