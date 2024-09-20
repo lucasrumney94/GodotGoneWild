@@ -37,6 +37,40 @@ light_angular_distance = 40.0
 [node name="Player" parent="." instance=ExtResource("4_dpxqh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 30)
 
+[node name="TowerMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 28.7709)
+mesh = ExtResource("7_506fq")
+
+[node name="Enemies" type="Node3D" parent="."]
+
+[node name="BasicEnemy" parent="Enemies" instance=ExtResource("9_ixssy")]
+
+[node name="BasicEnemy2" parent="Enemies" instance=ExtResource("9_ixssy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -17)
+
+[node name="BasicEnemy3" parent="Enemies" instance=ExtResource("9_ixssy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 8, 2.5)
+
+[node name="BasicEnemy4" parent="Enemies" instance=ExtResource("9_ixssy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 2)
+
+[node name="MobileEnemy" parent="Enemies" node_paths=PackedStringArray("path_points") instance=ExtResource("9_tiv3e")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 12, 15)
+path_points = [NodePath("../../MobilePath1/Point1"), NodePath("../../MobilePath1/Point2"), NodePath("../../MobilePath1/Point3")]
+loop_path = true
+
+[node name="MobilePath1" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 12, 15)
+
+[node name="Point1" type="Node3D" parent="MobilePath1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 3)
+
+[node name="Point2" type="Node3D" parent="MobilePath1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)
+
+[node name="Point3" type="Node3D" parent="MobilePath1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 3)
+
 [node name="Floor" type="CSGBox3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.5, 0)
 material_override = ExtResource("5_vivna")
@@ -44,24 +78,20 @@ use_collision = true
 size = Vector3(50, 0.5, 50)
 material = ExtResource("6_t6ra6")
 
-[node name="TowerMesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 28.7709)
-mesh = ExtResource("7_506fq")
-
 [node name="Stairs" type="CSGCombiner3D" parent="."]
 use_collision = true
 
 [node name="Mesh" type="CSGCylinder3D" parent="Stairs"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.5, 0)
 radius = 25.0
-height = 10.0
+height = 11.0
 sides = 28
 
 [node name="CentralCut" type="CSGCylinder3D" parent="Stairs"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.5, 0)
 operation = 2
 radius = 22.0
-height = 10.0
+height = 11.0
 sides = 28
 
 [node name="RampCut" type="CSGBox3D" parent="Stairs"]
@@ -111,22 +141,6 @@ sides = 28
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
 operation = 2
 size = Vector3(50, 2, 40)
-
-[node name="Enemies" type="Node3D" parent="."]
-
-[node name="BasicEnemy" parent="Enemies" instance=ExtResource("9_ixssy")]
-
-[node name="BasicEnemy2" parent="Enemies" instance=ExtResource("9_ixssy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -17)
-
-[node name="BasicEnemy3" parent="Enemies" instance=ExtResource("9_ixssy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 8, 2.5)
-
-[node name="BasicEnemy4" parent="Enemies" instance=ExtResource("9_ixssy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 3)
-
-[node name="MobileEnemy" parent="Enemies" instance=ExtResource("9_tiv3e")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 12, 16)
 
 [node name="Columns" type="Node3D" parent="."]
 
@@ -189,7 +203,7 @@ size = Vector3(8, 5, 5)
 use_collision = true
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="2ndFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.5, 19)
-radius = 5.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.5, 21)
+radius = 7.0
 height = 1.0
 sides = 16
