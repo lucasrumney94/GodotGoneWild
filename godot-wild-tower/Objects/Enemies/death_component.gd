@@ -12,7 +12,7 @@ func die(push_vector: Vector3):
 	#add a child of type CollisionShape3D to the rb the size of mesh bounding box
 	explode_meshes(get_parent(), push_vector)
 	#SaveControl.add_stat(GameEvents.current_level, "kill", enemy_type)
-	GameEvents.emit_enemy_killed(enemy_type)
+	GameEvents.emit_enemy_killed(enemy_type, owner.global_position)
 	owner.queue_free()
 
 
