@@ -121,7 +121,9 @@ func add_stat(level: int, stat_name: String, value) -> bool:
 	var current_saved_value = get_stat(level, stat_name)
 		
 	match stat_name:
-		"time": #compare time to current saved time
+		"time": #record total time spent in the level
+			save_data["stats"][level_string][stat_name] = current_saved_value + value
+		"best_time": #compare time to current saved time
 			if (current_saved_value > 0 && value < current_saved_value) || current_saved_value <= 0:
 				save_data["stats"][level_string][stat_name] = value
 				save()

@@ -23,7 +23,7 @@ func _ready():
 func _physics_process(delta: float) -> void:
 	if path_points.size() <= 0:
 		# calculate velocity
-		velocity = direction * distance * (sin(Time.get_ticks_msec() / 1000 / period)) * delta;
+		velocity = direction * distance * (sin(Time.get_ticks_msec() / 1000.0 / period)) * delta;
 	else:
 		#follow path
 		var target_pos: Vector3 = Vector3.ZERO
@@ -54,7 +54,7 @@ func _physics_process(delta: float) -> void:
 						path_index += 2
 						path_direction = 1
 		var dir = (target_pos - global_position).normalized()
-		velocity = dir * distance * (sin(Time.get_ticks_msec() / 1000 / period)) * delta;
+		velocity = dir * distance * (sin(Time.get_ticks_msec() / 1000.0 / period)) * delta;
 	
 	# SNAP calculate look direction
 	# var lookdir = atan2(velocity.x, velocity.z)

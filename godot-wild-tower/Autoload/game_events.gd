@@ -43,6 +43,7 @@ func emit_restarting():
 func emit_level_finished_time(seconds: float):
 	level_finished_time.emit(seconds)
 	SaveControl.add_stat(MissionControl.current_level, "time", seconds)
+	SaveControl.add_stat(MissionControl.current_level, "best_time", seconds)
 
 
 func emit_partial_time(seconds: float):

@@ -30,7 +30,7 @@ func focus_on_button(button: Button):
 
 func on_start_pressed():
 	#MOVE TO MAIN GAME SCENE
-	get_tree().change_scene_to_packed(main_game_scene)
+	get_tree().change_scene_to_packed(MissionControl.missions[0])
 
 
 func on_stats_pressed():

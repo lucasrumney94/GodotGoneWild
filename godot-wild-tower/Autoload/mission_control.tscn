@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://Autoload/mission_control.gd" id="1_dop84"]
 [ext_resource type="PackedScene" uid="uid://bxfwjbkk62asb" path="res://Main/main_game.tscn" id="2_v0ewe"]
 [ext_resource type="PackedScene" uid="uid://ld24biyy5xkj" path="res://EnemyTest/EnemyTest1.tscn" id="3_61w4b"]
-[ext_resource type="PackedScene" uid="uid://c6l5ryse4oype" path="res://Main/metric_playground.tscn" id="4_m3c5f"]
+[ext_resource type="PackedScene" uid="uid://c6l5ryse4oype" path="res://Main/metric_playground.tscn" id="5_ayc5n"]
 [ext_resource type="PackedScene" uid="uid://buhsb2ao2ykcr" path="res://Main/Stages/stage_1.tscn" id="5_jp2bf"]
 
 [node name="MissionControl" type="Node"]
 script = ExtResource("1_dop84")
-missions = Array[PackedScene]([ExtResource("2_v0ewe"), ExtResource("3_61w4b"), ExtResource("4_m3c5f"), ExtResource("5_jp2bf")])
+missions = Array[PackedScene]([ExtResource("5_jp2bf"), ExtResource("2_v0ewe"), ExtResource("3_61w4b"), ExtResource("5_ayc5n")])

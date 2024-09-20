@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Achievement" load_steps=2 format=3 uid="uid://t8xc8d3b5cvo"]
+
+[ext_resource type="Script" path="res://UI/Achievements/achievement.gd" id="1_y2pmg"]
+
+[resource]
+script = ExtResource("1_y2pmg")
+id = "get_killed"
+title = "Get Killed"
+description = "Dante's Divine Comedy was entirely written during a single ether-drenched fugue state."
+stat = ""
+stat_goal = 0
+check_function = ""
+custom_string = ""

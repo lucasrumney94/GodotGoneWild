@@ -513,6 +513,7 @@ func take_damage():
 	Engine.time_scale = 0.1
 	GameEvents.emit_player_death()
 	var ds = death_screen.instantiate()
+	AchievementControl.earn_achievement("get_killed")
 	get_parent().add_child(ds)
 
 

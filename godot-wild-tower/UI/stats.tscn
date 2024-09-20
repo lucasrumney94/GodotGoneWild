@@ -42,137 +42,182 @@ offset_right = 1100.0
 offset_bottom = 68.0
 text = "RESET"
 
-[node name="GlobalStatsContainer" type="VBoxContainer" parent="Control"]
-custom_minimum_size = Vector2(600, 300)
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-offset_left = -300.0
-offset_top = 36.0
-offset_right = 300.0
-offset_bottom = 336.0
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Label" type="Label" parent="Control/GlobalStatsContainer"]
+[node name="GlobalStatsContainer" type="VBoxContainer" parent="Control/VBoxContainer"]
+custom_minimum_size = Vector2(600, 300)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/GlobalStatsContainer"]
 layout_mode = 2
 text = "GLOBAL STATS"
 horizontal_alignment = 1
 
-[node name="HBoxContainer5" type="HBoxContainer" parent="Control/GlobalStatsContainer"]
+[node name="HBoxContainer5" type="HBoxContainer" parent="Control/VBoxContainer/GlobalStatsContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="Control/GlobalStatsContainer/HBoxContainer5"]
+[node name="Label" type="Label" parent="Control/VBoxContainer/GlobalStatsContainer/HBoxContainer5"]
 layout_mode = 2
 text = "Fastest Playthrough:"
 
-[node name="FastestPlayLabel" type="Label" parent="Control/GlobalStatsContainer/HBoxContainer5"]
+[node name="FastestPlayLabel" type="Label" parent="Control/VBoxContainer/GlobalStatsContainer/HBoxContainer5"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 text = "00:00:00"
 horizontal_alignment = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/GlobalStatsContainer"]
+[node name="HBoxContainer9" type="HBoxContainer" parent="Control/VBoxContainer/GlobalStatsContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="Control/GlobalStatsContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="Control/VBoxContainer/GlobalStatsContainer/HBoxContainer9"]
+layout_mode = 2
+text = "Total Play Time:"
+
+[node name="TotalTimeLabel" type="Label" parent="Control/VBoxContainer/GlobalStatsContainer/HBoxContainer9"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+text = "00:00:00"
+horizontal_alignment = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer/GlobalStatsContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/GlobalStatsContainer/HBoxContainer"]
 layout_mode = 2
 text = "Total Angels Killed:"
 
-[node name="AngelsKilledLabel" type="Label" parent="Control/GlobalStatsContainer/HBoxContainer"]
+[node name="AngelsKilledLabel" type="Label" parent="Control/VBoxContainer/GlobalStatsContainer/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 text = "0"
 horizontal_alignment = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Control/GlobalStatsContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/VBoxContainer/GlobalStatsContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="Control/GlobalStatsContainer/HBoxContainer2"]
+[node name="Label" type="Label" parent="Control/VBoxContainer/GlobalStatsContainer/HBoxContainer2"]
 layout_mode = 2
 text = "Cherubim Killed:"
 
-[node name="CherubimKilledLabel" type="Label" parent="Control/GlobalStatsContainer/HBoxContainer2"]
+[node name="CherubimKilledLabel" type="Label" parent="Control/VBoxContainer/GlobalStatsContainer/HBoxContainer2"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 text = "0"
 horizontal_alignment = 2
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="Control/GlobalStatsContainer"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="Control/VBoxContainer/GlobalStatsContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="Control/GlobalStatsContainer/HBoxContainer3"]
+[node name="Label" type="Label" parent="Control/VBoxContainer/GlobalStatsContainer/HBoxContainer3"]
 layout_mode = 2
 text = "Malakim Killed:"
 
-[node name="MalakimKilledLabel" type="Label" parent="Control/GlobalStatsContainer/HBoxContainer3"]
+[node name="MalakimKilledLabel" type="Label" parent="Control/VBoxContainer/GlobalStatsContainer/HBoxContainer3"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 text = "0"
 horizontal_alignment = 2
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="Control/GlobalStatsContainer"]
+[node name="HBoxContainer4" type="HBoxContainer" parent="Control/VBoxContainer/GlobalStatsContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="Control/GlobalStatsContainer/HBoxContainer4"]
+[node name="Label" type="Label" parent="Control/VBoxContainer/GlobalStatsContainer/HBoxContainer4"]
 layout_mode = 2
 text = "Seraphim Killed:"
 
-[node name="SeraphimKilledLabel" type="Label" parent="Control/GlobalStatsContainer/HBoxContainer4"]
+[node name="SeraphimKilledLabel" type="Label" parent="Control/VBoxContainer/GlobalStatsContainer/HBoxContainer4"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 text = "0"
 horizontal_alignment = 2
 
-[node name="HBoxContainer6" type="HBoxContainer" parent="Control/GlobalStatsContainer"]
+[node name="HBoxContainer6" type="HBoxContainer" parent="Control/VBoxContainer/GlobalStatsContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="Control/GlobalStatsContainer/HBoxContainer6"]
+[node name="Label" type="Label" parent="Control/VBoxContainer/GlobalStatsContainer/HBoxContainer6"]
 layout_mode = 2
 text = "Ophanim Killed:"
 
-[node name="OphanimKilledLabel" type="Label" parent="Control/GlobalStatsContainer/HBoxContainer6"]
+[node name="OphanimKilledLabel" type="Label" parent="Control/VBoxContainer/GlobalStatsContainer/HBoxContainer6"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 text = "0"
 horizontal_alignment = 2
 
-[node name="LevelStatsContainer" parent="Control" instance=ExtResource("2_icoln")]
-unique_name_in_owner = true
-layout_mode = 1
-offset_left = -300.0
-offset_top = -336.0
-offset_right = 300.0
-offset_bottom = -36.0
+[node name="HBoxContainer7" type="HBoxContainer" parent="Control/VBoxContainer/GlobalStatsContainer"]
+layout_mode = 2
+alignment = 1
 
-[node name="LevelLeftButton" type="Button" parent="Control"]
+[node name="Label" type="Label" parent="Control/VBoxContainer/GlobalStatsContainer/HBoxContainer7"]
+layout_mode = 2
+text = "Restarts:"
+
+[node name="RestartsLabel" type="Label" parent="Control/VBoxContainer/GlobalStatsContainer/HBoxContainer7"]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 225.0
-offset_top = 444.0
-offset_right = 251.0
-offset_bottom = 497.0
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="HBoxContainer8" type="HBoxContainer" parent="Control/VBoxContainer/GlobalStatsContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/GlobalStatsContainer/HBoxContainer8"]
+layout_mode = 2
+text = "Deaths:"
+
+[node name="DeathsLabel" type="Label" parent="Control/VBoxContainer/GlobalStatsContainer/HBoxContainer8"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="LevelLeftButton" type="Button" parent="Control/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
 theme_override_font_sizes/font_size = 32
 text = "<"
 
-[node name="LevelRightButton" type="Button" parent="Control"]
+[node name="LevelStatsContainer" parent="Control/VBoxContainer/HBoxContainer" instance=ExtResource("2_icoln")]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 903.0
-offset_top = 444.0
-offset_right = 929.0
-offset_bottom = 497.0
+layout_mode = 2
+
+[node name="LevelRightButton" type="Button" parent="Control/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
 theme_override_font_sizes/font_size = 32
 text = ">"

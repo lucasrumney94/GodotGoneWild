@@ -25,13 +25,15 @@ func _input(event: InputEvent):
 
 
 func populate_stats():
-	%FastestPlayLabel.text = Constants.format_time(SaveControl.get_stat(-1, "time"))
+	%FastestPlayLabel.text = Constants.format_time(SaveControl.get_stat(-1, "best_time"))
+	%TotalTimeLabel.text = Constants.format_time(SaveControl.get_stat_cumulative("time"))
 	%AngelsKilledLabel.text = str(SaveControl.get_stat_cumulative("kill"))
 	%CherubimKilledLabel.text = str(SaveControl.get_stat_cumulative("kill" + str(Constants.EnemyType.CHERUBIM)))
 	%MalakimKilledLabel.text = str(SaveControl.get_stat_cumulative("kill" + str(Constants.EnemyType.MALAKIM)))
 	%SeraphimKilledLabel.text = str(SaveControl.get_stat_cumulative("kill" + str(Constants.EnemyType.SERAPHIM)))
 	%OphanimKilledLabel.text = str(SaveControl.get_stat_cumulative("kill" + str(Constants.EnemyType.OPHANIM)))
-	#TODO Restarts
+	%RestartsLabel.text = str(SaveControl.get_stat_cumulative("restart"))
+	%DeathsLabel.text = str(SaveControl.get_stat_cumulative("death"))
 	#Deaths
 	
 	%LevelStatsContainer.populate_stats(focused_level)
