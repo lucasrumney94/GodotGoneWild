@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://buhsb2ao2ykcr"]
+[gd_scene load_steps=15 format=3 uid="uid://buhsb2ao2ykcr"]
 
 [ext_resource type="Script" path="res://Main/main_game.gd" id="1_4bn8t"]
 [ext_resource type="PackedScene" uid="uid://do1pmtbmc423e" path="res://UI/pause_menu.tscn" id="2_v88ld"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dacvenlpyt2bp" path="res://Objects/Environment/Models/Column.tscn" id="8_j6044"]
 [ext_resource type="PackedScene" uid="uid://b2oiak8dl30w2" path="res://Objects/Enemies/BasicEnemy.tscn" id="9_ixssy"]
 [ext_resource type="PackedScene" uid="uid://c08aetbdbnjbc" path="res://Objects/Enemies/MobileEnemy.tscn" id="9_tiv3e"]
+[ext_resource type="PackedScene" uid="uid://ddxtpi8u5fqe0" path="res://Objects/Environment/Models/bookcase.tscn" id="11_fqk5l"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_asy3g"]
 panorama = ExtResource("3_08bbj")
@@ -39,22 +40,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 30)
 
 [node name="TowerMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 28.7709)
+visible = false
 mesh = ExtResource("7_506fq")
 
-[node name="Enemies" type="Node3D" parent="."]
+[node name="1stEnemies" type="Node3D" parent="."]
 
-[node name="BasicEnemy" parent="Enemies" instance=ExtResource("9_ixssy")]
+[node name="BasicEnemy" parent="1stEnemies" instance=ExtResource("9_ixssy")]
 
-[node name="BasicEnemy2" parent="Enemies" instance=ExtResource("9_ixssy")]
+[node name="BasicEnemy2" parent="1stEnemies" instance=ExtResource("9_ixssy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -17)
 
-[node name="BasicEnemy3" parent="Enemies" instance=ExtResource("9_ixssy")]
+[node name="BasicEnemy3" parent="1stEnemies" instance=ExtResource("9_ixssy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 8, 2.5)
 
-[node name="BasicEnemy4" parent="Enemies" instance=ExtResource("9_ixssy")]
+[node name="BasicEnemy4" parent="1stEnemies" instance=ExtResource("9_ixssy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 2)
 
-[node name="MobileEnemy" parent="Enemies" node_paths=PackedStringArray("path_points") instance=ExtResource("9_tiv3e")]
+[node name="MobileEnemy" parent="1stEnemies" node_paths=PackedStringArray("path_points") instance=ExtResource("9_tiv3e")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 12, 15)
 path_points = [NodePath("../../MobilePath1/Point1"), NodePath("../../MobilePath1/Point2"), NodePath("../../MobilePath1/Point3")]
 loop_path = true
@@ -119,13 +121,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.5, 5, -3)
 operation = 2
 size = Vector3(8, 10, 16)
 
+[node name="SideArchCut" type="CSGCylinder3D" parent="Stairs"]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -23.5, 3, 0)
+operation = 2
+radius = 1.5
+height = 4.0
+sides = 12
+
+[node name="SideBoxCut" type="CSGBox3D" parent="Stairs"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -23.5, 1, 0)
+operation = 2
+size = Vector3(3, 4, 4)
+
 [node name="Landing" type="CSGCombiner3D" parent="."]
 use_collision = true
 
 [node name="CentralLanding" type="CSGPolygon3D" parent="Landing"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 0, -23)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4, 0, -23)
 polygon = PackedVector2Array(0, 0, 0, 2, 10, 2, 15, 0)
-depth = 10.0
+depth = 8.0
 
 [node name="StairLanding" type="CSGCylinder3D" parent="Landing"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -142,44 +156,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
 operation = 2
 size = Vector3(50, 2, 40)
 
-[node name="Columns" type="Node3D" parent="."]
-
-[node name="Column1" parent="Columns" instance=ExtResource("8_j6044")]
-transform = Transform3D(1.87939, 0, -0.68404, 0, 2, 0, 0.68404, 0, 1.87939, 6.5, 0, -19.5)
-
-[node name="Column2" parent="Columns" instance=ExtResource("8_j6044")]
-transform = Transform3D(1.41421, 0, -1.41421, 0, 2, 0, 1.41421, 0, 1.41421, 14.5, 0, -14.5)
-
-[node name="Column3" parent="Columns" instance=ExtResource("8_j6044")]
-transform = Transform3D(1.87939, 0, 0.68404, 0, 2, 0, -0.68404, 0, 1.87939, 19.5, 0, -6.5)
-
-[node name="Column4" parent="Columns" instance=ExtResource("8_j6044")]
-transform = Transform3D(1.87939, 0, -0.68404, 0, 2, 0, 0.68404, 0, 1.87939, 19.5, 0, 6.5)
-
-[node name="Column5" parent="Columns" instance=ExtResource("8_j6044")]
-transform = Transform3D(1.41421, 0, -1.41421, 0, 2, 0, 1.41421, 0, 1.41421, 14.5, 0, 14.5)
-
-[node name="Column6" parent="Columns" instance=ExtResource("8_j6044")]
-transform = Transform3D(1.87939, 0, 0.68404, 0, 2, 0, -0.68404, 0, 1.87939, 6.5, 0, 19.5)
-
-[node name="Column7" parent="Columns" instance=ExtResource("8_j6044")]
-transform = Transform3D(1.87939, 0, -0.68404, 0, 2, 0, 0.68404, 0, 1.87939, -6.5, 0, 19.5)
-
-[node name="Column8" parent="Columns" instance=ExtResource("8_j6044")]
-transform = Transform3D(1.41421, 0, 1.41421, 0, 2, 0, -1.41421, 0, 1.41421, -14.5, 0, 14.5)
-
-[node name="Column9" parent="Columns" instance=ExtResource("8_j6044")]
-transform = Transform3D(1.87939, 0, 0.68404, 0, 2, 0, -0.68404, 0, 1.87939, -19.5, 0, 6.5)
-
-[node name="Column10" parent="Columns" instance=ExtResource("8_j6044")]
-transform = Transform3D(1.87939, 0, -0.68404, 0, 2, 0, 0.68404, 0, 1.87939, -19.5, 0, -6.5)
-
-[node name="Column11" parent="Columns" instance=ExtResource("8_j6044")]
-transform = Transform3D(1.41421, 0, -1.41421, 0, 2, 0, 1.41421, 0, 1.41421, -14.5, 0, -14.5)
-
-[node name="Column12" parent="Columns" instance=ExtResource("8_j6044")]
-transform = Transform3D(1.87939, 0, 0.68404, 0, 2, 0, -0.68404, 0, 1.87939, -6.5, 0, -19.5)
-
 [node name="Archway" type="CSGCombiner3D" parent="."]
 use_collision = true
 
@@ -190,20 +166,167 @@ size = Vector3(10, 10, 4)
 [node name="ArchCut" type="CSGCylinder3D" parent="Archway/Mesh"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 operation = 2
-radius = 4.0
+radius = 3.5
 height = 5.0
 sides = 12
 
 [node name="BoxCut" type="CSGBox3D" parent="Archway/Mesh"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5, 0)
 operation = 2
-size = Vector3(8, 5, 5)
+size = Vector3(7, 5, 5)
+
+[node name="2ndFloorRetainer" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="Mesh" type="CSGCylinder3D" parent="2ndFloorRetainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.5, 0)
+radius = 22.0
+height = 3.0
+sides = 28
+
+[node name="CentralCut" type="CSGCylinder3D" parent="2ndFloorRetainer/Mesh"]
+operation = 2
+radius = 19.0
+height = 3.5
+sides = 28
+
+[node name="LandingCut" type="CSGBox3D" parent="2ndFloorRetainer/Mesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
+operation = 2
+size = Vector3(7, 3.5, 5)
 
 [node name="2ndFloor" type="CSGCombiner3D" parent="."]
 use_collision = true
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="2ndFloor"]
+[node name="MainMesh" type="CSGCylinder3D" parent="2ndFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.5, 0)
+radius = 40.0
+height = 1.0
+sides = 28
+
+[node name="CentralCut" type="CSGCylinder3D" parent="2ndFloor/MainMesh"]
+operation = 2
+radius = 25.0
+height = 1.0
+sides = 28
+
+[node name="SubMesh" type="CSGCylinder3D" parent="2ndFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.5, 0)
+radius = 25.0
+height = 1.0
+sides = 28
+
+[node name="CentralCut" type="CSGCylinder3D" parent="2ndFloor/SubMesh"]
+operation = 2
+radius = 22.0
+height = 1.0
+sides = 28
+
+[node name="StairCut" type="CSGBox3D" parent="2ndFloor/SubMesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12.5)
+operation = 2
+size = Vector3(50, 1, 25)
+
+[node name="2ndLanding" type="CSGCylinder3D" parent="2ndFloor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.5, 21)
 radius = 7.0
 height = 1.0
-sides = 16
+sides = 14
+
+[node name="Columns" type="Node3D" parent="."]
+
+[node name="Column1" parent="Columns" instance=ExtResource("8_j6044")]
+transform = Transform3D(1.87939, 0, -0.68404, 0, 2, 0, 0.68404, 0, 1.87939, 5.5, 0, -19.5)
+
+[node name="Column2" parent="Columns" instance=ExtResource("8_j6044")]
+transform = Transform3D(1.41421, 0, -1.41421, 0, 2, 0, 1.41421, 0, 1.41421, 14.5, 0, -14.5)
+
+[node name="Column3" parent="Columns" instance=ExtResource("8_j6044")]
+transform = Transform3D(1.87939, 0, 0.68404, 0, 2, 0, -0.68404, 0, 1.87939, 19.5, 0, -5.5)
+
+[node name="Column4" parent="Columns" instance=ExtResource("8_j6044")]
+transform = Transform3D(1.87939, 0, -0.68404, 0, 2, 0, 0.68404, 0, 1.87939, 19.5, 0, 5.5)
+
+[node name="Column5" parent="Columns" instance=ExtResource("8_j6044")]
+transform = Transform3D(1.41421, 0, -1.41421, 0, 2, 0, 1.41421, 0, 1.41421, 14.5, 0, 14.5)
+
+[node name="Column6" parent="Columns" instance=ExtResource("8_j6044")]
+transform = Transform3D(1.87939, 0, 0.68404, 0, 2, 0, -0.68404, 0, 1.87939, 5.5, 0, 19.5)
+
+[node name="Column7" parent="Columns" instance=ExtResource("8_j6044")]
+transform = Transform3D(1.87939, 0, -0.68404, 0, 2, 0, 0.68404, 0, 1.87939, -5.5, 0, 19.5)
+
+[node name="Column8" parent="Columns" instance=ExtResource("8_j6044")]
+transform = Transform3D(1.41421, 0, 1.41421, 0, 2, 0, -1.41421, 0, 1.41421, -14.5, 0, 14.5)
+
+[node name="Column9" parent="Columns" instance=ExtResource("8_j6044")]
+transform = Transform3D(1.87939, 0, 0.68404, 0, 2, 0, -0.68404, 0, 1.87939, -19.5, 0, 5.5)
+
+[node name="Column10" parent="Columns" instance=ExtResource("8_j6044")]
+transform = Transform3D(1.87939, 0, -0.68404, 0, 2, 0, 0.68404, 0, 1.87939, -19.5, 0, -5.5)
+
+[node name="Column11" parent="Columns" instance=ExtResource("8_j6044")]
+transform = Transform3D(1.41421, 0, -1.41421, 0, 2, 0, 1.41421, 0, 1.41421, -14.5, 0, -14.5)
+
+[node name="Column12" parent="Columns" instance=ExtResource("8_j6044")]
+transform = Transform3D(1.87939, 0, 0.68404, 0, 2, 0, -0.68404, 0, 1.87939, -5.5, 0, -19.5)
+
+[node name="2ndColumns" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13, 0)
+
+[node name="Column1" parent="2ndColumns" instance=ExtResource("8_j6044")]
+transform = Transform3D(1.87939, 0, -0.68404, 0, 2, 0, 0.68404, 0, 1.87939, 5.5, 0, -19.5)
+
+[node name="Column2" parent="2ndColumns" instance=ExtResource("8_j6044")]
+transform = Transform3D(1.41421, 0, -1.41421, 0, 2, 0, 1.41421, 0, 1.41421, 14.5, 0, -14.5)
+
+[node name="Column3" parent="2ndColumns" instance=ExtResource("8_j6044")]
+transform = Transform3D(1.87939, 0, 0.68404, 0, 2, 0, -0.68404, 0, 1.87939, 19.5, 0, -5.5)
+
+[node name="Column4" parent="2ndColumns" instance=ExtResource("8_j6044")]
+transform = Transform3D(1.87939, 0, -0.68404, 0, 2, 0, 0.68404, 0, 1.87939, 19.5, 0, 5.5)
+
+[node name="Column5" parent="2ndColumns" instance=ExtResource("8_j6044")]
+transform = Transform3D(1.41421, 0, -1.41421, 0, 2, 0, 1.41421, 0, 1.41421, 14.5, 0, 14.5)
+
+[node name="Column6" parent="2ndColumns" instance=ExtResource("8_j6044")]
+transform = Transform3D(1.87939, 0, 0.68404, 0, 2, 0, -0.68404, 0, 1.87939, 5.5, 0, 19.5)
+
+[node name="Column7" parent="2ndColumns" instance=ExtResource("8_j6044")]
+transform = Transform3D(1.87939, 0, -0.68404, 0, 2, 0, 0.68404, 0, 1.87939, -5.5, 0, 19.5)
+
+[node name="Column8" parent="2ndColumns" instance=ExtResource("8_j6044")]
+transform = Transform3D(1.41421, 0, 1.41421, 0, 2, 0, -1.41421, 0, 1.41421, -14.5, 0, 14.5)
+
+[node name="Column9" parent="2ndColumns" instance=ExtResource("8_j6044")]
+transform = Transform3D(1.87939, 0, 0.68404, 0, 2, 0, -0.68404, 0, 1.87939, -19.5, 0, 5.5)
+
+[node name="Column10" parent="2ndColumns" instance=ExtResource("8_j6044")]
+transform = Transform3D(1.87939, 0, -0.68404, 0, 2, 0, 0.68404, 0, 1.87939, -19.5, 0, -5.5)
+
+[node name="Column11" parent="2ndColumns" instance=ExtResource("8_j6044")]
+transform = Transform3D(1.41421, 0, -1.41421, 0, 2, 0, 1.41421, 0, 1.41421, -14.5, 0, -14.5)
+
+[node name="Column12" parent="2ndColumns" instance=ExtResource("8_j6044")]
+transform = Transform3D(1.87939, 0, 0.68404, 0, 2, 0, -0.68404, 0, 1.87939, -5.5, 0, -19.5)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 16, -0.44494)
+size = Vector3(20, 10, 1)
+
+[node name="Bookcases" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11, 0)
+
+[node name="Bookcase" parent="Bookcases" instance=ExtResource("11_fqk5l")]
+transform = Transform3D(0.793353, 0, -0.608761, 0, 1, 0, 0.608761, 0, 0.793353, 22.9761, 0, 16.9111)
+
+[node name="Bookcase2" parent="Bookcases" instance=ExtResource("11_fqk5l")]
+transform = Transform3D(0.793353, 0, -0.608761, 0, 1, 0, 0.608761, 0, 0.793353, 26.3232, 0, 19.51)
+
+[node name="2ndEnemies" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11, 0)
+
+[node name="MobileEnemy" parent="2ndEnemies" instance=ExtResource("9_tiv3e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.7575, 0, 14.29)
