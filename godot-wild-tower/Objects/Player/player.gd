@@ -414,6 +414,7 @@ func temporal_shift():
 		time_tween.kill()
 	#Engine.time_scale = 0.1
 	gravity_mult = 0.1
+	GameEvents.emit_slomo_start()
 	
 	time_tween = create_tween()
 	
@@ -448,6 +449,7 @@ func kill_time_tween():
 	if time_tween != null:
 		time_tween.kill()
 	Engine.time_scale = 1.0
+	GameEvents.emit_slomo_end()
 	gravity_mult = 1.0
 
 
@@ -501,6 +503,7 @@ func take_damage():
 	#slow time, show death screen
 	is_dashing = false
 	alive = false
+	GameEvents.emit_slomo_start()
 	Engine.time_scale = 0.1
 	GameEvents.emit_player_death()
 	var ds = death_screen.instantiate()

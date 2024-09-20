@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=4 uid="uid://bnylytkg3vk0w"]
+[gd_scene load_steps=42 format=4 uid="uid://bnylytkg3vk0w"]
 
 [ext_resource type="Script" path="res://Objects/Enemies/turret_enemy.gd" id="1_lnmb2"]
 [ext_resource type="PackedScene" uid="uid://bonck86xrxwj0" path="res://Objects/Enemies/outliner_component.tscn" id="2_p5d0b"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://deydyoodbbk77" path="res://Objects/Enemies/explosion_particles.tscn" id="5_34nv2"]
 [ext_resource type="Script" path="res://Objects/Enemies/projectile_emitter.gd" id="6_p1v71"]
 [ext_resource type="PackedScene" uid="uid://dpiq8w2bumil1" path="res://Objects/Enemies/projectile.tscn" id="7_lyiv6"]
+[ext_resource type="AudioStream" uid="uid://bvh0pypffuogw" path="res://Audio/player_jump_PLACEHOLDER.wav" id="8_kmijg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j60eg"]
 resource_local_to_scene = true
@@ -534,11 +535,10 @@ skeleton = NodePath("")
 
 [node name="RotationRoot" type="Node3D" parent="HostileEnemy/Foot Base/Core"]
 unique_name_in_owner = true
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="Gun Body" type="MeshInstance3D" parent="HostileEnemy/Foot Base/Core/RotationRoot" node_paths=PackedStringArray("audio_player")]
 unique_name_in_owner = true
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 2.62268e-08, 0, -0.3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.3)
 mesh = SubResource("ArrayMesh_lk70y")
 skeleton = NodePath("")
 script = ExtResource("6_p1v71")
@@ -547,7 +547,9 @@ audio_player = NodePath("AudioStreamPlayer3D")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="HostileEnemy/Foot Base/Core/RotationRoot/Gun Body"]
 transform = Transform3D(0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, 0, 0, 0)
-max_distance = 200.0
+stream = ExtResource("8_kmijg")
+pitch_scale = 0.77
+max_distance = 150.0
 bus = &"effects"
 
 [node name="Gun Core" type="MeshInstance3D" parent="HostileEnemy/Foot Base/Core/RotationRoot/Gun Body"]
@@ -581,26 +583,26 @@ mesh = SubResource("ArrayMesh_thhsn")
 skeleton = NodePath("")
 
 [node name="Shield Back" type="MeshInstance3D" parent="HostileEnemy/Foot Base/Core/RotationRoot"]
-transform = Transform3D(1, 0, 4.76837e-07, 0, 1, 0, -4.76837e-07, 0, 1, -2.18557e-08, 0, 0.25)
+transform = Transform3D(-1, 0, -5.6426e-07, 0, 1, 0, 5.6426e-07, 0, -1, 0, 0, -0.25)
 mesh = SubResource("ArrayMesh_6482e")
 skeleton = NodePath("")
 
 [node name="Wing High L" type="MeshInstance3D" parent="HostileEnemy/Foot Base/Core/RotationRoot"]
-transform = Transform3D(-0.196175, -0.226313, -0.954095, -0.939693, 0.321394, 0.116978, 0.280166, 0.919504, -0.275714, -0.3, 0.275, 0.15)
+transform = Transform3D(0.196175, 0.226313, 0.954095, -0.939693, 0.321394, 0.116978, -0.280166, -0.919504, 0.275714, 0.3, 0.275, -0.15)
 mesh = SubResource("ArrayMesh_wmgiq")
 skeleton = NodePath("")
 
 [node name="Wing High R" type="MeshInstance3D" parent="HostileEnemy/Foot Base/Core/RotationRoot"]
-transform = Transform3D(-0.0298091, 0.263759, -0.964128, -0.939693, 0.321394, 0.116978, 0.340719, 0.909471, 0.238272, 0.3, 0.275, 0.15)
+transform = Transform3D(0.0298091, -0.263759, 0.964128, -0.939693, 0.321394, 0.116978, -0.340719, -0.909471, -0.238272, -0.3, 0.275, -0.15)
 mesh = SubResource("ArrayMesh_0fl6a")
 skeleton = NodePath("")
 
 [node name="Wing Low L" type="MeshInstance3D" parent="HostileEnemy/Foot Base/Core/RotationRoot"]
-transform = Transform3D(0.196175, -0.226314, -0.954095, -0.939693, -0.321394, -0.116978, -0.280167, 0.919504, -0.275715, -0.3, -0.275, 0.15)
+transform = Transform3D(-0.196175, 0.226314, 0.954095, -0.939693, -0.321394, -0.116978, 0.280167, -0.919504, 0.275715, 0.3, -0.275, -0.15)
 mesh = SubResource("ArrayMesh_awpo1")
 skeleton = NodePath("")
 
 [node name="Wing Low R" type="MeshInstance3D" parent="HostileEnemy/Foot Base/Core/RotationRoot"]
-transform = Transform3D(0.0298091, 0.263758, -0.964128, -0.939693, -0.321394, -0.116978, -0.340719, 0.909471, 0.238271, 0.3, -0.275, 0.15)
+transform = Transform3D(-0.0298091, -0.263758, 0.964128, -0.939693, -0.321394, -0.116978, 0.340719, -0.909471, -0.238271, -0.3, -0.275, -0.15)
 mesh = SubResource("ArrayMesh_bx6wr")
 skeleton = NodePath("")

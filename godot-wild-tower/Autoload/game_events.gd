@@ -14,6 +14,9 @@ signal player_enemy_dash
 signal long_fall_started
 signal player_death
 
+signal slomo_start
+signal slomo_end
+
 signal projectile_impact(global_pos: Vector3)
 
 #TODO this might not be the best place for this
@@ -80,3 +83,11 @@ func emit_player_death():
 
 func emit_projectile_impact(global_pos: Vector3):
 	projectile_impact.emit(global_pos)
+
+
+func emit_slomo_start():
+	slomo_start.emit()
+
+
+func emit_slomo_end():
+	slomo_end.emit()

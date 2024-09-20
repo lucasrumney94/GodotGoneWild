@@ -4,13 +4,15 @@ extends CharacterBody3D
 
 @export var gun: Node3D
 
-@export var rotation_speed: float = 5.0
+@export var rotation_speed: float = 1.0
+@export var tilt_limit: float = 45
 
 var target: Node3D = null
 
 
 func _ready():
 	$Timer.timeout.connect(on_timer_timeout)
+	tilt_limit = deg_to_rad(tilt_limit)
 	
 
 func _physics_process(delta):
@@ -24,13 +26,15 @@ func _physics_process(delta):
 			return
 	
 	var target_pos = target.global_position + Vector3.UP
-	var xz_target_pos: Vector3 = Vector3(target_pos.x, 0, target_pos.z)
-	var xz_pos: Vector3 = Vector3(rotation_root.global_position.x, 0, rotation_root.global_position.z)
-	var xz_look = rotation_root.global_basis.z
-	xz_look = xz_look.slide(Vector3.UP)
-	var yangle: float = xz_look.signed_angle_to((xz_target_pos - xz_pos).normalized(), Vector3.UP)
-	rotation_root.global_rotation.y = lerp_angle(rotation_root.global_rotation.y, yangle, delta * rotation_speed)
-	#rotation_root.look_at(target_pos)
+	var local_tp = to_local(target_pos)
+	#print(local_tp)
+	var theta = wrapf(atan2(local_tp.x, local_tp.z) - rotation_root.rotation.y, -PI, PI)
+	rotation_root.rotation.y += clamp(rotation_speed * delta, 0, abs(theta)) * sign(theta)
+	
+	#okay dipshit now do the x axis
+	#theta = wrapf(atan2(-local_tp.y, max(abs(local_tp.x), abs(local_tp.z))) - rotation_root.rotation.x, -PI, PI)
+	#var xrot = rotation_root.rotation.x + clamp(rotation_speed * delta, 0, abs(theta)) * sign(theta)
+	#rotation_root.rotation.x = clampf(xrot, -tilt_limit, tilt_limit)
 
 
 func on_timer_timeout():
