@@ -12,7 +12,7 @@ func _ready():
 	$Timer.wait_time = fall_delay
 	
 
-func on_body_entered(body):
+func on_body_entered(_body):
 	if falling: return
 	
 	$Timer.start()

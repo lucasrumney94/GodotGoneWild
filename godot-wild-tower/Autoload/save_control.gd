@@ -106,6 +106,26 @@ func get_stat_cumulative(stat_name: String) -> float:
 	return result
 
 
+func get_best_stat(level: int, stat_name: String):
+	if !save_data.has("stats"):
+		return -1
+	
+	var level_string = "level_" + str(level)
+	if !save_data["stats"].has(level_string):
+		return -1
+	if save_data["stats"][level_string].has(stat_name):
+		return save_data["stats"][level_string][stat_name]
+	else: 
+		return -1
+
+
+func get_best_stat_string(level: int, stat_name: String) -> String:
+	var stat = get_best_stat(level, stat_name)
+	if stat < 0:
+		return "N/A"
+	else: return str(stat)
+
+
 #ADD STAT TO SAVE_DATA, RETURN TRUE IF IS NEW HIGH SCORE
 func add_stat(level: int, stat_name: String, value) -> bool:
 	if !save_data.has("stats"):
@@ -135,6 +155,18 @@ func add_stat(level: int, stat_name: String, value) -> bool:
 			save_data["stats"][level_string][enemy] = get_stat(level, enemy) + 1
 		"restart", "death":
 			save_data["stats"][level_string][stat_name] = current_saved_value + 1
+		"most_kills":
+			var current_best = get_best_stat(level, stat_name)
+			if current_best < 0 || (current_best > 0 && current_best < value):
+				save_data["stats"][level_string][stat_name] = value
+				save()
+				return true
+		"fewest_kills", "fewest_restarts", "fewest_deaths":
+			var current_best = get_best_stat(level, stat_name)
+			if current_best < 0 || (current_best > 0 && current_best > value):
+				save_data["stats"][level_string][stat_name] = value
+				save()
+				return true
 		_: #DEFAULT
 			print(stat_name + " IS NOT A STAT NAME KNOWN TO SAVE CONTROL")
 			

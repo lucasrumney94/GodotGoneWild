@@ -17,7 +17,7 @@ func _physics_process(delta):
 		queue_free()
 
 
-func on_body_entered(body: Node3D):
+func on_body_entered(_body: Node3D):
 	impact()
 
 
