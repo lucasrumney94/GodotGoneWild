@@ -1,0 +1,195 @@
+[gd_scene load_steps=14 format=3 uid="uid://buhsb2ao2ykcr"]
+
+[ext_resource type="Script" path="res://Main/main_game.gd" id="1_4bn8t"]
+[ext_resource type="PackedScene" uid="uid://do1pmtbmc423e" path="res://UI/pause_menu.tscn" id="2_v88ld"]
+[ext_resource type="Texture2D" uid="uid://rfda5fv26d6w" path="res://Objects/Environment/Models/PurplyBlueSky.png" id="3_08bbj"]
+[ext_resource type="PackedScene" uid="uid://vssvdtmx3jx7" path="res://Objects/Player/player.tscn" id="4_dpxqh"]
+[ext_resource type="Material" uid="uid://3byi41uuwvq8" path="res://Materials/LD_grid.tres" id="5_vivna"]
+[ext_resource type="Material" uid="uid://5dqiqxr4arwd" path="res://Materials/grid_material.tres" id="6_t6ra6"]
+[ext_resource type="ArrayMesh" uid="uid://dgy7dxognc1x3" path="res://Objects/Environment/Models/TowerTest1.obj" id="7_506fq"]
+[ext_resource type="PackedScene" uid="uid://dacvenlpyt2bp" path="res://Objects/Environment/Models/Column.tscn" id="8_j6044"]
+[ext_resource type="PackedScene" uid="uid://b2oiak8dl30w2" path="res://Objects/Enemies/BasicEnemy.tscn" id="9_ixssy"]
+[ext_resource type="PackedScene" uid="uid://c08aetbdbnjbc" path="res://Objects/Enemies/MobileEnemy.tscn" id="9_tiv3e"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_asy3g"]
+panorama = ExtResource("3_08bbj")
+
+[sub_resource type="Sky" id="Sky_3kabx"]
+sky_material = SubResource("PanoramaSkyMaterial_asy3g")
+
+[sub_resource type="Environment" id="Environment_yg5si"]
+background_mode = 2
+sky = SubResource("Sky_3kabx")
+
+[node name="Stage 1" type="Node3D"]
+script = ExtResource("1_4bn8t")
+pause_menu_scene = ExtResource("2_v88ld")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_yg5si")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 0.427358, 0.904083, 0, -0.904083, 0.427358, 0, 100, 30)
+light_energy = 3.0
+light_indirect_energy = 3.0
+light_angular_distance = 40.0
+
+[node name="Player" parent="." instance=ExtResource("4_dpxqh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 30)
+
+[node name="Floor" type="CSGBox3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.5, 0)
+material_override = ExtResource("5_vivna")
+use_collision = true
+size = Vector3(50, 0.5, 50)
+material = ExtResource("6_t6ra6")
+
+[node name="TowerMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 28.7709)
+mesh = ExtResource("7_506fq")
+
+[node name="Stairs" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="Mesh" type="CSGCylinder3D" parent="Stairs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+radius = 25.0
+height = 10.0
+sides = 28
+
+[node name="CentralCut" type="CSGCylinder3D" parent="Stairs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+operation = 2
+radius = 22.0
+height = 10.0
+sides = 28
+
+[node name="RampCut" type="CSGBox3D" parent="Stairs"]
+transform = Transform3D(1, 0, 0, 0, 0.976296, 0.21644, 0, -0.21644, 0.976296, 0, 11.4269, -1.35736)
+operation = 2
+size = Vector3(60, 10, 60)
+
+[node name="EntryCut" type="CSGBox3D" parent="Stairs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 22.1657)
+operation = 2
+size = Vector3(10, 11, 8)
+
+[node name="Jump1" type="CSGBox3D" parent="Stairs"]
+transform = Transform3D(0.887011, 0, -0.461749, 0, 1, 0, 0.461749, 0, 0.887011, -20, 2.5, -12)
+operation = 2
+size = Vector3(5, 8, 4)
+
+[node name="Jump2" type="CSGBox3D" parent="Stairs"]
+transform = Transform3D(0.887011, 0, 0.461749, 0, 1, 0, -0.461749, 0, 0.887011, -20, 5, 12)
+operation = 2
+size = Vector3(6, 10, 6)
+
+[node name="JumpDash" type="CSGBox3D" parent="Stairs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.5, 5, -3)
+operation = 2
+size = Vector3(8, 10, 16)
+
+[node name="Landing" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="CentralLanding" type="CSGPolygon3D" parent="Landing"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 0, -23)
+polygon = PackedVector2Array(0, 0, 0, 2, 10, 2, 15, 0)
+depth = 10.0
+
+[node name="StairLanding" type="CSGCylinder3D" parent="Landing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+radius = 25.0
+sides = 28
+
+[node name="CylinderCut" type="CSGCylinder3D" parent="Landing/StairLanding"]
+operation = 2
+radius = 22.0
+sides = 28
+
+[node name="LandingStop" type="CSGBox3D" parent="Landing/StairLanding"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+operation = 2
+size = Vector3(50, 2, 40)
+
+[node name="Enemies" type="Node3D" parent="."]
+
+[node name="BasicEnemy" parent="Enemies" instance=ExtResource("9_ixssy")]
+
+[node name="BasicEnemy2" parent="Enemies" instance=ExtResource("9_ixssy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -17)
+
+[node name="BasicEnemy3" parent="Enemies" instance=ExtResource("9_ixssy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 8, 2.5)
+
+[node name="BasicEnemy4" parent="Enemies" instance=ExtResource("9_ixssy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 3)
+
+[node name="MobileEnemy" parent="Enemies" instance=ExtResource("9_tiv3e")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 12, 16)
+
+[node name="Columns" type="Node3D" parent="."]
+
+[node name="Column1" parent="Columns" instance=ExtResource("8_j6044")]
+transform = Transform3D(1.87939, 0, -0.68404, 0, 2, 0, 0.68404, 0, 1.87939, 6.5, 0, -19.5)
+
+[node name="Column2" parent="Columns" instance=ExtResource("8_j6044")]
+transform = Transform3D(1.41421, 0, -1.41421, 0, 2, 0, 1.41421, 0, 1.41421, 14.5, 0, -14.5)
+
+[node name="Column3" parent="Columns" instance=ExtResource("8_j6044")]
+transform = Transform3D(1.87939, 0, 0.68404, 0, 2, 0, -0.68404, 0, 1.87939, 19.5, 0, -6.5)
+
+[node name="Column4" parent="Columns" instance=ExtResource("8_j6044")]
+transform = Transform3D(1.87939, 0, -0.68404, 0, 2, 0, 0.68404, 0, 1.87939, 19.5, 0, 6.5)
+
+[node name="Column5" parent="Columns" instance=ExtResource("8_j6044")]
+transform = Transform3D(1.41421, 0, -1.41421, 0, 2, 0, 1.41421, 0, 1.41421, 14.5, 0, 14.5)
+
+[node name="Column6" parent="Columns" instance=ExtResource("8_j6044")]
+transform = Transform3D(1.87939, 0, 0.68404, 0, 2, 0, -0.68404, 0, 1.87939, 6.5, 0, 19.5)
+
+[node name="Column7" parent="Columns" instance=ExtResource("8_j6044")]
+transform = Transform3D(1.87939, 0, -0.68404, 0, 2, 0, 0.68404, 0, 1.87939, -6.5, 0, 19.5)
+
+[node name="Column8" parent="Columns" instance=ExtResource("8_j6044")]
+transform = Transform3D(1.41421, 0, 1.41421, 0, 2, 0, -1.41421, 0, 1.41421, -14.5, 0, 14.5)
+
+[node name="Column9" parent="Columns" instance=ExtResource("8_j6044")]
+transform = Transform3D(1.87939, 0, 0.68404, 0, 2, 0, -0.68404, 0, 1.87939, -19.5, 0, 6.5)
+
+[node name="Column10" parent="Columns" instance=ExtResource("8_j6044")]
+transform = Transform3D(1.87939, 0, -0.68404, 0, 2, 0, 0.68404, 0, 1.87939, -19.5, 0, -6.5)
+
+[node name="Column11" parent="Columns" instance=ExtResource("8_j6044")]
+transform = Transform3D(1.41421, 0, -1.41421, 0, 2, 0, 1.41421, 0, 1.41421, -14.5, 0, -14.5)
+
+[node name="Column12" parent="Columns" instance=ExtResource("8_j6044")]
+transform = Transform3D(1.87939, 0, 0.68404, 0, 2, 0, -0.68404, 0, 1.87939, -6.5, 0, -19.5)
+
+[node name="Archway" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="Mesh" type="CSGBox3D" parent="Archway"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 22.5)
+size = Vector3(10, 10, 4)
+
+[node name="ArchCut" type="CSGCylinder3D" parent="Archway/Mesh"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+operation = 2
+radius = 4.0
+height = 5.0
+sides = 12
+
+[node name="BoxCut" type="CSGBox3D" parent="Archway/Mesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5, 0)
+operation = 2
+size = Vector3(8, 5, 5)
+
+[node name="2ndFloor" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="2ndFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.5, 19)
+radius = 5.0
+height = 1.0
+sides = 16
