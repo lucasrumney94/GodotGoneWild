@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7plhlrvh8ilu"]
+
+[ext_resource type="Script" path="res://Autoload/stat_tracker.gd" id="1_8vj7f"]
+[ext_resource type="PackedScene" uid="uid://dism4hjotn4pk" path="res://UI/stats_screen.tscn" id="2_casen"]
+
+[node name="StatTracker" type="Node"]
+script = ExtResource("1_8vj7f")
+level_finish_stats_scene = ExtResource("2_casen")

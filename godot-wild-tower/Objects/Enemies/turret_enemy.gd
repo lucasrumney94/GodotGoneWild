@@ -25,9 +25,8 @@ func _physics_process(delta):
 			print("TURRET COULDN'T FIND PLAYER")
 			return
 	
-	var target_pos = target.global_position# + Vector3.UP
-	var local_tp = to_local(target_pos)#.normalized()
-	#print(local_tp)
+	var target_pos = target.global_position
+	var local_tp = to_local(target_pos)
 	var theta = wrapf(atan2(local_tp.x, local_tp.z) - rotation_root.rotation.y, -PI, PI)
 	rotation_root.rotation.y += clamp(rotation_speed * delta, 0, abs(theta)) * sign(theta)
 	

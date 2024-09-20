@@ -1,5 +1,6 @@
 extends Node
 
+signal load_next_level
 signal level_started
 signal level_finished
 signal restarting
@@ -24,6 +25,10 @@ signal projectile_impact(global_pos: Vector3)
 #var current_level: int = 0
 
 
+func emit_load_next_level():
+	load_next_level.emit()
+
+
 func emit_level_started():
 	print("LEVEL STARTED")
 	level_started.emit()
@@ -43,11 +48,11 @@ func emit_restarting():
 func emit_level_finished_time(seconds: float):
 	level_finished_time.emit(seconds)
 	SaveControl.add_stat(MissionControl.current_level, "time", seconds)
-	SaveControl.add_stat(MissionControl.current_level, "best_time", seconds)
 
 
 func emit_partial_time(seconds: float):
 	partial_time.emit(seconds)
+	SaveControl.add_stat(MissionControl.current_level, "time", seconds)
 
 
 func emit_enemy_killed(enemy_type: Constants.EnemyType, global_pos: Vector3):
