@@ -25,16 +25,16 @@ func _physics_process(delta):
 			print("TURRET COULDN'T FIND PLAYER")
 			return
 	
-	var target_pos = target.global_position + Vector3.UP
-	var local_tp = to_local(target_pos).normalized()
+	var target_pos = target.global_position# + Vector3.UP
+	var local_tp = to_local(target_pos)#.normalized()
 	#print(local_tp)
 	var theta = wrapf(atan2(local_tp.x, local_tp.z) - rotation_root.rotation.y, -PI, PI)
 	rotation_root.rotation.y += clamp(rotation_speed * delta, 0, abs(theta)) * sign(theta)
 	
 	#okay dipshit now do the x axis
-	#theta = wrapf(atan2(-local_tp.y, local_tp.z) - rotation_root.rotation.x, -PI, PI)
-	#var xrot = rotation_root.rotation.x + clamp(rotation_speed * delta, 0, abs(theta)) * sign(theta)
-	#rotation_root.rotation.x = clampf(xrot, -tilt_limit, tilt_limit)
+	theta = wrapf(atan2(-local_tp.y, Vector2(local_tp.x, local_tp.z).length()) - rotation_root.rotation.x, -PI, PI)
+	var xrot = rotation_root.rotation.x + clamp(rotation_speed * delta, 0, abs(theta)) * sign(theta)
+	rotation_root.rotation.x = clampf(xrot, -tilt_limit, tilt_limit)
 
 
 func on_timer_timeout():

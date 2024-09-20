@@ -19,6 +19,13 @@ sky_material = SubResource("ProceduralSkyMaterial_m2u75")
 [sub_resource type="Environment" id="Environment_clk17"]
 background_mode = 2
 sky = SubResource("Sky_2t8uw")
+glow_enabled = true
+glow_strength = 1.5
+fog_enabled = true
+fog_sun_scatter = 1.0
+fog_sky_affect = 0.373
+fog_height = 10.0
+fog_height_density = -0.254
 
 [sub_resource type="SphereMesh" id="SphereMesh_aawc2"]
 radius = 0.2
