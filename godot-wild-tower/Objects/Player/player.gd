@@ -78,7 +78,8 @@ func _ready():
 			#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
-func _unhandled_input(event: InputEvent):
+#func _unhandled_input(event: InputEvent):
+func _input(event: InputEvent):
 	var mouse_input: bool = event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED
 	if mouse_input && !is_dashing:
 		var rotation_input: float = -event.relative.x * mouse_sensitivity
