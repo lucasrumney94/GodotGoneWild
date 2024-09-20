@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bxfwjbkk62asb"]
+[gd_scene load_steps=17 format=3 uid="uid://bxfwjbkk62asb"]
 
 [ext_resource type="Script" path="res://Main/main_game.gd" id="1_14x2i"]
 [ext_resource type="PackedScene" uid="uid://vssvdtmx3jx7" path="res://Objects/Player/player.tscn" id="1_27g07"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b2oiak8dl30w2" path="res://Objects/Enemies/BasicEnemy.tscn" id="6_kji67"]
 [ext_resource type="PackedScene" uid="uid://c08aetbdbnjbc" path="res://Objects/Enemies/MobileEnemy.tscn" id="7_7tlvw"]
 [ext_resource type="PackedScene" uid="uid://bnylytkg3vk0w" path="res://Objects/Enemies/TurretEnemy.tscn" id="8_7ah3a"]
+[ext_resource type="PackedScene" uid="uid://cyuf5p7go4rqn" path="res://Objects/Environment/falling_platform.tscn" id="9_l6o4v"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m2u75"]
 sky_top_color = Color(0, 0.446616, 0.82605, 1)
@@ -134,3 +135,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0249519, 4.05275, -0.780897
 
 [node name="MobileEnemy" parent="." instance=ExtResource("7_7tlvw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.4435, 0.139019, -7.39315)
+
+[node name="FallingPlatform" parent="." instance=ExtResource("9_l6o4v")]

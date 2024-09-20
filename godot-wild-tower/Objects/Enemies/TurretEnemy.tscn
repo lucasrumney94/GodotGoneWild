@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=4 uid="uid://bnylytkg3vk0w"]
+[gd_scene load_steps=43 format=4 uid="uid://bnylytkg3vk0w"]
 
 [ext_resource type="Script" path="res://Objects/Enemies/turret_enemy.gd" id="1_lnmb2"]
 [ext_resource type="PackedScene" uid="uid://bonck86xrxwj0" path="res://Objects/Enemies/outliner_component.tscn" id="2_p5d0b"]
@@ -500,6 +500,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_51pju")
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_b3bqx"]
+
 [node name="TurretEnemy" type="CharacterBody3D" node_paths=PackedStringArray("gun")]
 collision_layer = 2
 script = ExtResource("1_lnmb2")
@@ -606,3 +608,11 @@ skeleton = NodePath("")
 transform = Transform3D(-0.0298091, -0.263758, 0.964128, -0.939693, -0.321394, -0.116978, 0.340719, -0.909471, -0.238271, -0.3, -0.275, -0.15)
 mesh = SubResource("ArrayMesh_bx6wr")
 skeleton = NodePath("")
+
+[node name="Hitbox" type="Area3D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("SphereShape3D_b3bqx")

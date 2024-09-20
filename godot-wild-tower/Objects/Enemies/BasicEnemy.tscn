@@ -488,8 +488,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_u4vol")
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_un8ii"]
-height = 0.8
+[sub_resource type="SphereShape3D" id="SphereShape3D_j1fdx"]
 
 [node name="BasicEnemy" type="CharacterBody3D"]
 collision_layer = 2
@@ -588,4 +587,4 @@ collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
-shape = SubResource("CylinderShape3D_un8ii")
+shape = SubResource("SphereShape3D_j1fdx")
