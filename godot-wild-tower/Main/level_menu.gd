@@ -5,6 +5,8 @@ func _ready():
 	#get levels from missionControl add to menu
 	#when you click, start that level
 	var popup = get_popup()
+	popup.allow_search = false
+	popup.clear()
 	for mission in MissionControl.missions:
 		var scene_name: String = get_scene_name(mission)
 		popup.add_item(scene_name)
