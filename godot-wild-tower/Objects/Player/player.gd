@@ -428,6 +428,7 @@ func temporal_shift():
 	#time_tween.tween_property(Engine, "time_scale", 1.0, 1.0).set_ease(Tween.EASE_IN)
 	
 	time_tween.parallel().tween_property(self, "gravity_mult", 1.0, slow_time_duration).set_ease(Tween.EASE_IN)
+	time_tween.tween_callback(slomo_end)
 
 
 func set_time_scale(time_scale: float):
@@ -443,6 +444,10 @@ func slow_time(time_scale: float):
 
 func readjust_tween_time_scale(time_scale: float):
 	time_tween.set_speed_scale(1.0 / time_scale)
+
+
+func slomo_end():
+	GameEvents.emit_slomo_end()
 
 
 func kill_time_tween():
