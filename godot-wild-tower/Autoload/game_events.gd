@@ -20,6 +20,7 @@ signal slomo_start
 signal slomo_end
 
 signal projectile_impact(global_pos: Vector3)
+signal crystal_impact(global_pos: Vector3)
 
 #TODO this might not be the best place for this
 #update when we have some way of changing levels
@@ -102,3 +103,7 @@ func emit_slomo_start():
 
 func emit_slomo_end():
 	slomo_end.emit()
+
+
+func emit_crystal_impact(global_pos: Vector3):
+	crystal_impact.emit(global_pos)
