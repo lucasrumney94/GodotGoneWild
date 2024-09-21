@@ -7,32 +7,34 @@ extends Node
 
 @export_group("SFX Settings")
 @export var level_started_sound: AudioStream
-@export_range(-12, 12) var level_started_gain: float;
+@export_range(-12, 12) var level_started_gain: float
 
 @export var level_finish_sound: AudioStream
-@export_range(-12, 12) var level_finished_gain: float;
+@export_range(-12, 12) var level_finished_gain: float
 
 @export var player_jump_sound: AudioStream
-@export_range(-12, 12) var player_jump_gain: float;
+@export_range(-12, 12) var player_jump_gain: float
 
 @export var player_hit_floor_sound: AudioStream
-@export_range(-12,12) var player_hit_floor_gain: float;
+@export_range(-12,12) var player_hit_floor_gain: float
 
 @export var player_dash_sound: AudioStream
-@export_range(-12, 12) var player_dash_sound_gain: float;
+@export_range(-12, 12) var player_dash_sound_gain: float
 
 @export var player_enemy_dash_sound: AudioStream
-@export_range(-12, 12) var player_enemy_dash_sound_gain: float;
+@export_range(-12, 12) var player_enemy_dash_sound_gain: float
 
 @export var restarting_sound: AudioStream
-@export_range(-12, 12) var restarting_sound_gain: float;
+@export_range(-12, 12) var restarting_sound_gain: float
 
 @export var long_fall_sound: AudioStream
-@export_range(-12, 12) var long_fall_sound_gain: float;
+@export_range(-12, 12) var long_fall_sound_gain: float
 
 @export var projectile_impact_sound: AudioStream
-@export_range(-12, 12) var projectile_impact_sound_gain: float;
+@export_range(-12, 12) var projectile_impact_sound_gain: float
 
+@export var crystal_impact_sound: AudioStream
+@export_range(-12, 12) var crystal_impact_sound_gain: float
 
 @export var low_pass_normal_cutoff:float = 8000
 ##@export var low_pass_slomo_cutoff:float = 80
@@ -72,6 +74,7 @@ func init() -> void:
 	GameEvents.restarting.connect(play_restarting)
 	GameEvents.long_fall_started.connect(play_long_fall)
 	GameEvents.projectile_impact.connect(play_projectile_impact)
+	GameEvents.crystal_impact.connect(play_crystal_impact)
 	
 	sfx_index = AudioServer.get_bus_index("effects")
 	print("sfx index is ", sfx_index)
@@ -117,6 +120,10 @@ func play_player_hit_floor(world_position: Vector3):
 func play_player_dash():
 	play_2D_sound(player_dash_sound)
 
+func play_crystal_impact(world_position: Vector3):
+	print("Playing Crystal Impact")
+	play_3D_sound(world_position, crystal_impact_sound, crystal_impact_sound_gain)
+
 func play_player_enemy_dash():
 	# change lowpass on slow time	
 	print("enemy dash time scale SLOW", Time.get_ticks_msec())
@@ -129,7 +136,6 @@ func play_player_enemy_dash():
 	#await get_tree().create_timer(slomo_effect_length).timeout
 	#reset_pitch_and_cutoff()
 	
-
 # func reset_pitch_and_cutoff():
 # 	sfx_lowpass.cutoff_hz = low_pass_normal_cutoff
 # 	sfx_pitchshift.pitch_scale = pitch_shift_normal_pitch_scale

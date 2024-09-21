@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cjlspnq6r61nc"]
+[gd_scene load_steps=13 format=3 uid="uid://cjlspnq6r61nc"]
 
 [ext_resource type="Script" path="res://Autoload/audio_control.gd" id="1_1dob2"]
 [ext_resource type="AudioStream" uid="uid://cjcjooyaeu3jq" path="res://Audio/GodotWildJamSFX_LEVELSTART.wav" id="2_7murf"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://x7xwd4g7a6uu" path="res://Audio/GodotWildJamSFX_restart.wav" id="6_ptvqt"]
 [ext_resource type="AudioStream" uid="uid://b6dq3lmhb6x3r" path="res://Audio/GodotWildJamSFX_LONGFALL.wav" id="7_k7kpr"]
 [ext_resource type="AudioStream" uid="uid://o8k4sknm3nvx" path="res://Audio/ProjectileFizzle.wav" id="10_o1oed"]
+[ext_resource type="AudioStream" uid="uid://djm8upyft7tc7" path="res://Audio/CrystalImpact.wav" id="11_qu2b4"]
 
 [node name="AudioControl" type="Node" node_paths=PackedStringArray("music_player")]
 process_mode = 3
@@ -33,7 +34,9 @@ restarting_sound_gain = -3.18
 long_fall_sound = ExtResource("7_k7kpr")
 long_fall_sound_gain = -3.78
 projectile_impact_sound = ExtResource("10_o1oed")
-projectile_impact_sound_gain = -2.217
+projectile_impact_sound_gain = -12.0
+crystal_impact_sound = ExtResource("11_qu2b4")
+crystal_impact_sound_gain = -4.953
 low_pass_cutoff_lower_bound = 140.0
 pitch_shift_cutoff_lower_bound = 0.8
 
