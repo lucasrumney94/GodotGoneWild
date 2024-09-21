@@ -43,36 +43,6 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 28.7709)
 visible = false
 mesh = ExtResource("7_506fq")
 
-[node name="1stEnemies" type="Node3D" parent="."]
-
-[node name="BasicEnemy" parent="1stEnemies" instance=ExtResource("9_ixssy")]
-
-[node name="BasicEnemy2" parent="1stEnemies" instance=ExtResource("9_ixssy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -17)
-
-[node name="BasicEnemy3" parent="1stEnemies" instance=ExtResource("9_ixssy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 8, 2.5)
-
-[node name="BasicEnemy4" parent="1stEnemies" instance=ExtResource("9_ixssy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 2)
-
-[node name="MobileEnemy" parent="1stEnemies" node_paths=PackedStringArray("path_points") instance=ExtResource("9_tiv3e")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 12, 15)
-path_points = [NodePath("../../MobilePath1/Point1"), NodePath("../../MobilePath1/Point2"), NodePath("../../MobilePath1/Point3")]
-loop_path = true
-
-[node name="MobilePath1" type="Node3D" parent="."]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 12, 15)
-
-[node name="Point1" type="Node3D" parent="MobilePath1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 3)
-
-[node name="Point2" type="Node3D" parent="MobilePath1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)
-
-[node name="Point3" type="Node3D" parent="MobilePath1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 3)
-
 [node name="Floor" type="CSGBox3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.5, 0)
 material_override = ExtResource("5_vivna")
@@ -80,253 +50,449 @@ use_collision = true
 size = Vector3(50, 0.5, 50)
 material = ExtResource("6_t6ra6")
 
-[node name="Stairs" type="CSGCombiner3D" parent="."]
+[node name="First Floor" type="Node3D" parent="."]
+
+[node name="1stEnemies" type="Node3D" parent="First Floor"]
+
+[node name="BasicEnemy" parent="First Floor/1stEnemies" instance=ExtResource("9_ixssy")]
+
+[node name="BasicEnemy2" parent="First Floor/1stEnemies" instance=ExtResource("9_ixssy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -17)
+
+[node name="BasicEnemy3" parent="First Floor/1stEnemies" instance=ExtResource("9_ixssy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 8, 2.5)
+
+[node name="BasicEnemy4" parent="First Floor/1stEnemies" instance=ExtResource("9_ixssy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 2)
+
+[node name="MobileEnemy" parent="First Floor/1stEnemies" node_paths=PackedStringArray("path_points") instance=ExtResource("9_tiv3e")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 12, 16.8672)
+path_points = [NodePath("../MobilePath1/Point1"), NodePath("../MobilePath1/Point2"), NodePath("../MobilePath1/Point3")]
+loop_path = true
+add_start_pos_to_path = true
+
+[node name="MobilePath1" type="Node3D" parent="First Floor/1stEnemies"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 12, 16.8275)
+
+[node name="Point1" type="Node3D" parent="First Floor/1stEnemies/MobilePath1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 3)
+
+[node name="Point2" type="Node3D" parent="First Floor/1stEnemies/MobilePath1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)
+
+[node name="Point3" type="Node3D" parent="First Floor/1stEnemies/MobilePath1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 3)
+
+[node name="Stairs" type="CSGCombiner3D" parent="First Floor"]
 use_collision = true
 
-[node name="Mesh" type="CSGCylinder3D" parent="Stairs"]
+[node name="Mesh" type="CSGCylinder3D" parent="First Floor/Stairs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.5, 0)
-radius = 25.0
+radius = 26.0
 height = 11.0
 sides = 28
 
-[node name="CentralCut" type="CSGCylinder3D" parent="Stairs"]
+[node name="CentralCut" type="CSGCylinder3D" parent="First Floor/Stairs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.5, 0)
 operation = 2
 radius = 22.0
 height = 11.0
 sides = 28
 
-[node name="RampCut" type="CSGBox3D" parent="Stairs"]
-transform = Transform3D(1, 0, 0, 0, 0.976296, 0.21644, 0, -0.21644, 0.976296, 0, 11.4269, -1.35736)
+[node name="RampCut" type="CSGBox3D" parent="First Floor/Stairs"]
+transform = Transform3D(1, 0, 0, 0, 0.976296, 0.21644, 0, -0.21644, 0.976296, 0, 12, 0)
 operation = 2
 size = Vector3(60, 10, 60)
 
-[node name="EntryCut" type="CSGBox3D" parent="Stairs"]
+[node name="EntryCut" type="CSGBox3D" parent="First Floor/Stairs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 22.1657)
 operation = 2
 size = Vector3(10, 11, 8)
 
-[node name="Jump1" type="CSGBox3D" parent="Stairs"]
-transform = Transform3D(0.887011, 0, -0.461749, 0, 1, 0, 0.461749, 0, 0.887011, -20, 2.5, -12)
+[node name="Jump1" type="CSGBox3D" parent="First Floor/Stairs"]
+transform = Transform3D(0.887011, 0, -0.461749, 0, 1, 0, 0.461749, 0, 0.887011, -20.1382, 2.5, -12)
 operation = 2
-size = Vector3(5, 8, 4)
+size = Vector3(6, 8, 4)
 
-[node name="Jump2" type="CSGBox3D" parent="Stairs"]
+[node name="Jump2" type="CSGBox3D" parent="First Floor/Stairs"]
 transform = Transform3D(0.887011, 0, 0.461749, 0, 1, 0, -0.461749, 0, 0.887011, -20, 5, 12)
 operation = 2
-size = Vector3(6, 10, 6)
+size = Vector3(6, 11, 6)
 
-[node name="JumpDash" type="CSGBox3D" parent="Stairs"]
+[node name="JumpDash" type="CSGBox3D" parent="First Floor/Stairs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.5, 5, -3)
 operation = 2
-size = Vector3(8, 10, 16)
+size = Vector3(9, 10, 16)
 
-[node name="SideArchCut" type="CSGCylinder3D" parent="Stairs"]
+[node name="SideArchCut" type="CSGCylinder3D" parent="First Floor/Stairs"]
 transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -23.5, 3, 0)
 operation = 2
 radius = 1.5
 height = 4.0
 sides = 12
 
-[node name="SideBoxCut" type="CSGBox3D" parent="Stairs"]
+[node name="SideBoxCut" type="CSGBox3D" parent="First Floor/Stairs"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -23.5, 1, 0)
 operation = 2
 size = Vector3(3, 4, 4)
 
-[node name="Landing" type="CSGCombiner3D" parent="."]
+[node name="Landing" type="CSGCombiner3D" parent="First Floor"]
 use_collision = true
 
-[node name="CentralLanding" type="CSGPolygon3D" parent="Landing"]
+[node name="CentralLanding" type="CSGPolygon3D" parent="First Floor/Landing"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4, 0, -23)
 polygon = PackedVector2Array(0, 0, 0, 2, 10, 2, 15, 0)
 depth = 8.0
 
-[node name="StairLanding" type="CSGCylinder3D" parent="Landing"]
+[node name="StairLanding" type="CSGCylinder3D" parent="First Floor/Landing"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-radius = 25.0
+radius = 26.0
 sides = 28
 
-[node name="CylinderCut" type="CSGCylinder3D" parent="Landing/StairLanding"]
+[node name="CylinderCut" type="CSGCylinder3D" parent="First Floor/Landing/StairLanding"]
 operation = 2
 radius = 22.0
 sides = 28
 
-[node name="LandingStop" type="CSGBox3D" parent="Landing/StairLanding"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+[node name="LandingStop" type="CSGBox3D" parent="First Floor/Landing/StairLanding"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
 operation = 2
-size = Vector3(50, 2, 40)
+size = Vector3(55, 3, 55)
 
-[node name="Archway" type="CSGCombiner3D" parent="."]
+[node name="Archway" type="CSGCombiner3D" parent="First Floor"]
 use_collision = true
 
-[node name="Mesh" type="CSGBox3D" parent="Archway"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 22.5)
-size = Vector3(10, 10, 4)
+[node name="Mesh" type="CSGBox3D" parent="First Floor/Archway"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 23)
+size = Vector3(10, 10, 5)
 
-[node name="ArchCut" type="CSGCylinder3D" parent="Archway/Mesh"]
+[node name="ArchCut" type="CSGCylinder3D" parent="First Floor/Archway/Mesh"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 operation = 2
 radius = 3.5
-height = 5.0
+height = 5.5
 sides = 12
 
-[node name="BoxCut" type="CSGBox3D" parent="Archway/Mesh"]
+[node name="BoxCut" type="CSGBox3D" parent="First Floor/Archway/Mesh"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5, 0)
 operation = 2
-size = Vector3(7, 5, 5)
+size = Vector3(7, 5, 5.5)
 
-[node name="2ndFloorRetainer" type="CSGCombiner3D" parent="."]
+[node name="Columns" type="Node3D" parent="First Floor"]
+
+[node name="Column1" parent="First Floor/Columns" instance=ExtResource("8_j6044")]
+transform = Transform3D(1.87939, 0, -0.68404, 0, 2, 0, 0.68404, 0, 1.87939, 5.5, 0, -19.5)
+
+[node name="Column2" parent="First Floor/Columns" instance=ExtResource("8_j6044")]
+transform = Transform3D(1.41421, 0, -1.41421, 0, 2, 0, 1.41421, 0, 1.41421, 14.5, 0, -14.5)
+
+[node name="Column3" parent="First Floor/Columns" instance=ExtResource("8_j6044")]
+transform = Transform3D(1.87939, 0, 0.68404, 0, 2, 0, -0.68404, 0, 1.87939, 19.5, 0, -5.5)
+
+[node name="Column4" parent="First Floor/Columns" instance=ExtResource("8_j6044")]
+transform = Transform3D(0.670904, 0.229616, 1.87008, 0, 1.98509, -0.243739, -1.88412, 0.0817625, 0.665904, 19.5, 0, 5.5)
+
+[node name="Column5" parent="First Floor/Columns" instance=ExtResource("8_j6044")]
+transform = Transform3D(1.41421, 0, -1.41421, 0, 2, 0, 1.41421, 0, 1.41421, 14.5, 0, 14.5)
+
+[node name="Column6" parent="First Floor/Columns" instance=ExtResource("8_j6044")]
+transform = Transform3D(1.87939, 0, 0.68404, 0, 2, 0, -0.68404, 0, 1.87939, 5.5, 0, 19.5)
+
+[node name="Column7" parent="First Floor/Columns" instance=ExtResource("8_j6044")]
+transform = Transform3D(1.87939, 0, -0.68404, 0, 2, 0, 0.68404, 0, 1.87939, -5.5, 0, 19.5)
+
+[node name="Column8" parent="First Floor/Columns" instance=ExtResource("8_j6044")]
+transform = Transform3D(1.41421, 0, 1.41421, 0, 2, 0, -1.41421, 0, 1.41421, -14.5, 0, 14.5)
+
+[node name="Column9" parent="First Floor/Columns" instance=ExtResource("8_j6044")]
+transform = Transform3D(1.87939, 0, 0.68404, 0, 2, 0, -0.68404, 0, 1.87939, -19.5, 0, 5.5)
+
+[node name="Column10" parent="First Floor/Columns" instance=ExtResource("8_j6044")]
+transform = Transform3D(1.87939, 0, -0.68404, 0, 2, 0, 0.68404, 0, 1.87939, -19.5, 0, -5.5)
+
+[node name="Column11" parent="First Floor/Columns" instance=ExtResource("8_j6044")]
+transform = Transform3D(1.41421, 0, -1.41421, 0, 2, 0, 1.41421, 0, 1.41421, -14.5, 0, -14.5)
+
+[node name="Column12" parent="First Floor/Columns" instance=ExtResource("8_j6044")]
+transform = Transform3D(1.87939, 0, 0.68404, 0, 2, 0, -0.68404, 0, 1.87939, -5.5, 0, -19.5)
+
+[node name="Second Floor" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.5, 0)
+
+[node name="2ndFloorInner" type="CSGCombiner3D" parent="Second Floor"]
 use_collision = true
 
-[node name="Mesh" type="CSGCylinder3D" parent="2ndFloorRetainer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.5, 0)
+[node name="Mesh" type="CSGCylinder3D" parent="Second Floor/2ndFloorInner"]
 radius = 22.0
-height = 3.0
+height = 1.0
 sides = 28
 
-[node name="CentralCut" type="CSGCylinder3D" parent="2ndFloorRetainer/Mesh"]
+[node name="CentralCut" type="CSGCylinder3D" parent="Second Floor/2ndFloorInner/Mesh"]
 operation = 2
-radius = 19.0
-height = 3.5
+radius = 14.0
+height = 1.0
 sides = 28
 
-[node name="LandingCut" type="CSGBox3D" parent="2ndFloorRetainer/Mesh"]
+[node name="LandingCut" type="CSGBox3D" parent="Second Floor/2ndFloorInner/Mesh"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
 operation = 2
 size = Vector3(7, 3.5, 5)
 
-[node name="2ndFloor" type="CSGCombiner3D" parent="."]
+[node name="Hole1" type="CSGBox3D" parent="Second Floor/2ndFloorInner"]
+transform = Transform3D(0.980057, -0.000275058, 0.198714, 0.00139692, 0.999984, -0.00550546, -0.19871, 0.00567325, 0.980042, 15.8207, 0.000922203, 9.1864)
+operation = 2
+size = Vector3(3.65009, 1.1, 4.25232)
+
+[node name="Hole2" type="CSGBox3D" parent="Second Floor/2ndFloorInner"]
+transform = Transform3D(0.881608, 0, 0.471982, 0, 1, 0, -0.471982, 0, 0.881608, 18.6329, -9.53674e-07, 6.21601)
+operation = 2
+size = Vector3(6.7695, 1.1, 4.53409)
+
+[node name="Hole3" type="CSGBox3D" parent="Second Floor/2ndFloorInner"]
+transform = Transform3D(0.988964, 0, -0.148155, 0, 1, 0, 0.148155, 0, 0.988964, 14.5438, -9.53674e-07, 5.9146)
+operation = 2
+size = Vector3(6.65771, 1.1, 5.55261)
+
+[node name="Hole4" type="CSGBox3D" parent="Second Floor/2ndFloorInner"]
+transform = Transform3D(0.88428, 0, -0.466958, 0, 1, 0, 0.466958, 0, 0.88428, -11.1517, 0, -8.9052)
+operation = 2
+size = Vector3(4.15781, 1.1, 6.22263)
+
+[node name="Hole5" type="CSGBox3D" parent="Second Floor/2ndFloorInner"]
+transform = Transform3D(0.959972, 0, 0.280097, 0, 1, 0, -0.280097, 0, 0.959972, -12.6445, 0, -10.9066)
+operation = 2
+size = Vector3(3.19165, 1.1, 5.5343)
+
+[node name="Hole6" type="CSGBox3D" parent="Second Floor/2ndFloorInner"]
+transform = Transform3D(0.948495, 0, -0.316792, 0, 1, 0, 0.316792, 0, 0.948495, -15.0495, 0, -11.3817)
+operation = 2
+size = Vector3(4, 1.1, 2.27832)
+
+[node name="2ndFloorOuter" type="CSGCombiner3D" parent="Second Floor"]
 use_collision = true
 
-[node name="MainMesh" type="CSGCylinder3D" parent="2ndFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.5, 0)
-radius = 40.0
+[node name="MainMesh" type="CSGCylinder3D" parent="Second Floor/2ndFloorOuter"]
+radius = 31.0
 height = 1.0
 sides = 28
 
-[node name="CentralCut" type="CSGCylinder3D" parent="2ndFloor/MainMesh"]
+[node name="CentralCut" type="CSGCylinder3D" parent="Second Floor/2ndFloorOuter/MainMesh"]
 operation = 2
-radius = 25.0
+radius = 26.0
+height = 1.1
+sides = 28
+
+[node name="SubMesh" type="CSGCylinder3D" parent="Second Floor/2ndFloorOuter"]
+radius = 26.0
 height = 1.0
 sides = 28
 
-[node name="SubMesh" type="CSGCylinder3D" parent="2ndFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.5, 0)
-radius = 25.0
-height = 1.0
-sides = 28
-
-[node name="CentralCut" type="CSGCylinder3D" parent="2ndFloor/SubMesh"]
+[node name="CentralCut" type="CSGCylinder3D" parent="Second Floor/2ndFloorOuter/SubMesh"]
 operation = 2
 radius = 22.0
-height = 1.0
+height = 1.1
 sides = 28
 
-[node name="StairCut" type="CSGBox3D" parent="2ndFloor/SubMesh"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12.5)
+[node name="StairCut" type="CSGBox3D" parent="Second Floor/2ndFloorOuter/SubMesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14)
 operation = 2
-size = Vector3(50, 1, 25)
+size = Vector3(55, 1.1, 25)
 
-[node name="2ndLanding" type="CSGCylinder3D" parent="2ndFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.5, 21)
+[node name="2ndLanding" type="CSGCylinder3D" parent="Second Floor/2ndFloorOuter"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 21)
 radius = 7.0
 height = 1.0
 sides = 14
 
-[node name="Columns" type="Node3D" parent="."]
+[node name="2ndColumns" type="Node3D" parent="Second Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
-[node name="Column1" parent="Columns" instance=ExtResource("8_j6044")]
+[node name="Column1" parent="Second Floor/2ndColumns" instance=ExtResource("8_j6044")]
 transform = Transform3D(1.87939, 0, -0.68404, 0, 2, 0, 0.68404, 0, 1.87939, 5.5, 0, -19.5)
 
-[node name="Column2" parent="Columns" instance=ExtResource("8_j6044")]
+[node name="Column2" parent="Second Floor/2ndColumns" instance=ExtResource("8_j6044")]
 transform = Transform3D(1.41421, 0, -1.41421, 0, 2, 0, 1.41421, 0, 1.41421, 14.5, 0, -14.5)
 
-[node name="Column3" parent="Columns" instance=ExtResource("8_j6044")]
+[node name="Column3" parent="Second Floor/2ndColumns" instance=ExtResource("8_j6044")]
 transform = Transform3D(1.87939, 0, 0.68404, 0, 2, 0, -0.68404, 0, 1.87939, 19.5, 0, -5.5)
 
-[node name="Column4" parent="Columns" instance=ExtResource("8_j6044")]
-transform = Transform3D(1.87939, 0, -0.68404, 0, 2, 0, 0.68404, 0, 1.87939, 19.5, 0, 5.5)
+[node name="Column4" parent="Second Floor/2ndColumns" instance=ExtResource("8_j6044")]
+transform = Transform3D(0.785639, -1.83923, 8.03955e-08, -9.34881e-17, -8.74228e-08, -2, 1.83924, 0.785637, -3.43414e-08, 16.6149, -10.697, 5.17907)
 
-[node name="Column5" parent="Columns" instance=ExtResource("8_j6044")]
+[node name="Column5" parent="Second Floor/2ndColumns" instance=ExtResource("8_j6044")]
 transform = Transform3D(1.41421, 0, -1.41421, 0, 2, 0, 1.41421, 0, 1.41421, 14.5, 0, 14.5)
 
-[node name="Column6" parent="Columns" instance=ExtResource("8_j6044")]
+[node name="Column6" parent="Second Floor/2ndColumns" instance=ExtResource("8_j6044")]
 transform = Transform3D(1.87939, 0, 0.68404, 0, 2, 0, -0.68404, 0, 1.87939, 5.5, 0, 19.5)
 
-[node name="Column7" parent="Columns" instance=ExtResource("8_j6044")]
+[node name="Column7" parent="Second Floor/2ndColumns" instance=ExtResource("8_j6044")]
 transform = Transform3D(1.87939, 0, -0.68404, 0, 2, 0, 0.68404, 0, 1.87939, -5.5, 0, 19.5)
 
-[node name="Column8" parent="Columns" instance=ExtResource("8_j6044")]
+[node name="Column8" parent="Second Floor/2ndColumns" instance=ExtResource("8_j6044")]
 transform = Transform3D(1.41421, 0, 1.41421, 0, 2, 0, -1.41421, 0, 1.41421, -14.5, 0, 14.5)
 
-[node name="Column9" parent="Columns" instance=ExtResource("8_j6044")]
+[node name="Column9" parent="Second Floor/2ndColumns" instance=ExtResource("8_j6044")]
 transform = Transform3D(1.87939, 0, 0.68404, 0, 2, 0, -0.68404, 0, 1.87939, -19.5, 0, 5.5)
 
-[node name="Column10" parent="Columns" instance=ExtResource("8_j6044")]
-transform = Transform3D(1.87939, 0, -0.68404, 0, 2, 0, 0.68404, 0, 1.87939, -19.5, 0, -5.5)
+[node name="Column10" parent="Second Floor/2ndColumns" instance=ExtResource("8_j6044")]
+transform = Transform3D(1.87939, -0.118782, -0.67365, 0, 1.96962, -0.347297, 0.684042, 0.326352, 1.85084, -19.5, 0, -5.5)
 
-[node name="Column11" parent="Columns" instance=ExtResource("8_j6044")]
-transform = Transform3D(1.41421, 0, -1.41421, 0, 2, 0, 1.41421, 0, 1.41421, -14.5, 0, -14.5)
+[node name="Column11" parent="Second Floor/2ndColumns" instance=ExtResource("8_j6044")]
+transform = Transform3D(1.56734, -0.321544, 1.20002, 0, 1.93185, 0.517637, -1.24235, -0.405658, 1.51393, -14.5, 0, -14.5)
 
-[node name="Column12" parent="Columns" instance=ExtResource("8_j6044")]
+[node name="Column12" parent="Second Floor/2ndColumns" instance=ExtResource("8_j6044")]
 transform = Transform3D(1.87939, 0, 0.68404, 0, 2, 0, -0.68404, 0, 1.87939, -5.5, 0, -19.5)
 
-[node name="2ndColumns" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13, 0)
+[node name="Bookcases" type="Node3D" parent="Second Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
-[node name="Column1" parent="2ndColumns" instance=ExtResource("8_j6044")]
-transform = Transform3D(1.87939, 0, -0.68404, 0, 2, 0, 0.68404, 0, 1.87939, 5.5, 0, -19.5)
+[node name="Bookcase1" parent="Second Floor/Bookcases" instance=ExtResource("11_fqk5l")]
+transform = Transform3D(0.979764, 0, -0.200154, 0, 1, 0, 0.200154, 0, 0.979764, -23.4652, 0, -0.0909581)
 
-[node name="Column2" parent="2ndColumns" instance=ExtResource("8_j6044")]
-transform = Transform3D(1.41421, 0, -1.41421, 0, 2, 0, 1.41421, 0, 1.41421, 14.5, 0, -14.5)
+[node name="Bookcase2" parent="Second Floor/Bookcases" instance=ExtResource("11_fqk5l")]
+transform = Transform3D(0.581001, -0.210653, -0.786169, 0, 0.965926, -0.258819, 0.813902, 0.150374, 0.561204, -19.3612, 0, -0.283874)
 
-[node name="Column3" parent="2ndColumns" instance=ExtResource("8_j6044")]
-transform = Transform3D(1.87939, 0, 0.68404, 0, 2, 0, -0.68404, 0, 1.87939, 19.5, 0, -5.5)
+[node name="Bookcase3" parent="Second Floor/Bookcases" instance=ExtResource("11_fqk5l")]
+transform = Transform3D(0.797584, -0.156122, 0.582654, 0, 0.965926, 0.258819, -0.603208, -0.20643, 0.770407, -15.9319, 0, 1.79385)
 
-[node name="Column4" parent="2ndColumns" instance=ExtResource("8_j6044")]
-transform = Transform3D(1.87939, 0, -0.68404, 0, 2, 0, 0.68404, 0, 1.87939, 19.5, 0, 5.5)
+[node name="Bookcase4" parent="Second Floor/Bookcases" instance=ExtResource("11_fqk5l")]
+transform = Transform3D(-0.695913, -0.621916, 0.359063, 0, 0.5, 0.866025, -0.718126, 0.602678, -0.347956, -16.0244, 0.433733, -9.26876)
 
-[node name="Column5" parent="2ndColumns" instance=ExtResource("8_j6044")]
-transform = Transform3D(1.41421, 0, -1.41421, 0, 2, 0, 1.41421, 0, 1.41421, 14.5, 0, 14.5)
+[node name="Bookcase5" parent="Second Floor/Bookcases" instance=ExtResource("11_fqk5l")]
+transform = Transform3D(-2.45146e-09, -0.0560828, 0.998426, 1, -4.37114e-08, 4.79101e-15, 4.36426e-08, 0.998426, 0.0560828, -13.7486, 2.06706, -6.14911)
 
-[node name="Column6" parent="2ndColumns" instance=ExtResource("8_j6044")]
-transform = Transform3D(1.87939, 0, 0.68404, 0, 2, 0, -0.68404, 0, 1.87939, 5.5, 0, 19.5)
+[node name="Bookcase6" parent="Second Floor/Bookcases" instance=ExtResource("11_fqk5l")]
+transform = Transform3D(0.293857, -0.165982, 0.941328, 5.93421e-09, 0.984808, 0.173648, -0.955849, -0.0510277, 0.289392, -22.5452, 0, -8.84852)
 
-[node name="Column7" parent="2ndColumns" instance=ExtResource("8_j6044")]
-transform = Transform3D(1.87939, 0, -0.68404, 0, 2, 0, 0.68404, 0, 1.87939, -5.5, 0, 19.5)
+[node name="Bookcase7" parent="Second Floor/Bookcases" instance=ExtResource("11_fqk5l")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -12.1099, 0, -20.4611)
 
-[node name="Column8" parent="2ndColumns" instance=ExtResource("8_j6044")]
-transform = Transform3D(1.41421, 0, 1.41421, 0, 2, 0, -1.41421, 0, 1.41421, -14.5, 0, 14.5)
+[node name="Bookcase8" parent="Second Floor/Bookcases" instance=ExtResource("11_fqk5l")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -10.0384, 0, -16.8569)
 
-[node name="Column9" parent="2ndColumns" instance=ExtResource("8_j6044")]
-transform = Transform3D(1.87939, 0, 0.68404, 0, 2, 0, -0.68404, 0, 1.87939, -19.5, 0, 5.5)
+[node name="Bookcase9" parent="Second Floor/Bookcases" instance=ExtResource("11_fqk5l")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0304341, 0, -20.3741)
 
-[node name="Column10" parent="2ndColumns" instance=ExtResource("8_j6044")]
-transform = Transform3D(1.87939, 0, -0.68404, 0, 2, 0, 0.68404, 0, 1.87939, -19.5, 0, -5.5)
+[node name="Bookcase10" parent="Second Floor/Bookcases" instance=ExtResource("11_fqk5l")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0732146, 0, -16.2173)
 
-[node name="Column11" parent="2ndColumns" instance=ExtResource("8_j6044")]
-transform = Transform3D(1.41421, 0, -1.41421, 0, 2, 0, 1.41421, 0, 1.41421, -14.5, 0, -14.5)
+[node name="Bookcase11" parent="Second Floor/Bookcases" instance=ExtResource("11_fqk5l")]
+transform = Transform3D(-0.552243, 0, -0.833683, 0, 1, 0, 0.833683, 0, -0.552243, 12.529, -9.53674e-07, -19.698)
 
-[node name="Column12" parent="2ndColumns" instance=ExtResource("8_j6044")]
-transform = Transform3D(1.87939, 0, 0.68404, 0, 2, 0, -0.68404, 0, 1.87939, -5.5, 0, -19.5)
+[node name="Bookcase12" parent="Second Floor/Bookcases" instance=ExtResource("11_fqk5l")]
+transform = Transform3D(-0.552243, 0, -0.833683, 0, 1, 0, 0.833683, 0, -0.552243, 10.1978, -9.53674e-07, -16.2562)
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+[node name="2ndEnemies" type="Node3D" parent="Second Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 16, -0.44494)
-size = Vector3(20, 10, 1)
+[node name="MobileEnemy" parent="Second Floor/2ndEnemies" node_paths=PackedStringArray("path_points") instance=ExtResource("9_tiv3e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.2376, 0, 0.430007)
+path_points = [NodePath("../1stPath1")]
+add_start_pos_to_path = true
 
-[node name="Bookcases" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11, 0)
+[node name="1stPath1" type="Node3D" parent="Second Floor/2ndEnemies"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8226, 0, 12.9319)
 
-[node name="Bookcase" parent="Bookcases" instance=ExtResource("11_fqk5l")]
-transform = Transform3D(0.793353, 0, -0.608761, 0, 1, 0, 0.608761, 0, 0.793353, 22.9761, 0, 16.9111)
+[node name="MobileEnemy2" parent="Second Floor/2ndEnemies" node_paths=PackedStringArray("path_points") instance=ExtResource("9_tiv3e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.79593, 0, -22.7109)
+path_points = [NodePath("../2ndPath1"), NodePath("../2ndPath2"), NodePath("../2ndPath3")]
+loop_path = true
+add_start_pos_to_path = true
 
-[node name="Bookcase2" parent="Bookcases" instance=ExtResource("11_fqk5l")]
-transform = Transform3D(0.793353, 0, -0.608761, 0, 1, 0, 0.608761, 0, 0.793353, 26.3232, 0, 19.51)
+[node name="2ndPath1" type="Node3D" parent="Second Floor/2ndEnemies"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.11569, -9.53674e-07, -20.8947)
 
-[node name="2ndEnemies" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11, 0)
+[node name="2ndPath2" type="Node3D" parent="Second Floor/2ndEnemies"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6332, 0, -16.4279)
 
-[node name="MobileEnemy" parent="2ndEnemies" instance=ExtResource("9_tiv3e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.7575, 0, 14.29)
+[node name="2ndPath3" type="Node3D" parent="Second Floor/2ndEnemies"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.35731, -9.53674e-07, -17.9228)
+
+[node name="MobileEnemy3" parent="Second Floor/2ndEnemies" node_paths=PackedStringArray("path_points") instance=ExtResource("9_tiv3e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.97542, -9.53674e-07, -15.7115)
+path_points = [NodePath("../3ndPath1"), NodePath("../3ndPath2"), NodePath("../3ndPath3")]
+loop_path = true
+add_start_pos_to_path = true
+
+[node name="3ndPath1" type="Node3D" parent="Second Floor/2ndEnemies"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.54751, 0, -19.4229)
+
+[node name="3ndPath2" type="Node3D" parent="Second Floor/2ndEnemies"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.54362, 0, -23.3845)
+
+[node name="3ndPath3" type="Node3D" parent="Second Floor/2ndEnemies"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.85352, -9.53674e-07, -18.4684)
+
+[node name="2ndStairs" type="CSGCombiner3D" parent="Second Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+use_collision = true
+
+[node name="Mesh" type="CSGCylinder3D" parent="Second Floor/2ndStairs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.5, 0)
+radius = 30.0
+height = 11.0
+sides = 28
+
+[node name="CentralCut" type="CSGCylinder3D" parent="Second Floor/2ndStairs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.5, 0)
+operation = 2
+radius = 26.0
+height = 11.0
+sides = 28
+
+[node name="RampCut" type="CSGBox3D" parent="Second Floor/2ndStairs"]
+transform = Transform3D(1, 0, 0, 0, 0.976296, -0.21644, 0, 0.21644, 0.976296, -0.165245, 12.713, 0.493406)
+operation = 2
+size = Vector3(80, 15, 85)
+
+[node name="BreakLeft" type="CSGBox3D" parent="Second Floor/2ndStairs"]
+transform = Transform3D(0.813101, -0.101085, 0.573279, 0, 0.984808, 0.173648, -0.582123, -0.141193, 0.800748, -24, 3, 11)
+operation = 2
+size = Vector3(10, 11, 20)
+
+[node name="BreakRight" type="CSGBox3D" parent="Second Floor/2ndStairs"]
+transform = Transform3D(0.939693, -0.0885213, -0.330366, 0, 0.965926, -0.258819, 0.34202, 0.24321, 0.907673, 27, 5, 2.5)
+operation = 2
+size = Vector3(15, 15, 10)
+
+[node name="BreakRight2" type="CSGBox3D" parent="Second Floor/2ndStairs"]
+transform = Transform3D(0.965926, 0.0669873, -0.25, 0, 0.965926, 0.258819, 0.258819, -0.25, 0.933013, 26, 5, -4.5)
+operation = 2
+size = Vector3(15, 15, 10)
+
+[node name="OuterWall" type="CSGCombiner3D" parent="Second Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+use_collision = true
+
+[node name="Mesh" type="CSGCylinder3D" parent="Second Floor/OuterWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+radius = 31.0
+height = 10.0
+sides = 28
+
+[node name="CentralCut" type="CSGCylinder3D" parent="Second Floor/OuterWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.5, 0)
+operation = 2
+radius = 30.0
+height = 11.0
+sides = 28
+
+[node name="LandingCut3" type="CSGBox3D" parent="Second Floor/OuterWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 21.898)
+visible = false
+operation = 2
+size = Vector3(60, 11, 40)
+
+[node name="LandingCut" type="CSGBox3D" parent="Second Floor/OuterWall"]
+transform = Transform3D(0.906308, 0, -0.422618, 0, 1, 0, 0.422618, 0, 0.906308, -9.36652, 5, 30.817)
+visible = false
+operation = 2
+size = Vector3(10, 11, 20)
+
+[node name="LandingCut2" type="CSGBox3D" parent="Second Floor/OuterWall"]
+transform = Transform3D(0.976296, 0, 0.21644, 0, 1, 0, -0.21644, 0, 0.976296, -0.297962, 5, 32.329)
+visible = false
+operation = 2
+size = Vector3(15, 11, 20)
+
+[node name="Third Floor" type="Node3D" parent="."]

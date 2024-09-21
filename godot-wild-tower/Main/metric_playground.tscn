@@ -73,7 +73,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -9)
 period = 5.0
 distance = 10.0
 direction = Vector3(0, 0, 10)
-turnSpeed = 0.2
 
 [node name="5m Marker L" type="MeshInstance3D" parent="Targeting Range"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.75, 5)

@@ -4,8 +4,10 @@
 height = 5.0
 radius = 0.4
 
-[sub_resource type="BoxMesh" id="BoxMesh_u3i8s"]
-size = Vector3(1, 0.25, 1)
+[sub_resource type="CylinderMesh" id="CylinderMesh_j5bhr"]
+height = 0.25
+radial_segments = 16
+rings = 1
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_jppbn"]
 top_radius = 0.4
@@ -31,7 +33,7 @@ shape = SubResource("CylinderShape3D_kbo6l")
 
 [node name="Top Base" type="MeshInstance3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.875, 0)
-mesh = SubResource("BoxMesh_u3i8s")
+mesh = SubResource("CylinderMesh_j5bhr")
 
 [node name="Top Pillar" type="MeshInstance3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.75, 0)
@@ -47,4 +49,4 @@ mesh = SubResource("CylinderMesh_jppbn")
 
 [node name="Bottom Base" type="MeshInstance3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0)
-mesh = SubResource("BoxMesh_u3i8s")
+mesh = SubResource("CylinderMesh_j5bhr")
