@@ -1,6 +1,9 @@
-[gd_scene format=3 uid="uid://dism4hjotn4pk"]
+[gd_scene load_steps=2 format=3 uid="uid://dism4hjotn4pk"]
 
-[node name="StatsScreen" type="CanvasLayer"]
+[ext_resource type="Script" path="res://UI/level_finish_screen.gd" id="1_lmytx"]
+
+[node name="LevelFinishScreen" type="CanvasLayer"]
+script = ExtResource("1_lmytx")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -47,17 +50,20 @@ alignment = 1
 
 [node name="Label" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Completion Time:"
 
 [node name="TimeLabel" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "00:00:00"
 
 [node name="BestTimeLabel" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "New Best!"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "New Best Time!"
 uppercase = true
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="ColorRect/VBoxContainer"]
@@ -66,16 +72,19 @@ alignment = 1
 
 [node name="Label" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Angels Killed"
 
 [node name="KillsLabel" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "0"
 
 [node name="BestKillsLabel" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "New Best!"
 uppercase = true
 
@@ -85,17 +94,20 @@ alignment = 1
 
 [node name="Label" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
-text = "Angels Killed"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Restarts"
 
 [node name="RestartsLabel" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer3"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "0"
 
 [node name="BestRestartsLabel" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer3"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "New Best!"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "New Fewest Restarts!"
 uppercase = true
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="ColorRect/VBoxContainer"]
@@ -104,17 +116,20 @@ alignment = 1
 
 [node name="Label" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer4"]
 layout_mode = 2
-text = "Angels Killed"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Deaths"
 
 [node name="DeathsLabel" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer4"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "0"
 
 [node name="BestDeathsLabel" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer4"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "New Best!"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "New Fewest Deaths!"
 uppercase = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]

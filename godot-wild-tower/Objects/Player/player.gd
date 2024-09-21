@@ -58,6 +58,7 @@ var fall_time: float = 0
 var long_fall: bool = false
 
 var alive: bool = true
+var level_finished: bool = false
 
 
 func _ready():
@@ -66,6 +67,8 @@ func _ready():
 	%RayCastEyes.target_position.z = -1 * enemy_dash_distance
 	
 	$Hitbox.area_entered.connect(on_hitbox_area_entered)
+	
+	GameEvents.level_finished.connect(on_level_finished)
 
 
 #func _input(event):
@@ -110,6 +113,7 @@ func _process(_delta):
 
 func _physics_process(delta):
 	if !alive: return
+	if level_finished: return
 	
 	var on_floor: bool = is_on_floor()
 	if !was_on_floor:
@@ -505,6 +509,7 @@ func effect_enemy_outline(setting: bool):
 func take_damage():
 	#if is_dashing: return
 	if !alive: return
+	if level_finished: return
 	
 	#slow time, show death screen
 	is_dashing = false
@@ -521,3 +526,15 @@ func on_hitbox_area_entered(area: Area3D):
 	take_damage()
 	if area is Projectile:
 		area.emit_projectile_impact()
+
+
+func on_level_finished():
+	level_finished = true
+	is_dashing = false
+	if time_tween != null:
+		time_tween.kill()
+	if dash_tween != null:
+		dash_tween.kill()
+	GameEvents.emit_slomo_start()
+	Engine.time_scale = 0.1
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE

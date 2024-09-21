@@ -6,6 +6,7 @@ signal level_finished
 signal restarting
 signal level_finished_time(seconds: float)
 signal partial_time(seconds: float)
+signal returning_to_menu()
 signal enemy_killed(enemy_type: Constants.EnemyType, global_pos: Vector3)
 
 signal player_hit_floor(global_pos: Vector3)
@@ -53,6 +54,10 @@ func emit_level_finished_time(seconds: float):
 func emit_partial_time(seconds: float):
 	partial_time.emit(seconds)
 	SaveControl.add_stat(MissionControl.current_level, "time", seconds)
+
+
+func emit_returning_to_menu():
+	returning_to_menu.emit()
 
 
 func emit_enemy_killed(enemy_type: Constants.EnemyType, global_pos: Vector3):

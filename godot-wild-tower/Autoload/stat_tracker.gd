@@ -31,6 +31,7 @@ func init():
 	GameEvents.restarting.connect(on_restart)
 	GameEvents.player_death.connect(on_death)
 	GameEvents.enemy_killed.connect(on_enemy_killed)
+	GameEvents.returning_to_menu.connect(on_returning_to_menu)
 
 
 func on_load_next_level():
@@ -40,6 +41,7 @@ func on_load_next_level():
 	kills = 0
 	restarts = 0
 	deaths = 0
+	level_finished = false
 
 
 func on_level_started():
@@ -48,6 +50,7 @@ func on_level_started():
 		current_level = MissionControl.current_level
 		restarts = 0
 		deaths = 0
+		level_finished = false
 
 
 func on_level_finished():
@@ -58,14 +61,20 @@ func on_level_finished():
 		var new_fewest_restarts = SaveControl.add_stat(current_level, "fewest_restarts", restarts)
 		var new_fewest_deaths = SaveControl.add_stat(current_level, "fewest_deaths", deaths)
 		
-		stats_screen = level_finish_stats_scene.instantiate()
-		add_child(stats_screen)
-		#TODO pass values to stats_screen
+		if stats_screen == null:
+			stats_screen = level_finish_stats_scene.instantiate()
+			add_child(stats_screen)
+		stats_screen.set_kills(kills, new_fewest_kills, new_most_kills)
+		stats_screen.set_restarts(restarts, new_fewest_restarts)
+		stats_screen.set_deaths(deaths, new_fewest_deaths)
 
 
 func on_level_finished_time(seconds: float):
 	var new_best_time = SaveControl.add_stat(MissionControl.current_level, "best_time", seconds)
-	#TODO pass value to stats_screen
+	if stats_screen == null:
+		stats_screen = level_finish_stats_scene.instantiate()
+		add_child(stats_screen)
+	stats_screen.set_completion_time(seconds, new_best_time)
 
 
 func on_restart():
@@ -84,5 +93,13 @@ func on_death():
 		deaths += 1
 
 
-func on_enemy_killed(enemy_type: Constants.EnemyType, global_pos: Vector3):
+func on_enemy_killed(_enemy_type: Constants.EnemyType, _global_pos: Vector3):
 	kills += 1
+
+
+func on_returning_to_menu():
+	current_level = -1
+	restarts = 0
+	deaths = 0
+	kills = 0
+	level_finished = false

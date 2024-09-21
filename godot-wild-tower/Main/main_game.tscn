@@ -105,6 +105,7 @@ material_override = ExtResource("1_ywoid")
 mesh = SubResource("BoxMesh_hlqw6")
 
 [node name="FinishArea" parent="Environment" instance=ExtResource("6_ga075")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.6042, 0.481171, -13.6373)
 
 [node name="Player" parent="." instance=ExtResource("1_27g07")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.39197, 0.749502, 4.78003)

@@ -33,7 +33,7 @@ func on_resume_pressed():
 
 
 func on_restart_pressed():
-	#TODO TWO WAYS TO GO ABOUT THIS
+	#TO/DO TWO WAYS TO GO ABOUT THIS
 	get_tree().paused = false
 	Engine.time_scale = 1.0
 	GameEvents.emit_restarting()
@@ -57,5 +57,6 @@ func on_quit_pressed():
 	#quit back to main menu
 	get_tree().paused = false
 	Engine.time_scale = 1.0
+	GameEvents.emit_returning_to_menu()
 	SaveControl.save()
 	get_tree().change_scene_to_file("res://Main/main_menu.tscn")
