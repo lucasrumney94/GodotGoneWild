@@ -65,6 +65,10 @@ var camera_shake: bool = false
 var camera_base_pos: Vector3
 var camera_shake_intensity: float = 0.1
 
+@export var footstep_delay: float = 0.5
+var step_left: bool = true
+var step_timer: float = 0
+
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -160,15 +164,20 @@ func _physics_process(delta):
 	
 	# Add the gravity.
 	if !on_floor:# && !is_clambering:
+		step_timer = 0
+		
 		speed_mult = air_speed_mult
 		velocity.y -= gravity * delta * gravity_mult
 		last_velocity = velocity
 		if is_jumping && velocity.y < 0:
 			is_jumping = false
+			
+		if velocity.y < 0:
 			fall_time += delta
 			if fall_time > 3.0 && !long_fall:
 				long_fall = true
 				GameEvents.emit_long_fall_started()
+			
 		#if on_steps && velocity.y < -5:
 			#on_steps = false
 		%DebugOnFloorLabel.text = "Not on Floor"
@@ -217,6 +226,17 @@ func _physics_process(delta):
 		move_direction = Vector3(move_direction.x, 0, move_direction.z).normalized()
 		if !started:
 			start()
+			
+		if on_floor:
+			step_timer += delta
+			if step_timer > footstep_delay:
+				step_timer = 0
+				var step_pos = global_position
+				if step_left:
+					step_pos -= %CameraRotationRoot.transform.basis.x * 0.5
+				else: step_pos += %CameraRotationRoot.transform.basis.x * 0.5
+				GameEvents.emit_footstep(step_pos)
+				step_left = !step_left
 	else:
 		move_direction = Vector3.ZERO
 	#if input_dir.y > 0:

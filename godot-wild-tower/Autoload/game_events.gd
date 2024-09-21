@@ -15,6 +15,7 @@ signal player_dash
 signal player_enemy_dash
 signal long_fall_started
 signal player_death
+signal footstep(global_pos: Vector3)
 
 signal slomo_start
 signal slomo_end
@@ -92,6 +93,11 @@ func emit_long_fall_started():
 func emit_player_death():
 	player_death.emit()
 	SaveControl.add_stat(MissionControl.current_level, "death", 1)
+
+
+func emit_footstep(global_pos: Vector3):
+	footstep.emit(global_pos)
+	print("MAKE FOOTSTEP SOUND")
 
 
 func emit_projectile_impact(global_pos: Vector3):

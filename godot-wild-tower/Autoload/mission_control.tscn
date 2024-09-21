@@ -10,3 +10,4 @@
 [node name="MissionControl" type="Node"]
 script = ExtResource("1_dop84")
 missions = Array[PackedScene]([ExtResource("5_jp2bf"), ExtResource("3_j6jsn"), ExtResource("2_v0ewe"), ExtResource("3_61w4b"), ExtResource("5_ayc5n")])
+campaign_levels = 4
