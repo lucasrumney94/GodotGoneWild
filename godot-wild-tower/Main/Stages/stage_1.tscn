@@ -124,18 +124,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.5, 5, -3)
 operation = 2
 size = Vector3(9, 10, 16)
 
-[node name="SideArchCut" type="CSGCylinder3D" parent="First Floor/Stairs"]
-transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -23.5, 3, 0)
-operation = 2
-radius = 1.5
-height = 4.0
-sides = 12
-
-[node name="SideBoxCut" type="CSGBox3D" parent="First Floor/Stairs"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -23.5, 1, 0)
-operation = 2
-size = Vector3(3, 4, 4)
-
 [node name="Landing" type="CSGCombiner3D" parent="First Floor"]
 use_collision = true
 
@@ -311,10 +299,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 transform = Transform3D(1.87939, 0, -0.68404, 0, 2, 0, 0.68404, 0, 1.87939, 5.5, 0, -19.5)
 
 [node name="Column2" parent="Second Floor/2ndColumns" instance=ExtResource("8_j6044")]
-transform = Transform3D(1.41421, 0, -1.41421, 0, 2, 0, 1.41421, 0, 1.41421, 14.5, 0, -14.5)
+transform = Transform3D(1.41421, 0.64204, -1.26007, 0, 1.78201, 0.907979, 1.41421, -0.64204, 1.26007, 14.5, 0, -14.5)
 
 [node name="Column3" parent="Second Floor/2ndColumns" instance=ExtResource("8_j6044")]
-transform = Transform3D(1.87939, 0, 0.68404, 0, 2, 0, -0.68404, 0, 1.87939, 19.5, 0, -5.5)
+transform = Transform3D(0.627986, -1.89769, 0.066269, 0, -0.0697989, -1.99879, 1.89885, 0.627602, -0.0219164, 19.5, 0.7, -5.5)
 
 [node name="Column4" parent="Second Floor/2ndColumns" instance=ExtResource("8_j6044")]
 transform = Transform3D(0.785639, -1.83923, 8.03955e-08, -9.34881e-17, -8.74228e-08, -2, 1.83924, 0.785637, -3.43414e-08, 16.6149, -10.697, 5.17907)
@@ -382,6 +370,15 @@ transform = Transform3D(-0.552243, 0, -0.833683, 0, 1, 0, 0.833683, 0, -0.552243
 [node name="Bookcase12" parent="Second Floor/Bookcases" instance=ExtResource("11_fqk5l")]
 transform = Transform3D(-0.552243, 0, -0.833683, 0, 1, 0, 0.833683, 0, -0.552243, 10.1978, -9.53674e-07, -16.2562)
 
+[node name="Bookcase13" parent="Second Floor/Bookcases" instance=ExtResource("11_fqk5l")]
+transform = Transform3D(-0.809427, -0.508548, -0.29361, 3.93977e-08, 0.5, -0.866025, 0.58722, -0.700984, -0.404713, 19.1325, 0, -10.465)
+
+[node name="Bookcase14" parent="Second Floor/Bookcases" instance=ExtResource("11_fqk5l")]
+transform = Transform3D(4.34908e-08, -0.994953, -0.100344, -1, -4.37114e-08, 0, -4.38619e-09, 0.100344, -0.994953, 15.6631, 2.02082, -7.9424)
+
+[node name="Bookcase15" parent="Second Floor/Bookcases" instance=ExtResource("11_fqk5l")]
+transform = Transform3D(0.101056, 0.994881, 4.34876e-08, 0, -4.37114e-08, 1, 0.99488, -0.101056, -4.41731e-09, 20.3972, 0.5, -0.944204)
+
 [node name="2ndEnemies" type="Node3D" parent="Second Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
@@ -410,18 +407,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.35731, -9.53674e-07, -17.92
 
 [node name="MobileEnemy3" parent="Second Floor/2ndEnemies" node_paths=PackedStringArray("path_points") instance=ExtResource("9_tiv3e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.97542, -9.53674e-07, -15.7115)
-path_points = [NodePath("../3ndPath1"), NodePath("../3ndPath2"), NodePath("../3ndPath3")]
+path_points = [NodePath("../3rdPath1"), NodePath("../3rdPath2"), NodePath("../3rdPath3")]
 loop_path = true
 add_start_pos_to_path = true
 
-[node name="3ndPath1" type="Node3D" parent="Second Floor/2ndEnemies"]
+[node name="3rdPath1" type="Node3D" parent="Second Floor/2ndEnemies"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.54751, 0, -19.4229)
 
-[node name="3ndPath2" type="Node3D" parent="Second Floor/2ndEnemies"]
+[node name="3rdPath2" type="Node3D" parent="Second Floor/2ndEnemies"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.54362, 0, -23.3845)
 
-[node name="3ndPath3" type="Node3D" parent="Second Floor/2ndEnemies"]
+[node name="3rdPath3" type="Node3D" parent="Second Floor/2ndEnemies"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.85352, -9.53674e-07, -18.4684)
+
+[node name="BasicEnemy" parent="Second Floor/2ndEnemies" instance=ExtResource("9_ixssy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.67, 8, -15.532)
+
+[node name="BasicEnemy2" parent="Second Floor/2ndEnemies" instance=ExtResource("9_ixssy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.414, 8, -16.981)
 
 [node name="2ndStairs" type="CSGCombiner3D" parent="Second Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
