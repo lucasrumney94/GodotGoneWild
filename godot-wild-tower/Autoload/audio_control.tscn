@@ -36,7 +36,7 @@ long_fall_sound_gain = -3.78
 projectile_impact_sound = ExtResource("10_o1oed")
 projectile_impact_sound_gain = -12.0
 crystal_impact_sound = ExtResource("11_qu2b4")
-crystal_impact_sound_gain = -24.0
+crystal_impact_sound_gain = -20.0
 low_pass_cutoff_lower_bound = 140.0
 pitch_shift_cutoff_lower_bound = 0.8
 

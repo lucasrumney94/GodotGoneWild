@@ -122,7 +122,7 @@ func play_player_dash():
 
 func play_crystal_impact(world_position: Vector3):
 	print("Playing Crystal Impact")
-	play_3D_sound_random_pitch(world_position, crystal_impact_sound, crystal_impact_sound_gain, .7, 1.3)
+	play_3D_sound_random_pitch(world_position, crystal_impact_sound, crystal_impact_sound_gain, .7, 1.7)
 
 func play_player_enemy_dash():
 	# change lowpass on slow time	
