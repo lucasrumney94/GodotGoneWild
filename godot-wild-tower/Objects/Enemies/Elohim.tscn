@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://dfvd2bwta7jmy"]
+
+[node name="Elohim" type="Node3D"]
+
+[node name="SpawnPatterns" type="Node3D" parent="."]

@@ -1,4 +1,5 @@
 extends CharacterBody3D
+class_name PlayerControl
 
 #THIS MAYBE NOT BEST PLACE, JUST GETTING IT IN THERE
 @export var death_screen: PackedScene
@@ -60,6 +61,10 @@ var long_fall: bool = false
 var alive: bool = true
 var level_finished: bool = false
 
+var camera_shake: bool = false
+var camera_base_pos: Vector3
+var camera_shake_intensity: float = 0.1
+
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -69,6 +74,8 @@ func _ready():
 	$Hitbox.area_entered.connect(on_hitbox_area_entered)
 	
 	GameEvents.level_finished.connect(on_level_finished)
+	
+	camera_base_pos = %Camera3D.position
 
 
 #func _input(event):
@@ -119,6 +126,13 @@ func _physics_process(delta):
 	if !was_on_floor:
 		GameEvents.emit_player_hit_floor(global_position)
 		was_on_floor = on_floor
+	
+	if camera_shake:
+		print("PLAYER CAMERA SHOULD BE SHAKING!")
+		%Camera3D.position = camera_base_pos\
+		 + Vector3(randf_range(-camera_shake_intensity, camera_shake_intensity),\
+		0, randf_range(-camera_shake_intensity, camera_shake_intensity))
+		
 	
 	if is_dashing: 
 		if on_floor:%DebugOnFloorLabel.text = "On Floor"
@@ -504,6 +518,12 @@ func effect_enemy_outline(setting: bool):
 	if !setting:
 		enemy_outliner = null
 		current_enemy = null
+
+
+func toggle_camera_shake(setting: bool):
+	camera_shake = setting
+	if !setting:
+		%Camera3D.position = camera_base_pos
 
 
 func take_damage():

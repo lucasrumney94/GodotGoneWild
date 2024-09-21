@@ -92,7 +92,7 @@ func _process(delta: float) -> void:
 	music_lowpass.cutoff_hz = remap(Engine.time_scale, 0. ,1.0,low_pass_cutoff_lower_bound,low_pass_normal_cutoff)
 	music_pitchshift.pitch_scale = remap(Engine.time_scale, 0. ,1.0,pitch_shift_cutoff_lower_bound,pitch_shift_normal_pitch_scale)
 
-	print(sfx_lowpass.cutoff_hz," ",sfx_pitchshift.pitch_scale)
+	#print(sfx_lowpass.cutoff_hz," ",sfx_pitchshift.pitch_scale)
 
 
 

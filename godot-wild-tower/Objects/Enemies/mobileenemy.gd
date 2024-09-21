@@ -20,6 +20,10 @@ var path_direction: int = 1
 
 
 func _ready():
+	Callable(init).call_deferred()
+	
+
+func init():
 	originalPos = global_position
 	if add_start_pos_to_path:
 		var node3d = Node3D.new()

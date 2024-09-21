@@ -5,19 +5,33 @@ extends RigidBody3D
 
 var falling: bool = false
 
+var player_body: PlayerControl
+
 
 func _ready():
 	$Area3D.body_entered.connect(on_body_entered)
+	$Area3D.body_exited.connect(on_body_exited)
 	$Timer.timeout.connect(on_timer_timeout)
 	$Timer.wait_time = fall_delay
 	
 
-func on_body_entered(_body):
+func on_body_entered(body):
 	if falling: return
+	
+	if !(body is PlayerControl):
+		return
 	
 	$Timer.start()
 	falling = true
-	make_rumble()
+	#make_rumble()
+	$AudioStreamPlayer3D.play()
+	player_body = body
+	player_body.toggle_camera_shake(true)
+
+
+func on_body_exited(body):
+	if body == player_body:
+		player_body.toggle_camera_shake(false)
 
 
 func make_rumble():
@@ -30,4 +44,7 @@ func rumble(percent: float):
 
 
 func on_timer_timeout():
+	$AudioStreamPlayer3D.stop()
 	freeze = false
+	if player_body != null:
+		player_body.toggle_camera_shake(false)
