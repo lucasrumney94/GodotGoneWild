@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://bi8anegkhcuux"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o6q6q"]
+size = Vector3(6, 0.25, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rex5n"]
+size = Vector3(6, 0.25, 0.95)
+
+[node name="ScaffoldingPlank" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_o6q6q")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.525)
+mesh = SubResource("BoxMesh_rex5n")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.525)
+mesh = SubResource("BoxMesh_rex5n")
+skeleton = NodePath("../CollisionShape3D")
