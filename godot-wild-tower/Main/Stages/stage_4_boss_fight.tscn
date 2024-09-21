@@ -1,0 +1,50 @@
+[gd_scene load_steps=12 format=3 uid="uid://bdb186o67t1ta"]
+
+[ext_resource type="Script" path="res://Main/main_game.gd" id="1_ssgvs"]
+[ext_resource type="PackedScene" uid="uid://do1pmtbmc423e" path="res://UI/pause_menu.tscn" id="2_35ieg"]
+[ext_resource type="Texture2D" uid="uid://rfda5fv26d6w" path="res://Objects/Environment/Models/PurplyBlueSky.png" id="3_3bfky"]
+[ext_resource type="PackedScene" uid="uid://vssvdtmx3jx7" path="res://Objects/Player/player.tscn" id="4_r38jx"]
+[ext_resource type="ArrayMesh" uid="uid://dgy7dxognc1x3" path="res://Objects/Environment/Models/TowerTest1.obj" id="5_tf007"]
+[ext_resource type="Material" uid="uid://3byi41uuwvq8" path="res://Materials/LD_grid.tres" id="6_gefs6"]
+[ext_resource type="Material" uid="uid://5dqiqxr4arwd" path="res://Materials/grid_material.tres" id="7_crhe8"]
+[ext_resource type="PackedScene" path="res://Objects/Enemies/Elohim.tscn" id="8_0ypp2"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_asy3g"]
+panorama = ExtResource("3_3bfky")
+
+[sub_resource type="Sky" id="Sky_3kabx"]
+sky_material = SubResource("PanoramaSkyMaterial_asy3g")
+
+[sub_resource type="Environment" id="Environment_yg5si"]
+background_mode = 2
+sky = SubResource("Sky_3kabx")
+
+[node name="Stage 1" type="Node3D"]
+script = ExtResource("1_ssgvs")
+pause_menu_scene = ExtResource("2_35ieg")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_yg5si")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 0.427358, 0.904083, 0, -0.904083, 0.427358, 0, 100, 30)
+light_energy = 3.0
+light_indirect_energy = 3.0
+light_angular_distance = 40.0
+
+[node name="Player" parent="." instance=ExtResource("4_r38jx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 23.9093)
+
+[node name="TowerMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -192.729, 30)
+mesh = ExtResource("5_tf007")
+
+[node name="Floor" type="CSGBox3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.5, 0)
+material_override = ExtResource("6_gefs6")
+use_collision = true
+size = Vector3(25, 0.5, 25)
+material = ExtResource("7_crhe8")
+
+[node name="Elohim" parent="." instance=ExtResource("8_0ypp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 2.51133)
