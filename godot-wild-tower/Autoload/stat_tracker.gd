@@ -15,6 +15,7 @@ var current_level: int = -1
 var kills: int = 0
 var restarts: int = 0
 var deaths: int = 0
+var playthrough_time = 0.0
 
 var level_finished: bool = false
 
@@ -28,6 +29,7 @@ func init():
 	GameEvents.level_started.connect(on_level_started)
 	GameEvents.level_finished.connect(on_level_finished)
 	GameEvents.level_finished_time.connect(on_level_finished_time)
+	GameEvents.partial_time.connect(on_partial_time)
 	GameEvents.restarting.connect(on_restart)
 	GameEvents.player_death.connect(on_death)
 	GameEvents.enemy_killed.connect(on_enemy_killed)
@@ -75,6 +77,14 @@ func on_level_finished_time(seconds: float):
 		stats_screen = level_finish_stats_scene.instantiate()
 		add_child(stats_screen)
 	stats_screen.set_completion_time(seconds, new_best_time)
+	
+	playthrough_time += seconds
+	#TODO if just defeated GOD, add this to playthrough time
+	#save playthrough time to level_index -1 as "best_time"
+
+
+func on_partial_time(seconds: float):
+	playthrough_time += seconds
 
 
 func on_restart():
@@ -103,3 +113,4 @@ func on_returning_to_menu():
 	deaths = 0
 	kills = 0
 	level_finished = false
+	playthrough_time = 0
