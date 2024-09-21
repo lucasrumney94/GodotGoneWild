@@ -1,5 +1,59 @@
-[gd_scene format=3 uid="uid://dfvd2bwta7jmy"]
+[gd_scene load_steps=10 format=3 uid="uid://dfvd2bwta7jmy"]
+
+[ext_resource type="Script" path="res://Objects/Enemies/elohim.gd" id="1_0b2vk"]
+[ext_resource type="PackedScene" uid="uid://ugi3esdiv2b4" path="res://Objects/Enemies/enemy_spawn_point.tscn" id="2_jnw1c"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_djp2v"]
+size = Vector3(3, 5, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_urh1k"]
+emission_enabled = true
+emission = Color(1, 1, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_oelvf"]
+material = SubResource("StandardMaterial3D_urh1k")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rq4bl"]
+albedo_color = Color(1, 0, 0.478431, 1)
+
+[sub_resource type="TorusMesh" id="TorusMesh_nwpua"]
+material = SubResource("StandardMaterial3D_rq4bl")
+rings = 6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a67ye"]
+albedo_color = Color(1, 0.729412, 1, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_0la4a"]
+material = SubResource("StandardMaterial3D_a67ye")
 
 [node name="Elohim" type="Node3D"]
+script = ExtResource("1_0b2vk")
+
+[node name="SpawnTimer" type="Timer" parent="."]
 
 [node name="SpawnPatterns" type="Node3D" parent="."]
+
+[node name="Pattern1" type="Node3D" parent="SpawnPatterns"]
+
+[node name="EnemySpawnPoint" parent="SpawnPatterns/Pattern1" instance=ExtResource("2_jnw1c")]
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Graphics"]
+mesh = SubResource("BoxMesh_djp2v")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Graphics"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.867202, 0.972502, 0.518855)
+mesh = SubResource("SphereMesh_oelvf")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Graphics"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.867, 0.973, 0.519)
+mesh = SubResource("SphereMesh_oelvf")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Graphics"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -0.275, 0, 1, -1.20206e-08, 0, -0.849956, 0.507064)
+mesh = SubResource("TorusMesh_nwpua")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Graphics"]
+transform = Transform3D(1, 0, 0, 0, 0.948362, 0.317189, 0, -0.317189, 0.948362, 0, 0, 0.310914)
+mesh = SubResource("PrismMesh_0la4a")

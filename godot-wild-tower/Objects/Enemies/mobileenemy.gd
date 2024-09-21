@@ -80,3 +80,9 @@ func _physics_process(delta: float) -> void:
 		rotation.y = lerp(rotation.y, lookdir, turn_speed * 50 * delta)
 	
 	move_and_slide()
+
+
+func add_path_point(point: Node3D):
+	if point == null: return
+	
+	path_points.append(point)

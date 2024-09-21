@@ -35,7 +35,7 @@ shape = SubResource("ConcavePolygonShape3D_albqp")
 [node name="FallKillPlane" parent="." instance=ExtResource("4_v5qwk")]
 
 [node name="Player" parent="." instance=ExtResource("4_x8b0l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.74518, 3.37307, 10.0769)
+transform = Transform3D(0.371368, 0, -0.928486, 0, 1, 0, 0.928486, 0, 0.371368, 5.74518, 3.37307, 10.0769)
 
 [node name="Platforms" type="Node3D" parent="."]
 
