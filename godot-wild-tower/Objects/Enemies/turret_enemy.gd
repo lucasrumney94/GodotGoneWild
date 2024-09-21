@@ -7,6 +7,8 @@ extends CharacterBody3D
 @export var rotation_speed: float = 1.0
 @export var tilt_limit: float = 45
 
+@export var activation_radius: float = 20
+
 var target: Node3D = null
 
 
@@ -24,6 +26,9 @@ func _physics_process(delta):
 		else:
 			print("TURRET COULDN'T FIND PLAYER")
 			return
+	
+	if activation_radius <= 0 || global_position.distance_squared_to(target.global_position) > pow(activation_radius, 2):
+		return
 	
 	var target_pos = target.global_position
 	var local_tp = to_local(target_pos)

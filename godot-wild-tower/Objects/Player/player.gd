@@ -76,6 +76,12 @@ func _ready():
 	GameEvents.level_finished.connect(on_level_finished)
 	
 	camera_base_pos = %Camera3D.position
+	
+	#CHECK IF BASE ROTATION IS NOT 0 AND ADJUST CAMERA, REVERTING ROTATION TO 0
+	if global_rotation.y != 0:
+		%CameraRotationRoot.rotation.y = global_rotation.y
+		mouse_rotation.y = global_rotation.y
+		global_rotation.y = 0
 
 
 #func _input(event):
