@@ -15,6 +15,9 @@ extends Node
 @export var player_jump_sound: AudioStream
 @export_range(-12, 12) var player_jump_gain: float;
 
+@export var player_hit_floor_sound: AudioStream
+@export_range(-12,12) var player_hit_floor_gain: float;
+
 @export var player_dash_sound: AudioStream
 @export_range(-12, 12) var player_dash_sound_gain: float;
 
@@ -63,6 +66,7 @@ func init() -> void:
 	GameEvents.level_started.connect(play_level_started)
 	GameEvents.level_finished.connect(play_level_finished)
 	GameEvents.player_jump.connect(play_player_jumped)
+	GameEvents.player_hit_floor.connect(play_player_hit_floor)
 	GameEvents.player_dash.connect(play_player_dash)
 	GameEvents.player_enemy_dash.connect(play_player_enemy_dash)
 	GameEvents.restarting.connect(play_restarting)
@@ -95,9 +99,8 @@ func _process(delta: float) -> void:
 	#print(sfx_lowpass.cutoff_hz," ",sfx_pitchshift.pitch_scale)
 
 
-
-func play_projectile_impact():
-	play_2D_sound(projectile_impact_sound)
+func play_projectile_impact(world_position: Vector3):
+	play_3D_sound(world_position, projectile_impact_sound, projectile_impact_sound_gain)
 
 func play_level_started():
 	play_2D_sound(level_started_sound, level_started_gain)
@@ -105,9 +108,11 @@ func play_level_started():
 func play_level_finished():
 	play_2D_sound(level_finish_sound)
 
-func play_player_jumped(world_position: Vector3):
-	
+func play_player_jumped(world_position: Vector3):	
 	play_3D_sound(world_position, player_jump_sound, player_jump_gain)
+
+func play_player_hit_floor(world_position: Vector3):
+	play_3D_sound(world_position, player_hit_floor_sound, player_hit_floor_gain)
 
 func play_player_dash():
 	play_2D_sound(player_dash_sound)
