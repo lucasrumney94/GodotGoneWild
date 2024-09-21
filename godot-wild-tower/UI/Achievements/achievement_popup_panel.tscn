@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cxyyuibifmqs"]
+[gd_scene load_steps=8 format=3 uid="uid://cxyyuibifmqs"]
 
 [ext_resource type="Script" path="res://UI/Achievements/achievement_popup_panel.gd" id="1_kq5ul"]
 [ext_resource type="Texture2D" uid="uid://c4agc4wxn88u2" path="res://icon.svg" id="2_y7k7t"]
+[ext_resource type="AudioStream" uid="uid://5vdt3vvhfkho" path="res://Audio/AchievementGet.wav" id="3_vj25p"]
 
 [sub_resource type="Animation" id="Animation_cqqux"]
 length = 0.001
@@ -122,4 +123,5 @@ text = "Description"
 text_overrun_behavior = 3
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_vj25p")
 autoplay = true
