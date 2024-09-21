@@ -42,8 +42,10 @@ func _physics_process(delta):
 
 
 func on_timer_timeout():
+	if activation_radius <= 0 || global_position.distance_squared_to(target.global_position) > pow(activation_radius, 2):
+		return
 	#fire bullet
-	#TODO potentially require to be able to see player or player within range
+	#TO/DO potentially require to be able to see player or player within range
 	if gun == null:
 		return
 	

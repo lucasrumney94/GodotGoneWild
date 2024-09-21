@@ -26,18 +26,36 @@ albedo_color = Color(1, 0.729412, 1, 1)
 [sub_resource type="PrismMesh" id="PrismMesh_0la4a"]
 material = SubResource("StandardMaterial3D_a67ye")
 
-[node name="Elohim" type="Node3D"]
+[node name="Elohim" type="Node3D" node_paths=PackedStringArray("spawn_patterns")]
 script = ExtResource("1_0b2vk")
+spawn_patterns = [NodePath("SpawnPatterns/Pattern1")]
 
 [node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
 
 [node name="SpawnPatterns" type="Node3D" parent="."]
 
 [node name="Pattern1" type="Node3D" parent="SpawnPatterns"]
 
 [node name="EnemySpawnPoint" parent="SpawnPatterns/Pattern1" instance=ExtResource("2_jnw1c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.17996, -2.73061, -4.18349)
+enemy_type = 3
+
+[node name="EnemySpawnPoint2" parent="SpawnPatterns/Pattern1" instance=ExtResource("2_jnw1c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.63865, 2.73296, -4.18349)
+enemy_type = 3
+
+[node name="EnemySpawnPoint4" parent="SpawnPatterns/Pattern1" instance=ExtResource("2_jnw1c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.74898, 2.73296, -4.18349)
+enemy_type = 3
+
+[node name="EnemySpawnPoint3" parent="SpawnPatterns/Pattern1" instance=ExtResource("2_jnw1c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.22822, -3.67678, -4.18349)
+enemy_type = 3
 
 [node name="Graphics" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Graphics"]
 mesh = SubResource("BoxMesh_djp2v")
