@@ -1,0 +1,125 @@
+[gd_scene load_steps=6 format=3 uid="uid://cge0083eia62r"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_hebou"]
+height = 3.0
+radius = 0.05
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_t7ksn"]
+top_radius = 0.05
+bottom_radius = 0.05
+height = 3.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_panv0"]
+radius = 0.15
+height = 0.3
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_vk7q3"]
+height = 6.0
+radius = 0.05
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_oabfb"]
+top_radius = 0.05
+bottom_radius = 0.05
+height = 6.0
+
+[node name="ScaffoldSupport" type="Node3D"]
+
+[node name="Leg1" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1.5, -1.2)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Leg1"]
+shape = SubResource("CylinderShape3D_hebou")
+
+[node name="Bar" type="MeshInstance3D" parent="Leg1"]
+mesh = SubResource("CylinderMesh_t7ksn")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Leg2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1.5, 1.2)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Leg2"]
+shape = SubResource("CylinderShape3D_hebou")
+
+[node name="Bar" type="MeshInstance3D" parent="Leg2"]
+mesh = SubResource("CylinderMesh_t7ksn")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Leg3" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1.5, 1.2)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Leg3"]
+shape = SubResource("CylinderShape3D_hebou")
+
+[node name="Bar" type="MeshInstance3D" parent="Leg3"]
+mesh = SubResource("CylinderMesh_t7ksn")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Leg4" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1.5, -1.2)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Leg4"]
+shape = SubResource("CylinderShape3D_hebou")
+
+[node name="Bar" type="MeshInstance3D" parent="Leg4"]
+mesh = SubResource("CylinderMesh_t7ksn")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Crossbar1" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -2.6, 2.8, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Crossbar1"]
+shape = SubResource("CylinderShape3D_hebou")
+
+[node name="Bar" type="MeshInstance3D" parent="Crossbar1"]
+mesh = SubResource("CylinderMesh_t7ksn")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Connector" type="MeshInstance3D" parent="Crossbar1"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.075, 1.125, 0.05)
+mesh = SubResource("SphereMesh_panv0")
+skeleton = NodePath("../../Leg2/Bar")
+
+[node name="Connector2" type="MeshInstance3D" parent="Crossbar1"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.075, -1.125, 0.05)
+mesh = SubResource("SphereMesh_panv0")
+skeleton = NodePath("../../Leg1/Bar")
+
+[node name="Crossbar2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 2.6, 2.8, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Crossbar2"]
+shape = SubResource("CylinderShape3D_hebou")
+
+[node name="Bar" type="MeshInstance3D" parent="Crossbar2"]
+mesh = SubResource("CylinderMesh_t7ksn")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Connector" type="MeshInstance3D" parent="Crossbar2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.075, 1.125, 0.05)
+mesh = SubResource("SphereMesh_panv0")
+skeleton = NodePath("../../Leg3/Bar")
+
+[node name="Connector2" type="MeshInstance3D" parent="Crossbar2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.075, -1.125, 0.05)
+mesh = SubResource("SphereMesh_panv0")
+skeleton = NodePath("../../Leg4/Bar")
+
+[node name="Longbar1" type="StaticBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 0, 2.7, 1.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Longbar1"]
+shape = SubResource("CylinderShape3D_vk7q3")
+
+[node name="Bar" type="MeshInstance3D" parent="Longbar1"]
+mesh = SubResource("CylinderMesh_oabfb")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Longbar2" type="StaticBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 0, 2.7, -1.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Longbar2"]
+shape = SubResource("CylinderShape3D_vk7q3")
+
+[node name="Bar" type="MeshInstance3D" parent="Longbar2"]
+mesh = SubResource("CylinderMesh_oabfb")
+skeleton = NodePath("../CollisionShape3D")
