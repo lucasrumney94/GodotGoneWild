@@ -107,4 +107,5 @@ func emit_slomo_end():
 
 
 func emit_crystal_impact(global_pos: Vector3):
+	#print("crystal impacting at " + str(global_pos))
 	crystal_impact.emit(global_pos)

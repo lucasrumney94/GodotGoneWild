@@ -7,6 +7,8 @@ var lifetime: float = 10
 func _ready():
 	body_entered.connect(on_body_enter)
 	#print("CRYSTAL SHARD IS READY!")
+	contact_monitor = true
+	max_contacts_reported = 1
 
 
 func _physics_process(delta: float):
