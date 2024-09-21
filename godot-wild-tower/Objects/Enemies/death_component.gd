@@ -5,6 +5,8 @@ class_name DeathComponent
 
 @export var explosion_particles: PackedScene
 
+var crystal_script = preload("res://Scripts/crystal_shard.gd")
+
 
 func die(push_vector: Vector3):
 	#find all visible mesh instance 3d
@@ -32,9 +34,14 @@ func explode_mesh(mesh: MeshInstance3D, push_vector: Vector3):
 		mesh.queue_free()
 	
 	var rb: RigidBody3D = RigidBody3D.new()
+	
+	rb.set_script(crystal_script)
+	#print("Crystal shard set to script " + rb.get_script().name)
+	
 	#rb.position = mesh.global_position
 	rb.collision_layer = 8
 	rb.collision_mask = 1
+	
 	#rb.gravity_scale = 0.1
 	var col: CollisionShape3D = CollisionShape3D.new()
 	col.shape = BoxShape3D.new()
