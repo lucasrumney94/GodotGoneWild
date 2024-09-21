@@ -129,9 +129,9 @@ func _physics_process(delta):
 	if level_finished: return
 	
 	var on_floor: bool = is_on_floor()
-	if !was_on_floor:
+	if on_floor && !was_on_floor:
 		GameEvents.emit_player_hit_floor(global_position)
-		was_on_floor = on_floor
+	was_on_floor = on_floor
 	
 	if camera_shake:
 		print("PLAYER CAMERA SHOULD BE SHAKING!")
