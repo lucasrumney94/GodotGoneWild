@@ -66,6 +66,7 @@ func emit_enemy_killed(enemy_type: Constants.EnemyType, global_pos: Vector3):
 
 
 func emit_player_hit_floor(global_pos: Vector3):
+	print("Player Hit Floor!")
 	player_hit_floor.emit(global_pos)
 
 
