@@ -34,7 +34,7 @@ extends Node
 @export_range(-12, 12) var projectile_impact_sound_gain: float
 
 @export var crystal_impact_sound: AudioStream
-@export_range(-12, 12) var crystal_impact_sound_gain: float
+@export_range(-36, 12) var crystal_impact_sound_gain: float
 
 @export var low_pass_normal_cutoff:float = 8000
 ##@export var low_pass_slomo_cutoff:float = 80
@@ -122,7 +122,7 @@ func play_player_dash():
 
 func play_crystal_impact(world_position: Vector3):
 	print("Playing Crystal Impact")
-	play_3D_sound(world_position, crystal_impact_sound, crystal_impact_sound_gain)
+	play_3D_sound_random_pitch(world_position, crystal_impact_sound, crystal_impact_sound_gain, .7, 1.3)
 
 func play_player_enemy_dash():
 	# change lowpass on slow time	
@@ -161,6 +161,20 @@ func play_3D_sound(world_position: Vector3, file_to_play: Resource, gain:float=0
 	player.play()
 	await player.finished
 	player.queue_free()
+
+func play_3D_sound_random_pitch(world_position: Vector3, file_to_play: Resource, gain:float=0.0, pitch_range_low:float=.8, pitch_range_high:float=1.2):
+	var  player = AudioStreamPlayer3D.new()
+	player.stream = file_to_play
+	player.position = world_position
+	var rng = RandomNumberGenerator.new()
+	player.pitch_scale = rng.randf_range(pitch_range_low, pitch_range_high)
+	print("pitch scale randomized to", player.pitch_scale)
+	player.volume_db = gain
+	add_child(player)
+	player.play()
+	await player.finished
+	player.queue_free()
+
 
 func play_2D_sound(file_to_play: Resource, gain:float = 0.0):
 	var  player = AudioStreamPlayer2D.new()
