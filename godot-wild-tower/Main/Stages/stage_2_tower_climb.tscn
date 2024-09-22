@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b5jac6mtm6pg"]
+[gd_scene load_steps=20 format=3 uid="uid://b5jac6mtm6pg"]
 
 [ext_resource type="Script" path="res://Main/main_game.gd" id="1_qi61m"]
 [ext_resource type="PackedScene" uid="uid://do1pmtbmc423e" path="res://UI/pause_menu.tscn" id="2_nk1aq"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://c08aetbdbnjbc" path="res://Objects/Enemies/MobileEnemy.tscn" id="9_xfmcf"]
 [ext_resource type="PackedScene" path="res://Objects/Environment/Models/Column.tscn" id="11_obbt3"]
 [ext_resource type="PackedScene" path="res://Objects/Environment/Models/bookcase.tscn" id="12_o1pqe"]
+[ext_resource type="PackedScene" uid="uid://y00sgnh5ws4h" path="res://Objects/Environment/finish_area.tscn" id="15_jeab0"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_vb413"]
 panorama = ExtResource("3_u1a68")
@@ -146,6 +147,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.16624, 32.326, 0.829698)
 
 [node name="BasicEnemy7" parent="Platforms" instance=ExtResource("8_tomb1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1364, 35.5154, 2.81503)
+
+[node name="BasicEnemy10" parent="Platforms" instance=ExtResource("8_tomb1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.342014, 41.8973, -0.166832)
+
+[node name="BasicEnemy11" parent="Platforms" instance=ExtResource("8_tomb1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.406405, 39.7622, 1.35689)
 
 [node name="Falling Enemy Platform" parent="Platforms" instance=ExtResource("7_ocdnt")]
 transform = Transform3D(0.897566, 0, 0.440879, 0, 1, 0, -0.440879, 0, 0.897566, 6.49361, 8.63538, 11.057)
@@ -574,3 +581,6 @@ operation = 2
 radius = 22.0
 height = 11.0
 sides = 28
+
+[node name="FinishArea" parent="." instance=ExtResource("15_jeab0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 46.4829, -0.611299)
