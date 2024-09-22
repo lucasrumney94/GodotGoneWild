@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Achievement" load_steps=3 format=3 uid="uid://t8xc8d3b5cvo"]
+[gd_resource type="Resource" script_class="Achievement" load_steps=3 format=3 uid="uid://docoki0ppvpsu"]
 
 [ext_resource type="Texture2D" uid="uid://cv1af46vlbwjd" path="res://UI/Image/trophy.png" id="1_l6loa"]
 [ext_resource type="Script" path="res://UI/Achievements/achievement.gd" id="1_y2pmg"]
@@ -8,7 +8,8 @@ script = ExtResource("1_y2pmg")
 id = "get_killed"
 icon = ExtResource("1_l6loa")
 title = "Get Killed"
-description = "Dante's Divine Comedy was entirely written during a single ether-drenched fugue state."
+description = "Dante's Divine Comedy was entirely 
+written during a single ether-drenched fugue state."
 stat = ""
 stat_goal = 0
 check_function = ""

@@ -8,7 +8,8 @@ script = ExtResource("1_76ts7")
 id = "pause_long"
 icon = ExtResource("1_o4est")
 title = "Pee Break"
-description = "Pause the game for more than a minute."
+description = "FACT: Taking frequent breaks
+will unlock good gamer energy"
 stat = ""
 stat_goal = 0
 check_function = ""

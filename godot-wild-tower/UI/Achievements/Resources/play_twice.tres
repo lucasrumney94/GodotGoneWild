@@ -8,7 +8,8 @@ script = ExtResource("1_njiae")
 id = "play_twice"
 icon = ExtResource("1_ku5xt")
 title = "Welcome Back!"
-description = "play the game more than once."
+description = "FACT: There is no reward for
+playing a third time"
 stat = ""
 stat_goal = 0
 check_function = ""

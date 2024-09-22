@@ -8,7 +8,8 @@ script = ExtResource("1_eykgf")
 id = "bad_music"
 icon = ExtResource("1_imomp")
 title = "What is this crap?"
-description = "Turn the music volume all the way down."
+description = "FACT: Music calms 
+the savage beast."
 stat = ""
 stat_goal = 0
 check_function = ""

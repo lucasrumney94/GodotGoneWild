@@ -8,7 +8,8 @@ script = ExtResource("1_37tgf")
 id = "finish_sub_one"
 icon = ExtResource("1_p0its")
 title = "Quickly!"
-description = "Finish a level faster than a minute."
+description = "FACT: Finishing early
+is sometimes beneficial"
 stat = ""
 stat_goal = 0
 check_function = ""
