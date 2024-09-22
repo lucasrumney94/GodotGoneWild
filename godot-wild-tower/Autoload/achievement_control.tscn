@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://7c5o71oyrx52"]
+[gd_scene load_steps=10 format=3 uid="uid://7c5o71oyrx52"]
 
 [ext_resource type="Script" path="res://Autoload/achievement_control.gd" id="1_lvx2p"]
 [ext_resource type="PackedScene" uid="uid://b1hxkyiomflv0" path="res://UI/Achievements/achievement_popup.tscn" id="2_uwhnw"]
@@ -7,9 +7,8 @@
 [ext_resource type="Resource" uid="uid://qbhxgfjtb32q" path="res://UI/Achievements/Resources/view_credits.tres" id="4_c77lf"]
 [ext_resource type="Resource" path="res://UI/Achievements/Resources/view_options.tres" id="6_7cfo6"]
 [ext_resource type="Resource" path="res://UI/Achievements/Resources/play_twice.tres" id="7_kv655"]
+[ext_resource type="Resource" path="res://UI/Achievements/Resources/pause_long.tres" id="8_0uayn"]
 [ext_resource type="Resource" uid="uid://ciewphe0x31tl" path="res://UI/Achievements/Resources/kill_10_cherubs.tres" id="8_868mt"]
-[ext_resource type="Resource" uid="uid://rqlim4er2gp8" path="res://UI/Achievements/Resources/pause_long.tres" id="8_0uayn"]
-
 
 [node name="AchievementControl" type="Node"]
 script = ExtResource("1_lvx2p")

@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dt1l7laaw1wqw" path="res://Materials/Textures/TestingGrid.png" id="2_j1v05"]
 
 [node name="AchievementPanel" type="PanelContainer"]
+process_mode = 3
 script = ExtResource("1_nuv0b")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]

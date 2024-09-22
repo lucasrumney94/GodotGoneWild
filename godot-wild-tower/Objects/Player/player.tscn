@@ -110,6 +110,7 @@ libraries = {
 
 [node name="Crosshair" parent="PlayerHUD/CrosshairRoot" instance=ExtResource("3_g8eb4")]
 unique_name_in_owner = true
+process_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

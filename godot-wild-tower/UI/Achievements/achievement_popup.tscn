@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cxyyuibifmqs" path="res://UI/Achievements/achievement_popup_panel.tscn" id="2_omo40"]
 
 [node name="AchievementPopup" type="CanvasLayer"]
+process_mode = 3
 layer = 100
 script = ExtResource("1_8bg1h")
 popup_panel = ExtResource("2_omo40")
