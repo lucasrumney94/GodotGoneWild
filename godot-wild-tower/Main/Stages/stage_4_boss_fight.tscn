@@ -19,7 +19,7 @@ sky_material = SubResource("PanoramaSkyMaterial_asy3g")
 background_mode = 2
 sky = SubResource("Sky_3kabx")
 
-[node name="Stage 1" type="Node3D"]
+[node name="Stage 4 Tower Boss Fight" type="Node3D"]
 script = ExtResource("1_ssgvs")
 pause_menu_scene = ExtResource("2_35ieg")
 
