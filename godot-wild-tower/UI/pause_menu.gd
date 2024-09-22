@@ -25,14 +25,18 @@ func _process(delta: float) -> void:
 		AchievementControl.earn_achievement("pause_long")
 
 func _input(event: InputEvent):
-	if event.is_action_pressed("ui_cancel"):
-		if options_menu != null: return
-		
-		Callable(on_resume_pressed).call_deferred()
+	
+	#IN HTML VERSION, ESCAPE CONFLICTS WITH BROWSER
+	#TODO REACTIVATE THIS FOR DESKTOP VERSION
+	#if event.is_action_pressed("ui_cancel"):
+		#if options_menu != null: return
+		#Callable(on_resume_pressed).call_deferred()
+	pass
 
 
 func restart_level():
-	get_tree().change_scene_to_file(get_tree().current_scene.scene_file_path)
+	get_tree().reload_current_scene()
+	#get_tree().change_scene_to_file(get_tree().current_scene.scene_file_path)
 
 
 func on_resume_pressed():
