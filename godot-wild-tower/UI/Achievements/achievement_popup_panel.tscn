@@ -123,5 +123,6 @@ text = "Description"
 text_overrun_behavior = 3
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("3_vj25p")
 autoplay = true

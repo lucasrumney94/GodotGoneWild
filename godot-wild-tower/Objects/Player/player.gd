@@ -74,6 +74,10 @@ var stepping_up: bool = false
 @export var step_up_speed: float = 200
 
 var crosshair_turnt: bool = false
+var crosshair_rotation: float = 0
+@export var crosshair_turn_speed: float = 100
+@export var crosshair_unturn_speed: float = 50
+@export var crosshair_unturn_delay: float = 0.25
 
 
 func _ready():
@@ -132,6 +136,8 @@ func _process(_delta):
 	
 	%DebugJumpsLabel.text = "Jumps: " + str(jump_count)
 	%DebugDashesLabel.text = "Dashes: " + str(short_dash_count)
+	
+	#if crosshair_turnt
 
 
 func _physics_process(delta):
