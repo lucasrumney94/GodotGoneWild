@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://48n404mji4ep"]
+[gd_scene load_steps=4 format=3 uid="uid://48n404mji4ep"]
 
 [ext_resource type="Script" path="res://UI/achievements_menu.gd" id="1_ianec"]
 [ext_resource type="PackedScene" uid="uid://63qe8ib3fixo" path="res://UI/Achievements/achievement_panel.tscn" id="2_b42gd"]
+[ext_resource type="Theme" uid="uid://cbuxucan2by7n" path="res://UI/Theme/main_theme.tres" id="3_fsqa7"]
 
 [node name="AchievementMenu" type="CanvasLayer"]
 layer = 10
@@ -15,6 +16,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_fsqa7")
 
 [node name="ColorRect" type="ColorRect" parent="Control"]
 layout_mode = 1
