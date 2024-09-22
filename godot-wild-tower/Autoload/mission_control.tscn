@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://24dwd4so5sk"]
 
 [ext_resource type="Script" path="res://Autoload/mission_control.gd" id="1_dop84"]
-[ext_resource type="PackedScene" uid="uid://up53g12bx84h" path="res://Main/Stages/stage_2.tscn" id="3_dp83y"]
-[ext_resource type="PackedScene" uid="uid://hhltcdf81l45" path="res://Main/Stages/stage_1.tscn" id="5_jp2bf"]
-[ext_resource type="PackedScene" uid="uid://dirl388txghea" path="res://Main/Stages/stage_3_tower_splosion.tscn" id="7_65smr"]
+[ext_resource type="PackedScene" path="res://Main/Stages/stage_2.tscn" id="3_dp83y"]
+[ext_resource type="PackedScene" uid="uid://buhsb2ao2ykcr" path="res://Main/Stages/stage_1.tscn" id="5_jp2bf"]
+[ext_resource type="PackedScene" path="res://Main/Stages/stage_3_tower_splosion.tscn" id="7_65smr"]
 [ext_resource type="PackedScene" uid="uid://dtwnghgbgrs6k" path="res://Main/Stages/stage_4_boss_fight.tscn" id="8_hfsjj"]
 
 [node name="MissionControl" type="Node"]

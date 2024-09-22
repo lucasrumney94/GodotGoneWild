@@ -19,6 +19,8 @@ var playthrough_time = 0.0
 
 var level_finished: bool = false
 
+var is_full_playthrough: bool = false
+
 
 func _ready():
 	Callable(init).call_deferred()
@@ -53,6 +55,8 @@ func on_level_started():
 		restarts = 0
 		deaths = 0
 		level_finished = false
+		if current_level == 0:
+			is_full_playthrough = true
 
 
 func on_level_finished():
@@ -79,8 +83,11 @@ func on_level_finished_time(seconds: float):
 	stats_screen.set_completion_time(seconds, new_best_time)
 	
 	playthrough_time += seconds
-	#TODO if just defeated GOD, add this to playthrough time
+	#TO/DO if just defeated GOD, add this to playthrough time
 	#save playthrough time to level_index -1 as "best_time"
+	if is_full_playthrough && MissionControl.current_level == MissionControl.campaign_levels - 1:
+		var new_best_playthrough = SaveControl.add_stat(-1, "best_time", playthrough_time)
+		stats_screen.set_playthrough_time(playthrough_time, new_best_playthrough)
 
 
 func on_partial_time(seconds: float):
@@ -113,8 +120,10 @@ func check_kill_achievement(enemy_type: Constants.EnemyType):
 	if enemy_type == Constants.EnemyType.CHERUBIM:
 		if SaveControl.get_stat_cumulative("kill" + str(Constants.EnemyType.CHERUBIM)) > 10:
 			AchievementControl.earn_achievement("kill_10_cherubim")
+	if enemy_type == Constants.EnemyType.MALAKIM:
 		if SaveControl.get_stat_cumulative("kill" + str(Constants.EnemyType.MALAKIM)) > 10:
 			AchievementControl.earn_achievement("kill_10_malakim")
+	if enemy_type == Constants.EnemyType.SERAPHIM:
 		if SaveControl.get_stat_cumulative("kill" + str(Constants.EnemyType.SERAPHIM)) > 10:
 			AchievementControl.earn_achievement("kill_10_seraphim")
 	
@@ -131,3 +140,4 @@ func on_returning_to_menu():
 	kills = 0
 	level_finished = false
 	playthrough_time = 0
+	is_full_playthrough = false

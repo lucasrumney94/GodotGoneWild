@@ -4,14 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://cxyyuibifmqs" path="res://UI/Achievements/achievement_popup_panel.tscn" id="2_omo40"]
 [ext_resource type="Script" path="res://Objects/timer_unscaled.gd" id="3_vuorc"]
 
-[node name="AchievementPopup" type="CanvasLayer"]
+[node name="AchievementPopup" type="CanvasLayer" groups=["achievement_popup"]]
 process_mode = 3
 layer = 100
 script = ExtResource("1_8bg1h")
 popup_panel = ExtResource("2_omo40")
-
-[node name="Timer" type="Timer" parent="."]
-one_shot = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchors_preset = 3
@@ -27,4 +24,6 @@ mouse_filter = 2
 alignment = 2
 
 [node name="TimerUnscaled" type="Node" parent="."]
+process_mode = 3
 script = ExtResource("3_vuorc")
+one_shot = true

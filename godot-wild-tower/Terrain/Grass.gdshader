@@ -9,14 +9,17 @@ uniform sampler2D albedo;
 varying vec2 tex_position;
 
 void vertex() {
-  tex_position = (VERTEX.xz*30. + vec2(sin(TIME*1.1)/20., cos(TIME/21.)/20.)) / 3.0 + 0.5;
+  tex_position = (VERTEX.xz*30. + vec2(sin(TIME*1.1)/10., cos(TIME/21.)/10.)) / 4.0 + 0.5;
   float height = texture(noise, tex_position).x;
-  if(height<0.4) height=0.;
+  if (sqrt(VERTEX.x*VERTEX.x+VERTEX.z*VERTEX.z)<18.3)
+  {
+	height = 0.0;
+  }
   VERTEX.y += height * height_scale;
 }
 
 void fragment() {
   NORMAL_MAP = texture(normalmap, tex_position).xyz;
-  ALBEDO = texture(albedo, tex_position).rgb + texture(noise,tex_position/3.).rgb/50.;
+  ALBEDO = texture(albedo, tex_position).rgb;// + texture(noise,tex_position/3.).rgb/50.;
   ALPHA = 1.0;
 }

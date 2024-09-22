@@ -10,11 +10,25 @@ func _ready():
 		#%NextLevelButton.visible = false
 		%NextLevelButton.text = "View Credits"
 		%NextLevelButton.pressed.connect(on_view_credits)
+		%LevelFinishedLabel.text = "You killed God!"
 
 
 func set_completion_time(time: float, is_best: bool):
 	%TimeLabel.text = Constants.format_time(time)
 	%BestTimeLabel.visible = is_best
+	if !is_best:
+		%CurrentBestTimeLabel.text = "(Best: " + Constants.format_time(SaveControl.get_stat(MissionControl.current_level, "best_time")) + ")"
+		%CurrentBestTimeLabel.visible = true
+
+
+func set_playthrough_time(time: float, is_best: bool):
+	%FullPlaytimeLabel.text = Constants.format_time(time)
+	%BestFullTimeLabel.visible = is_best
+	if !is_best:
+		%CurrentBestFullTimeLabel.text = "(Best: " + Constants.format_time(SaveControl.get_stat(-1, "best_time")) + ")"
+		%CurrentBestFullTimeLabel.visible = true
+	
+	%FullPlaythroughContainer.visible = true
 
 
 func set_kills(kills: int, fewest: bool, most: bool):
@@ -27,16 +41,26 @@ func set_kills(kills: int, fewest: bool, most: bool):
 		%BestKillsLabel.visible = true
 	else:
 		%BestKillsLabel.visible = false
+		%CurrentBestKillsLabel.text = "(Fewest: " \
+		+ SaveControl.get_best_stat_string(MissionControl.current_level, "fewest_kills")\
+		+ ", Most: " + SaveControl.get_best_stat_string(MissionControl.current_level, "most_kills") + ")"
+		%CurrentBestKillsLabel.visible = true
 
 
 func set_restarts(restarts: int, is_best: bool):
 	%RestartsLabel.text = str(restarts)
 	%BestRestartsLabel.visible = is_best
+	if !is_best:
+		%CurrentBestRestartsLabel.text = "(Fewest: " + SaveControl.get_best_stat_string(MissionControl.current_level, "fewest_restarts") + ")"
+		%CurrentBestRestartsLabel.visible = true
 
 
 func set_deaths(deaths: int, is_best: bool):
 	%DeathsLabel.text = str(deaths)
 	%BestDeathsLabel.visible = is_best
+	if !is_best:
+		%CurrentBestDeathsLabel.text = "(Fewest: " + SaveControl.get_best_stat_string(MissionControl.current_level, "fewest_deaths") + ")"
+		%CurrentBestDeathsLabel.visible = true
 
 
 func restart_level():

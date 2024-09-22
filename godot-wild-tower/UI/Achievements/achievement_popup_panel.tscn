@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cxyyuibifmqs"]
+[gd_scene load_steps=10 format=3 uid="uid://cxyyuibifmqs"]
 
 [ext_resource type="Script" path="res://UI/Achievements/achievement_popup_panel.gd" id="1_kq5ul"]
+[ext_resource type="Script" path="res://Objects/timer_unscaled.gd" id="2_8x4os"]
 [ext_resource type="Texture2D" uid="uid://c4agc4wxn88u2" path="res://icon.svg" id="2_y7k7t"]
+[ext_resource type="Script" path="res://Scripts/animation_player_unscaled.gd" id="3_itr2o"]
 [ext_resource type="AudioStream" uid="uid://5vdt3vvhfkho" path="res://Audio/AchievementGet.wav" id="3_vj25p"]
 
 [sub_resource type="Animation" id="Animation_cqqux"]
@@ -77,7 +79,8 @@ _data = {
 [node name="AchievementPopupPanel" type="PanelContainer"]
 script = ExtResource("1_kq5ul")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="TimerUnscaled" type="Node" parent="."]
+script = ExtResource("2_8x4os")
 wait_time = 3.0
 one_shot = true
 autostart = true
@@ -87,6 +90,7 @@ libraries = {
 "": SubResource("AnimationLibrary_btcdm")
 }
 autoplay = "enter"
+script = ExtResource("3_itr2o")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -119,7 +123,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
-text = "Description"
+text = "Description Description Description Description "
 text_overrun_behavior = 3
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

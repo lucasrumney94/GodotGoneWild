@@ -13,7 +13,8 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 1, 0, 0.266667)
 
-[node name="Label" type="Label" parent="ColorRect"]
+[node name="LevelFinishedLabel" type="Label" parent="ColorRect"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -46,16 +47,18 @@ alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 16
 alignment = 1
 
 [node name="Label" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
-text = "Completion Time:"
+text = "Completion Time: "
 
 [node name="TimeLabel" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(84, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
@@ -71,18 +74,28 @@ theme_override_font_sizes/font_size = 24
 text = "New Best Time!"
 uppercase = true
 
+[node name="CurrentBestTimeLabel" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "(Best: )"
+
 [node name="HBoxContainer2" type="HBoxContainer" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 16
 alignment = 1
 
 [node name="Label" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
-text = "Angels Killed:"
+text = "Angels Killed: "
 
 [node name="KillsLabel" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer2"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
@@ -98,18 +111,29 @@ theme_override_font_sizes/font_size = 24
 text = "New Best!"
 uppercase = true
 
+[node name="CurrentBestKillsLabel" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "(Fewest: , Most: )"
+
 [node name="HBoxContainer3" type="HBoxContainer" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 16
 alignment = 1
 
 [node name="Label" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
-text = "Restarts:"
+text = "Restarts: "
 
 [node name="RestartsLabel" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer3"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
@@ -125,18 +149,29 @@ theme_override_font_sizes/font_size = 24
 text = "New Fewest Restarts!"
 uppercase = true
 
+[node name="CurrentBestRestartsLabel" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer3"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "(Fewest: )"
+
 [node name="HBoxContainer4" type="HBoxContainer" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 16
 alignment = 1
 
 [node name="Label" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer4"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
-text = "Deaths:"
+text = "Deaths: "
 
 [node name="DeathsLabel" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer4"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
@@ -151,6 +186,59 @@ theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 24
 text = "New Fewest Deaths!"
 uppercase = true
+
+[node name="CurrentBestDeathsLabel" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer4"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "(Fewest: )"
+
+[node name="FullPlaythroughContainer" type="HBoxContainer" parent="ColorRect"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -177.0
+offset_top = 100.435
+offset_right = 177.0
+offset_bottom = 145.435
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="ColorRect/FullPlaythroughContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Full Playthrough Time: "
+
+[node name="FullPlaytimeLabel" type="Label" parent="ColorRect/FullPlaythroughContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "00:00:00"
+
+[node name="BestFullTimeLabel" type="Label" parent="ColorRect/FullPlaythroughContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 32
+text = "New Best Time!"
+
+[node name="CurrentBestFullTimeLabel" type="Label" parent="ColorRect/FullPlaythroughContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "(Best: )"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 anchors_preset = 7
