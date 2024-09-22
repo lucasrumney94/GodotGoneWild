@@ -103,8 +103,16 @@ func on_death():
 		deaths += 1
 
 
-func on_enemy_killed(_enemy_type: Constants.EnemyType, _global_pos: Vector3):
+func on_enemy_killed(enemy_type: Constants.EnemyType, _global_pos: Vector3):
 	kills += 1
+	
+	Callable(check_kill_achievement.bind(enemy_type)).call_deferred()
+
+
+func check_kill_achievement(enemy_type: Constants.EnemyType):
+	if enemy_type == Constants.EnemyType.CHERUBIM:
+		if SaveControl.get_stat_cumulative("kill" + str(Constants.EnemyType.CHERUBIM)) > 10:
+			AchievementControl.earn_achievement("kill_10_cherubim")
 
 
 func on_returning_to_menu():
