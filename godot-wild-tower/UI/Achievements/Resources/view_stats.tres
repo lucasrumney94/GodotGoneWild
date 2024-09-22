@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Achievement" load_steps=3 format=3 uid="uid://ctvd0pw2iwcs"]
+
+[ext_resource type="Script" path="res://UI/Achievements/achievement.gd" id="1_bqpcj"]
+[ext_resource type="Texture2D" uid="uid://c4agc4wxn88u2" path="res://icon.svg" id="1_kt83y"]
+
+[resource]
+script = ExtResource("1_bqpcj")
+id = "view_stats"
+icon = ExtResource("1_kt83y")
+title = "Numbers, Numbers, Numbers"
+description = "View the Stats Page"
+stat = ""
+stat_goal = 0
+check_function = ""
+custom_string = ""

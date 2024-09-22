@@ -15,6 +15,8 @@ func _ready():
 	
 	
 	populate_stats()
+
+	AchievementControl.earn_achievement("view_stats")
 	
 	%BackButton.grab_focus()
 
