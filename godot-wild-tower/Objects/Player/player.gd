@@ -65,7 +65,7 @@ var camera_shake: bool = false
 var camera_base_pos: Vector3
 var camera_shake_intensity: float = 0.1
 
-@export var footstep_delay: float = 0.5
+@export var footstep_delay: float = 0.4
 var step_left: bool = true
 var step_timer: float = 0
 
@@ -174,7 +174,7 @@ func _physics_process(delta):
 			
 		if velocity.y < 0:
 			fall_time += delta
-			if fall_time > 3.0 && !long_fall:
+			if fall_time > 1.3 && !long_fall:
 				long_fall = true
 				GameEvents.emit_long_fall_started()
 			

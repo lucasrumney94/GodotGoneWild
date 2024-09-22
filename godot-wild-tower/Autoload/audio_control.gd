@@ -36,6 +36,10 @@ extends Node
 @export var crystal_impact_sound: AudioStream
 @export_range(-36, 12) var crystal_impact_sound_gain: float
 
+@export var player_footstep_sounds: Array[AudioStream] = []
+@export_range(-36, 12) var player_footstep_sound_gain: float
+
+
 @export var low_pass_normal_cutoff:float = 8000
 ##@export var low_pass_slomo_cutoff:float = 80
 @export var pitch_shift_normal_pitch_scale:float = 1.0
@@ -44,6 +48,10 @@ extends Node
 
 @export var low_pass_cutoff_lower_bound:float = 400
 @export var pitch_shift_cutoff_lower_bound:float = .4
+
+var long_fall_target_volume:float = 0.0
+var long_fall_low_volume:float = -128.
+var long_fall_audio_stream: AudioStreamPlayer2D
 
 var sfx_index: int
 var sfx_lowpass: AudioEffectLowPassFilter
@@ -75,24 +83,40 @@ func init() -> void:
 	GameEvents.long_fall_started.connect(play_long_fall)
 	GameEvents.projectile_impact.connect(play_projectile_impact)
 	GameEvents.crystal_impact.connect(play_crystal_impact)
+	GameEvents.footstep.connect(play_footstep)
+
+	
 	
 	sfx_index = AudioServer.get_bus_index("effects")
-	print("sfx index is ", sfx_index)
+	#print("sfx index is ", sfx_index)
 	sfx_lowpass = AudioServer.get_bus_effect(sfx_index,0)
 	sfx_pitchshift = AudioServer.get_bus_effect(sfx_index,1)
 
 	music_index = AudioServer.get_bus_index("music")
-	print("music index is ", music_index)
+	#print("music index is ", music_index)
 	music_lowpass = AudioServer.get_bus_effect(music_index,0)
 	music_pitchshift = AudioServer.get_bus_effect(music_index,1)
+
+	long_fall_target_volume = long_fall_low_volume
+	long_fall_audio_stream = AudioStreamPlayer2D.new()
+	long_fall_audio_stream.stream = long_fall_sound
+	long_fall_audio_stream.volume_db = long_fall_low_volume
+	long_fall_audio_stream.ProcessMode.PROCESS_MODE_ALWAYS
+	add_child(long_fall_audio_stream)
+	long_fall_audio_stream.play()
+	
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	# React to being paused
 	if (get_tree().paused):
 		music_player.volume_db = music_player_pause_gain;
+		long_fall_audio_stream.volume_db = long_fall_low_volume
 	else:
 		music_player.volume_db = music_player_gain;
+		long_fall_audio_stream.volume_db = lerp(long_fall_audio_stream.volume_db, long_fall_target_volume, 0.3)
+
 
 	sfx_lowpass.cutoff_hz = remap(Engine.time_scale, 0. ,1.0,low_pass_cutoff_lower_bound, low_pass_normal_cutoff)
 	sfx_pitchshift.pitch_scale = remap(Engine.time_scale, 0. ,1.0,pitch_shift_cutoff_lower_bound,pitch_shift_normal_pitch_scale)
@@ -112,21 +136,25 @@ func play_level_finished():
 	play_2D_sound(level_finish_sound)
 
 func play_player_jumped(world_position: Vector3):	
-	play_3D_sound(world_position, player_jump_sound, player_jump_gain)
+	play_3D_sound_random_pitch(world_position, player_jump_sound, player_jump_gain, 0.8, 0.95)
 
 func play_player_hit_floor(world_position: Vector3):
 	play_3D_sound(world_position, player_hit_floor_sound, player_hit_floor_gain)
+	long_fall_target_volume = long_fall_low_volume
+	long_fall_audio_stream.volume_db = long_fall_low_volume
 
 func play_player_dash():
 	play_2D_sound(player_dash_sound)
+	long_fall_target_volume = long_fall_low_volume
+	long_fall_audio_stream.volume_db = long_fall_low_volume
 
 func play_crystal_impact(world_position: Vector3):
-	print("Playing Crystal Impact")
+	#print("Playing Crystal Impact")
 	play_3D_sound_random_pitch(world_position, crystal_impact_sound, crystal_impact_sound_gain, .7, 1.7)
 
 func play_player_enemy_dash():
 	# change lowpass on slow time	
-	print("enemy dash time scale SLOW", Time.get_ticks_msec())
+	#print("enemy dash time scale SLOW", Time.get_ticks_msec())
 	# sfx_lowpass.cutoff_hz = low_pass_slomo_cutoff;
 	# music_lowpass.cutoff_hz = low_pass_slomo_cutoff;
 	# sfx_pitchshift.pitch_scale = pitch_shift_slomo_pitch_scale
@@ -135,6 +163,9 @@ func play_player_enemy_dash():
 	play_2D_sound(player_enemy_dash_sound)
 	#await get_tree().create_timer(slomo_effect_length).timeout
 	#reset_pitch_and_cutoff()
+
+	long_fall_target_volume = long_fall_low_volume
+	long_fall_audio_stream.volume_db = long_fall_low_volume
 	
 # func reset_pitch_and_cutoff():
 # 	sfx_lowpass.cutoff_hz = low_pass_normal_cutoff
@@ -147,9 +178,12 @@ func play_restarting():
 	play_2D_sound(restarting_sound)
 
 func play_long_fall():
-	play_2D_sound(long_fall_sound)
+	# print("playing long fall sound")
+	long_fall_target_volume = long_fall_sound_gain
+	#play_2D_sound(long_fall_sound, long_fall_sound_gain)
 
-
+func play_footstep(world_position: Vector3):
+	play_3D_sound(world_position, player_footstep_sounds.pick_random(),player_footstep_sound_gain)
 
 
 func play_3D_sound(world_position: Vector3, file_to_play: Resource, gain:float=0.0):
@@ -168,12 +202,13 @@ func play_3D_sound_random_pitch(world_position: Vector3, file_to_play: Resource,
 	player.position = world_position
 	var rng = RandomNumberGenerator.new()
 	player.pitch_scale = rng.randf_range(pitch_range_low, pitch_range_high)
-	print("pitch scale randomized to", player.pitch_scale)
+	#print("pitch scale randomized to", player.pitch_scale)
 	player.volume_db = gain
 	add_child(player)
 	player.play()
 	await player.finished
 	player.queue_free()
+
 
 
 func play_2D_sound(file_to_play: Resource, gain:float = 0.0):
@@ -184,3 +219,9 @@ func play_2D_sound(file_to_play: Resource, gain:float = 0.0):
 	player.play()
 	await player.finished
 	player.queue_free()
+
+
+# Plan
+# play the sound at the start
+# constantly set the volume in process with a lerp based on a target variable who is set by fall-start and player-landing
+# 

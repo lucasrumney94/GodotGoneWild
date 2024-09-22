@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c6l5ryse4oype"]
+[gd_scene load_steps=15 format=3 uid="uid://drvs55gmmc1gj"]
 
 [ext_resource type="Script" path="res://Main/main_game.gd" id="1_dgrmf"]
 [ext_resource type="PackedScene" uid="uid://do1pmtbmc423e" path="res://UI/pause_menu.tscn" id="2_kkvj4"]
@@ -42,6 +42,12 @@ environment = SubResource("Environment_4py5p")
 transform = Transform3D(-0.707107, 0.612372, -0.353553, 0, 0.5, 0.866025, 0.707107, 0.612372, -0.353553, -10, 50, -10)
 
 [node name="Floor" type="CSGBox3D" parent="WorldEnvironment"]
+use_collision = true
+size = Vector3(50, 0.5, 50)
+material = ExtResource("3_a0krp")
+
+[node name="Floor2" type="CSGBox3D" parent="WorldEnvironment"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -50, 0)
 use_collision = true
 size = Vector3(50, 0.5, 50)
 material = ExtResource("3_a0krp")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cjlspnq6r61nc"]
+[gd_scene load_steps=17 format=3 uid="uid://cjlspnq6r61nc"]
 
 [ext_resource type="Script" path="res://Autoload/audio_control.gd" id="1_1dob2"]
 [ext_resource type="AudioStream" uid="uid://cjcjooyaeu3jq" path="res://Audio/GodotWildJamSFX_LEVELSTART.wav" id="2_7murf"]
@@ -9,9 +9,13 @@
 [ext_resource type="AudioStream" uid="uid://7wfkdjqob7ni" path="res://Audio/GodotWildJamSFX_DashFASTER.wav" id="5_isu52"]
 [ext_resource type="AudioStream" uid="uid://dyr54hpvhqujr" path="res://Audio/GodotWildJamSFX_PDASH.wav" id="5_vhifl"]
 [ext_resource type="AudioStream" uid="uid://x7xwd4g7a6uu" path="res://Audio/GodotWildJamSFX_restart.wav" id="6_ptvqt"]
-[ext_resource type="AudioStream" uid="uid://b6dq3lmhb6x3r" path="res://Audio/GodotWildJamSFX_LONGFALL.wav" id="7_k7kpr"]
+[ext_resource type="AudioStream" uid="uid://blj4jbfigcey3" path="res://Audio/LongFallBrownNoise.wav" id="9_ky675"]
 [ext_resource type="AudioStream" uid="uid://o8k4sknm3nvx" path="res://Audio/ProjectileFizzle.wav" id="10_o1oed"]
 [ext_resource type="AudioStream" uid="uid://djm8upyft7tc7" path="res://Audio/CrystalImpact.wav" id="11_qu2b4"]
+[ext_resource type="AudioStream" uid="uid://lk53vlrv3j3j" path="res://Audio/151222__owlstorm__hard-female-footstep-4.wav" id="12_r2r5y"]
+[ext_resource type="AudioStream" uid="uid://c8jn47g7f8jgq" path="res://Audio/151232__owlstorm__hard-female-footstep-1.wav" id="13_vwll3"]
+[ext_resource type="AudioStream" uid="uid://dkd3fltdrc81c" path="res://Audio/151237__owlstorm__hard-female-footstep-3.wav" id="14_bsse6"]
+[ext_resource type="AudioStream" uid="uid://7vfr3ajc4dyq" path="res://Audio/151238__owlstorm__hard-female-footstep-2.wav" id="15_6j145"]
 
 [node name="AudioControl" type="Node" node_paths=PackedStringArray("music_player")]
 process_mode = 3
@@ -22,7 +26,7 @@ level_started_sound = ExtResource("2_7murf")
 level_started_gain = -12.0
 level_finish_sound = ExtResource("3_06mfg")
 player_jump_sound = ExtResource("4_bmnup")
-player_jump_gain = -10.69
+player_jump_gain = -12.0
 player_hit_floor_sound = ExtResource("5_4ucpw")
 player_hit_floor_gain = -10.625
 player_dash_sound = ExtResource("5_vhifl")
@@ -31,12 +35,14 @@ player_enemy_dash_sound = ExtResource("5_isu52")
 player_enemy_dash_sound_gain = -2.447
 restarting_sound = ExtResource("6_ptvqt")
 restarting_sound_gain = -3.18
-long_fall_sound = ExtResource("7_k7kpr")
-long_fall_sound_gain = -3.78
+long_fall_sound = ExtResource("9_ky675")
+long_fall_sound_gain = -10.815
 projectile_impact_sound = ExtResource("10_o1oed")
-projectile_impact_sound_gain = -12.0
+projectile_impact_sound_gain = -6.0
 crystal_impact_sound = ExtResource("11_qu2b4")
 crystal_impact_sound_gain = -20.0
+player_footstep_sounds = Array[AudioStream]([ExtResource("12_r2r5y"), ExtResource("13_vwll3"), ExtResource("14_bsse6"), ExtResource("15_6j145")])
+player_footstep_sound_gain = -4.58
 low_pass_cutoff_lower_bound = 140.0
 pitch_shift_cutoff_lower_bound = 0.8
 
