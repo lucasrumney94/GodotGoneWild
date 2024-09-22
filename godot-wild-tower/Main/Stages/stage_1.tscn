@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://hhltcdf81l45"]
+[gd_scene load_steps=25 format=3 uid="uid://hhltcdf81l45"]
 
 [ext_resource type="Script" path="res://Main/main_game.gd" id="1_4bn8t"]
 [ext_resource type="PackedScene" uid="uid://do1pmtbmc423e" path="res://UI/pause_menu.tscn" id="2_v88ld"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cge0083eia62r" path="res://Objects/Environment/Models/scaffold_support.tscn" id="12_bf34w"]
 [ext_resource type="PackedScene" uid="uid://bi8anegkhcuux" path="res://Objects/Environment/Models/scaffolding_plank.tscn" id="13_lt5jr"]
 [ext_resource type="PackedScene" uid="uid://b1cwlbpp2jlfk" path="res://Terrain/GrassTest.tscn" id="15_ycxwn"]
+[ext_resource type="PackedScene" uid="uid://bnruh4li3bygm" path="res://Objects/Environment/CSG/stage_2_csg.gltf" id="16_0y7gs"]
 [ext_resource type="Material" uid="uid://cxy3baspdt2jv" path="res://Materials/marble.tres" id="16_2xuf4"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_26xkk"]
@@ -90,7 +91,7 @@ skeleton = NodePath("../Dirt Interior")
 transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 1, 0)
 
 [node name="Player" parent="." instance=ExtResource("4_dpxqh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06562, 51.36)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 45)
 
 [node name="SkyLight" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22, 0)
@@ -99,6 +100,9 @@ mesh = SubResource("CylinderMesh_yu1w3")
 [node name="FinishArea" parent="." instance=ExtResource("8_xhnku")]
 transform = Transform3D(2, 0, 0, 0, 0.5, 0, 0, 0, 2, 0, 47, 0)
 visible = false
+
+[node name="Stage 2" parent="." instance=ExtResource("16_0y7gs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 44, 0)
 
 [node name="First Floor" type="Node3D" parent="."]
 
