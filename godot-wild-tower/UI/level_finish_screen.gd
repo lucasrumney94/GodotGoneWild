@@ -6,11 +6,12 @@ func _ready():
 	%RestartButton.pressed.connect(on_restart_pressed)
 	if MissionControl.current_level < MissionControl.campaign_levels - 1:
 		%NextLevelButton.pressed.connect(on_next_level_pressed)
-	else: 
-		#%NextLevelButton.visible = false
+	elif MissionControl.current_level == MissionControl.campaign_level - 1: 
 		%NextLevelButton.text = "View Credits"
 		%NextLevelButton.pressed.connect(on_view_credits)
 		%LevelFinishedLabel.text = "You killed God!"
+	else:
+		%NextLevelButton.visible = false
 
 
 func set_completion_time(time: float, is_best: bool):
