@@ -70,6 +70,9 @@ var camera_shake_intensity: float = 0.1
 var step_left: bool = true
 var step_timer: float = 0
 
+var stepping_up: bool = false
+@export var step_up_speed: float = 200
+
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -133,8 +136,8 @@ func _physics_process(delta):
 	if !alive: return
 	if level_finished: return
 	
-	var on_floor: bool = is_on_floor()
-	if on_floor && !was_on_floor:
+	var on_floor: bool = is_on_floor() || stepping_up
+	if on_floor && !was_on_floor && !stepping_up:
 		GameEvents.emit_player_hit_floor(global_position)
 	was_on_floor = on_floor
 	
@@ -168,7 +171,8 @@ func _physics_process(delta):
 		step_timer = 0
 		
 		speed_mult = air_speed_mult
-		velocity.y -= gravity * delta * gravity_mult
+		if !stepping_up:
+			velocity.y -= gravity * delta * gravity_mult
 		last_velocity = velocity
 		if is_jumping && velocity.y < 0:
 			is_jumping = false
@@ -225,6 +229,7 @@ func _physics_process(delta):
 	if input_dir.length_squared() > 0:
 		move_direction = %CameraRotationRoot.transform.basis * Vector3(input_dir.x, 0, input_dir.y)
 		move_direction = Vector3(move_direction.x, 0, move_direction.z).normalized()
+		var flat_move_direction: Vector3 = move_direction
 		if on_floor:
 			var side_move = transform.basis.y.cross(move_direction)
 			var floor_normal = get_floor_normal()
@@ -233,6 +238,7 @@ func _physics_process(delta):
 			start()
 			
 		if on_floor:
+			#MAKE FOOTSTEP NOISES
 			step_timer += delta
 			if step_timer > footstep_delay:
 				step_timer = 0
@@ -244,6 +250,7 @@ func _physics_process(delta):
 				step_left = !step_left
 	else:
 		move_direction = Vector3.ZERO
+		stepping_up = false
 	#if input_dir.y > 0:
 		#is_sprinting = false
 	#else:
@@ -276,12 +283,22 @@ func _physics_process(delta):
 		#if ladder != null:
 			#move_on_ladder(input_dir, direction, delta)
 		#else: move(direction, delta, on_floor)
+		#LOOK FOR CURB BLOCKING MOVEMENT
+		if !is_jumping:
+			stepping_up = detect_step(direction, delta)
+			if stepping_up:
+				velocity.y = step_up_speed * delta * speed_mult
+		
 		move(direction, delta)#, on_floor)
 		
 	else:
 		if on_floor:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 			velocity.z = move_toward(velocity.z, 0, SPEED)
+		
+		
+		
+		
 		#if ladder != null:
 			#if is_jumping:
 				#velocity.y -= gravity * delta
@@ -304,6 +321,23 @@ func _physics_process(delta):
 func start():
 	started = true
 	GameEvents.emit_level_started()
+
+
+func detect_step(direction: Vector3, delta: float):
+	%FeetUpperShapecast.target_position = move_direction * delta * speed_mult * 15
+	%FeetUpperShapecast.force_shapecast_update()
+	if %FeetUpperShapecast.is_colliding():
+		return false
+	
+	%FeetBaseShapecast.target_position = move_direction * delta * speed_mult
+	%FeetBaseShapecast.force_shapecast_update()
+	if %FeetBaseShapecast.is_colliding():
+		var hit_normal: Vector3 = %FeetBaseShapecast.get_collision_normal(0)
+		if hit_normal.dot(Vector3.UP) < 0.5:
+			#print("PLAYER HAS DETECTED A STEP. LOW RAYCAST HITTING " + feet_step_low_raycast.get_collider().get_parent().name + " WITH NORMAL " + str(hit_normal))
+			return true
+	
+	return false
 
 
 func update_camera(delta: float, rotation_input: float, tilt_input: float):
