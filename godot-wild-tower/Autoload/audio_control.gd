@@ -84,8 +84,6 @@ func init() -> void:
 	GameEvents.projectile_impact.connect(play_projectile_impact)
 	GameEvents.crystal_impact.connect(play_crystal_impact)
 	GameEvents.footstep.connect(play_footstep)
-
-	
 	
 	sfx_index = AudioServer.get_bus_index("effects")
 	#print("sfx index is ", sfx_index)
@@ -101,6 +99,7 @@ func init() -> void:
 	long_fall_audio_stream = AudioStreamPlayer2D.new()
 	long_fall_audio_stream.stream = long_fall_sound
 	long_fall_audio_stream.volume_db = long_fall_low_volume
+	long_fall_audio_stream.bus = "effects"
 	long_fall_audio_stream.ProcessMode.PROCESS_MODE_ALWAYS
 	add_child(long_fall_audio_stream)
 	long_fall_audio_stream.play()
@@ -127,31 +126,30 @@ func _process(delta: float) -> void:
 
 
 func play_projectile_impact(world_position: Vector3):
-	play_3D_sound(world_position, projectile_impact_sound, projectile_impact_sound_gain)
+	play_3D_sound(world_position, projectile_impact_sound, projectile_impact_sound_gain, "effects")
 
 func play_level_started():
-	play_2D_sound(level_started_sound, level_started_gain)
+	play_2D_sound(level_started_sound, level_started_gain, "effects")
 
 func play_level_finished():
-	play_2D_sound(level_finish_sound)
+	play_2D_sound(level_finish_sound, level_finished_gain, "effects")
 
 func play_player_jumped(world_position: Vector3):	
-
-	play_3D_sound_random_pitch(world_position, player_jump_sound.pick_random(), player_jump_gain, 0.96, 1.04)
+	play_3D_sound_random_pitch(world_position, player_jump_sound.pick_random(), player_jump_gain, 0.96, 1.04, "effects")
 
 func play_player_hit_floor(world_position: Vector3):
-	play_3D_sound(world_position, player_hit_floor_sound, player_hit_floor_gain)
+	play_3D_sound(world_position, player_hit_floor_sound, player_hit_floor_gain, "effects")
 	long_fall_target_volume = long_fall_low_volume
 	long_fall_audio_stream.volume_db = long_fall_low_volume
 
 func play_player_dash():
-	play_2D_sound(player_dash_sound)
+	play_2D_sound(player_dash_sound,player_dash_sound_gain)
 	long_fall_target_volume = long_fall_low_volume
 	long_fall_audio_stream.volume_db = long_fall_low_volume
 
 func play_crystal_impact(world_position: Vector3):
 	#print("Playing Crystal Impact")
-	play_3D_sound_random_pitch(world_position, crystal_impact_sound, crystal_impact_sound_gain, .7, 1.7)
+	play_3D_sound_random_pitch(world_position, crystal_impact_sound, crystal_impact_sound_gain, .7, 1.7, "effects")
 
 func play_player_enemy_dash():
 	# change lowpass on slow time	
@@ -184,12 +182,13 @@ func play_long_fall():
 	#play_2D_sound(long_fall_sound, long_fall_sound_gain)
 
 func play_footstep(world_position: Vector3):
-	play_3D_sound(world_position, player_footstep_sounds.pick_random(),player_footstep_sound_gain)
+	play_3D_sound(world_position, player_footstep_sounds.pick_random(),player_footstep_sound_gain, "effects")
 
 
-func play_3D_sound(world_position: Vector3, file_to_play: Resource, gain:float=0.0):
+func play_3D_sound(world_position: Vector3, file_to_play: Resource, gain:float=0.0, bus:String="effects"):
 	var  player = AudioStreamPlayer3D.new()
 	player.stream = file_to_play
+	player.bus = bus
 	player.position = world_position
 	player.volume_db = gain
 	add_child(player)
@@ -197,13 +196,14 @@ func play_3D_sound(world_position: Vector3, file_to_play: Resource, gain:float=0
 	await player.finished
 	player.queue_free()
 
-func play_3D_sound_random_pitch(world_position: Vector3, file_to_play: Resource, gain:float=0.0, pitch_range_low:float=.8, pitch_range_high:float=1.2):
+func play_3D_sound_random_pitch(world_position: Vector3, file_to_play: Resource, gain:float=0.0, pitch_range_low:float=.8, pitch_range_high:float=1.2, bus:String="effects"):
 	var  player = AudioStreamPlayer3D.new()
 	player.stream = file_to_play
 	player.position = world_position
 	var rng = RandomNumberGenerator.new()
 	player.pitch_scale = rng.randf_range(pitch_range_low, pitch_range_high)
 	#print("pitch scale randomized to", player.pitch_scale)
+	player.bus = bus
 	player.volume_db = gain
 	add_child(player)
 	player.play()
@@ -212,10 +212,11 @@ func play_3D_sound_random_pitch(world_position: Vector3, file_to_play: Resource,
 
 
 
-func play_2D_sound(file_to_play: Resource, gain:float = 0.0):
+func play_2D_sound(file_to_play: Resource, gain:float = 0.0, bus:String="effects"):
 	var  player = AudioStreamPlayer2D.new()
 	player.stream = file_to_play
 	player.volume_db = gain
+	player.bus = bus
 	add_child(player)
 	player.play()
 	await player.finished
