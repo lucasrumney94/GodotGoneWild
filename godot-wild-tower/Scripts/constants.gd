@@ -5,7 +5,8 @@ enum EnemyType {
 	CHERUBIM,
 	MALAKIM,
 	SERAPHIM,
-	OPHANIM
+	OPHANIM,
+	ELOHIM
 }
 
 
