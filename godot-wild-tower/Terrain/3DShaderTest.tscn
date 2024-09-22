@@ -22,6 +22,7 @@ noise = SubResource("FastNoiseLite_h531b")
 render_priority = 0
 shader = ExtResource("1_bea7v")
 shader_parameter/height_scale = 0.5
+shader_parameter/alpha = 0.2
 shader_parameter/noise = SubResource("NoiseTexture2D_i5yfj")
 shader_parameter/normalmap = SubResource("NoiseTexture2D_4lotq")
 

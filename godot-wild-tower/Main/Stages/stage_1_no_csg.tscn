@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=4 uid="uid://cpoosk5s67bqi"]
+[gd_scene load_steps=65 format=4 uid="uid://hhltcdf81l45"]
 
 [ext_resource type="Script" path="res://Main/main_game.gd" id="1_7e5gw"]
 [ext_resource type="PackedScene" uid="uid://do1pmtbmc423e" path="res://UI/pause_menu.tscn" id="2_jowbb"]
@@ -8,12 +8,13 @@
 [ext_resource type="Material" uid="uid://3byi41uuwvq8" path="res://Materials/LD_grid.tres" id="6_m7xim"]
 [ext_resource type="Material" uid="uid://5dqiqxr4arwd" path="res://Materials/grid_material.tres" id="7_qg734"]
 [ext_resource type="PackedScene" uid="uid://y00sgnh5ws4h" path="res://Objects/Environment/finish_area.tscn" id="8_u17pv"]
-[ext_resource type="PackedScene" uid="uid://dacvenlpyt2bp" path="res://Objects/Environment/Models/Column.tscn" id="9_ntu4m"]
+[ext_resource type="PackedScene" path="res://Objects/Environment/Models/Column.tscn" id="9_ntu4m"]
 [ext_resource type="PackedScene" uid="uid://b2oiak8dl30w2" path="res://Objects/Enemies/BasicEnemy.tscn" id="10_2lb0w"]
 [ext_resource type="PackedScene" uid="uid://c08aetbdbnjbc" path="res://Objects/Enemies/MobileEnemy.tscn" id="11_pfdv4"]
-[ext_resource type="PackedScene" uid="uid://ddxtpi8u5fqe0" path="res://Objects/Environment/Models/bookcase.tscn" id="12_tvodw"]
-[ext_resource type="PackedScene" uid="uid://bi8anegkhcuux" path="res://Objects/Environment/Models/scaffolding_plank.tscn" id="13_jwm2p"]
-[ext_resource type="PackedScene" uid="uid://cge0083eia62r" path="res://Objects/Environment/Models/scaffold_support.tscn" id="14_6mkig"]
+[ext_resource type="PackedScene" path="res://Objects/Environment/Models/bookcase.tscn" id="12_tvodw"]
+[ext_resource type="PackedScene" path="res://Objects/Environment/Models/scaffolding_plank.tscn" id="13_jwm2p"]
+[ext_resource type="PackedScene" path="res://Objects/Environment/Models/scaffold_support.tscn" id="14_6mkig"]
+[ext_resource type="PackedScene" uid="uid://b1cwlbpp2jlfk" path="res://Terrain/GrassTest.tscn" id="15_bai40"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_asy3g"]
 panorama = ExtResource("3_5j6ap")
@@ -46,7 +47,6 @@ rings = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ubk3"]
 resource_name = "material_0"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_3q1xi"]
 _surfaces = [{
@@ -87,7 +87,6 @@ data = PackedVector3Array(31, -5.5, 0, 30.2228, -5.5, 6.8981, 30.2228, 5.5, 6.89
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_62x25"]
 resource_name = "material_1"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_as66v"]
 _surfaces = [{
@@ -128,7 +127,6 @@ data = PackedVector3Array(25.4366, 6.621, 5, 25.3481, 7.6612, 5.7855, 25.4366, 7
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v1oj0"]
 resource_name = "material_2"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_fnqjm"]
 _surfaces = [{
@@ -169,7 +167,6 @@ data = PackedVector3Array(-4, 2, -13, -4, 0, -8, -4, 0, -21.5493, -4, 0.2901, -2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n8dtc"]
 resource_name = "material_3"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_7whbf"]
 _surfaces = [{
@@ -210,7 +207,6 @@ data = PackedVector3Array(5, 10, 31.5, 5, 10, 21.5, 5, 0, 21.5, 5, 0, 21.5, 5, 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kv2wl"]
 resource_name = "material_4"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_03ndl"]
 _surfaces = [{
@@ -251,7 +247,6 @@ data = PackedVector3Array(29.0004, 0.2514, 7.3826, 27.0291, 2.2546, 13.0165, 28.
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ycd8f"]
 resource_name = "material_5"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_f24ab"]
 _surfaces = [{
@@ -292,7 +287,6 @@ data = PackedVector3Array(21.5035, -0.0583, 4.4066, 22, -0.5, 0, 21.5035, -0.5, 
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7vm84"]
 resource_name = "material_6"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_hjnsn"]
 _surfaces = [{
@@ -333,7 +327,6 @@ data = PackedVector3Array(30, -0.5, 0, 29.2478, -0.5, 6.6756, 29.2478, 0.5, 6.67
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lykng"]
 resource_name = "material_7"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_ae3v4"]
 _surfaces = [{
@@ -374,7 +367,6 @@ data = PackedVector3Array(31, -5.5, 0, 30.2228, -5.5, 6.8981, 30.2228, 5.5, 6.89
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ehdf3"]
 resource_name = "material_8"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_3e4w0"]
 _surfaces = [{
@@ -415,7 +407,6 @@ data = PackedVector3Array(22.147, -0.5, 5.9077, 20.7223, -0.5, 9.9793, 20.7223, 
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ijxnx"]
 resource_name = "material_9"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_gdb17"]
 _surfaces = [{
@@ -456,7 +447,6 @@ data = PackedVector3Array(2.5134, 21.9423, 11.012, 3.9337, 17.6777, 17.2345, 0.8
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yqoxs"]
 resource_name = "material_10"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_hs7j1"]
 _surfaces = [{
@@ -1042,3 +1032,6 @@ skeleton = NodePath("")
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="CSG Mesh/Third Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.5, 0)
 shape = SubResource("ConcavePolygonShape3D_rxp0b")
+
+[node name="Grass" parent="." instance=ExtResource("15_bai40")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)

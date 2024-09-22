@@ -1,0 +1,58 @@
+[gd_scene load_steps=12 format=3 uid="uid://b1cwlbpp2jlfk"]
+
+[ext_resource type="Shader" path="res://Terrain/Grass.gdshader" id="1_mhxwr"]
+[ext_resource type="Script" path="res://Terrain/setHeightScale.gd" id="2_jju6w"]
+
+[sub_resource type="Gradient" id="Gradient_7ks6a"]
+offsets = PackedFloat32Array(0, 0.0915493, 1)
+colors = PackedColorArray(0.312982, 0.309437, 0, 1, 0.3234, 0.66, 0.2112, 1, 0.0104, 0.52, 0.120813, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_lfgtp"]
+noise_type = 3
+frequency = 0.0005
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_rexij"]
+generate_mipmaps = false
+seamless = true
+normalize = false
+color_ramp = SubResource("Gradient_7ks6a")
+noise = SubResource("FastNoiseLite_lfgtp")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ahklc"]
+noise_type = 3
+frequency = 0.0344
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_i5yfj"]
+seamless = true
+seamless_blend_skirt = 0.547
+noise = SubResource("FastNoiseLite_ahklc")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_h531b"]
+noise_type = 3
+frequency = 0.0344
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4lotq"]
+as_normal_map = true
+noise = SubResource("FastNoiseLite_h531b")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6o0o7"]
+render_priority = 0
+shader = ExtResource("1_mhxwr")
+shader_parameter/height_scale = 3.1
+shader_parameter/alpha = 1.0
+shader_parameter/noise = SubResource("NoiseTexture2D_i5yfj")
+shader_parameter/normalmap = SubResource("NoiseTexture2D_4lotq")
+shader_parameter/albedo = SubResource("NoiseTexture2D_rexij")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_x1oxw"]
+material = SubResource("ShaderMaterial_6o0o7")
+size = Vector2(100, 100)
+subdivide_width = 250
+subdivide_depth = 250
+
+[node name="Grass" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00551146, -0.00348878, 0.0371893)
+mesh = SubResource("PlaneMesh_x1oxw")
+script = ExtResource("2_jju6w")
