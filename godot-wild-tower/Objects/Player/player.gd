@@ -75,9 +75,10 @@ var stepping_up: bool = false
 
 var crosshair_turnt: bool = false
 var crosshair_rotation: float = 0
-@export var crosshair_turn_speed: float = 100
-@export var crosshair_unturn_speed: float = 50
+@export var crosshair_turn_speed: float = 20
+@export var crosshair_unturn_speed: float = 6
 @export var crosshair_unturn_delay: float = 0.25
+var crosshair_unturn_time: float = 0
 
 
 func _ready():
@@ -129,7 +130,7 @@ func _input(event: InputEvent):
 			dash_forward()
 
 
-func _process(_delta):
+func _process(delta):
 	if !alive: return
 	
 	check_eye_ray()
@@ -137,7 +138,18 @@ func _process(_delta):
 	%DebugJumpsLabel.text = "Jumps: " + str(jump_count)
 	%DebugDashesLabel.text = "Dashes: " + str(short_dash_count)
 	
-	#if crosshair_turnt
+	if crosshair_turnt:
+		crosshair_unturn_time = 0
+		if %Crosshair.rotation < PI:
+			%Crosshair.rotation += delta * crosshair_turn_speed
+		else: %Crosshair.rotation = PI
+	else:
+		if crosshair_unturn_time < crosshair_unturn_delay:
+			crosshair_unturn_time += delta
+		else:
+			if %Crosshair.rotation > 0:
+				%Crosshair.rotation -= delta * crosshair_unturn_speed
+			else: %Crosshair.rotation = 0
 
 
 func _physics_process(delta):
@@ -591,8 +603,8 @@ func check_eye_ray():
 func turn_crosshair(setting: bool):
 	if crosshair_turnt == setting: return
 	crosshair_turnt = setting
-	if setting: %CrosshairAnimator.play("turn")
-	else: %CrosshairAnimator.play_backwards("turn")
+	#if setting: %CrosshairAnimator.play("turn")
+	#else: %CrosshairAnimator.play_backwards("turn")
 
 
 func effect_enemy_outline(setting: bool):
