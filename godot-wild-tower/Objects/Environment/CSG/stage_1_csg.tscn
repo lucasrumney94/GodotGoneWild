@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dymksrxjqxqri"]
+[gd_scene load_steps=4 format=3 uid="uid://dymksrxjqxqri"]
 
 [ext_resource type="Script" path="res://Main/main_game.gd" id="1_12dbi"]
 [ext_resource type="PackedScene" uid="uid://do1pmtbmc423e" path="res://UI/pause_menu.tscn" id="2_ib8fp"]
+[ext_resource type="Material" uid="uid://cxy3baspdt2jv" path="res://Materials/marble.tres" id="3_5oyf4"]
 
 [node name="Stage 1" type="Node3D"]
 script = ExtResource("1_12dbi")
@@ -9,6 +10,7 @@ pause_menu_scene = ExtResource("2_ib8fp")
 
 [node name="OuterWall" type="CSGCombiner3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.5, 0)
+material_override = ExtResource("3_5oyf4")
 use_collision = true
 
 [node name="Mesh" type="CSGCylinder3D" parent="OuterWall"]
@@ -45,6 +47,7 @@ size = Vector3(8, 10, 8)
 
 [node name="Dome" type="CSGCombiner3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22, 0)
+material_override = ExtResource("3_5oyf4")
 use_collision = true
 
 [node name="Mesh" type="CSGSphere3D" parent="Dome"]
@@ -71,6 +74,7 @@ size = Vector3(30, 10, 30)
 [node name="First Floor" type="Node3D" parent="."]
 
 [node name="Stairs" type="CSGCombiner3D" parent="First Floor"]
+material_override = ExtResource("3_5oyf4")
 use_collision = true
 
 [node name="Mesh" type="CSGCylinder3D" parent="First Floor/Stairs"]
@@ -112,6 +116,7 @@ operation = 2
 size = Vector3(9, 10, 16)
 
 [node name="Landing" type="CSGCombiner3D" parent="First Floor"]
+material_override = ExtResource("3_5oyf4")
 use_collision = true
 
 [node name="CentralLanding" type="CSGPolygon3D" parent="First Floor/Landing"]
@@ -135,6 +140,7 @@ operation = 2
 size = Vector3(55, 3, 55)
 
 [node name="Archway" type="CSGCombiner3D" parent="First Floor"]
+material_override = ExtResource("3_5oyf4")
 use_collision = true
 
 [node name="Mesh" type="CSGBox3D" parent="First Floor/Archway"]
@@ -158,6 +164,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.5, 0)
 
 [node name="2ndStairs" type="CSGCombiner3D" parent="Second Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+material_override = ExtResource("3_5oyf4")
 use_collision = true
 
 [node name="Mesh" type="CSGCylinder3D" parent="Second Floor/2ndStairs"]
@@ -194,6 +201,7 @@ operation = 2
 size = Vector3(15, 15, 10)
 
 [node name="2ndFloorInner" type="CSGCombiner3D" parent="Second Floor"]
+material_override = ExtResource("3_5oyf4")
 use_collision = true
 
 [node name="Mesh" type="CSGCylinder3D" parent="Second Floor/2ndFloorInner"]
@@ -238,6 +246,7 @@ operation = 2
 size = Vector3(4, 1.1, 2.27832)
 
 [node name="2ndFloorOuter" type="CSGCombiner3D" parent="Second Floor"]
+material_override = ExtResource("3_5oyf4")
 use_collision = true
 
 [node name="MainMesh" type="CSGCylinder3D" parent="Second Floor/2ndFloorOuter"]
@@ -272,6 +281,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 21, 0)
 
 [node name="3rdFloor" type="CSGCombiner3D" parent="Third Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+material_override = ExtResource("3_5oyf4")
 use_collision = true
 
 [node name="ColumnRing" type="CSGCylinder3D" parent="Third Floor/3rdFloor"]

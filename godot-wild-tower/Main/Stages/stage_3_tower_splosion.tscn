@@ -2,14 +2,14 @@
 
 [ext_resource type="Script" path="res://Main/main_game.gd" id="1_33k6b"]
 [ext_resource type="PackedScene" uid="uid://vssvdtmx3jx7" path="res://Objects/Player/player.tscn" id="1_dcbag"]
-[ext_resource type="PackedScene" path="res://Objects/Environment/fall_kill_plane.tscn" id="2_tdiav"]
+[ext_resource type="PackedScene" uid="uid://cmjtpt4djwo2k" path="res://Objects/Environment/fall_kill_plane.tscn" id="2_tdiav"]
 [ext_resource type="PackedScene" uid="uid://do1pmtbmc423e" path="res://UI/pause_menu.tscn" id="2_vi14t"]
-[ext_resource type="PackedScene" path="res://Objects/Environment/falling_platform.tscn" id="4_tcibw"]
+[ext_resource type="PackedScene" uid="uid://cyuf5p7go4rqn" path="res://Objects/Environment/falling_platform.tscn" id="4_tcibw"]
 [ext_resource type="Texture2D" uid="uid://dnu0plydhtdsw" path="res://Objects/Environment/Models/SkySkybox.png" id="5_leod0"]
 [ext_resource type="Material" uid="uid://3byi41uuwvq8" path="res://Materials/LD_grid.tres" id="5_vwvji"]
 [ext_resource type="Material" uid="uid://5dqiqxr4arwd" path="res://Materials/grid_material.tres" id="6_mwebb"]
-[ext_resource type="PackedScene" path="res://Objects/Environment/Models/Column.tscn" id="8_surjb"]
-[ext_resource type="PackedScene" path="res://Objects/Environment/platform_basic.tscn" id="9_m1n2u"]
+[ext_resource type="PackedScene" uid="uid://dacvenlpyt2bp" path="res://Objects/Environment/Models/Column.tscn" id="8_surjb"]
+[ext_resource type="PackedScene" uid="uid://do7bndj1ho3j2" path="res://Objects/Environment/platform_basic.tscn" id="9_m1n2u"]
 [ext_resource type="PackedScene" uid="uid://b2oiak8dl30w2" path="res://Objects/Enemies/BasicEnemy.tscn" id="11_40x7l"]
 [ext_resource type="PackedScene" uid="uid://y00sgnh5ws4h" path="res://Objects/Environment/finish_area.tscn" id="11_3718q"]
 [ext_resource type="PackedScene" uid="uid://c08aetbdbnjbc" path="res://Objects/Enemies/MobileEnemy.tscn" id="12_ymya1"]
@@ -25,7 +25,7 @@ sky_material = SubResource("PanoramaSkyMaterial_222xv")
 background_mode = 2
 sky = SubResource("Sky_3kabx")
 
-[node name="Stage3TowerSplosion" type="Node3D"]
+[node name="Stage 4 - Bonus Stage!" type="Node3D"]
 script = ExtResource("1_33k6b")
 pause_menu_scene = ExtResource("2_vi14t")
 

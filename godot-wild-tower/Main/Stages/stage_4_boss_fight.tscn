@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://rfda5fv26d6w" path="res://Objects/Environment/Models/PurplyBlueSky.png" id="3_3bfky"]
 [ext_resource type="PackedScene" uid="uid://vssvdtmx3jx7" path="res://Objects/Player/player.tscn" id="4_r38jx"]
 [ext_resource type="ArrayMesh" uid="uid://dgy7dxognc1x3" path="res://Objects/Environment/Models/TowerTest1.obj" id="5_tf007"]
-[ext_resource type="PackedScene" path="res://Terrain/cloud layer.tscn" id="7_b217t"]
+[ext_resource type="PackedScene" uid="uid://rrggtb1yqr12" path="res://Terrain/cloud layer.tscn" id="7_b217t"]
 [ext_resource type="PackedScene" uid="uid://dfvd2bwta7jmy" path="res://Objects/Enemies/Elohim.tscn" id="8_0ypp2"]
 [ext_resource type="Script" path="res://Objects/Environment/fall_kill_plane.gd" id="8_xdsyw"]
 
@@ -21,7 +21,7 @@ sky = SubResource("Sky_seqca")
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_1p2d8"]
 
-[node name="Stage 4 Tower Boss Fight" type="Node3D"]
+[node name="Stage 3 - Punch God" type="Node3D"]
 script = ExtResource("1_ssgvs")
 pause_menu_scene = ExtResource("2_35ieg")
 
