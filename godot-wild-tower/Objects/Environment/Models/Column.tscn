@@ -1,15 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://dacvenlpyt2bp"]
+[gd_scene load_steps=6 format=3 uid="uid://dacvenlpyt2bp"]
+
+[ext_resource type="Material" uid="uid://cxy3baspdt2jv" path="res://Materials/marble.tres" id="1_4y254"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_kbo6l"]
 height = 5.0
 radius = 0.4
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_j5bhr"]
+material = ExtResource("1_4y254")
 height = 0.25
 radial_segments = 16
 rings = 1
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_jppbn"]
+material = ExtResource("1_4y254")
 top_radius = 0.4
 bottom_radius = 0.4
 height = 0.5
@@ -17,6 +21,7 @@ radial_segments = 16
 rings = 1
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_wvbw4"]
+material = ExtResource("1_4y254")
 top_radius = 0.3
 bottom_radius = 0.3
 height = 4.0
