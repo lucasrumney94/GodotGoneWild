@@ -20,6 +20,14 @@ func _ready():
 	%QuitButton.pressed.connect(on_quit_pressed)
 	
 	%StartButton.grab_focus()
+	
+	Callable(init).call_deferred()
+
+
+func init():
+	if MissionControl.loading_credits:
+		on_credits_pressed()
+		MissionControl.loading_credits = false
 
 
 func focus_on_button(button: Button):

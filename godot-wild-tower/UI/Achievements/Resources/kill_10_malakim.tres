@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Achievement" load_steps=3 format=3 uid="uid://c88kwdd2b788b"]
+
+[ext_resource type="Texture2D" uid="uid://cv1af46vlbwjd" path="res://UI/Image/trophy.png" id="1_ojkhh"]
+[ext_resource type="Script" path="res://UI/Achievements/achievement.gd" id="1_yn4vy"]
+
+[resource]
+script = ExtResource("1_yn4vy")
+id = "kill_10_malakim"
+icon = ExtResource("1_ojkhh")
+title = "Kill 10 Malakim"
+description = "Malakim are some sort of messenger angel, apparently, some say."
+stat = ""
+stat_goal = 0
+check_function = ""
+custom_string = ""

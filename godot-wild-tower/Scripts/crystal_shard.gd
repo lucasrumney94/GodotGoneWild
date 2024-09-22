@@ -20,6 +20,6 @@ func _physics_process(delta: float):
 	#if velocity - last_velocity:
 	
 
-func on_body_enter(body):
+func on_body_enter(_body):
 	#print("CRYSTAL HITTING THING")
 	GameEvents.emit_crystal_impact(global_position)

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Achievement" load_steps=3 format=3 uid="uid://bptdl684ha1fa"]
+
+[ext_resource type="Texture2D" uid="uid://cv1af46vlbwjd" path="res://UI/Image/trophy.png" id="1_1ypyn"]
+[ext_resource type="Script" path="res://UI/Achievements/achievement.gd" id="1_tcaki"]
+
+[resource]
+script = ExtResource("1_tcaki")
+id = "kill_god"
+icon = ExtResource("1_1ypyn")
+title = "Kill God"
+description = "Nietzsche was actually a pretty chill guy sometimes."
+stat = ""
+stat_goal = 0
+check_function = ""
+custom_string = ""

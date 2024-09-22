@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Achievement" load_steps=3 format=3 uid="uid://ctvd0pw2iwcs"]
+[gd_resource type="Resource" script_class="Achievement" load_steps=3 format=3 uid="uid://clwlxg1lyayug"]
 
 [ext_resource type="Script" path="res://UI/Achievements/achievement.gd" id="1_bqpcj"]
 [ext_resource type="Texture2D" uid="uid://cv1af46vlbwjd" path="res://UI/Image/trophy.png" id="1_kfep6"]

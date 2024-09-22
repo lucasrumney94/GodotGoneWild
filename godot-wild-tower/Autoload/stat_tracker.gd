@@ -113,6 +113,15 @@ func check_kill_achievement(enemy_type: Constants.EnemyType):
 	if enemy_type == Constants.EnemyType.CHERUBIM:
 		if SaveControl.get_stat_cumulative("kill" + str(Constants.EnemyType.CHERUBIM)) > 10:
 			AchievementControl.earn_achievement("kill_10_cherubim")
+		if SaveControl.get_stat_cumulative("kill" + str(Constants.EnemyType.MALAKIM)) > 10:
+			AchievementControl.earn_achievement("kill_10_malakim")
+		if SaveControl.get_stat_cumulative("kill" + str(Constants.EnemyType.SERAPHIM)) > 10:
+			AchievementControl.earn_achievement("kill_10_seraphim")
+	
+	if enemy_type == Constants.EnemyType.ELOHIM:
+		AchievementControl.earn_achievement("kill_god")
+		print("GOD IS DEAD, LEVEL SHOULD BE FINISHED")
+		GameEvents.emit_level_finished()
 
 
 func on_returning_to_menu():

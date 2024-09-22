@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b1hxkyiomflv0"]
+[gd_scene load_steps=4 format=3 uid="uid://b1hxkyiomflv0"]
 
 [ext_resource type="Script" path="res://UI/Achievements/achievement_popup.gd" id="1_8bg1h"]
 [ext_resource type="PackedScene" uid="uid://cxyyuibifmqs" path="res://UI/Achievements/achievement_popup_panel.tscn" id="2_omo40"]
+[ext_resource type="Script" path="res://Objects/timer_unscaled.gd" id="3_vuorc"]
 
 [node name="AchievementPopup" type="CanvasLayer"]
 process_mode = 3
@@ -23,3 +24,7 @@ offset_top = -40.0
 grow_horizontal = 0
 grow_vertical = 0
 mouse_filter = 2
+alignment = 2
+
+[node name="TimerUnscaled" type="Node" parent="."]
+script = ExtResource("3_vuorc")

@@ -16,234 +16,252 @@ grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("1_8e00t")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
+theme_override_constants/margin_top = 16
 
-[node name="LevelLabel" type="Label" parent="VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="LevelLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Level 0"
 horizontal_alignment = 1
 uppercase = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="TotalsContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+[node name="TotalsContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/TotalsContainer"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/TotalsContainer"]
 layout_mode = 2
 text = "Totals"
 horizontal_alignment = 1
 uppercase = true
 
-[node name="HBoxContainer15" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/TotalsContainer"]
+[node name="HBoxContainer15" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/TotalsContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/TotalsContainer/HBoxContainer15"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/TotalsContainer/HBoxContainer15"]
+custom_minimum_size = Vector2(164, 0)
 layout_mode = 2
 text = "Total Play Time:"
 
-[node name="TotalTimeLabel" type="Label" parent="VBoxContainer/HBoxContainer/TotalsContainer/HBoxContainer15"]
+[node name="TotalTimeLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/TotalsContainer/HBoxContainer15"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(64, 0)
+custom_minimum_size = Vector2(84, 0)
 layout_mode = 2
 text = "0"
 horizontal_alignment = 2
 
-[node name="HBoxContainer9" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/TotalsContainer"]
+[node name="HBoxContainer9" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/TotalsContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/TotalsContainer/HBoxContainer9"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/TotalsContainer/HBoxContainer9"]
+custom_minimum_size = Vector2(164, 0)
 layout_mode = 2
 text = "Total Angels Killed:"
 
-[node name="AngelsKilledLabel" type="Label" parent="VBoxContainer/HBoxContainer/TotalsContainer/HBoxContainer9"]
+[node name="AngelsKilledLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/TotalsContainer/HBoxContainer9"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(64, 0)
+custom_minimum_size = Vector2(84, 0)
 layout_mode = 2
 text = "0"
 horizontal_alignment = 2
 
-[node name="HBoxContainer10" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/TotalsContainer"]
+[node name="HBoxContainer10" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/TotalsContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/TotalsContainer/HBoxContainer10"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/TotalsContainer/HBoxContainer10"]
+custom_minimum_size = Vector2(164, 0)
 layout_mode = 2
 text = "Cherubim Killed:"
 
-[node name="CherubimKilledLabel" type="Label" parent="VBoxContainer/HBoxContainer/TotalsContainer/HBoxContainer10"]
+[node name="CherubimKilledLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/TotalsContainer/HBoxContainer10"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(64, 0)
+custom_minimum_size = Vector2(84, 0)
 layout_mode = 2
 text = "0"
 horizontal_alignment = 2
 
-[node name="HBoxContainer11" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/TotalsContainer"]
+[node name="HBoxContainer11" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/TotalsContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/TotalsContainer/HBoxContainer11"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/TotalsContainer/HBoxContainer11"]
+custom_minimum_size = Vector2(164, 0)
 layout_mode = 2
 text = "Malakim Killed:"
 
-[node name="MalakimKilledLabel" type="Label" parent="VBoxContainer/HBoxContainer/TotalsContainer/HBoxContainer11"]
+[node name="MalakimKilledLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/TotalsContainer/HBoxContainer11"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(64, 0)
+custom_minimum_size = Vector2(84, 0)
 layout_mode = 2
 text = "0"
 horizontal_alignment = 2
 
-[node name="HBoxContainer12" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/TotalsContainer"]
+[node name="HBoxContainer12" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/TotalsContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/TotalsContainer/HBoxContainer12"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/TotalsContainer/HBoxContainer12"]
+custom_minimum_size = Vector2(164, 0)
 layout_mode = 2
 text = "Seraphim Killed:"
 
-[node name="SeraphimKilledLabel" type="Label" parent="VBoxContainer/HBoxContainer/TotalsContainer/HBoxContainer12"]
+[node name="SeraphimKilledLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/TotalsContainer/HBoxContainer12"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(64, 0)
+custom_minimum_size = Vector2(84, 0)
 layout_mode = 2
 text = "0"
 horizontal_alignment = 2
 
-[node name="HBoxContainer7" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/TotalsContainer"]
+[node name="HBoxContainer7" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/TotalsContainer"]
+visible = false
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/TotalsContainer/HBoxContainer7"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/TotalsContainer/HBoxContainer7"]
 layout_mode = 2
 text = "Ophanim Killed:"
 
-[node name="OphanimKilledLabel" type="Label" parent="VBoxContainer/HBoxContainer/TotalsContainer/HBoxContainer7"]
+[node name="OphanimKilledLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/TotalsContainer/HBoxContainer7"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(64, 0)
+custom_minimum_size = Vector2(84, 0)
 layout_mode = 2
 text = "0"
 horizontal_alignment = 2
 
-[node name="HBoxContainer13" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/TotalsContainer"]
+[node name="HBoxContainer13" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/TotalsContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/TotalsContainer/HBoxContainer13"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/TotalsContainer/HBoxContainer13"]
+custom_minimum_size = Vector2(164, 0)
 layout_mode = 2
 text = "Restarts:"
 
-[node name="RestartsLabel" type="Label" parent="VBoxContainer/HBoxContainer/TotalsContainer/HBoxContainer13"]
+[node name="RestartsLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/TotalsContainer/HBoxContainer13"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(64, 0)
+custom_minimum_size = Vector2(84, 0)
 layout_mode = 2
 text = "0"
 horizontal_alignment = 2
 
-[node name="HBoxContainer14" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/TotalsContainer"]
+[node name="HBoxContainer14" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/TotalsContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/TotalsContainer/HBoxContainer14"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/TotalsContainer/HBoxContainer14"]
+custom_minimum_size = Vector2(164, 0)
 layout_mode = 2
 text = "Deaths:"
 
-[node name="DeathsLabel" type="Label" parent="VBoxContainer/HBoxContainer/TotalsContainer/HBoxContainer14"]
+[node name="DeathsLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/TotalsContainer/HBoxContainer14"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(64, 0)
+custom_minimum_size = Vector2(84, 0)
 layout_mode = 2
 text = "0"
 horizontal_alignment = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="BestRunsContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/PanelContainer"]
+[node name="BestRunsContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/PanelContainer"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/PanelContainer/BestRunsContainer"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/BestRunsContainer"]
 layout_mode = 2
 text = "Best Runs"
 horizontal_alignment = 1
 uppercase = true
 
-[node name="HBoxContainer8" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/PanelContainer/BestRunsContainer"]
+[node name="HBoxContainer8" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/BestRunsContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/PanelContainer/BestRunsContainer/HBoxContainer8"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/BestRunsContainer/HBoxContainer8"]
+custom_minimum_size = Vector2(164, 0)
 layout_mode = 2
 text = "Fastest Playthrough:"
 
-[node name="FastestPlayLabel" type="Label" parent="VBoxContainer/HBoxContainer/PanelContainer/BestRunsContainer/HBoxContainer8"]
+[node name="FastestPlayLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/BestRunsContainer/HBoxContainer8"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(64, 0)
+custom_minimum_size = Vector2(84, 0)
 layout_mode = 2
 text = "00:00:00"
 horizontal_alignment = 2
 
-[node name="HBoxContainer9" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/PanelContainer/BestRunsContainer"]
+[node name="HBoxContainer9" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/BestRunsContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/PanelContainer/BestRunsContainer/HBoxContainer9"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/BestRunsContainer/HBoxContainer9"]
+custom_minimum_size = Vector2(164, 0)
 layout_mode = 2
 text = "Most Kills:"
 
-[node name="MostKillsLabel" type="Label" parent="VBoxContainer/HBoxContainer/PanelContainer/BestRunsContainer/HBoxContainer9"]
+[node name="MostKillsLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/BestRunsContainer/HBoxContainer9"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(64, 0)
+custom_minimum_size = Vector2(84, 0)
 layout_mode = 2
 text = "N/A"
 horizontal_alignment = 2
 
-[node name="HBoxContainer10" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/PanelContainer/BestRunsContainer"]
+[node name="HBoxContainer10" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/BestRunsContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/PanelContainer/BestRunsContainer/HBoxContainer10"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/BestRunsContainer/HBoxContainer10"]
+custom_minimum_size = Vector2(164, 0)
 layout_mode = 2
 text = "Fewest Kills:"
 
-[node name="FewestKillsLabel" type="Label" parent="VBoxContainer/HBoxContainer/PanelContainer/BestRunsContainer/HBoxContainer10"]
+[node name="FewestKillsLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/BestRunsContainer/HBoxContainer10"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(64, 0)
+custom_minimum_size = Vector2(84, 0)
 layout_mode = 2
 text = "N/A"
 horizontal_alignment = 2
 
-[node name="HBoxContainer11" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/PanelContainer/BestRunsContainer"]
+[node name="HBoxContainer11" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/BestRunsContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/PanelContainer/BestRunsContainer/HBoxContainer11"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/BestRunsContainer/HBoxContainer11"]
+custom_minimum_size = Vector2(164, 0)
 layout_mode = 2
 text = "Fewest Restarts:"
 
-[node name="FewestRestartsLabel" type="Label" parent="VBoxContainer/HBoxContainer/PanelContainer/BestRunsContainer/HBoxContainer11"]
+[node name="FewestRestartsLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/BestRunsContainer/HBoxContainer11"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(64, 0)
+custom_minimum_size = Vector2(84, 0)
 layout_mode = 2
 text = "N/A"
 horizontal_alignment = 2
 
-[node name="HBoxContainer12" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/PanelContainer/BestRunsContainer"]
+[node name="HBoxContainer12" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/BestRunsContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/PanelContainer/BestRunsContainer/HBoxContainer12"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/BestRunsContainer/HBoxContainer12"]
+custom_minimum_size = Vector2(164, 0)
 layout_mode = 2
 text = "Fewest Deaths:"
 
-[node name="FewestDeathsLabel" type="Label" parent="VBoxContainer/HBoxContainer/PanelContainer/BestRunsContainer/HBoxContainer12"]
+[node name="FewestDeathsLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/BestRunsContainer/HBoxContainer12"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(64, 0)
+custom_minimum_size = Vector2(84, 0)
 layout_mode = 2
 text = "N/A"
 horizontal_alignment = 2

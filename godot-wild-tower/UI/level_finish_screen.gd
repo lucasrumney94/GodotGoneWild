@@ -6,7 +6,10 @@ func _ready():
 	%RestartButton.pressed.connect(on_restart_pressed)
 	if MissionControl.current_level < MissionControl.campaign_levels - 1:
 		%NextLevelButton.pressed.connect(on_next_level_pressed)
-	else: %NextLevelButton.visible = false
+	else: 
+		#%NextLevelButton.visible = false
+		%NextLevelButton.text = "View Credits"
+		%NextLevelButton.pressed.connect(on_view_credits)
 
 
 func set_completion_time(time: float, is_best: bool):
@@ -61,4 +64,13 @@ func on_next_level_pressed():
 	get_tree().paused = false
 	Engine.time_scale = 1.0
 	MissionControl.load_next_level()
+	queue_free()
+
+
+func on_view_credits():
+	#return to main menu
+	#open the credits screen
+	get_tree().paused = false
+	Engine.time_scale = 1.0
+	MissionControl.load_end_credits()
 	queue_free()

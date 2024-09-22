@@ -33,7 +33,7 @@ func populate_stats():
 	%CherubimKilledLabel.text = str(SaveControl.get_stat_cumulative("kill" + str(Constants.EnemyType.CHERUBIM)))
 	%MalakimKilledLabel.text = str(SaveControl.get_stat_cumulative("kill" + str(Constants.EnemyType.MALAKIM)))
 	%SeraphimKilledLabel.text = str(SaveControl.get_stat_cumulative("kill" + str(Constants.EnemyType.SERAPHIM)))
-	%OphanimKilledLabel.text = str(SaveControl.get_stat_cumulative("kill" + str(Constants.EnemyType.OPHANIM)))
+	%ElohimKilledLabel.text = str(SaveControl.get_stat_cumulative("kill" + str(Constants.EnemyType.ELOHIM)))
 	%RestartsLabel.text = str(SaveControl.get_stat_cumulative("restart"))
 	%DeathsLabel.text = str(SaveControl.get_stat_cumulative("death"))
 	#Deaths

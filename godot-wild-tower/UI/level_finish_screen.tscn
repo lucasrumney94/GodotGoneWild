@@ -18,10 +18,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -486.5
-offset_top = 120.0
-offset_right = 486.5
-offset_bottom = 295.0
+offset_left = -486.0
+offset_top = 99.0
+offset_right = 487.0
+offset_bottom = 274.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 128
 text = "Level Finished"
@@ -51,18 +51,23 @@ alignment = 1
 [node name="Label" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
 text = "Completion Time:"
 
 [node name="TimeLabel" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
 text = "00:00:00"
 
 [node name="BestTimeLabel" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 24
 text = "New Best Time!"
 uppercase = true
 
@@ -73,18 +78,23 @@ alignment = 1
 [node name="Label" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Angels Killed"
+theme_override_font_sizes/font_size = 24
+text = "Angels Killed:"
 
 [node name="KillsLabel" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
 text = "0"
 
 [node name="BestKillsLabel" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 24
 text = "New Best!"
 uppercase = true
 
@@ -95,18 +105,23 @@ alignment = 1
 [node name="Label" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Restarts"
+theme_override_font_sizes/font_size = 24
+text = "Restarts:"
 
 [node name="RestartsLabel" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer3"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
 text = "0"
 
 [node name="BestRestartsLabel" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer3"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 24
 text = "New Fewest Restarts!"
 uppercase = true
 
@@ -117,18 +132,23 @@ alignment = 1
 [node name="Label" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer4"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Deaths"
+theme_override_font_sizes/font_size = 24
+text = "Deaths:"
 
 [node name="DeathsLabel" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer4"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
 text = "0"
 
 [node name="BestDeathsLabel" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer4"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 24
 text = "New Fewest Deaths!"
 uppercase = true
 

@@ -5,6 +5,8 @@ extends Node
 @export var campaign_levels: int = 3
 var current_level = 0
 
+var loading_credits: bool = false
+
 
 func load_next_level():
 	var next: int = current_level + 1
@@ -15,6 +17,11 @@ func load_next_level():
 	current_level = next
 	GameEvents.emit_load_next_level()
 	Callable(do_load_next_level).call_deferred()
+
+
+func load_end_credits():
+	loading_credits = true
+	get_tree().change_scene_to_file("res://Main/main_menu.tscn")
 
 
 func do_load_next_level():

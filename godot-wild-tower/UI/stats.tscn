@@ -70,12 +70,13 @@ layout_mode = 2
 alignment = 1
 
 [node name="Label" type="Label" parent="Control/VBoxContainer/GlobalStatsContainer/HBoxContainer5"]
+custom_minimum_size = Vector2(164, 0)
 layout_mode = 2
 text = "Fastest Playthrough:"
 
 [node name="FastestPlayLabel" type="Label" parent="Control/VBoxContainer/GlobalStatsContainer/HBoxContainer5"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(64, 0)
+custom_minimum_size = Vector2(84, 0)
 layout_mode = 2
 text = "00:00:00"
 horizontal_alignment = 2
@@ -85,12 +86,13 @@ layout_mode = 2
 alignment = 1
 
 [node name="Label" type="Label" parent="Control/VBoxContainer/GlobalStatsContainer/HBoxContainer9"]
+custom_minimum_size = Vector2(164, 0)
 layout_mode = 2
 text = "Total Play Time:"
 
 [node name="TotalTimeLabel" type="Label" parent="Control/VBoxContainer/GlobalStatsContainer/HBoxContainer9"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(64, 0)
+custom_minimum_size = Vector2(84, 0)
 layout_mode = 2
 text = "00:00:00"
 horizontal_alignment = 2
@@ -100,12 +102,13 @@ layout_mode = 2
 alignment = 1
 
 [node name="Label" type="Label" parent="Control/VBoxContainer/GlobalStatsContainer/HBoxContainer"]
+custom_minimum_size = Vector2(164, 0)
 layout_mode = 2
 text = "Total Angels Killed:"
 
 [node name="AngelsKilledLabel" type="Label" parent="Control/VBoxContainer/GlobalStatsContainer/HBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(64, 0)
+custom_minimum_size = Vector2(84, 0)
 layout_mode = 2
 text = "0"
 horizontal_alignment = 2
@@ -115,12 +118,13 @@ layout_mode = 2
 alignment = 1
 
 [node name="Label" type="Label" parent="Control/VBoxContainer/GlobalStatsContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(164, 0)
 layout_mode = 2
 text = "Cherubim Killed:"
 
 [node name="CherubimKilledLabel" type="Label" parent="Control/VBoxContainer/GlobalStatsContainer/HBoxContainer2"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(64, 0)
+custom_minimum_size = Vector2(84, 0)
 layout_mode = 2
 text = "0"
 horizontal_alignment = 2
@@ -130,12 +134,13 @@ layout_mode = 2
 alignment = 1
 
 [node name="Label" type="Label" parent="Control/VBoxContainer/GlobalStatsContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(164, 0)
 layout_mode = 2
 text = "Malakim Killed:"
 
 [node name="MalakimKilledLabel" type="Label" parent="Control/VBoxContainer/GlobalStatsContainer/HBoxContainer3"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(64, 0)
+custom_minimum_size = Vector2(84, 0)
 layout_mode = 2
 text = "0"
 horizontal_alignment = 2
@@ -145,12 +150,13 @@ layout_mode = 2
 alignment = 1
 
 [node name="Label" type="Label" parent="Control/VBoxContainer/GlobalStatsContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(164, 0)
 layout_mode = 2
 text = "Seraphim Killed:"
 
 [node name="SeraphimKilledLabel" type="Label" parent="Control/VBoxContainer/GlobalStatsContainer/HBoxContainer4"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(64, 0)
+custom_minimum_size = Vector2(84, 0)
 layout_mode = 2
 text = "0"
 horizontal_alignment = 2
@@ -160,12 +166,13 @@ layout_mode = 2
 alignment = 1
 
 [node name="Label" type="Label" parent="Control/VBoxContainer/GlobalStatsContainer/HBoxContainer6"]
+custom_minimum_size = Vector2(164, 0)
 layout_mode = 2
-text = "Ophanim Killed:"
+text = "Elohim Killed:"
 
-[node name="OphanimKilledLabel" type="Label" parent="Control/VBoxContainer/GlobalStatsContainer/HBoxContainer6"]
+[node name="ElohimKilledLabel" type="Label" parent="Control/VBoxContainer/GlobalStatsContainer/HBoxContainer6"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(64, 0)
+custom_minimum_size = Vector2(84, 0)
 layout_mode = 2
 text = "0"
 horizontal_alignment = 2
@@ -175,12 +182,13 @@ layout_mode = 2
 alignment = 1
 
 [node name="Label" type="Label" parent="Control/VBoxContainer/GlobalStatsContainer/HBoxContainer7"]
+custom_minimum_size = Vector2(164, 0)
 layout_mode = 2
 text = "Restarts:"
 
 [node name="RestartsLabel" type="Label" parent="Control/VBoxContainer/GlobalStatsContainer/HBoxContainer7"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(64, 0)
+custom_minimum_size = Vector2(84, 0)
 layout_mode = 2
 text = "0"
 horizontal_alignment = 2
@@ -190,12 +198,13 @@ layout_mode = 2
 alignment = 1
 
 [node name="Label" type="Label" parent="Control/VBoxContainer/GlobalStatsContainer/HBoxContainer8"]
+custom_minimum_size = Vector2(164, 0)
 layout_mode = 2
 text = "Deaths:"
 
 [node name="DeathsLabel" type="Label" parent="Control/VBoxContainer/GlobalStatsContainer/HBoxContainer8"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(64, 0)
+custom_minimum_size = Vector2(84, 0)
 layout_mode = 2
 text = "0"
 horizontal_alignment = 2

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Achievement" load_steps=3 format=3 uid="uid://b23lhcaugvqb1"]
+
+[ext_resource type="Texture2D" uid="uid://cv1af46vlbwjd" path="res://UI/Image/trophy.png" id="1_ifv6o"]
+[ext_resource type="Script" path="res://UI/Achievements/achievement.gd" id="1_xvxhb"]
+
+[resource]
+script = ExtResource("1_xvxhb")
+id = "kill_10_seraphim"
+icon = ExtResource("1_ifv6o")
+title = "Kill 10 Seraphim"
+description = "Holy, holy, holy crap"
+stat = ""
+stat_goal = 0
+check_function = ""
+custom_string = ""
