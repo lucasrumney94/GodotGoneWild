@@ -550,8 +550,9 @@ audio_player = NodePath("AudioStreamPlayer3D")
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="HostileEnemy/Foot Base/Core/RotationRoot/Gun Body"]
 transform = Transform3D(0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, 0, 0, 0)
 stream = ExtResource("8_la2wy")
+volume_db = -17.0
 pitch_scale = 0.77
-max_distance = 150.0
+max_distance = 110.0
 bus = &"effects"
 
 [node name="Gun Core" type="MeshInstance3D" parent="HostileEnemy/Foot Base/Core/RotationRoot/Gun Body"]

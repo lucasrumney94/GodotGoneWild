@@ -38,11 +38,11 @@ restarting_sound_gain = -3.18
 long_fall_sound = ExtResource("9_ky675")
 long_fall_sound_gain = -10.815
 projectile_impact_sound = ExtResource("10_o1oed")
-projectile_impact_sound_gain = -6.0
+projectile_impact_sound_gain = -9.566
 crystal_impact_sound = ExtResource("11_qu2b4")
 crystal_impact_sound_gain = -20.0
 player_footstep_sounds = Array[AudioStream]([ExtResource("12_gei4r"), ExtResource("13_4djg0"), ExtResource("14_nv06p"), ExtResource("15_njmxl")])
-player_footstep_sound_gain = -4.58
+player_footstep_sound_gain = -7.279
 low_pass_cutoff_lower_bound = 140.0
 pitch_shift_cutoff_lower_bound = 0.8
 

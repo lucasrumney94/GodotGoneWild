@@ -7,13 +7,13 @@
 [ext_resource type="Material" uid="uid://3byi41uuwvq8" path="res://Materials/LD_grid.tres" id="5_vivna"]
 [ext_resource type="Material" uid="uid://5dqiqxr4arwd" path="res://Materials/grid_material.tres" id="6_t6ra6"]
 [ext_resource type="ArrayMesh" uid="uid://dgy7dxognc1x3" path="res://Objects/Environment/Models/TowerTest1.obj" id="7_506fq"]
-[ext_resource type="PackedScene" uid="uid://dacvenlpyt2bp" path="res://Objects/Environment/Models/Column.tscn" id="8_j6044"]
+[ext_resource type="PackedScene" path="res://Objects/Environment/Models/Column.tscn" id="8_j6044"]
 [ext_resource type="PackedScene" uid="uid://y00sgnh5ws4h" path="res://Objects/Environment/finish_area.tscn" id="8_xhnku"]
 [ext_resource type="PackedScene" uid="uid://b2oiak8dl30w2" path="res://Objects/Enemies/BasicEnemy.tscn" id="9_ixssy"]
 [ext_resource type="PackedScene" uid="uid://c08aetbdbnjbc" path="res://Objects/Enemies/MobileEnemy.tscn" id="9_tiv3e"]
-[ext_resource type="PackedScene" uid="uid://ddxtpi8u5fqe0" path="res://Objects/Environment/Models/bookcase.tscn" id="11_fqk5l"]
-[ext_resource type="PackedScene" uid="uid://cge0083eia62r" path="res://Objects/Environment/Models/scaffold_support.tscn" id="12_bf34w"]
-[ext_resource type="PackedScene" uid="uid://bi8anegkhcuux" path="res://Objects/Environment/Models/scaffolding_plank.tscn" id="13_lt5jr"]
+[ext_resource type="PackedScene" path="res://Objects/Environment/Models/bookcase.tscn" id="11_fqk5l"]
+[ext_resource type="PackedScene" path="res://Objects/Environment/Models/scaffold_support.tscn" id="12_bf34w"]
+[ext_resource type="PackedScene" path="res://Objects/Environment/Models/scaffolding_plank.tscn" id="13_lt5jr"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_asy3g"]
 panorama = ExtResource("3_08bbj")
