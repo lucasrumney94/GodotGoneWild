@@ -1,26 +1,41 @@
-[gd_scene load_steps=6 format=3 uid="uid://cge0083eia62r"]
+[gd_scene load_steps=8 format=3 uid="uid://cge0083eia62r"]
+
+[ext_resource type="Material" uid="uid://dxhkxv5cr447a" path="res://Materials/steel.tres" id="1_t4iuw"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_hebou"]
 height = 3.0
 radius = 0.05
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_t7ksn"]
+material = ExtResource("1_t4iuw")
 top_radius = 0.05
 bottom_radius = 0.05
 height = 3.0
+radial_segments = 8
+rings = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hef5y"]
+albedo_color = Color(0.882353, 0.823529, 0.705882, 1)
+metallic_specular = 0.2
 
 [sub_resource type="SphereMesh" id="SphereMesh_panv0"]
+material = SubResource("StandardMaterial3D_hef5y")
 radius = 0.15
 height = 0.3
+radial_segments = 8
+rings = 4
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_vk7q3"]
 height = 6.0
 radius = 0.05
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_oabfb"]
+material = ExtResource("1_t4iuw")
 top_radius = 0.05
 bottom_radius = 0.05
 height = 6.0
+radial_segments = 8
+rings = 1
 
 [node name="ScaffoldSupport" type="Node3D"]
 
@@ -69,6 +84,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -2.6, 
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Crossbar1"]
 shape = SubResource("CylinderShape3D_hebou")
+disabled = true
 
 [node name="Bar" type="MeshInstance3D" parent="Crossbar1"]
 mesh = SubResource("CylinderMesh_t7ksn")
@@ -89,6 +105,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 2.6, 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Crossbar2"]
 shape = SubResource("CylinderShape3D_hebou")
+disabled = true
 
 [node name="Bar" type="MeshInstance3D" parent="Crossbar2"]
 mesh = SubResource("CylinderMesh_t7ksn")
@@ -109,6 +126,7 @@ transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, 
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Longbar1"]
 shape = SubResource("CylinderShape3D_vk7q3")
+disabled = true
 
 [node name="Bar" type="MeshInstance3D" parent="Longbar1"]
 mesh = SubResource("CylinderMesh_oabfb")
@@ -119,6 +137,7 @@ transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, 
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Longbar2"]
 shape = SubResource("CylinderShape3D_vk7q3")
+disabled = true
 
 [node name="Bar" type="MeshInstance3D" parent="Longbar2"]
 mesh = SubResource("CylinderMesh_oabfb")

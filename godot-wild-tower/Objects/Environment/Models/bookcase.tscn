@@ -1,18 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://ddxtpi8u5fqe0"]
+[gd_scene load_steps=7 format=3 uid="uid://ddxtpi8u5fqe0"]
+
+[ext_resource type="Material" uid="uid://bi8a52nq1acev" path="res://Materials/dark_wood.tres" id="1_x51ff"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h76rt"]
 size = Vector3(4, 6, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_kjy4h"]
+material = ExtResource("1_x51ff")
 size = Vector3(4, 0.5, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_7spct"]
+material = ExtResource("1_x51ff")
 size = Vector3(4, 0.2, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_mquhr"]
+material = ExtResource("1_x51ff")
 size = Vector3(0.2, 5.5, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_k4ub5"]
+material = ExtResource("1_x51ff")
 size = Vector3(4, 5.5, 0.1)
 
 [node name="Bookcase" type="Node3D"]
@@ -24,7 +30,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 shape = SubResource("BoxShape3D_h76rt")
 
 [node name="BottomShelf" type="MeshInstance3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00542593, 0.25, 0.00420046)
 mesh = SubResource("BoxMesh_kjy4h")
 skeleton = NodePath("../..")
 
