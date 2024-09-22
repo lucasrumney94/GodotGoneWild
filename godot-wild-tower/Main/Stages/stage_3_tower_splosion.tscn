@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://vssvdtmx3jx7" path="res://Objects/Player/player.tscn" id="1_dcbag"]
 [ext_resource type="PackedScene" path="res://Objects/Environment/fall_kill_plane.tscn" id="2_tdiav"]
 [ext_resource type="PackedScene" uid="uid://do1pmtbmc423e" path="res://UI/pause_menu.tscn" id="2_vi14t"]
-[ext_resource type="Texture2D" uid="uid://rfda5fv26d6w" path="res://Objects/Environment/Models/PurplyBlueSky.png" id="3_8kcrx"]
 [ext_resource type="PackedScene" path="res://Objects/Environment/falling_platform.tscn" id="4_tcibw"]
+[ext_resource type="Texture2D" uid="uid://bkchfco8pdnoh" path="res://Objects/Environment/Models/BlueSkySkybox.png" id="5_u0y23"]
 [ext_resource type="Material" uid="uid://3byi41uuwvq8" path="res://Materials/LD_grid.tres" id="5_vwvji"]
 [ext_resource type="Material" uid="uid://5dqiqxr4arwd" path="res://Materials/grid_material.tres" id="6_mwebb"]
 [ext_resource type="PackedScene" path="res://Objects/Environment/Models/Column.tscn" id="8_surjb"]
@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://bnylytkg3vk0w" path="res://Objects/Enemies/TurretEnemy.tscn" id="13_fvhb4"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_222xv"]
-panorama = ExtResource("3_8kcrx")
+panorama = ExtResource("5_u0y23")
 
 [sub_resource type="Sky" id="Sky_3kabx"]
 sky_material = SubResource("PanoramaSkyMaterial_222xv")
@@ -34,544 +34,580 @@ pause_menu_scene = ExtResource("2_vi14t")
 [node name="FallKillPlane" parent="." instance=ExtResource("2_tdiav")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -21.2011, 0)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment(NormalSky)" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_agvoq")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment(NormalSky)"]
 transform = Transform3D(1, 0, 0, 0, 0.427358, 0.904083, 0, -0.904083, 0.427358, 0, 100, 30)
 light_energy = 3.0
 light_indirect_energy = 3.0
 light_angular_distance = 40.0
 
-[node name="Floor" type="CSGBox3D" parent="WorldEnvironment"]
+[node name="Floor" type="CSGBox3D" parent="WorldEnvironment(NormalSky)"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.5, 0)
 material_override = ExtResource("5_vwvji")
 use_collision = true
 size = Vector3(25, 0.5, 25)
 material = ExtResource("6_mwebb")
 
-[node name="TowerNormal" type="Node3D" parent="WorldEnvironment"]
+[node name="TowerNormal" type="Node3D" parent="WorldEnvironment(NormalSky)"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0399961, 2.93591, -10.0063)
 
-[node name="PlatformTowerShort3" type="Node3D" parent="WorldEnvironment/TowerNormal"]
+[node name="PlatformTowerShort3" type="Node3D" parent="WorldEnvironment(NormalSky)/TowerNormal"]
 transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 1, -0.0399961, -2.93591, 0.00627613)
 
-[node name="Column" parent="WorldEnvironment/TowerNormal/PlatformTowerShort3" instance=ExtResource("8_surjb")]
+[node name="Column" parent="WorldEnvironment(NormalSky)/TowerNormal/PlatformTowerShort3" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.73823, 9.53674e-07, 1.29115)
 
-[node name="Column2" parent="WorldEnvironment/TowerNormal/PlatformTowerShort3" instance=ExtResource("8_surjb")]
+[node name="Column2" parent="WorldEnvironment(NormalSky)/TowerNormal/PlatformTowerShort3" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.809861, 9.53674e-07, 1.29115)
 
-[node name="Column3" parent="WorldEnvironment/TowerNormal/PlatformTowerShort3" instance=ExtResource("8_surjb")]
+[node name="Column3" parent="WorldEnvironment(NormalSky)/TowerNormal/PlatformTowerShort3" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.809861, 9.53674e-07, -1.47258)
 
-[node name="Column4" parent="WorldEnvironment/TowerNormal/PlatformTowerShort3" instance=ExtResource("8_surjb")]
+[node name="Column4" parent="WorldEnvironment(NormalSky)/TowerNormal/PlatformTowerShort3" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.39266, 9.53674e-07, -1.4547)
 
-[node name="PlatformBasic" parent="WorldEnvironment/TowerNormal/PlatformTowerShort3" instance=ExtResource("9_m1n2u")]
+[node name="PlatformBasic" parent="WorldEnvironment(NormalSky)/TowerNormal/PlatformTowerShort3" instance=ExtResource("9_m1n2u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.402953, 5.45156, -0.0997515)
 
-[node name="PlatformTowerTall5" type="Node3D" parent="WorldEnvironment/TowerNormal"]
+[node name="PlatformTowerTall5" type="Node3D" parent="WorldEnvironment(NormalSky)/TowerNormal"]
 
-[node name="Column" parent="WorldEnvironment/TowerNormal/PlatformTowerTall5" instance=ExtResource("8_surjb")]
+[node name="Column" parent="WorldEnvironment(NormalSky)/TowerNormal/PlatformTowerTall5" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.73823, 9.53674e-07, 1.29115)
 
-[node name="Column2" parent="WorldEnvironment/TowerNormal/PlatformTowerTall5" instance=ExtResource("8_surjb")]
+[node name="Column2" parent="WorldEnvironment(NormalSky)/TowerNormal/PlatformTowerTall5" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.809861, 9.53674e-07, 1.29115)
 
-[node name="Column3" parent="WorldEnvironment/TowerNormal/PlatformTowerTall5" instance=ExtResource("8_surjb")]
+[node name="Column3" parent="WorldEnvironment(NormalSky)/TowerNormal/PlatformTowerTall5" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.809861, 9.53674e-07, -1.47258)
 
-[node name="Column4" parent="WorldEnvironment/TowerNormal/PlatformTowerTall5" instance=ExtResource("8_surjb")]
+[node name="Column4" parent="WorldEnvironment(NormalSky)/TowerNormal/PlatformTowerTall5" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.39266, 9.53674e-07, -1.4547)
 
-[node name="PlatformBasic" parent="WorldEnvironment/TowerNormal/PlatformTowerTall5" instance=ExtResource("9_m1n2u")]
+[node name="PlatformBasic" parent="WorldEnvironment(NormalSky)/TowerNormal/PlatformTowerTall5" instance=ExtResource("9_m1n2u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.402953, 5.45156, -0.0997515)
 
-[node name="PlatformTowerTall6" type="Node3D" parent="WorldEnvironment/TowerNormal"]
+[node name="PlatformTowerTall6" type="Node3D" parent="WorldEnvironment(NormalSky)/TowerNormal"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
 
-[node name="Column" parent="WorldEnvironment/TowerNormal/PlatformTowerTall6" instance=ExtResource("8_surjb")]
+[node name="Column" parent="WorldEnvironment(NormalSky)/TowerNormal/PlatformTowerTall6" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.73823, 9.53674e-07, 1.29115)
 
-[node name="Column2" parent="WorldEnvironment/TowerNormal/PlatformTowerTall6" instance=ExtResource("8_surjb")]
+[node name="Column2" parent="WorldEnvironment(NormalSky)/TowerNormal/PlatformTowerTall6" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.809861, 9.53674e-07, 1.29115)
 
-[node name="Column3" parent="WorldEnvironment/TowerNormal/PlatformTowerTall6" instance=ExtResource("8_surjb")]
+[node name="Column3" parent="WorldEnvironment(NormalSky)/TowerNormal/PlatformTowerTall6" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.809861, 9.53674e-07, -1.47258)
 
-[node name="Column4" parent="WorldEnvironment/TowerNormal/PlatformTowerTall6" instance=ExtResource("8_surjb")]
+[node name="Column4" parent="WorldEnvironment(NormalSky)/TowerNormal/PlatformTowerTall6" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.81817, 9.53674e-07, -1.4547)
 
-[node name="PlatformBasic" parent="WorldEnvironment/TowerNormal/PlatformTowerTall6" instance=ExtResource("9_m1n2u")]
+[node name="PlatformBasic" parent="WorldEnvironment(NormalSky)/TowerNormal/PlatformTowerTall6" instance=ExtResource("9_m1n2u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.402953, 5.45156, -0.0997515)
 
-[node name="PlatformTowerTall7" type="Node3D" parent="WorldEnvironment/TowerNormal"]
+[node name="PlatformTowerTall7" type="Node3D" parent="WorldEnvironment(NormalSky)/TowerNormal"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
 
-[node name="Column" parent="WorldEnvironment/TowerNormal/PlatformTowerTall7" instance=ExtResource("8_surjb")]
+[node name="Column" parent="WorldEnvironment(NormalSky)/TowerNormal/PlatformTowerTall7" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.73823, 9.53674e-07, 1.29115)
 
-[node name="Column2" parent="WorldEnvironment/TowerNormal/PlatformTowerTall7" instance=ExtResource("8_surjb")]
+[node name="Column2" parent="WorldEnvironment(NormalSky)/TowerNormal/PlatformTowerTall7" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.809861, 9.53674e-07, 1.29115)
 
-[node name="Column3" parent="WorldEnvironment/TowerNormal/PlatformTowerTall7" instance=ExtResource("8_surjb")]
+[node name="Column3" parent="WorldEnvironment(NormalSky)/TowerNormal/PlatformTowerTall7" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.809861, 9.53674e-07, -1.47258)
 
-[node name="Column4" parent="WorldEnvironment/TowerNormal/PlatformTowerTall7" instance=ExtResource("8_surjb")]
+[node name="Column4" parent="WorldEnvironment(NormalSky)/TowerNormal/PlatformTowerTall7" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90958, 9.53674e-07, -1.4547)
 
-[node name="PlatformBasic" parent="WorldEnvironment/TowerNormal/PlatformTowerTall7" instance=ExtResource("9_m1n2u")]
+[node name="PlatformBasic" parent="WorldEnvironment(NormalSky)/TowerNormal/PlatformTowerTall7" instance=ExtResource("9_m1n2u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.402953, 5.45156, -0.0997515)
 
-[node name="TowerNormal2" type="Node3D" parent="WorldEnvironment"]
+[node name="TowerNormal2" type="Node3D" parent="WorldEnvironment(NormalSky)"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 10)
 
-[node name="PlatformTowerShort3" type="Node3D" parent="WorldEnvironment/TowerNormal2"]
+[node name="PlatformTowerShort3" type="Node3D" parent="WorldEnvironment(NormalSky)/TowerNormal2"]
 transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 1, -0.0399961, -2.93591, 0.00627613)
 
-[node name="Column" parent="WorldEnvironment/TowerNormal2/PlatformTowerShort3" instance=ExtResource("8_surjb")]
+[node name="Column" parent="WorldEnvironment(NormalSky)/TowerNormal2/PlatformTowerShort3" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.73823, 9.53674e-07, 1.29115)
 
-[node name="Column2" parent="WorldEnvironment/TowerNormal2/PlatformTowerShort3" instance=ExtResource("8_surjb")]
+[node name="Column2" parent="WorldEnvironment(NormalSky)/TowerNormal2/PlatformTowerShort3" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.809861, 9.53674e-07, 1.29115)
 
-[node name="Column3" parent="WorldEnvironment/TowerNormal2/PlatformTowerShort3" instance=ExtResource("8_surjb")]
+[node name="Column3" parent="WorldEnvironment(NormalSky)/TowerNormal2/PlatformTowerShort3" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.809861, 9.53674e-07, -1.47258)
 
-[node name="Column4" parent="WorldEnvironment/TowerNormal2/PlatformTowerShort3" instance=ExtResource("8_surjb")]
+[node name="Column4" parent="WorldEnvironment(NormalSky)/TowerNormal2/PlatformTowerShort3" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.39266, 9.53674e-07, -1.4547)
 
-[node name="PlatformBasic" parent="WorldEnvironment/TowerNormal2/PlatformTowerShort3" instance=ExtResource("9_m1n2u")]
+[node name="PlatformBasic" parent="WorldEnvironment(NormalSky)/TowerNormal2/PlatformTowerShort3" instance=ExtResource("9_m1n2u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.402953, 5.45156, -0.0997515)
 
-[node name="PlatformTowerTall5" type="Node3D" parent="WorldEnvironment/TowerNormal2"]
+[node name="PlatformTowerTall5" type="Node3D" parent="WorldEnvironment(NormalSky)/TowerNormal2"]
 
-[node name="Column" parent="WorldEnvironment/TowerNormal2/PlatformTowerTall5" instance=ExtResource("8_surjb")]
+[node name="Column" parent="WorldEnvironment(NormalSky)/TowerNormal2/PlatformTowerTall5" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.73823, 9.53674e-07, 1.29115)
 
-[node name="Column2" parent="WorldEnvironment/TowerNormal2/PlatformTowerTall5" instance=ExtResource("8_surjb")]
+[node name="Column2" parent="WorldEnvironment(NormalSky)/TowerNormal2/PlatformTowerTall5" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.809861, 9.53674e-07, 1.29115)
 
-[node name="Column3" parent="WorldEnvironment/TowerNormal2/PlatformTowerTall5" instance=ExtResource("8_surjb")]
+[node name="Column3" parent="WorldEnvironment(NormalSky)/TowerNormal2/PlatformTowerTall5" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.809861, 9.53674e-07, -1.47258)
 
-[node name="Column4" parent="WorldEnvironment/TowerNormal2/PlatformTowerTall5" instance=ExtResource("8_surjb")]
+[node name="Column4" parent="WorldEnvironment(NormalSky)/TowerNormal2/PlatformTowerTall5" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.39266, 9.53674e-07, -1.4547)
 
-[node name="PlatformBasic" parent="WorldEnvironment/TowerNormal2/PlatformTowerTall5" instance=ExtResource("9_m1n2u")]
+[node name="PlatformBasic" parent="WorldEnvironment(NormalSky)/TowerNormal2/PlatformTowerTall5" instance=ExtResource("9_m1n2u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.402953, 5.45156, -0.0997515)
 
-[node name="PlatformTowerTall6" type="Node3D" parent="WorldEnvironment/TowerNormal2"]
+[node name="PlatformTowerTall6" type="Node3D" parent="WorldEnvironment(NormalSky)/TowerNormal2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
 
-[node name="Column" parent="WorldEnvironment/TowerNormal2/PlatformTowerTall6" instance=ExtResource("8_surjb")]
+[node name="Column" parent="WorldEnvironment(NormalSky)/TowerNormal2/PlatformTowerTall6" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.73823, 9.53674e-07, 1.29115)
 
-[node name="Column2" parent="WorldEnvironment/TowerNormal2/PlatformTowerTall6" instance=ExtResource("8_surjb")]
+[node name="Column2" parent="WorldEnvironment(NormalSky)/TowerNormal2/PlatformTowerTall6" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.809861, 9.53674e-07, 1.29115)
 
-[node name="Column3" parent="WorldEnvironment/TowerNormal2/PlatformTowerTall6" instance=ExtResource("8_surjb")]
+[node name="Column3" parent="WorldEnvironment(NormalSky)/TowerNormal2/PlatformTowerTall6" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.809861, 9.53674e-07, -1.47258)
 
-[node name="Column4" parent="WorldEnvironment/TowerNormal2/PlatformTowerTall6" instance=ExtResource("8_surjb")]
+[node name="Column4" parent="WorldEnvironment(NormalSky)/TowerNormal2/PlatformTowerTall6" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.81817, 9.53674e-07, -1.4547)
 
-[node name="PlatformBasic" parent="WorldEnvironment/TowerNormal2/PlatformTowerTall6" instance=ExtResource("9_m1n2u")]
+[node name="PlatformBasic" parent="WorldEnvironment(NormalSky)/TowerNormal2/PlatformTowerTall6" instance=ExtResource("9_m1n2u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.402953, 5.45156, -0.0997515)
 
-[node name="PlatformTowerTall7" type="Node3D" parent="WorldEnvironment/TowerNormal2"]
+[node name="PlatformTowerTall7" type="Node3D" parent="WorldEnvironment(NormalSky)/TowerNormal2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
 
-[node name="Column" parent="WorldEnvironment/TowerNormal2/PlatformTowerTall7" instance=ExtResource("8_surjb")]
+[node name="Column" parent="WorldEnvironment(NormalSky)/TowerNormal2/PlatformTowerTall7" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.73823, 9.53674e-07, 1.29115)
 
-[node name="Column2" parent="WorldEnvironment/TowerNormal2/PlatformTowerTall7" instance=ExtResource("8_surjb")]
+[node name="Column2" parent="WorldEnvironment(NormalSky)/TowerNormal2/PlatformTowerTall7" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.809861, 9.53674e-07, 1.29115)
 
-[node name="Column3" parent="WorldEnvironment/TowerNormal2/PlatformTowerTall7" instance=ExtResource("8_surjb")]
+[node name="Column3" parent="WorldEnvironment(NormalSky)/TowerNormal2/PlatformTowerTall7" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.809861, 9.53674e-07, -1.47258)
 
-[node name="Column4" parent="WorldEnvironment/TowerNormal2/PlatformTowerTall7" instance=ExtResource("8_surjb")]
+[node name="Column4" parent="WorldEnvironment(NormalSky)/TowerNormal2/PlatformTowerTall7" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90958, 9.53674e-07, -1.4547)
 
-[node name="PlatformBasic" parent="WorldEnvironment/TowerNormal2/PlatformTowerTall7" instance=ExtResource("9_m1n2u")]
+[node name="PlatformBasic" parent="WorldEnvironment(NormalSky)/TowerNormal2/PlatformTowerTall7" instance=ExtResource("9_m1n2u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.402953, 5.45156, -0.0997515)
 
-[node name="TowerNormal3" type="Node3D" parent="WorldEnvironment"]
+[node name="TowerNormal3" type="Node3D" parent="WorldEnvironment(NormalSky)"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 3, 0)
 
-[node name="PlatformTowerShort3" type="Node3D" parent="WorldEnvironment/TowerNormal3"]
+[node name="PlatformTowerShort3" type="Node3D" parent="WorldEnvironment(NormalSky)/TowerNormal3"]
 transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 1, -0.0399961, -2.93591, 0.00627613)
 
-[node name="Column" parent="WorldEnvironment/TowerNormal3/PlatformTowerShort3" instance=ExtResource("8_surjb")]
+[node name="Column" parent="WorldEnvironment(NormalSky)/TowerNormal3/PlatformTowerShort3" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.73823, 9.53674e-07, 1.29115)
 
-[node name="Column2" parent="WorldEnvironment/TowerNormal3/PlatformTowerShort3" instance=ExtResource("8_surjb")]
+[node name="Column2" parent="WorldEnvironment(NormalSky)/TowerNormal3/PlatformTowerShort3" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.809861, 9.53674e-07, 1.29115)
 
-[node name="Column3" parent="WorldEnvironment/TowerNormal3/PlatformTowerShort3" instance=ExtResource("8_surjb")]
+[node name="Column3" parent="WorldEnvironment(NormalSky)/TowerNormal3/PlatformTowerShort3" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.809861, 9.53674e-07, -1.47258)
 
-[node name="Column4" parent="WorldEnvironment/TowerNormal3/PlatformTowerShort3" instance=ExtResource("8_surjb")]
+[node name="Column4" parent="WorldEnvironment(NormalSky)/TowerNormal3/PlatformTowerShort3" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.39266, 9.53674e-07, -1.4547)
 
-[node name="PlatformBasic" parent="WorldEnvironment/TowerNormal3/PlatformTowerShort3" instance=ExtResource("9_m1n2u")]
+[node name="PlatformBasic" parent="WorldEnvironment(NormalSky)/TowerNormal3/PlatformTowerShort3" instance=ExtResource("9_m1n2u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.402953, 5.45156, -0.0997515)
 
-[node name="PlatformTowerTall5" type="Node3D" parent="WorldEnvironment/TowerNormal3"]
+[node name="PlatformTowerTall5" type="Node3D" parent="WorldEnvironment(NormalSky)/TowerNormal3"]
 
-[node name="Column" parent="WorldEnvironment/TowerNormal3/PlatformTowerTall5" instance=ExtResource("8_surjb")]
+[node name="Column" parent="WorldEnvironment(NormalSky)/TowerNormal3/PlatformTowerTall5" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.73823, 9.53674e-07, 1.29115)
 
-[node name="Column2" parent="WorldEnvironment/TowerNormal3/PlatformTowerTall5" instance=ExtResource("8_surjb")]
+[node name="Column2" parent="WorldEnvironment(NormalSky)/TowerNormal3/PlatformTowerTall5" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.809861, 9.53674e-07, 1.29115)
 
-[node name="Column3" parent="WorldEnvironment/TowerNormal3/PlatformTowerTall5" instance=ExtResource("8_surjb")]
+[node name="Column3" parent="WorldEnvironment(NormalSky)/TowerNormal3/PlatformTowerTall5" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.809861, 9.53674e-07, -1.47258)
 
-[node name="Column4" parent="WorldEnvironment/TowerNormal3/PlatformTowerTall5" instance=ExtResource("8_surjb")]
+[node name="Column4" parent="WorldEnvironment(NormalSky)/TowerNormal3/PlatformTowerTall5" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.39266, 9.53674e-07, -1.4547)
 
-[node name="PlatformBasic" parent="WorldEnvironment/TowerNormal3/PlatformTowerTall5" instance=ExtResource("9_m1n2u")]
+[node name="PlatformBasic" parent="WorldEnvironment(NormalSky)/TowerNormal3/PlatformTowerTall5" instance=ExtResource("9_m1n2u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.402953, 5.45156, -0.0997515)
 
-[node name="PlatformTowerTall6" type="Node3D" parent="WorldEnvironment/TowerNormal3"]
+[node name="PlatformTowerTall6" type="Node3D" parent="WorldEnvironment(NormalSky)/TowerNormal3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
 
-[node name="Column" parent="WorldEnvironment/TowerNormal3/PlatformTowerTall6" instance=ExtResource("8_surjb")]
+[node name="Column" parent="WorldEnvironment(NormalSky)/TowerNormal3/PlatformTowerTall6" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.73823, 9.53674e-07, 1.29115)
 
-[node name="Column2" parent="WorldEnvironment/TowerNormal3/PlatformTowerTall6" instance=ExtResource("8_surjb")]
+[node name="Column2" parent="WorldEnvironment(NormalSky)/TowerNormal3/PlatformTowerTall6" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.809861, 9.53674e-07, 1.29115)
 
-[node name="Column3" parent="WorldEnvironment/TowerNormal3/PlatformTowerTall6" instance=ExtResource("8_surjb")]
+[node name="Column3" parent="WorldEnvironment(NormalSky)/TowerNormal3/PlatformTowerTall6" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.809861, 9.53674e-07, -1.47258)
 
-[node name="Column4" parent="WorldEnvironment/TowerNormal3/PlatformTowerTall6" instance=ExtResource("8_surjb")]
+[node name="Column4" parent="WorldEnvironment(NormalSky)/TowerNormal3/PlatformTowerTall6" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.81817, 9.53674e-07, -1.4547)
 
-[node name="PlatformBasic" parent="WorldEnvironment/TowerNormal3/PlatformTowerTall6" instance=ExtResource("9_m1n2u")]
+[node name="PlatformBasic" parent="WorldEnvironment(NormalSky)/TowerNormal3/PlatformTowerTall6" instance=ExtResource("9_m1n2u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.402953, 5.45156, -0.0997515)
 
-[node name="PlatformTowerTall7" type="Node3D" parent="WorldEnvironment/TowerNormal3"]
+[node name="PlatformTowerTall7" type="Node3D" parent="WorldEnvironment(NormalSky)/TowerNormal3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
 
-[node name="Column" parent="WorldEnvironment/TowerNormal3/PlatformTowerTall7" instance=ExtResource("8_surjb")]
+[node name="Column" parent="WorldEnvironment(NormalSky)/TowerNormal3/PlatformTowerTall7" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.73823, 9.53674e-07, 1.29115)
 
-[node name="Column2" parent="WorldEnvironment/TowerNormal3/PlatformTowerTall7" instance=ExtResource("8_surjb")]
+[node name="Column2" parent="WorldEnvironment(NormalSky)/TowerNormal3/PlatformTowerTall7" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.809861, 9.53674e-07, 1.29115)
 
-[node name="Column3" parent="WorldEnvironment/TowerNormal3/PlatformTowerTall7" instance=ExtResource("8_surjb")]
+[node name="Column3" parent="WorldEnvironment(NormalSky)/TowerNormal3/PlatformTowerTall7" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.809861, 9.53674e-07, -1.47258)
 
-[node name="Column4" parent="WorldEnvironment/TowerNormal3/PlatformTowerTall7" instance=ExtResource("8_surjb")]
+[node name="Column4" parent="WorldEnvironment(NormalSky)/TowerNormal3/PlatformTowerTall7" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90958, 9.53674e-07, -1.4547)
 
-[node name="PlatformBasic" parent="WorldEnvironment/TowerNormal3/PlatformTowerTall7" instance=ExtResource("9_m1n2u")]
+[node name="PlatformBasic" parent="WorldEnvironment(NormalSky)/TowerNormal3/PlatformTowerTall7" instance=ExtResource("9_m1n2u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.402953, 5.45156, -0.0997515)
 
-[node name="TowerNormal4" type="Node3D" parent="WorldEnvironment"]
+[node name="TowerNormal4" type="Node3D" parent="WorldEnvironment(NormalSky)"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 3, 0)
 
-[node name="PlatformTowerShort3" type="Node3D" parent="WorldEnvironment/TowerNormal4"]
+[node name="PlatformTowerShort3" type="Node3D" parent="WorldEnvironment(NormalSky)/TowerNormal4"]
 transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 1, -0.0399961, -2.93591, 0.00627613)
 
-[node name="Column" parent="WorldEnvironment/TowerNormal4/PlatformTowerShort3" instance=ExtResource("8_surjb")]
+[node name="Column" parent="WorldEnvironment(NormalSky)/TowerNormal4/PlatformTowerShort3" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.73823, 9.53674e-07, 1.29115)
 
-[node name="Column2" parent="WorldEnvironment/TowerNormal4/PlatformTowerShort3" instance=ExtResource("8_surjb")]
+[node name="Column2" parent="WorldEnvironment(NormalSky)/TowerNormal4/PlatformTowerShort3" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.809861, 9.53674e-07, 1.29115)
 
-[node name="Column3" parent="WorldEnvironment/TowerNormal4/PlatformTowerShort3" instance=ExtResource("8_surjb")]
+[node name="Column3" parent="WorldEnvironment(NormalSky)/TowerNormal4/PlatformTowerShort3" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.809861, 9.53674e-07, -1.47258)
 
-[node name="Column4" parent="WorldEnvironment/TowerNormal4/PlatformTowerShort3" instance=ExtResource("8_surjb")]
+[node name="Column4" parent="WorldEnvironment(NormalSky)/TowerNormal4/PlatformTowerShort3" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.39266, 9.53674e-07, -1.4547)
 
-[node name="PlatformBasic" parent="WorldEnvironment/TowerNormal4/PlatformTowerShort3" instance=ExtResource("9_m1n2u")]
+[node name="PlatformBasic" parent="WorldEnvironment(NormalSky)/TowerNormal4/PlatformTowerShort3" instance=ExtResource("9_m1n2u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.402953, 5.45156, -0.0997515)
 
-[node name="PlatformTowerTall5" type="Node3D" parent="WorldEnvironment/TowerNormal4"]
+[node name="PlatformTowerTall5" type="Node3D" parent="WorldEnvironment(NormalSky)/TowerNormal4"]
 
-[node name="Column" parent="WorldEnvironment/TowerNormal4/PlatformTowerTall5" instance=ExtResource("8_surjb")]
+[node name="Column" parent="WorldEnvironment(NormalSky)/TowerNormal4/PlatformTowerTall5" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.73823, 9.53674e-07, 1.29115)
 
-[node name="Column2" parent="WorldEnvironment/TowerNormal4/PlatformTowerTall5" instance=ExtResource("8_surjb")]
+[node name="Column2" parent="WorldEnvironment(NormalSky)/TowerNormal4/PlatformTowerTall5" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.809861, 9.53674e-07, 1.29115)
 
-[node name="Column3" parent="WorldEnvironment/TowerNormal4/PlatformTowerTall5" instance=ExtResource("8_surjb")]
+[node name="Column3" parent="WorldEnvironment(NormalSky)/TowerNormal4/PlatformTowerTall5" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.809861, 9.53674e-07, -1.47258)
 
-[node name="Column4" parent="WorldEnvironment/TowerNormal4/PlatformTowerTall5" instance=ExtResource("8_surjb")]
+[node name="Column4" parent="WorldEnvironment(NormalSky)/TowerNormal4/PlatformTowerTall5" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.39266, 9.53674e-07, -1.4547)
 
-[node name="PlatformBasic" parent="WorldEnvironment/TowerNormal4/PlatformTowerTall5" instance=ExtResource("9_m1n2u")]
+[node name="PlatformBasic" parent="WorldEnvironment(NormalSky)/TowerNormal4/PlatformTowerTall5" instance=ExtResource("9_m1n2u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.402953, 5.45156, -0.0997515)
 
-[node name="PlatformTowerTall6" type="Node3D" parent="WorldEnvironment/TowerNormal4"]
+[node name="PlatformTowerTall6" type="Node3D" parent="WorldEnvironment(NormalSky)/TowerNormal4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
 
-[node name="Column" parent="WorldEnvironment/TowerNormal4/PlatformTowerTall6" instance=ExtResource("8_surjb")]
+[node name="Column" parent="WorldEnvironment(NormalSky)/TowerNormal4/PlatformTowerTall6" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.73823, 9.53674e-07, 1.29115)
 
-[node name="Column2" parent="WorldEnvironment/TowerNormal4/PlatformTowerTall6" instance=ExtResource("8_surjb")]
+[node name="Column2" parent="WorldEnvironment(NormalSky)/TowerNormal4/PlatformTowerTall6" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.809861, 9.53674e-07, 1.29115)
 
-[node name="Column3" parent="WorldEnvironment/TowerNormal4/PlatformTowerTall6" instance=ExtResource("8_surjb")]
+[node name="Column3" parent="WorldEnvironment(NormalSky)/TowerNormal4/PlatformTowerTall6" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.809861, 9.53674e-07, -1.47258)
 
-[node name="Column4" parent="WorldEnvironment/TowerNormal4/PlatformTowerTall6" instance=ExtResource("8_surjb")]
+[node name="Column4" parent="WorldEnvironment(NormalSky)/TowerNormal4/PlatformTowerTall6" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.81817, 9.53674e-07, -1.4547)
 
-[node name="PlatformBasic" parent="WorldEnvironment/TowerNormal4/PlatformTowerTall6" instance=ExtResource("9_m1n2u")]
+[node name="PlatformBasic" parent="WorldEnvironment(NormalSky)/TowerNormal4/PlatformTowerTall6" instance=ExtResource("9_m1n2u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.402953, 5.45156, -0.0997515)
 
-[node name="PlatformTowerTall7" type="Node3D" parent="WorldEnvironment/TowerNormal4"]
+[node name="PlatformTowerTall7" type="Node3D" parent="WorldEnvironment(NormalSky)/TowerNormal4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
 
-[node name="Column" parent="WorldEnvironment/TowerNormal4/PlatformTowerTall7" instance=ExtResource("8_surjb")]
+[node name="Column" parent="WorldEnvironment(NormalSky)/TowerNormal4/PlatformTowerTall7" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.73823, 9.53674e-07, 1.29115)
 
-[node name="Column2" parent="WorldEnvironment/TowerNormal4/PlatformTowerTall7" instance=ExtResource("8_surjb")]
+[node name="Column2" parent="WorldEnvironment(NormalSky)/TowerNormal4/PlatformTowerTall7" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.809861, 9.53674e-07, 1.29115)
 
-[node name="Column3" parent="WorldEnvironment/TowerNormal4/PlatformTowerTall7" instance=ExtResource("8_surjb")]
+[node name="Column3" parent="WorldEnvironment(NormalSky)/TowerNormal4/PlatformTowerTall7" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.809861, 9.53674e-07, -1.47258)
 
-[node name="Column4" parent="WorldEnvironment/TowerNormal4/PlatformTowerTall7" instance=ExtResource("8_surjb")]
+[node name="Column4" parent="WorldEnvironment(NormalSky)/TowerNormal4/PlatformTowerTall7" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90958, 9.53674e-07, -1.4547)
 
-[node name="PlatformBasic" parent="WorldEnvironment/TowerNormal4/PlatformTowerTall7" instance=ExtResource("9_m1n2u")]
+[node name="PlatformBasic" parent="WorldEnvironment(NormalSky)/TowerNormal4/PlatformTowerTall7" instance=ExtResource("9_m1n2u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.402953, 5.45156, -0.0997515)
 
-[node name="TowerCenter" type="Node3D" parent="WorldEnvironment"]
+[node name="TowerCenter" type="Node3D" parent="WorldEnvironment(NormalSky)"]
 
-[node name="PlatformTowerTall2" type="Node3D" parent="WorldEnvironment/TowerCenter"]
+[node name="PlatformTowerTall2" type="Node3D" parent="WorldEnvironment(NormalSky)/TowerCenter"]
 
-[node name="Column" parent="WorldEnvironment/TowerCenter/PlatformTowerTall2" instance=ExtResource("8_surjb")]
+[node name="Column" parent="WorldEnvironment(NormalSky)/TowerCenter/PlatformTowerTall2" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.73823, 9.53674e-07, 1.29115)
 
-[node name="Column2" parent="WorldEnvironment/TowerCenter/PlatformTowerTall2" instance=ExtResource("8_surjb")]
+[node name="Column2" parent="WorldEnvironment(NormalSky)/TowerCenter/PlatformTowerTall2" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.809861, 9.53674e-07, 1.29115)
 
-[node name="Column3" parent="WorldEnvironment/TowerCenter/PlatformTowerTall2" instance=ExtResource("8_surjb")]
+[node name="Column3" parent="WorldEnvironment(NormalSky)/TowerCenter/PlatformTowerTall2" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.809861, 9.53674e-07, -1.47258)
 
-[node name="Column4" parent="WorldEnvironment/TowerCenter/PlatformTowerTall2" instance=ExtResource("8_surjb")]
+[node name="Column4" parent="WorldEnvironment(NormalSky)/TowerCenter/PlatformTowerTall2" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.39266, 9.53674e-07, -1.4547)
 
-[node name="PlatformBasic" parent="WorldEnvironment/TowerCenter/PlatformTowerTall2" instance=ExtResource("9_m1n2u")]
+[node name="PlatformBasic" parent="WorldEnvironment(NormalSky)/TowerCenter/PlatformTowerTall2" instance=ExtResource("9_m1n2u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.402953, 5.45156, -0.0997515)
 
-[node name="PlatformTowerTall3" type="Node3D" parent="WorldEnvironment/TowerCenter"]
+[node name="PlatformTowerTall3" type="Node3D" parent="WorldEnvironment(NormalSky)/TowerCenter"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
 
-[node name="Column" parent="WorldEnvironment/TowerCenter/PlatformTowerTall3" instance=ExtResource("8_surjb")]
+[node name="Column" parent="WorldEnvironment(NormalSky)/TowerCenter/PlatformTowerTall3" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.73823, 9.53674e-07, 1.29115)
 
-[node name="Column2" parent="WorldEnvironment/TowerCenter/PlatformTowerTall3" instance=ExtResource("8_surjb")]
+[node name="Column2" parent="WorldEnvironment(NormalSky)/TowerCenter/PlatformTowerTall3" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.809861, 9.53674e-07, 1.29115)
 
-[node name="Column3" parent="WorldEnvironment/TowerCenter/PlatformTowerTall3" instance=ExtResource("8_surjb")]
+[node name="Column3" parent="WorldEnvironment(NormalSky)/TowerCenter/PlatformTowerTall3" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.809861, 9.53674e-07, -1.47258)
 
-[node name="Column4" parent="WorldEnvironment/TowerCenter/PlatformTowerTall3" instance=ExtResource("8_surjb")]
+[node name="Column4" parent="WorldEnvironment(NormalSky)/TowerCenter/PlatformTowerTall3" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.81817, 9.53674e-07, -1.4547)
 
-[node name="PlatformBasic" parent="WorldEnvironment/TowerCenter/PlatformTowerTall3" instance=ExtResource("9_m1n2u")]
+[node name="PlatformBasic" parent="WorldEnvironment(NormalSky)/TowerCenter/PlatformTowerTall3" instance=ExtResource("9_m1n2u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.402953, 5.45156, -0.0997515)
 
-[node name="PlatformTowerTall4" type="Node3D" parent="WorldEnvironment/TowerCenter"]
+[node name="PlatformTowerTall4" type="Node3D" parent="WorldEnvironment(NormalSky)/TowerCenter"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
 
-[node name="Column" parent="WorldEnvironment/TowerCenter/PlatformTowerTall4" instance=ExtResource("8_surjb")]
+[node name="Column" parent="WorldEnvironment(NormalSky)/TowerCenter/PlatformTowerTall4" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.73823, 9.53674e-07, 1.29115)
 
-[node name="Column2" parent="WorldEnvironment/TowerCenter/PlatformTowerTall4" instance=ExtResource("8_surjb")]
+[node name="Column2" parent="WorldEnvironment(NormalSky)/TowerCenter/PlatformTowerTall4" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.809861, 9.53674e-07, 1.29115)
 
-[node name="Column3" parent="WorldEnvironment/TowerCenter/PlatformTowerTall4" instance=ExtResource("8_surjb")]
+[node name="Column3" parent="WorldEnvironment(NormalSky)/TowerCenter/PlatformTowerTall4" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.809861, 9.53674e-07, -1.47258)
 
-[node name="Column4" parent="WorldEnvironment/TowerCenter/PlatformTowerTall4" instance=ExtResource("8_surjb")]
+[node name="Column4" parent="WorldEnvironment(NormalSky)/TowerCenter/PlatformTowerTall4" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90958, 9.53674e-07, -1.4547)
 
-[node name="PlatformBasic" parent="WorldEnvironment/TowerCenter/PlatformTowerTall4" instance=ExtResource("9_m1n2u")]
+[node name="PlatformBasic" parent="WorldEnvironment(NormalSky)/TowerCenter/PlatformTowerTall4" instance=ExtResource("9_m1n2u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.402953, 5.45156, -0.0997515)
 
-[node name="PlatformTowerTall5" type="Node3D" parent="WorldEnvironment/TowerCenter"]
+[node name="PlatformTowerTall5" type="Node3D" parent="WorldEnvironment(NormalSky)/TowerCenter"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18.006, 0)
 
-[node name="Column" parent="WorldEnvironment/TowerCenter/PlatformTowerTall5" instance=ExtResource("8_surjb")]
+[node name="Column" parent="WorldEnvironment(NormalSky)/TowerCenter/PlatformTowerTall5" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.73823, 9.53674e-07, 1.29115)
 
-[node name="Column2" parent="WorldEnvironment/TowerCenter/PlatformTowerTall5" instance=ExtResource("8_surjb")]
+[node name="Column2" parent="WorldEnvironment(NormalSky)/TowerCenter/PlatformTowerTall5" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.809861, 9.53674e-07, 1.29115)
 
-[node name="Column3" parent="WorldEnvironment/TowerCenter/PlatformTowerTall5" instance=ExtResource("8_surjb")]
+[node name="Column3" parent="WorldEnvironment(NormalSky)/TowerCenter/PlatformTowerTall5" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.809861, 9.53674e-07, -1.47258)
 
-[node name="Column4" parent="WorldEnvironment/TowerCenter/PlatformTowerTall5" instance=ExtResource("8_surjb")]
+[node name="Column4" parent="WorldEnvironment(NormalSky)/TowerCenter/PlatformTowerTall5" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.39266, 9.53674e-07, -1.4547)
 
-[node name="PlatformBasic" parent="WorldEnvironment/TowerCenter/PlatformTowerTall5" instance=ExtResource("9_m1n2u")]
+[node name="PlatformBasic" parent="WorldEnvironment(NormalSky)/TowerCenter/PlatformTowerTall5" instance=ExtResource("9_m1n2u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.402953, 5.45156, -0.0997515)
 
-[node name="PlatformTowerTall6" type="Node3D" parent="WorldEnvironment/TowerCenter"]
+[node name="PlatformTowerTall6" type="Node3D" parent="WorldEnvironment(NormalSky)/TowerCenter"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24.006, 0)
 
-[node name="Column" parent="WorldEnvironment/TowerCenter/PlatformTowerTall6" instance=ExtResource("8_surjb")]
+[node name="Column" parent="WorldEnvironment(NormalSky)/TowerCenter/PlatformTowerTall6" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.73823, 9.53674e-07, 1.29115)
 
-[node name="Column2" parent="WorldEnvironment/TowerCenter/PlatformTowerTall6" instance=ExtResource("8_surjb")]
+[node name="Column2" parent="WorldEnvironment(NormalSky)/TowerCenter/PlatformTowerTall6" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.809861, 9.53674e-07, 1.29115)
 
-[node name="Column3" parent="WorldEnvironment/TowerCenter/PlatformTowerTall6" instance=ExtResource("8_surjb")]
+[node name="Column3" parent="WorldEnvironment(NormalSky)/TowerCenter/PlatformTowerTall6" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.809861, 9.53674e-07, -1.47258)
 
-[node name="Column4" parent="WorldEnvironment/TowerCenter/PlatformTowerTall6" instance=ExtResource("8_surjb")]
+[node name="Column4" parent="WorldEnvironment(NormalSky)/TowerCenter/PlatformTowerTall6" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.81817, 9.53674e-07, -1.4547)
 
-[node name="PlatformBasic" parent="WorldEnvironment/TowerCenter/PlatformTowerTall6" instance=ExtResource("9_m1n2u")]
+[node name="PlatformBasic" parent="WorldEnvironment(NormalSky)/TowerCenter/PlatformTowerTall6" instance=ExtResource("9_m1n2u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.402953, 5.45156, -0.0997515)
 
-[node name="PlatformTowerTall7" type="Node3D" parent="WorldEnvironment/TowerCenter"]
+[node name="PlatformTowerTall7" type="Node3D" parent="WorldEnvironment(NormalSky)/TowerCenter"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30.006, 0)
 
-[node name="Column" parent="WorldEnvironment/TowerCenter/PlatformTowerTall7" instance=ExtResource("8_surjb")]
+[node name="Column" parent="WorldEnvironment(NormalSky)/TowerCenter/PlatformTowerTall7" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.73823, 9.53674e-07, 1.29115)
 
-[node name="Column2" parent="WorldEnvironment/TowerCenter/PlatformTowerTall7" instance=ExtResource("8_surjb")]
+[node name="Column2" parent="WorldEnvironment(NormalSky)/TowerCenter/PlatformTowerTall7" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.809861, 9.53674e-07, 1.29115)
 
-[node name="Column3" parent="WorldEnvironment/TowerCenter/PlatformTowerTall7" instance=ExtResource("8_surjb")]
+[node name="Column3" parent="WorldEnvironment(NormalSky)/TowerCenter/PlatformTowerTall7" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.809861, 9.53674e-07, -1.47258)
 
-[node name="Column4" parent="WorldEnvironment/TowerCenter/PlatformTowerTall7" instance=ExtResource("8_surjb")]
+[node name="Column4" parent="WorldEnvironment(NormalSky)/TowerCenter/PlatformTowerTall7" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90958, 9.53674e-07, -1.4547)
 
-[node name="PlatformBasic" parent="WorldEnvironment/TowerCenter/PlatformTowerTall7" instance=ExtResource("9_m1n2u")]
+[node name="PlatformBasic" parent="WorldEnvironment(NormalSky)/TowerCenter/PlatformTowerTall7" instance=ExtResource("9_m1n2u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.402953, 5.45156, -0.0997515)
 
-[node name="BasicEnemy5" parent="WorldEnvironment/TowerCenter" instance=ExtResource("11_40x7l")]
+[node name="BasicEnemy5" parent="WorldEnvironment(NormalSky)/TowerCenter" instance=ExtResource("11_40x7l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.13526, 41.1424, -0.252286)
 
-[node name="BasicEnemy6" parent="WorldEnvironment/TowerCenter" instance=ExtResource("11_40x7l")]
+[node name="BasicEnemy6" parent="WorldEnvironment(NormalSky)/TowerCenter" instance=ExtResource("11_40x7l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.08141, 44.7522, -0.252286)
 
-[node name="BasicEnemy7" parent="WorldEnvironment/TowerCenter" instance=ExtResource("11_40x7l")]
+[node name="BasicEnemy10" parent="WorldEnvironment(NormalSky)/TowerCenter" instance=ExtResource("11_40x7l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.16369, 31.8333, -0.252286)
+
+[node name="BasicEnemy11" parent="WorldEnvironment(NormalSky)/TowerCenter" instance=ExtResource("11_40x7l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.77003, 31.8333, 8.64909)
+
+[node name="BasicEnemy12" parent="WorldEnvironment(NormalSky)/TowerCenter" instance=ExtResource("11_40x7l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.20345, 36.101, 5.53932)
+
+[node name="BasicEnemy13" parent="WorldEnvironment(NormalSky)/TowerCenter" instance=ExtResource("11_40x7l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.47015, 31.0659, -0.596748)
+
+[node name="BasicEnemy14" parent="WorldEnvironment(NormalSky)/TowerCenter" instance=ExtResource("11_40x7l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.497694, 30.0876, 0.0480037)
+
+[node name="BasicEnemy7" parent="WorldEnvironment(NormalSky)/TowerCenter" instance=ExtResource("11_40x7l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.08141, 37.6511, 1.64895)
 
-[node name="BasicEnemy8" parent="WorldEnvironment/TowerCenter" instance=ExtResource("11_40x7l")]
+[node name="BasicEnemy8" parent="WorldEnvironment(NormalSky)/TowerCenter" instance=ExtResource("11_40x7l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.117444, 50.2462, -0.0836868)
 
-[node name="BasicEnemy9" parent="WorldEnvironment/TowerCenter" instance=ExtResource("11_40x7l")]
+[node name="BasicEnemy9" parent="WorldEnvironment(NormalSky)/TowerCenter" instance=ExtResource("11_40x7l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.622025, 43.7684, -3.63076)
 
-[node name="TurretEnemy2" parent="WorldEnvironment/TowerCenter" instance=ExtResource("13_fvhb4")]
+[node name="TurretEnemy2" parent="WorldEnvironment(NormalSky)/TowerCenter" instance=ExtResource("13_fvhb4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17.6713, -0.0905228)
+tilt_limit = 10.0
 
-[node name="TurretEnemy3" parent="WorldEnvironment/TowerCenter" instance=ExtResource("13_fvhb4")]
+[node name="TurretEnemy3" parent="WorldEnvironment(NormalSky)/TowerCenter" instance=ExtResource("13_fvhb4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.513868, 11.8184, -0.0905228)
+tilt_limit = 10.0
 
-[node name="TurretEnemy4" parent="WorldEnvironment/TowerCenter" instance=ExtResource("13_fvhb4")]
+[node name="TurretEnemy4" parent="WorldEnvironment(NormalSky)/TowerCenter" instance=ExtResource("13_fvhb4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.513868, 24.0655, -0.0905228)
+tilt_limit = 10.0
 
-[node name="FinishArea" parent="WorldEnvironment/TowerCenter" instance=ExtResource("11_3718q")]
+[node name="FinishArea" parent="WorldEnvironment(NormalSky)/TowerCenter" instance=ExtResource("11_3718q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 50.8785, -0.153102)
 
-[node name="TOWER_PROTO" type="Node" parent="WorldEnvironment"]
+[node name="TOWER_PROTO" type="Node" parent="WorldEnvironment(NormalSky)"]
 
-[node name="FallingPlatformTower" type="Node3D" parent="WorldEnvironment/TOWER_PROTO"]
+[node name="FallingPlatformTower" type="Node3D" parent="WorldEnvironment(NormalSky)/TOWER_PROTO"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5692, 0, 3.62345)
 
-[node name="FallingPlatform" parent="WorldEnvironment/TOWER_PROTO/FallingPlatformTower" instance=ExtResource("4_tcibw")]
+[node name="FallingPlatform" parent="WorldEnvironment(NormalSky)/TOWER_PROTO/FallingPlatformTower" instance=ExtResource("4_tcibw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.259356, 7.23963, 3.86919)
 
-[node name="Column" parent="WorldEnvironment/TOWER_PROTO/FallingPlatformTower" instance=ExtResource("8_surjb")]
+[node name="Column" parent="WorldEnvironment(NormalSky)/TOWER_PROTO/FallingPlatformTower" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.18724, 9.53674e-07, 5.78557)
 
-[node name="Column2" parent="WorldEnvironment/TOWER_PROTO/FallingPlatformTower" instance=ExtResource("8_surjb")]
+[node name="Column2" parent="WorldEnvironment(NormalSky)/TOWER_PROTO/FallingPlatformTower" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.36085, 9.53674e-07, 5.78557)
 
-[node name="Column3" parent="WorldEnvironment/TOWER_PROTO/FallingPlatformTower" instance=ExtResource("8_surjb")]
+[node name="Column3" parent="WorldEnvironment(NormalSky)/TOWER_PROTO/FallingPlatformTower" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.36085, 9.53674e-07, 3.02183)
 
-[node name="Column4" parent="WorldEnvironment/TOWER_PROTO/FallingPlatformTower" instance=ExtResource("8_surjb")]
+[node name="Column4" parent="WorldEnvironment(NormalSky)/TOWER_PROTO/FallingPlatformTower" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.841666, 9.53674e-07, 3.03972)
 
-[node name="FallingPlatform" parent="WorldEnvironment/TOWER_PROTO" instance=ExtResource("4_tcibw")]
+[node name="FallingPlatform" parent="WorldEnvironment(NormalSky)/TOWER_PROTO" instance=ExtResource("4_tcibw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5202, 9.85839, 7.49264)
 
-[node name="PlatformTowerShort" type="Node3D" parent="WorldEnvironment/TOWER_PROTO"]
+[node name="PlatformTowerShort" type="Node3D" parent="WorldEnvironment(NormalSky)/TOWER_PROTO"]
 transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 1, -18.4812, 0, 0.421592)
 
-[node name="Column" parent="WorldEnvironment/TOWER_PROTO/PlatformTowerShort" instance=ExtResource("8_surjb")]
+[node name="Column" parent="WorldEnvironment(NormalSky)/TOWER_PROTO/PlatformTowerShort" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.73823, 9.53674e-07, 1.29115)
 
-[node name="Column2" parent="WorldEnvironment/TOWER_PROTO/PlatformTowerShort" instance=ExtResource("8_surjb")]
+[node name="Column2" parent="WorldEnvironment(NormalSky)/TOWER_PROTO/PlatformTowerShort" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.809861, 9.53674e-07, 1.29115)
 
-[node name="Column3" parent="WorldEnvironment/TOWER_PROTO/PlatformTowerShort" instance=ExtResource("8_surjb")]
+[node name="Column3" parent="WorldEnvironment(NormalSky)/TOWER_PROTO/PlatformTowerShort" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.809861, 9.53674e-07, -1.47258)
 
-[node name="Column4" parent="WorldEnvironment/TOWER_PROTO/PlatformTowerShort" instance=ExtResource("8_surjb")]
+[node name="Column4" parent="WorldEnvironment(NormalSky)/TOWER_PROTO/PlatformTowerShort" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.39266, 9.53674e-07, -1.4547)
 
-[node name="PlatformBasic" parent="WorldEnvironment/TOWER_PROTO/PlatformTowerShort" instance=ExtResource("9_m1n2u")]
+[node name="PlatformBasic" parent="WorldEnvironment(NormalSky)/TOWER_PROTO/PlatformTowerShort" instance=ExtResource("9_m1n2u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.402953, 5.45156, -0.0997515)
 
-[node name="PlatformTowerTall" type="Node3D" parent="WorldEnvironment/TOWER_PROTO"]
+[node name="PlatformTowerTall" type="Node3D" parent="WorldEnvironment(NormalSky)/TOWER_PROTO"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.9626, 0, 7.46255)
 
-[node name="Column" parent="WorldEnvironment/TOWER_PROTO/PlatformTowerTall" instance=ExtResource("8_surjb")]
+[node name="Column" parent="WorldEnvironment(NormalSky)/TOWER_PROTO/PlatformTowerTall" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.73823, 9.53674e-07, 1.29115)
 
-[node name="Column2" parent="WorldEnvironment/TOWER_PROTO/PlatformTowerTall" instance=ExtResource("8_surjb")]
+[node name="Column2" parent="WorldEnvironment(NormalSky)/TOWER_PROTO/PlatformTowerTall" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.809861, 9.53674e-07, 1.29115)
 
-[node name="Column3" parent="WorldEnvironment/TOWER_PROTO/PlatformTowerTall" instance=ExtResource("8_surjb")]
+[node name="Column3" parent="WorldEnvironment(NormalSky)/TOWER_PROTO/PlatformTowerTall" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.809861, 9.53674e-07, -1.47258)
 
-[node name="Column4" parent="WorldEnvironment/TOWER_PROTO/PlatformTowerTall" instance=ExtResource("8_surjb")]
+[node name="Column4" parent="WorldEnvironment(NormalSky)/TOWER_PROTO/PlatformTowerTall" instance=ExtResource("8_surjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90958, 9.53674e-07, -1.4547)
 
-[node name="PlatformBasic" parent="WorldEnvironment/TOWER_PROTO/PlatformTowerTall" instance=ExtResource("9_m1n2u")]
+[node name="PlatformBasic" parent="WorldEnvironment(NormalSky)/TOWER_PROTO/PlatformTowerTall" instance=ExtResource("9_m1n2u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.402953, 5.45156, -0.0997515)
 
-[node name="Enemies" type="Node" parent="WorldEnvironment"]
+[node name="Enemies" type="Node" parent="WorldEnvironment(NormalSky)"]
 
-[node name="BasicEnemy2" parent="WorldEnvironment/Enemies" instance=ExtResource("11_40x7l")]
+[node name="BasicEnemy2" parent="WorldEnvironment(NormalSky)/Enemies" instance=ExtResource("11_40x7l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.76711, 3.4288, -0.252286)
 
-[node name="BasicEnemy3" parent="WorldEnvironment/Enemies" instance=ExtResource("11_40x7l")]
+[node name="BasicEnemy3" parent="WorldEnvironment(NormalSky)/Enemies" instance=ExtResource("11_40x7l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.76711, 8.81661, -0.252286)
 
-[node name="BasicEnemy4" parent="WorldEnvironment/Enemies" instance=ExtResource("11_40x7l")]
+[node name="BasicEnemy4" parent="WorldEnvironment(NormalSky)/Enemies" instance=ExtResource("11_40x7l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.76711, 14.8562, -0.252286)
 
-[node name="MobileEnemy2" parent="WorldEnvironment/Enemies" node_paths=PackedStringArray("path_points") instance=ExtResource("12_ymya1")]
+[node name="MobileEnemy2" parent="WorldEnvironment(NormalSky)/Enemies" node_paths=PackedStringArray("path_points") instance=ExtResource("12_ymya1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.788466, 23.2613, -5.17506)
 path_points = [NodePath("../2ndPath1"), NodePath("../2ndPath2"), NodePath("../2ndPath3")]
 loop_path = true
 add_start_pos_to_path = true
 
-[node name="2ndPath1" type="Node3D" parent="WorldEnvironment/Enemies"]
+[node name="2ndPath1" type="Node3D" parent="WorldEnvironment(NormalSky)/Enemies"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.43001, 23.2613, -0.0984783)
 
-[node name="2ndPath2" type="Node3D" parent="WorldEnvironment/Enemies"]
+[node name="2ndPath2" type="Node3D" parent="WorldEnvironment(NormalSky)/Enemies"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.531503, 23.2613, 4.36832)
 
-[node name="2ndPath3" type="Node3D" parent="WorldEnvironment/Enemies"]
+[node name="2ndPath3" type="Node3D" parent="WorldEnvironment(NormalSky)/Enemies"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.18017, 23.2613, -0.3115)
+
+[node name="MobileEnemy3" parent="WorldEnvironment(NormalSky)/Enemies" node_paths=PackedStringArray("path_points") instance=ExtResource("12_ymya1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.788466, 36.4818, -5.17506)
+path_points = [NodePath("../3rdPath1"), NodePath("../3rdPath2"), NodePath("../3rdPath3")]
+loop_path = true
+add_start_pos_to_path = true
+
+[node name="3rdPath1" type="Node3D" parent="WorldEnvironment(NormalSky)/Enemies"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.43001, 36.4818, -0.0984783)
+
+[node name="3rdPath2" type="Node3D" parent="WorldEnvironment(NormalSky)/Enemies"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.531503, 36.4818, 4.36832)
+
+[node name="3rdPath3" type="Node3D" parent="WorldEnvironment(NormalSky)/Enemies"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.18017, 36.4818, -0.3115)
 
 [node name="BasicEnemy" parent="." instance=ExtResource("11_40x7l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0105, 5.50949, -5.82358)
 
-[node name="MobileEnemy" parent="." instance=ExtResource("12_ymya1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.3384)
+[node name="BasicEnemy4" parent="." instance=ExtResource("11_40x7l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.85721, 8.76013, 0.252745)
 
-[node name="TurretEnemy" parent="." instance=ExtResource("13_fvhb4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.46817)
+[node name="BasicEnemy2" parent="." instance=ExtResource("11_40x7l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.749604, 15.8034, -6.15641)
+
+[node name="BasicEnemy3" parent="." instance=ExtResource("11_40x7l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0590688, 16.441, 6.03361)
