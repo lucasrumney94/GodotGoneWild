@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" path="res://Objects/Environment/fall_kill_plane.tscn" id="2_tdiav"]
 [ext_resource type="PackedScene" uid="uid://do1pmtbmc423e" path="res://UI/pause_menu.tscn" id="2_vi14t"]
 [ext_resource type="PackedScene" path="res://Objects/Environment/falling_platform.tscn" id="4_tcibw"]
-[ext_resource type="Texture2D" uid="uid://bkchfco8pdnoh" path="res://Objects/Environment/Models/BlueSkySkybox.png" id="5_u0y23"]
+[ext_resource type="Texture2D" uid="uid://dnu0plydhtdsw" path="res://Objects/Environment/Models/SkySkybox.png" id="5_leod0"]
 [ext_resource type="Material" uid="uid://3byi41uuwvq8" path="res://Materials/LD_grid.tres" id="5_vwvji"]
 [ext_resource type="Material" uid="uid://5dqiqxr4arwd" path="res://Materials/grid_material.tres" id="6_mwebb"]
 [ext_resource type="PackedScene" path="res://Objects/Environment/Models/Column.tscn" id="8_surjb"]
@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://bnylytkg3vk0w" path="res://Objects/Enemies/TurretEnemy.tscn" id="13_fvhb4"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_222xv"]
-panorama = ExtResource("5_u0y23")
+panorama = ExtResource("5_leod0")
 
 [sub_resource type="Sky" id="Sky_3kabx"]
 sky_material = SubResource("PanoramaSkyMaterial_222xv")
@@ -30,6 +30,7 @@ script = ExtResource("1_33k6b")
 pause_menu_scene = ExtResource("2_vi14t")
 
 [node name="Player" parent="." instance=ExtResource("1_dcbag")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36.3385, 0)
 
 [node name="FallKillPlane" parent="." instance=ExtResource("2_tdiav")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -21.2011, 0)
@@ -480,7 +481,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.497694, 30.0876, 0.0480037)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.08141, 37.6511, 1.64895)
 
 [node name="BasicEnemy8" parent="WorldEnvironment(NormalSky)/TowerCenter" instance=ExtResource("11_40x7l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.117444, 50.2462, -0.0836868)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.117444, 46.0907, -0.0836868)
+
+[node name="BasicEnemy15" parent="WorldEnvironment(NormalSky)/TowerCenter" instance=ExtResource("11_40x7l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4754, 46.2128, -0.0836868)
+
+[node name="BasicEnemy16" parent="WorldEnvironment(NormalSky)/TowerCenter" instance=ExtResource("11_40x7l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.34153, 46.293, -0.0836868)
 
 [node name="BasicEnemy9" parent="WorldEnvironment(NormalSky)/TowerCenter" instance=ExtResource("11_40x7l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.622025, 43.7684, -3.63076)
