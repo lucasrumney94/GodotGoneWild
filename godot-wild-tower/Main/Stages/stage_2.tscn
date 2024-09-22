@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://up53g12bx84h"]
+[gd_scene load_steps=22 format=3 uid="uid://up53g12bx84h"]
 
 [ext_resource type="Script" path="res://Main/main_game.gd" id="1_cs18b"]
 [ext_resource type="PackedScene" uid="uid://do1pmtbmc423e" path="res://UI/pause_menu.tscn" id="2_mnaa8"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bnylytkg3vk0w" path="res://Objects/Enemies/TurretEnemy.tscn" id="11_1w46d"]
 [ext_resource type="PackedScene" uid="uid://c08aetbdbnjbc" path="res://Objects/Enemies/MobileEnemy.tscn" id="12_2rne2"]
 [ext_resource type="Material" uid="uid://bdgss0laad1u7" path="res://Materials/dirt.tres" id="13_k2jir"]
+[ext_resource type="Material" uid="uid://cxy3baspdt2jv" path="res://Materials/marble.tres" id="13_rmwmx"]
 [ext_resource type="PackedScene" uid="uid://y00sgnh5ws4h" path="res://Objects/Environment/finish_area.tscn" id="13_xj6iu"]
 [ext_resource type="PackedScene" uid="uid://cyuf5p7go4rqn" path="res://Objects/Environment/falling_platform.tscn" id="13_yiage"]
 [ext_resource type="PackedScene" uid="uid://dacvenlpyt2bp" path="res://Objects/Environment/Models/Column.tscn" id="14_nturj"]
@@ -44,7 +45,7 @@ height = 1.9
 radial_segments = 14
 rings = 1
 
-[node name="TowerOutsideTest" type="Node3D"]
+[node name="Stage 2" type="Node3D"]
 script = ExtResource("1_cs18b")
 pause_menu_scene = ExtResource("2_mnaa8")
 
@@ -58,10 +59,10 @@ transform = Transform3D(1, 0, 0, 0, -0.254788, 0.966997, 0, -0.966997, -0.254788
 
 [node name="Player" parent="." instance=ExtResource("8_es2s4")]
 transform = Transform3D(-0.866026, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866026, -16.5, 3.5, 1.5)
-slow_time_duration = 0.75
 
 [node name="FinishArea" parent="." instance=ExtResource("13_xj6iu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 66.843, -0.611299)
+transform = Transform3D(2.47487, 0, -2.47487, 0, 1, 0, 2.47487, 0, 2.47487, 0, 78, 0)
+visible = false
 
 [node name="Stage 1 Mesh" parent="." instance=ExtResource("14_ojqou")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -45, 0)
@@ -104,6 +105,7 @@ transform = Transform3D(0.994469, 0, 0.105032, 0, 1, 0, -0.105032, 0, 0.994469, 
 
 [node name="TurretEnemy2" parent="Section1/Enemies" instance=ExtResource("11_1w46d")]
 transform = Transform3D(0.994469, 0, 0.105032, 0, 1, 0, -0.105032, 0, 0.994469, 9.29004, 11.5753, -19.0512)
+activation_radius = 25.0
 
 [node name="BasicEnemy" parent="Section1/Enemies" instance=ExtResource("10_ppion")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4419, 18.2951, -16.2158)
@@ -158,6 +160,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 27.5, 6)
 
 [node name="Walls" type="CSGCombiner3D" parent="Section1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+material_override = ExtResource("13_rmwmx")
 use_collision = true
 
 [node name="Outer Wall" type="CSGCylinder3D" parent="Section1/Walls"]
@@ -204,6 +207,7 @@ depth = 5.0
 
 [node name="Platform" type="CSGCombiner3D" parent="Section1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+material_override = ExtResource("13_rmwmx")
 use_collision = true
 
 [node name="Mesh" type="CSGCylinder3D" parent="Section1/Platform"]
@@ -229,6 +233,7 @@ size = Vector3(50, 1.5, 22)
 
 [node name="Platform2" type="CSGCombiner3D" parent="Section1"]
 transform = Transform3D(-0.399357, 0, 0.916795, 0, 1, 0, -0.916795, 0, -0.399357, 0, 6, 0)
+material_override = ExtResource("13_rmwmx")
 use_collision = true
 
 [node name="Mesh" type="CSGCylinder3D" parent="Section1/Platform2"]
@@ -254,6 +259,7 @@ size = Vector3(50, 1.5, 22)
 
 [node name="Platform3" type="CSGCombiner3D" parent="Section1"]
 transform = Transform3D(-0.975149, 0, -0.221549, 0, 1, 0, 0.221549, 0, -0.975149, 0, 11, 0)
+material_override = ExtResource("13_rmwmx")
 use_collision = true
 
 [node name="Mesh" type="CSGCylinder3D" parent="Section1/Platform3"]
@@ -279,6 +285,7 @@ size = Vector3(50, 1.5, 22)
 
 [node name="Platform4" type="CSGCombiner3D" parent="Section1"]
 transform = Transform3D(0.225138, 0, -0.974327, 0, 1, 0, 0.974327, 0, 0.225138, 0, 17.5, 0)
+material_override = ExtResource("13_rmwmx")
 use_collision = true
 
 [node name="Mesh" type="CSGCylinder3D" parent="Section1/Platform4"]
@@ -319,6 +326,7 @@ size = Vector3(5.19672, 1.5, 2.44412)
 
 [node name="Platform5" type="CSGCombiner3D" parent="Section1"]
 transform = Transform3D(0.948617, 0, 0.316427, 0, 1, 0, -0.316427, 0, 0.948617, 0, 20, 0)
+material_override = ExtResource("13_rmwmx")
 use_collision = true
 
 [node name="Mesh" type="CSGCylinder3D" parent="Section1/Platform5"]
@@ -371,12 +379,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.5, 0)
 
 [node name="TurretEnemy" parent="Section2/Enemies" instance=ExtResource("11_1w46d")]
 transform = Transform3D(0.491086, 0, -0.871111, 0, 1, 0, 0.871111, 0, 0.491086, 19.669, 0.5, -9.292)
+activation_radius = 25.0
 
 [node name="TurretEnemy2" parent="Section2/Enemies" instance=ExtResource("11_1w46d")]
 transform = Transform3D(-0.288213, 0, -0.957566, 0, 1, 0, 0.957566, 0, -0.288213, -17.235, 0.5, -6.213)
 
 [node name="TurretEnemy3" parent="Section2/Enemies" instance=ExtResource("11_1w46d")]
 transform = Transform3D(-0.999017, 0, -0.0443343, 0, 1, 0, 0.0443343, 0, -0.999017, 3.23, 0.5, 21.255)
+activation_radius = 25.0
 
 [node name="BasicEnemy2" parent="Section2/Enemies" instance=ExtResource("10_ppion")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 12.5, -7)
@@ -394,6 +404,17 @@ transform = Transform3D(-0.922881, 0, 0.385085, 0, 1, 0, -0.385085, 0, -0.922881
 
 [node name="BasicEnemy3" parent="Section2/Enemies" instance=ExtResource("10_ppion")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.7074, 20.5802, -12.2661)
+
+[node name="BasicEnemy4" parent="Section2/Enemies" instance=ExtResource("10_ppion")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.89769, 4.5, -26.785)
+
+[node name="MobileEnemy2" parent="Section2/Enemies" node_paths=PackedStringArray("path_points") instance=ExtResource("12_2rne2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 12, -23.5)
+path_points = [NodePath("../Path2")]
+add_start_pos_to_path = true
+
+[node name="Path2" type="Node3D" parent="Section2/Enemies"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, 13.5, -17.5)
 
 [node name="Columns" type="Node3D" parent="Section2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
@@ -439,6 +460,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 4.5, 0, -9.5)
 
 [node name="Base" type="CSGCombiner3D" parent="Section2"]
 transform = Transform3D(0.899138, 0, 0.437665, 0, 1, 0, -0.437665, 0, 0.899138, 0, 0, 0)
+material_override = ExtResource("13_rmwmx")
 use_collision = true
 
 [node name="MeshInner" type="CSGCylinder3D" parent="Section2/Base"]
@@ -483,33 +505,36 @@ size = Vector3(9.77271, 4, 12.0486)
 
 [node name="Midcap" type="CSGCombiner3D" parent="Section2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 23.5, 0)
+material_override = ExtResource("13_rmwmx")
+use_collision = true
 
-[node name="MeshInner" type="CSGCylinder3D" parent="Section2/Midcap"]
+[node name="Mesh" type="CSGCylinder3D" parent="Section2/Midcap"]
 radius = 12.0
 sides = 28
 
-[node name="Cut1" type="CSGBox3D" parent="Section2/Midcap/MeshInner"]
+[node name="Cut1" type="CSGBox3D" parent="Section2/Midcap/Mesh"]
 transform = Transform3D(0.953053, 0, 0.302802, 0, 1, 0, -0.302802, 0, 0.953053, 9.52957, 0, 7.59019)
 operation = 2
 size = Vector3(7.15234, 3, 6)
 
-[node name="Cut2" type="CSGBox3D" parent="Section2/Midcap/MeshInner"]
+[node name="Cut2" type="CSGBox3D" parent="Section2/Midcap/Mesh"]
 transform = Transform3D(0.824156, 0, -0.566363, 0, 1, 0, 0.566363, 0, 0.824156, 9.993, 0, 7.493)
 operation = 2
 size = Vector3(7.15234, 3, 6.27087)
 
-[node name="Cut3" type="CSGBox3D" parent="Section2/Midcap/MeshInner"]
+[node name="Cut3" type="CSGBox3D" parent="Section2/Midcap/Mesh"]
 transform = Transform3D(0.953053, 0, 0.302802, 0, 1, 0, -0.302802, 0, 0.953053, -0.740087, 0, -10.6056)
 operation = 2
 size = Vector3(7.15234, 3, 6)
 
-[node name="Cut4" type="CSGBox3D" parent="Section2/Midcap/MeshInner"]
+[node name="Cut4" type="CSGBox3D" parent="Section2/Midcap/Mesh"]
 transform = Transform3D(0.824156, 0, -0.566363, 0, 1, 0, 0.566363, 0, 0.824156, -0.276653, 0, -10.7028)
 operation = 2
 size = Vector3(7.15234, 3, 6.27087)
 
 [node name="Broken Wall" type="CSGCombiner3D" parent="Section2"]
 transform = Transform3D(0.258118, 0.515094, 0.817345, -0.95542, 0.261619, 0.136848, -0.143343, -0.816231, 0.559659, 7.59633, 25.0128, -15.5485)
+material_override = ExtResource("13_rmwmx")
 use_collision = true
 
 [node name="Platform" type="CSGCylinder3D" parent="Section2/Broken Wall"]
@@ -545,6 +570,7 @@ size = Vector3(10, 10, 10)
 
 [node name="Broken Wall2" type="CSGCombiner3D" parent="Section2"]
 transform = Transform3D(-0.271143, 0.930995, -0.244398, -0.924984, -0.181792, 0.3337, 0.266243, 0.316545, 0.910447, -18.8616, 33.2003, -2.45967)
+material_override = ExtResource("13_rmwmx")
 use_collision = true
 
 [node name="Platform" type="CSGCylinder3D" parent="Section2/Broken Wall2"]
@@ -578,8 +604,336 @@ transform = Transform3D(-0.461342, 0.279367, 0.84209, -0.839209, 0.170593, -0.51
 operation = 2
 size = Vector3(10, 10, 10)
 
+[node name="Broken Wall3" type="CSGCombiner3D" parent="Section2"]
+transform = Transform3D(-0.18798, -0.0327367, -0.981627, -0.171568, 0.985173, 0, 0.967071, 0.168416, -0.190809, 4.06729, 18.0292, 14.8664)
+material_override = ExtResource("13_rmwmx")
+use_collision = true
+
+[node name="Platform" type="CSGCylinder3D" parent="Section2/Broken Wall3"]
+radius = 17.0
+height = 9.0
+sides = 28
+
+[node name="Interior" type="CSGCylinder3D" parent="Section2/Broken Wall3"]
+operation = 2
+radius = 15.0
+height = 10.0
+sides = 28
+
+[node name="Cut1" type="CSGBox3D" parent="Section2/Broken Wall3"]
+transform = Transform3D(0.825649, 0, 0.564193, 0, 1, 0, -0.564193, 0, 0.82565, -3.4386, 0, 4.00209)
+operation = 2
+size = Vector3(29.6434, 10, 40)
+
+[node name="Cut2" type="CSGBox3D" parent="Section2/Broken Wall3"]
+transform = Transform3D(1, 0, 0, 0, 0.898847, -0.438261, 0, 0.438261, 0.898847, 16.7986, 7.30021, 3.13556)
+operation = 2
+size = Vector3(10, 10, 13.8868)
+
+[node name="Cut3" type="CSGBox3D" parent="Section2/Broken Wall3"]
+transform = Transform3D(0.796845, -0.25491, 0.547783, 0.286856, 0.957557, 0.0283128, -0.531748, 0.134574, 0.836146, 3.2893, 6.05327, -16.2313)
+operation = 2
+size = Vector3(10, 10, 14.2026)
+
+[node name="Cut4" type="CSGBox3D" parent="Section2/Broken Wall3"]
+transform = Transform3D(0.128754, 0.256441, 0.957967, -0.976178, -0.137462, 0.167996, 0.174766, -0.956754, 0.23263, 8.98602, -7.98674, -7.92022)
+operation = 2
+size = Vector3(10, 20.047, 17.7146)
+
+[node name="Broken Platform" type="CSGCombiner3D" parent="Section2"]
+transform = Transform3D(0.994522, -0.104528, 0, 0.104528, 0.994522, 0, 0, 0, 1, 10.048, 8, -33.406)
+material_override = ExtResource("13_rmwmx")
+use_collision = true
+
+[node name="Mesh" type="CSGCylinder3D" parent="Section2/Broken Platform"]
+radius = 3.0
+
+[node name="Cut1" type="CSGBox3D" parent="Section2/Broken Platform"]
+transform = Transform3D(0.776101, -0.630608, 0, 0.6009, 0.739539, -0.303318, 0.191275, 0.235406, 0.952889, 1.885, -0.886009, -0.494934)
+operation = 2
+size = Vector3(5.78683, 1.98242, 6.37912)
+
+[node name="Cut2" type="CSGBox3D" parent="Section2/Broken Platform"]
+transform = Transform3D(-0.259931, -0.178054, -0.949069, 0.6009, 0.739539, -0.303318, 0.755881, -0.649137, -0.0852365, -3.643, -1.42315, 0.439178)
+operation = 2
+size = Vector3(5.78683, 3.43506, 6.37912)
+
+[node name="Broken Platform2" type="CSGCombiner3D" parent="Section2"]
+transform = Transform3D(-0.00908809, -0.17341, -0.984808, 0.0515408, 0.983458, -0.173648, 0.998629, -0.052336, -4.30473e-08, -14.9399, 21.8579, 6.85702)
+material_override = ExtResource("13_rmwmx")
+use_collision = true
+
+[node name="Mesh" type="CSGCylinder3D" parent="Section2/Broken Platform2"]
+radius = 3.0
+
+[node name="Cut1" type="CSGBox3D" parent="Section2/Broken Platform2"]
+transform = Transform3D(0.982363, -0.175479, -0.0644868, 0.178145, 0.983263, 0.038191, 0.0567054, -0.0490051, 0.997173, 2.26905, -0.785137, 0.154086)
+operation = 2
+size = Vector3(4.92271, 1.98242, 6.22033)
+
+[node name="Cut2" type="CSGBox3D" parent="Section2/Broken Platform2"]
+transform = Transform3D(-0.431079, -0.255906, -0.865259, 0.220645, 0.899929, -0.376086, 0.874918, -0.353041, -0.331477, -3.18136, -0.906283, -1.28656)
+operation = 2
+size = Vector3(6.0399, 4.47144, 6.37912)
+
 [node name="FallingPlatform" parent="Section2" instance=ExtResource("13_yiage")]
 transform = Transform3D(0.908574, 0, 0.417724, 0, 1, 0, -0.417724, 0, 0.908574, -10.025, 15.5, -19.631)
 
 [node name="FallingPlatform2" parent="Section2" instance=ExtResource("13_yiage")]
 transform = Transform3D(0.583031, 0, 0.81245, 0, 1, 0, -0.81245, 0, 0.583031, -17.212, 18, -17.548)
+
+[node name="FallingPlatform3" parent="Section2" instance=ExtResource("13_yiage")]
+transform = Transform3D(0.999983, 0, -0.00589928, 0, 1, 0, 0.00589928, 0, 0.999983, -1.81237, 4, -26.9216)
+
+[node name="FallingPlatform4" parent="Section2" instance=ExtResource("13_yiage")]
+transform = Transform3D(-0.635809, 0, 0.771847, 0, 1, 0, -0.771847, 0, -0.635809, 3.3403, 6, -31.2158)
+
+[node name="Section3" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 52, 0)
+
+[node name="Enemies" type="Node3D" parent="Section3"]
+
+[node name="BasicEnemy1" parent="Section3/Enemies" instance=ExtResource("10_ppion")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.77918, 5.5, -19.7276)
+
+[node name="MobileEnemy1" parent="Section3/Enemies" node_paths=PackedStringArray("path_points") instance=ExtResource("12_2rne2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.05317, 5, -20.7355)
+path_points = [NodePath("../Path1")]
+add_start_pos_to_path = true
+
+[node name="Path1" type="Node3D" parent="Section3/Enemies"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.6065, 5, -15.9199)
+
+[node name="TurretEnemy" parent="Section3/Enemies" instance=ExtResource("11_1w46d")]
+transform = Transform3D(0.114937, 0, 0.993373, 0, 1, 0, -0.993373, 0, 0.114937, -19.4269, 8.5, -14.1858)
+
+[node name="MobileEnemy2" parent="Section3/Enemies" node_paths=PackedStringArray("path_points") instance=ExtResource("12_2rne2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8396, 12.7155, -0.573072)
+path_points = [NodePath("../Path2")]
+add_start_pos_to_path = true
+
+[node name="Path2" type="Node3D" parent="Section3/Enemies"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.577, 12, -6.08)
+
+[node name="MobileEnemy3" parent="Section3/Enemies" node_paths=PackedStringArray("path_points") instance=ExtResource("12_2rne2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.76344, 20.5, 24.4743)
+path_points = [NodePath("../Path3")]
+add_start_pos_to_path = true
+
+[node name="Path3" type="Node3D" parent="Section3/Enemies"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5222, 20.5, 19.3444)
+
+[node name="TurretEnemy2" parent="Section3/Enemies" instance=ExtResource("11_1w46d")]
+transform = Transform3D(0.11978, 6.23462e-05, -0.9928, -0.00011467, 1, 4.89567e-05, 0.9928, 0.000107977, 0.11978, 0.298778, 19, 21.034)
+activation_radius = 15.0
+
+[node name="BasicEnemy2" parent="Section3/Enemies" instance=ExtResource("10_ppion")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.3377, 19, 15.6896)
+
+[node name="TurretEnemy3" parent="Section3/Enemies" instance=ExtResource("11_1w46d")]
+transform = Transform3D(0.726138, 6.23462e-05, 0.687549, 2.89643e-05, 1, -0.000121279, -0.687549, 0.000107977, 0.726138, 8.22187, 22.4999, 4.70819)
+
+[node name="MobileEnemy4" parent="Section3/Enemies" node_paths=PackedStringArray("path_points") instance=ExtResource("12_2rne2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.61, 12, -15.602)
+path_points = [NodePath("../Path4")]
+add_start_pos_to_path = true
+
+[node name="Path4" type="Node3D" parent="Section3/Enemies"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.44279, 10, -24.4264)
+
+[node name="MobileEnemy7" parent="Section3/Enemies" node_paths=PackedStringArray("path_points") instance=ExtResource("12_2rne2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2519, 16, -25.8158)
+path_points = [NodePath("../Path7")]
+add_start_pos_to_path = true
+
+[node name="Path7" type="Node3D" parent="Section3/Enemies"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.6968, 15, -15.6458)
+
+[node name="MobileEnemy5" parent="Section3/Enemies" node_paths=PackedStringArray("path_points") instance=ExtResource("12_2rne2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.8185, 19, -16.6478)
+path_points = [NodePath("../Path5")]
+add_start_pos_to_path = true
+
+[node name="Path5" type="Node3D" parent="Section3/Enemies"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.45327, 20, -14.2974)
+
+[node name="MobileEnemy6" parent="Section3/Enemies" node_paths=PackedStringArray("path_points") instance=ExtResource("12_2rne2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.70889, 23, -10.8221)
+path_points = [NodePath("../Path6")]
+add_start_pos_to_path = true
+
+[node name="Path6" type="Node3D" parent="Section3/Enemies"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.39572, 21, -13.3238)
+
+[node name="TurretEnemy4" parent="Section3/Enemies" instance=ExtResource("11_1w46d")]
+transform = Transform3D(0.18414, 0, -0.9829, 0, 1, 0, 0.9829, 0, 0.18414, 0, 0, 0)
+activation_radius = 25.0
+
+[node name="Columns3" type="Node3D" parent="Section3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
+
+[node name="Column1" parent="Section3/Columns3" instance=ExtResource("14_nturj")]
+transform = Transform3D(1.84101, -0.781462, 0, 0.777181, 1.83092, 0.209057, -0.0816851, -0.192438, 1.98904, -13.4166, 1.03278, -9.74205)
+
+[node name="Column2" parent="Section3/Columns3" instance=ExtResource("14_nturj")]
+transform = Transform3D(1.91257, 0.561759, 0.162813, -0.584877, 1.83697, 0.532404, 0, -0.556742, 1.92095, -19.4627, 8.6823, 14.4965)
+
+[node name="Column3" parent="Section3/Columns3" instance=ExtResource("14_nturj")]
+transform = Transform3D(2, 0, 0, 0, 1.98969, -0.202807, 0, 0.202807, 1.98969, 0.29472, 5.35082, 19.9473)
+
+[node name="Column4" parent="Section3/Columns3" instance=ExtResource("14_nturj")]
+transform = Transform3D(1.40392, 0.0189274, 1.42431, 0.5, 1.86603, -0.517638, -1.3338, 0.719438, 1.30514, 6.29459, 4.63602, 7.63214)
+
+[node name="Column5" parent="Section3/Columns3" instance=ExtResource("14_nturj")]
+transform = Transform3D(1.97634, 0.30426, 0.0388525, -0.306731, 1.96042, 0.250336, -3.72529e-09, -0.253333, 1.98389, 18.0153, -0.404144, -4.11602)
+
+[node name="Column6" parent="Section3/Columns3" instance=ExtResource("14_nturj")]
+transform = Transform3D(1.98283, -0.259174, 0.0348161, 0.261502, 1.96518, -0.263991, -3.72529e-09, 0.266277, 1.98219, 3.66175, -2.87271, -17.4802)
+
+[node name="Topcap" type="CSGCombiner3D" parent="Section3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 21.5, 0)
+material_override = ExtResource("13_rmwmx")
+use_collision = true
+
+[node name="Mesh" type="CSGCylinder3D" parent="Section3/Topcap"]
+radius = 11.0
+sides = 28
+
+[node name="Cut1" type="CSGBox3D" parent="Section3/Topcap/Mesh"]
+transform = Transform3D(-0.233038, 0, -0.972467, 0, 1, 0, 0.972467, 0, -0.233038, 1.164, 0, 8.71901)
+operation = 2
+size = Vector3(9.51074, 3, 6)
+
+[node name="Cut2" type="CSGBox3D" parent="Section3/Topcap/Mesh"]
+transform = Transform3D(0.88515, 0, 0.465306, 0, 1, 0, -0.465306, 0, 0.88515, 5.21112, 0, 10.9509)
+operation = 2
+size = Vector3(7.15234, 3, 6.27087)
+
+[node name="Cut3" type="CSGBox3D" parent="Section3/Topcap/Mesh"]
+transform = Transform3D(0.953053, 0, 0.302802, 0, 1, 0, -0.302802, 0, 0.953053, -2.61983, 0, -5.49577)
+operation = 2
+size = Vector3(7.15234, 3, 6)
+
+[node name="Cut4" type="CSGBox3D" parent="Section3/Topcap/Mesh"]
+transform = Transform3D(0.536902, 0, -0.843644, 0, 1, 0, 0.843644, 0, 0.536902, -5.73287, 0, -7.63974)
+operation = 2
+size = Vector3(7.15234, 3, 6.27087)
+
+[node name="InnerCut" type="CSGCylinder3D" parent="Section3/Topcap/Mesh"]
+operation = 2
+radius = 6.0
+
+[node name="BrokenSmallWall" type="CSGCombiner3D" parent="Section3"]
+transform = Transform3D(0.157817, -0.251651, 0.954864, -0.981135, -0.149299, 0.122812, 0.111655, -0.956233, -0.270466, -19.9851, 7.36643, -2.275)
+use_collision = true
+
+[node name="Mesh" type="CSGCylinder3D" parent="Section3/BrokenSmallWall"]
+radius = 5.0
+height = 8.0
+sides = 14
+
+[node name="InteriorCut" type="CSGCylinder3D" parent="Section3/BrokenSmallWall"]
+operation = 2
+radius = 4.0
+height = 9.0
+sides = 14
+
+[node name="Cut1" type="CSGBox3D" parent="Section3/BrokenSmallWall"]
+transform = Transform3D(0.988871, -0.148776, 0, 0.148776, 0.988871, 0, 0, 0, 1, 3, 0, 0)
+operation = 2
+size = Vector3(10, 10, 10)
+
+[node name="Cut2" type="CSGBox3D" parent="Section3/BrokenSmallWall"]
+transform = Transform3D(0.786576, 0.551981, 0.276796, -0.520682, 0.833857, -0.183228, -0.331947, 1.49012e-08, 0.943298, -0.914086, -1.2083, -0.873208)
+operation = 2
+size = Vector3(3, 10, 10)
+
+[node name="BrokenSmallWall2" type="CSGCombiner3D" parent="Section3"]
+transform = Transform3D(-0.266886, 0.714639, 0.646577, 0.948774, 0.312567, 0.0461538, -0.169115, 0.625773, -0.761451, 12.9288, 21.3108, 13.0862)
+use_collision = true
+
+[node name="Mesh" type="CSGCylinder3D" parent="Section3/BrokenSmallWall2"]
+radius = 5.0
+height = 8.0
+sides = 14
+
+[node name="InteriorCut" type="CSGCylinder3D" parent="Section3/BrokenSmallWall2"]
+operation = 2
+radius = 4.0
+height = 9.0
+sides = 14
+
+[node name="Cut1" type="CSGBox3D" parent="Section3/BrokenSmallWall2"]
+transform = Transform3D(0.96856, -0.148776, 0.199416, 0.14572, 0.988871, 0.0299997, -0.201662, 1.17478e-07, 0.979464, 2.71293, -0.04319, -0.740284)
+operation = 2
+size = Vector3(10, 10, 11.5903)
+
+[node name="Cut2" type="CSGBox3D" parent="Section3/BrokenSmallWall2"]
+transform = Transform3D(0.572453, 0.748496, 0.334757, -0.710028, 0.656706, -0.254179, -0.410082, -0.0921837, 0.907398, -3.18764, 3.96055, 1.14873)
+operation = 2
+size = Vector3(3.00122, 10, 10.8566)
+
+[node name="Broken Platform3" type="CSGCombiner3D" parent="Section3"]
+transform = Transform3D(-0.694959, -0.0364213, 0.718126, -0.052336, 0.998629, 0, -0.717142, -0.0375838, -0.695913, -3.621, 4, -18.723)
+material_override = ExtResource("13_rmwmx")
+use_collision = true
+
+[node name="Mesh" type="CSGCylinder3D" parent="Section3/Broken Platform3"]
+radius = 4.0
+height = 3.0
+
+[node name="Cut1" type="CSGBox3D" parent="Section3/Broken Platform3"]
+transform = Transform3D(0.590817, 0.804234, -0.0644867, -0.803847, 0.593604, 0.0381913, 0.0689911, 0.0292754, 0.997173, -0.274227, -0.92997, -3.02068)
+operation = 2
+size = Vector3(4.79583, 4.22314, 7.87628)
+
+[node name="Cut2" type="CSGBox3D" parent="Section3/Broken Platform3"]
+transform = Transform3D(-0.431079, -0.255906, -0.865259, 0.220645, 0.899929, -0.376086, 0.874918, -0.353041, -0.331477, -2.93287, -1.78014, -0.943759)
+operation = 2
+size = Vector3(6.0399, 6.41345, 6.37912)
+
+[node name="Broken Platform4" type="CSGCombiner3D" parent="Section3"]
+transform = Transform3D(-0.669131, 0, 0.743145, 0, 1, 0, -0.743145, 0, -0.669131, -19.7543, 7.5, -13.442)
+material_override = ExtResource("13_rmwmx")
+use_collision = true
+
+[node name="Mesh" type="CSGCylinder3D" parent="Section3/Broken Platform4"]
+radius = 2.0
+
+[node name="Cut1" type="CSGBox3D" parent="Section3/Broken Platform4"]
+transform = Transform3D(0.997914, 0.00247727, -0.0644838, 0, 0.999271, 0.0383872, 0.0645322, -0.0383081, 0.997165, -0.0864974, -1.10118, -2.13226)
+operation = 2
+size = Vector3(4.28805, 4.22314, 3.50955)
+
+[node name="Cut2" type="CSGBox3D" parent="Section3/Broken Platform4"]
+transform = Transform3D(-0.431079, -0.255906, -0.865259, 0.220645, 0.899929, -0.376086, 0.874918, -0.353041, -0.331477, -2.93287, -1.78014, -0.943759)
+operation = 2
+size = Vector3(6.0399, 6.41345, 6.37912)
+
+[node name="Broken Platform5" type="CSGCombiner3D" parent="Section3"]
+transform = Transform3D(1, 0, 0, 0, 0.990771, 0.135543, 0, -0.135543, 0.990771, -8.96723, 19.3076, 24.3167)
+material_override = ExtResource("13_rmwmx")
+use_collision = true
+
+[node name="Mesh" type="CSGCylinder3D" parent="Section3/Broken Platform5"]
+radius = 3.0
+height = 1.5
+
+[node name="Cut1" type="CSGBox3D" parent="Section3/Broken Platform5"]
+transform = Transform3D(-0.0633907, 0.0400421, 0.997162, -0.534037, -0.845464, 1.86265e-09, 0.843069, -0.532544, 0.0749769, 0.251933, -0.777629, 3.7025)
+operation = 2
+size = Vector3(4.28805, 4.22314, 6.63791)
+
+[node name="Cut2" type="CSGBox3D" parent="Section3/Broken Platform5"]
+transform = Transform3D(0.948895, -0.0726495, -0.307087, -5.58794e-09, 0.973138, -0.230217, 0.315564, 0.218456, 0.923406, 1.05388, -1.72124, -3.23308)
+operation = 2
+size = Vector3(6.0399, 6.41345, 2.72862)
+
+[node name="FallingPlatform6" parent="Section3" instance=ExtResource("13_yiage")]
+transform = Transform3D(-0.781248, 0, 0.624221, 0, 1, 0, -0.624221, 0, -0.781248, 9.109, 2, -12.412)
+
+[node name="FallingPlatform7" parent="Section3" instance=ExtResource("13_yiage")]
+transform = Transform3D(0.197127, 0, 0.980378, 0, 1, 0, -0.980378, 0, 0.197127, -18.7678, 14.5, 6.99641)
+
+[node name="FallingPlatform8" parent="Section3" instance=ExtResource("13_yiage")]
+transform = Transform3D(-0.114313, 0, 0.993445, 0, 1, 0, -0.993445, 0, -0.114313, -21.6531, 17, 13.7596)
