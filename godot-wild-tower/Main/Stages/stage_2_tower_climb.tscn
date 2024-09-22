@@ -197,7 +197,7 @@ transform = Transform3D(0.897567, 0, -0.440879, 0, 1, 0, 0.440879, 0, 0.897567, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.2134, 15.99, 0.372571)
 
 [node name="MobileEnemyPath" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.11782, 10.1911, 9.47288)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.2688, 11.9532, 8.68169)
 
 [node name="Node3D" type="Node3D" parent="MobileEnemyPath"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.132488, 0, -0.332762)
@@ -415,71 +415,6 @@ transform = Transform3D(4.34908e-08, -0.994953, -0.100344, -1, -4.37114e-08, 0, 
 
 [node name="Bookcase15" parent="Second Floor/Bookcases" instance=ExtResource("12_o1pqe")]
 transform = Transform3D(0.101056, 0.994881, 4.34876e-08, 0, -4.37114e-08, 1, 0.99488, -0.101056, -4.41731e-09, 20.3972, 0.5, -0.944204)
-
-[node name="2ndEnemies" type="Node3D" parent="Second Floor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-
-[node name="MobileEnemy" parent="Second Floor/2ndEnemies" node_paths=PackedStringArray("path_points") instance=ExtResource("9_xfmcf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.8917, 0, 11.107)
-path_points = [NodePath("../1stPath1")]
-add_start_pos_to_path = true
-
-[node name="1stPath1" type="Node3D" parent="Second Floor/2ndEnemies"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.4678, 0, -1.52185)
-
-[node name="MobileEnemy2" parent="Second Floor/2ndEnemies" node_paths=PackedStringArray("path_points") instance=ExtResource("9_xfmcf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.79593, 0, -22.7109)
-path_points = [NodePath("../2ndPath1"), NodePath("../2ndPath2"), NodePath("../2ndPath3")]
-loop_path = true
-add_start_pos_to_path = true
-
-[node name="2ndPath1" type="Node3D" parent="Second Floor/2ndEnemies"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.11569, -9.53674e-07, -20.8947)
-
-[node name="2ndPath2" type="Node3D" parent="Second Floor/2ndEnemies"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6332, 0, -16.4279)
-
-[node name="2ndPath3" type="Node3D" parent="Second Floor/2ndEnemies"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.35731, -9.53674e-07, -17.9228)
-
-[node name="MobileEnemy3" parent="Second Floor/2ndEnemies" node_paths=PackedStringArray("path_points") instance=ExtResource("9_xfmcf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.97542, -9.53674e-07, -15.7115)
-path_points = [NodePath("../3rdPath1"), NodePath("../3rdPath2"), NodePath("../3rdPath3")]
-loop_path = true
-add_start_pos_to_path = true
-
-[node name="3rdPath1" type="Node3D" parent="Second Floor/2ndEnemies"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.54751, 0, -19.4229)
-
-[node name="3rdPath2" type="Node3D" parent="Second Floor/2ndEnemies"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.54362, 0, -23.3845)
-
-[node name="3rdPath3" type="Node3D" parent="Second Floor/2ndEnemies"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.85352, -9.53674e-07, -18.4684)
-
-[node name="BasicEnemy" parent="Second Floor/2ndEnemies" instance=ExtResource("8_tomb1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.67, 7.5, -15.532)
-
-[node name="MobileEnemy4" parent="Second Floor/2ndEnemies" node_paths=PackedStringArray("path_points") instance=ExtResource("9_xfmcf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.79593, 0, -22.7109)
-path_points = [NodePath("../2ndPath1"), NodePath("../2ndPath2"), NodePath("../2ndPath3")]
-loop_path = true
-add_start_pos_to_path = true
-
-[node name="MobileEnemy5" parent="Second Floor/2ndEnemies" node_paths=PackedStringArray("path_points") instance=ExtResource("9_xfmcf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.97542, -9.53674e-07, -15.7115)
-path_points = [NodePath("../3rdPath1"), NodePath("../3rdPath2"), NodePath("../3rdPath3")]
-loop_path = true
-add_start_pos_to_path = true
-
-[node name="BasicEnemy4" parent="Second Floor/2ndEnemies" instance=ExtResource("8_tomb1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.67, 7.5, -15.532)
-
-[node name="BasicEnemy2" parent="Second Floor/2ndEnemies" instance=ExtResource("8_tomb1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.414, 7.5, -16.981)
-
-[node name="BasicEnemy3" parent="Second Floor/2ndEnemies" instance=ExtResource("8_tomb1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.8869, 11, -7.03781)
 
 [node name="2ndStairs" type="CSGCombiner3D" parent="Second Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
