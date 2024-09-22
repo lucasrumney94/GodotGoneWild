@@ -516,6 +516,7 @@ enemy_type = 2
 explosion_particles = ExtResource("5_34nv2")
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
