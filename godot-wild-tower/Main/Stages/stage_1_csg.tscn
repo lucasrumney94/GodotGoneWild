@@ -1,0 +1,348 @@
+[gd_scene load_steps=3 format=3 uid="uid://dymksrxjqxqri"]
+
+[ext_resource type="Script" path="res://Main/main_game.gd" id="1_ersuw"]
+[ext_resource type="PackedScene" uid="uid://do1pmtbmc423e" path="res://UI/pause_menu.tscn" id="2_8crwl"]
+
+[node name="Stage 1" type="Node3D"]
+script = ExtResource("1_ersuw")
+pause_menu_scene = ExtResource("2_8crwl")
+
+[node name="First Floor" type="Node3D" parent="."]
+
+[node name="OuterWall" type="CSGCombiner3D" parent="First Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.5, 0)
+use_collision = true
+
+[node name="Mesh" type="CSGCylinder3D" parent="First Floor/OuterWall"]
+radius = 31.0
+height = 11.0
+sides = 28
+
+[node name="Interior" type="CSGCylinder3D" parent="First Floor/OuterWall"]
+operation = 2
+radius = 26.0
+height = 11.0
+sides = 28
+
+[node name="Entry" type="CSGBox3D" parent="First Floor/OuterWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 29.148)
+operation = 2
+size = Vector3(8, 10, 8)
+
+[node name="Stairs" type="CSGCombiner3D" parent="First Floor"]
+use_collision = true
+
+[node name="Mesh" type="CSGCylinder3D" parent="First Floor/Stairs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.5, 0)
+radius = 26.0
+height = 11.0
+sides = 28
+
+[node name="CentralCut" type="CSGCylinder3D" parent="First Floor/Stairs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.5, 0)
+operation = 2
+radius = 22.0
+height = 11.0
+sides = 28
+
+[node name="RampCut" type="CSGBox3D" parent="First Floor/Stairs"]
+transform = Transform3D(1, 0, 0, 0, 0.976296, 0.21644, 0, -0.21644, 0.976296, 0, 11.5, 0)
+operation = 2
+size = Vector3(60, 10, 60)
+
+[node name="EntryCut" type="CSGBox3D" parent="First Floor/Stairs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 22.1657)
+operation = 2
+size = Vector3(10, 11, 8)
+
+[node name="Jump1" type="CSGBox3D" parent="First Floor/Stairs"]
+transform = Transform3D(0.887011, 0, -0.461749, 0, 1, 0, 0.461749, 0, 0.887011, -20.1382, 2.5, -12)
+operation = 2
+size = Vector3(6, 8, 4)
+
+[node name="Jump2" type="CSGBox3D" parent="First Floor/Stairs"]
+transform = Transform3D(0.887011, 0, 0.461749, 0, 1, 0, -0.461749, 0, 0.887011, -20, 5, 12)
+operation = 2
+size = Vector3(6, 11, 6)
+
+[node name="JumpDash" type="CSGBox3D" parent="First Floor/Stairs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.5, 5, -3)
+operation = 2
+size = Vector3(9, 10, 16)
+
+[node name="Landing" type="CSGCombiner3D" parent="First Floor"]
+use_collision = true
+
+[node name="CentralLanding" type="CSGPolygon3D" parent="First Floor/Landing"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4, 0, -23)
+polygon = PackedVector2Array(0, 0, 0, 2, 10, 2, 15, 0)
+depth = 8.0
+
+[node name="StairLanding" type="CSGCylinder3D" parent="First Floor/Landing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+radius = 26.0
+sides = 28
+
+[node name="CylinderCut" type="CSGCylinder3D" parent="First Floor/Landing/StairLanding"]
+operation = 2
+radius = 22.0
+sides = 28
+
+[node name="LandingStop" type="CSGBox3D" parent="First Floor/Landing/StairLanding"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+operation = 2
+size = Vector3(55, 3, 55)
+
+[node name="Archway" type="CSGCombiner3D" parent="First Floor"]
+use_collision = true
+
+[node name="Mesh" type="CSGBox3D" parent="First Floor/Archway"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 26.5)
+size = Vector3(10, 10, 10)
+
+[node name="ArchCut" type="CSGCylinder3D" parent="First Floor/Archway/Mesh"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+operation = 2
+radius = 3.5
+height = 11.0
+sides = 12
+
+[node name="BoxCut" type="CSGBox3D" parent="First Floor/Archway/Mesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5, 0)
+operation = 2
+size = Vector3(7, 5, 11)
+
+[node name="Second Floor" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.5, 0)
+
+[node name="2ndStairs" type="CSGCombiner3D" parent="Second Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+use_collision = true
+
+[node name="Mesh" type="CSGCylinder3D" parent="Second Floor/2ndStairs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.5, 0)
+radius = 30.0
+height = 11.0
+sides = 28
+
+[node name="CentralCut" type="CSGCylinder3D" parent="Second Floor/2ndStairs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.5, 0)
+operation = 2
+radius = 26.0
+height = 11.0
+sides = 28
+
+[node name="RampCut" type="CSGBox3D" parent="Second Floor/2ndStairs"]
+transform = Transform3D(1, 0, 0, 0, 0.976296, -0.21644, 0, 0.21644, 0.976296, -0.165245, 12.713, 0.493406)
+operation = 2
+size = Vector3(80, 15, 85)
+
+[node name="BreakLeft" type="CSGBox3D" parent="Second Floor/2ndStairs"]
+transform = Transform3D(0.813101, -0.101085, 0.573279, 0, 0.984808, 0.173648, -0.582123, -0.141193, 0.800748, -24, 3, 11)
+operation = 2
+size = Vector3(10, 11, 20)
+
+[node name="BreakRight" type="CSGBox3D" parent="Second Floor/2ndStairs"]
+transform = Transform3D(0.939693, -0.0885213, -0.330366, 0, 0.965926, -0.258819, 0.34202, 0.24321, 0.907673, 27, 5, 2.5)
+operation = 2
+size = Vector3(15, 15, 10)
+
+[node name="BreakRight2" type="CSGBox3D" parent="Second Floor/2ndStairs"]
+transform = Transform3D(0.965926, 0.0669873, -0.25, 0, 0.965926, 0.258819, 0.258819, -0.25, 0.933013, 26, 5, -4.5)
+operation = 2
+size = Vector3(15, 15, 10)
+
+[node name="2ndFloorInner" type="CSGCombiner3D" parent="Second Floor"]
+use_collision = true
+
+[node name="Mesh" type="CSGCylinder3D" parent="Second Floor/2ndFloorInner"]
+radius = 22.0
+height = 1.0
+sides = 28
+
+[node name="CentralCut" type="CSGCylinder3D" parent="Second Floor/2ndFloorInner/Mesh"]
+operation = 2
+radius = 14.0
+height = 1.0
+sides = 28
+
+[node name="LandingCut" type="CSGBox3D" parent="Second Floor/2ndFloorInner/Mesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
+operation = 2
+size = Vector3(7, 3.5, 5)
+
+[node name="Hole1" type="CSGBox3D" parent="Second Floor/2ndFloorInner"]
+transform = Transform3D(0.980057, -0.000275058, 0.198714, 0.00139692, 0.999984, -0.00550546, -0.19871, 0.00567325, 0.980042, 15.8207, 0.000922203, 9.1864)
+operation = 2
+size = Vector3(3.65009, 1.1, 4.25232)
+
+[node name="Hole2" type="CSGBox3D" parent="Second Floor/2ndFloorInner"]
+transform = Transform3D(0.881608, 0, 0.471982, 0, 1, 0, -0.471982, 0, 0.881608, 18.6329, -9.53674e-07, 6.21601)
+operation = 2
+size = Vector3(6.7695, 1.1, 4.53409)
+
+[node name="Hole3" type="CSGBox3D" parent="Second Floor/2ndFloorInner"]
+transform = Transform3D(0.988964, 0, -0.148155, 0, 1, 0, 0.148155, 0, 0.988964, 14.5438, -9.53674e-07, 5.9146)
+operation = 2
+size = Vector3(6.65771, 1.1, 5.55261)
+
+[node name="Hole4" type="CSGBox3D" parent="Second Floor/2ndFloorInner"]
+transform = Transform3D(0.88428, 0, -0.466958, 0, 1, 0, 0.466958, 0, 0.88428, -11.1517, 0, -8.9052)
+operation = 2
+size = Vector3(4.15781, 1.1, 6.22263)
+
+[node name="Hole5" type="CSGBox3D" parent="Second Floor/2ndFloorInner"]
+transform = Transform3D(0.959972, 0, 0.280097, 0, 1, 0, -0.280097, 0, 0.959972, -12.6445, 0, -10.9066)
+operation = 2
+size = Vector3(3.19165, 1.1, 5.5343)
+
+[node name="Hole6" type="CSGBox3D" parent="Second Floor/2ndFloorInner"]
+transform = Transform3D(0.948495, 0, -0.316792, 0, 1, 0, 0.316792, 0, 0.948495, -15.0495, 0, -11.3817)
+operation = 2
+size = Vector3(4, 1.1, 2.27832)
+
+[node name="2ndFloorOuter" type="CSGCombiner3D" parent="Second Floor"]
+use_collision = true
+
+[node name="MainMesh" type="CSGCylinder3D" parent="Second Floor/2ndFloorOuter"]
+radius = 30.0
+height = 1.0
+sides = 28
+
+[node name="CentralCut" type="CSGCylinder3D" parent="Second Floor/2ndFloorOuter/MainMesh"]
+operation = 2
+radius = 26.0
+height = 1.1
+sides = 28
+
+[node name="SubMesh" type="CSGCylinder3D" parent="Second Floor/2ndFloorOuter"]
+radius = 26.0
+height = 1.0
+sides = 28
+
+[node name="CentralCut" type="CSGCylinder3D" parent="Second Floor/2ndFloorOuter/SubMesh"]
+operation = 2
+radius = 22.0
+height = 1.1
+sides = 28
+
+[node name="StairCut" type="CSGBox3D" parent="Second Floor/2ndFloorOuter/SubMesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14)
+operation = 2
+size = Vector3(55, 1.1, 25)
+
+[node name="2ndLanding" type="CSGCylinder3D" parent="Second Floor/2ndFloorOuter"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 21)
+radius = 7.0
+height = 1.0
+sides = 14
+
+[node name="OuterWall" type="CSGCombiner3D" parent="Second Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+use_collision = true
+
+[node name="Mesh" type="CSGCylinder3D" parent="Second Floor/OuterWall"]
+radius = 31.0
+height = 11.0
+sides = 28
+
+[node name="Interior" type="CSGCylinder3D" parent="Second Floor/OuterWall"]
+operation = 2
+radius = 30.0
+height = 11.0
+sides = 28
+
+[node name="Third Floor" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 21, 0)
+
+[node name="3rdFloor" type="CSGCombiner3D" parent="Third Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+use_collision = true
+
+[node name="ColumnRing" type="CSGCylinder3D" parent="Third Floor/3rdFloor"]
+radius = 23.0
+height = 1.0
+sides = 28
+
+[node name="CentralCut" type="CSGCylinder3D" parent="Third Floor/3rdFloor"]
+operation = 2
+radius = 18.0
+height = 1.1
+sides = 28
+
+[node name="Hole1" type="CSGBox3D" parent="Third Floor/3rdFloor"]
+transform = Transform3D(0.938812, 0, -0.34443, 0, 1, 0, 0.34443, 0, 0.938812, 5.45562, 0, 19.5357)
+operation = 2
+size = Vector3(6, 1.1, 10)
+
+[node name="Hole2" type="CSGBox3D" parent="Third Floor/3rdFloor"]
+transform = Transform3D(0.866209, 0, 0.499683, 0, 1, 0, -0.499683, 0, 0.866209, 4.71685, 0, 18.8595)
+operation = 2
+size = Vector3(6, 1.1, 10)
+
+[node name="Hole3" type="CSGBox3D" parent="Third Floor/3rdFloor"]
+transform = Transform3D(0.938812, 0, -0.34443, 0, 1, 0, 0.34443, 0, 0.938812, -16.6716, 0, -13.4159)
+operation = 2
+size = Vector3(8.91022, 1.1, 16.2384)
+
+[node name="Hole4" type="CSGBox3D" parent="Third Floor/3rdFloor"]
+transform = Transform3D(0.63073, 0, -0.776002, 0, 1, 0, 0.776002, 0, 0.63073, -14.9973, 0, -11.8585)
+operation = 2
+size = Vector3(6, 1.1, 16.814)
+
+[node name="Hole5" type="CSGBox3D" parent="Third Floor/3rdFloor"]
+transform = Transform3D(0.880635, 0, -0.473796, 0, 1, 0, 0.473796, 0, 0.880635, 19.888, 0, -4.97708)
+operation = 2
+size = Vector3(9.24219, 1.1, 10)
+
+[node name="Hole6" type="CSGBox3D" parent="Third Floor/3rdFloor"]
+transform = Transform3D(0.710652, 0, -0.703544, 0, 1, 0, 0.703544, 0, 0.710652, 21.177, 0, 1.43866)
+operation = 2
+size = Vector3(7.66699, 1.1, 10)
+
+[node name="Dome" type="CSGCombiner3D" parent="Third Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+use_collision = true
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Third Floor/Dome"]
+radius = 25.0
+radial_segments = 28
+rings = 8
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="Third Floor/Dome"]
+operation = 2
+radius = 23.0
+radial_segments = 28
+rings = 8
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Third Floor/Dome"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11, 0)
+operation = 2
+size = Vector3(60, 40, 60)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Third Floor/Dome"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00112629, 26.9423, -0.00826645)
+operation = 2
+size = Vector3(30, 10, 30)
+
+[node name="OuterWall" type="CSGCombiner3D" parent="Third Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.5, 0)
+use_collision = true
+
+[node name="Mesh" type="CSGCylinder3D" parent="Third Floor/OuterWall"]
+radius = 31.0
+height = 11.0
+sides = 28
+
+[node name="Interior" type="CSGCylinder3D" parent="Third Floor/OuterWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+operation = 2
+radius = 30.0
+height = 11.0
+sides = 28
+
+[node name="Interior2" type="CSGCylinder3D" parent="Third Floor/OuterWall"]
+operation = 2
+radius = 22.0
+height = 11.0
+sides = 28
