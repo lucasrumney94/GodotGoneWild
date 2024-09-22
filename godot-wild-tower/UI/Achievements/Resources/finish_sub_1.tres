@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Achievement" load_steps=3 format=3 uid="uid://bqsp1frvjk7ry"]
+
+[ext_resource type="Script" path="res://UI/Achievements/achievement.gd" id="1_37tgf"]
+[ext_resource type="Texture2D" uid="uid://cv1af46vlbwjd" path="res://UI/Image/trophy.png" id="1_p0its"]
+
+[resource]
+script = ExtResource("1_37tgf")
+id = "finish_sub_one"
+icon = ExtResource("1_p0its")
+title = "Quickly!"
+description = "Finish a level faster than a minute."
+stat = ""
+stat_goal = 0
+check_function = ""
+custom_string = ""

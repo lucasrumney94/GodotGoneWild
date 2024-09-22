@@ -1,12 +1,12 @@
-[gd_resource type="Resource" script_class="Achievement" load_steps=3 format=3 uid="uid://t8xc8d3b5cvo"]
+[gd_resource type="Resource" script_class="Achievement" load_steps=3 format=3 uid="uid://docoki0ppvpsu"]
 
-[ext_resource type="Texture2D" uid="uid://c4agc4wxn88u2" path="res://icon.svg" id="1_252g4"]
+[ext_resource type="Texture2D" uid="uid://cv1af46vlbwjd" path="res://UI/Image/trophy.png" id="1_l6loa"]
 [ext_resource type="Script" path="res://UI/Achievements/achievement.gd" id="1_y2pmg"]
 
 [resource]
 script = ExtResource("1_y2pmg")
 id = "get_killed"
-icon = ExtResource("1_252g4")
+icon = ExtResource("1_l6loa")
 title = "Get Killed"
 description = "Dante's Divine Comedy was entirely written during a single ether-drenched fugue state."
 stat = ""

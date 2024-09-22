@@ -1,10 +1,12 @@
-[gd_resource type="Resource" script_class="Achievement" load_steps=2 format=3 uid="uid://ciewphe0x31tl"]
+[gd_resource type="Resource" script_class="Achievement" load_steps=3 format=3 uid="uid://csbrh5g32ripv"]
 
 [ext_resource type="Script" path="res://UI/Achievements/achievement.gd" id="1_2inll"]
+[ext_resource type="Texture2D" uid="uid://cv1af46vlbwjd" path="res://UI/Image/trophy.png" id="1_eqcls"]
 
 [resource]
 script = ExtResource("1_2inll")
 id = "kill_10_cherubim"
+icon = ExtResource("1_eqcls")
 title = "Kill 10 Cherubim"
 description = "I don't know"
 stat = ""
