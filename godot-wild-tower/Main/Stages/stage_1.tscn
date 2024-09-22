@@ -78,7 +78,8 @@ size = Vector3(50, 0.5, 50)
 material = ExtResource("6_t6ra6")
 
 [node name="FinishArea" parent="." instance=ExtResource("8_xhnku")]
-transform = Transform3D(2, 0, 0, 0, 0.5, 0, 0, 0, 2, 0, 46, 0)
+transform = Transform3D(2, 0, 0, 0, 0.5, 0, 0, 0, 2, 0, 47, 0)
+visible = false
 
 [node name="First Floor" type="Node3D" parent="."]
 
@@ -129,7 +130,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -16)
 
 [node name="BasicEnemy3" parent="First Floor/1stEnemies" instance=ExtResource("9_ixssy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 7.5, 2.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.5, 8, 3)
 
 [node name="BasicEnemy4" parent="First Floor/1stEnemies" instance=ExtResource("9_ixssy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 1)
@@ -547,7 +548,7 @@ add_start_pos_to_path = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.32254, 0, -19.1095)
 
 [node name="BasicEnemy" parent="Third Floor/3rdEnemies" instance=ExtResource("9_ixssy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.9381, 15.0256, 3.81687)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 15, 4.25)
 
 [node name="MobileEnemy2" parent="Third Floor/3rdEnemies" node_paths=PackedStringArray("path_points") instance=ExtResource("9_tiv3e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.1476, 8.58996, -7.01545)
@@ -569,7 +570,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.3617, 6.1, 7.44122)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.4398, 6.1, 12.7664)
 
 [node name="BasicEnemy2" parent="Third Floor/3rdEnemies" instance=ExtResource("9_ixssy")]
-transform = Transform3D(0.883005, 0, 0.469364, 0, 1, 0, -0.469364, 0, 0.883005, -15.0866, 12.4581, 3.57099)
+transform = Transform3D(0.883005, 0, 0.469364, 0, 1, 0, -0.469364, 0, 0.883005, -15.5, 12.5, 3.5)
 
 [node name="MobileEnemy4" parent="Third Floor/3rdEnemies" node_paths=PackedStringArray("path_points") instance=ExtResource("9_tiv3e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22, -4)
