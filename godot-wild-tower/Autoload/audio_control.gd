@@ -13,10 +13,10 @@ extends Node
 @export_range(-12, 12) var level_finished_gain: float
 
 @export var player_jump_sound: AudioStream
-@export_range(-12, 12) var player_jump_gain: float
+@export_range(-24, 12) var player_jump_gain: float
 
 @export var player_hit_floor_sound: AudioStream
-@export_range(-12,12) var player_hit_floor_gain: float
+@export_range(-24,12) var player_hit_floor_gain: float
 
 @export var player_dash_sound: AudioStream
 @export_range(-12, 12) var player_dash_sound_gain: float
@@ -136,7 +136,7 @@ func play_level_finished():
 	play_2D_sound(level_finish_sound)
 
 func play_player_jumped(world_position: Vector3):	
-	play_3D_sound_random_pitch(world_position, player_jump_sound, player_jump_gain, 0.8, 0.95)
+	play_3D_sound_random_pitch(world_position, player_jump_sound, player_jump_gain, 0.85, 1.04)
 
 func play_player_hit_floor(world_position: Vector3):
 	play_3D_sound(world_position, player_hit_floor_sound, player_hit_floor_gain)

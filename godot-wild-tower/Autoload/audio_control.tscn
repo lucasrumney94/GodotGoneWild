@@ -4,7 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://cjcjooyaeu3jq" path="res://Audio/GodotWildJamSFX_LEVELSTART.wav" id="2_7murf"]
 [ext_resource type="AudioStream" uid="uid://dobepvt0fx486" path="res://Audio/GodotWildJam2024Music_Pass1.wav" id="2_nu51f"]
 [ext_resource type="AudioStream" uid="uid://cynr7cmcqp3mu" path="res://Audio/GodotWildJamSFX_LEVELFINISH.wav" id="3_06mfg"]
-[ext_resource type="AudioStream" uid="uid://cao84inaaa3xs" path="res://Audio/JumpHup.wav" id="4_bmnup"]
+[ext_resource type="AudioStream" uid="uid://st76h7s437pk" path="res://Audio/GodotWildJamSFX_JumpHupFinal.wav" id="4_h85qx"]
 [ext_resource type="AudioStream" uid="uid://yxriser1isjj" path="res://Audio/JumpLand.wav" id="5_4ucpw"]
 [ext_resource type="AudioStream" uid="uid://7wfkdjqob7ni" path="res://Audio/GodotWildJamSFX_DashFASTER.wav" id="5_isu52"]
 [ext_resource type="AudioStream" uid="uid://dyr54hpvhqujr" path="res://Audio/GodotWildJamSFX_PDASH.wav" id="5_vhifl"]
@@ -12,10 +12,10 @@
 [ext_resource type="AudioStream" uid="uid://blj4jbfigcey3" path="res://Audio/LongFallBrownNoise.wav" id="9_ky675"]
 [ext_resource type="AudioStream" uid="uid://o8k4sknm3nvx" path="res://Audio/ProjectileFizzle.wav" id="10_o1oed"]
 [ext_resource type="AudioStream" uid="uid://djm8upyft7tc7" path="res://Audio/CrystalImpact.wav" id="11_qu2b4"]
-[ext_resource type="AudioStream" uid="uid://lk53vlrv3j3j" path="res://Audio/151222__owlstorm__hard-female-footstep-4.wav" id="12_r2r5y"]
-[ext_resource type="AudioStream" uid="uid://c8jn47g7f8jgq" path="res://Audio/151232__owlstorm__hard-female-footstep-1.wav" id="13_vwll3"]
-[ext_resource type="AudioStream" uid="uid://dkd3fltdrc81c" path="res://Audio/151237__owlstorm__hard-female-footstep-3.wav" id="14_bsse6"]
-[ext_resource type="AudioStream" uid="uid://7vfr3ajc4dyq" path="res://Audio/151238__owlstorm__hard-female-footstep-2.wav" id="15_6j145"]
+[ext_resource type="AudioStream" uid="uid://dgdqytqtmew88" path="res://Audio/197778__sgossner__footstep-on-stone.wav" id="12_gei4r"]
+[ext_resource type="AudioStream" uid="uid://cno8388gg0dao" path="res://Audio/197779__sgossner__footstep-on-stone-2.wav" id="13_4djg0"]
+[ext_resource type="AudioStream" uid="uid://cc02hopxvdpj3" path="res://Audio/197780__sgossner__footstep-on-stone-3.wav" id="14_nv06p"]
+[ext_resource type="AudioStream" uid="uid://drdxhrccajxva" path="res://Audio/197781__sgossner__footstep-on-stone-4.wav" id="15_njmxl"]
 
 [node name="AudioControl" type="Node" node_paths=PackedStringArray("music_player")]
 process_mode = 3
@@ -25,10 +25,10 @@ music_player_pause_gain = -12.0
 level_started_sound = ExtResource("2_7murf")
 level_started_gain = -12.0
 level_finish_sound = ExtResource("3_06mfg")
-player_jump_sound = ExtResource("4_bmnup")
-player_jump_gain = -12.0
+player_jump_sound = ExtResource("4_h85qx")
+player_jump_gain = -17.0
 player_hit_floor_sound = ExtResource("5_4ucpw")
-player_hit_floor_gain = -10.625
+player_hit_floor_gain = -20.964
 player_dash_sound = ExtResource("5_vhifl")
 player_dash_sound_gain = -3.388
 player_enemy_dash_sound = ExtResource("5_isu52")
@@ -41,7 +41,7 @@ projectile_impact_sound = ExtResource("10_o1oed")
 projectile_impact_sound_gain = -6.0
 crystal_impact_sound = ExtResource("11_qu2b4")
 crystal_impact_sound_gain = -20.0
-player_footstep_sounds = Array[AudioStream]([ExtResource("12_r2r5y"), ExtResource("13_vwll3"), ExtResource("14_bsse6"), ExtResource("15_6j145")])
+player_footstep_sounds = Array[AudioStream]([ExtResource("12_gei4r"), ExtResource("13_4djg0"), ExtResource("14_nv06p"), ExtResource("15_njmxl")])
 player_footstep_sound_gain = -4.58
 low_pass_cutoff_lower_bound = 140.0
 pitch_shift_cutoff_lower_bound = 0.8
