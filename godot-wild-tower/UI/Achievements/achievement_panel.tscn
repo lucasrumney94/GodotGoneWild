@@ -40,6 +40,7 @@ autowrap_mode = 2
 
 [node name="CheckTextureRect" type="TextureRect" parent="HBoxContainer"]
 unique_name_in_owner = true
+modulate = Color(0.505882, 0.505882, 0.505882, 0.541176)
 custom_minimum_size = Vector2(72, 72)
 layout_mode = 2
 size_flags_horizontal = 4

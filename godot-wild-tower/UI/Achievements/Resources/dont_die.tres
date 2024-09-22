@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Achievement" load_steps=3 format=3 uid="uid://ctmyr2fyc5esn"]
+
+[ext_resource type="Texture2D" uid="uid://cv1af46vlbwjd" path="res://UI/Image/trophy.png" id="1_661j3"]
+[ext_resource type="Script" path="res://UI/Achievements/achievement.gd" id="1_hofbw"]
+
+[resource]
+script = ExtResource("1_hofbw")
+id = "dont_die"
+icon = ExtResource("1_661j3")
+title = "Basically Immortal"
+description = "FACT: If we only died from accidents, we would live for roughly 1,200 years."
+stat = ""
+stat_goal = 0
+check_function = ""
+custom_string = ""

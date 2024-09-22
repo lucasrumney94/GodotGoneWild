@@ -8,6 +8,7 @@ var options_menu = null
 
 var seconds_paused:float = 0.0
 var seconds_to_earn_achievement = 60.0
+var pause_achievement_earned: bool = false
 
 func _ready():
 	%ResumeButton.pressed.connect(on_resume_pressed)
@@ -18,8 +19,9 @@ func _ready():
 	%ResumeButton.grab_focus()
 
 func _process(delta: float) -> void:
-	seconds_paused += delta;
-	if(seconds_paused>seconds_to_earn_achievement):
+	seconds_paused += delta / Engine.time_scale
+	if !pause_achievement_earned && seconds_paused > seconds_to_earn_achievement:
+		pause_achievement_earned = true
 		AchievementControl.earn_achievement("pause_long")
 
 func _input(event: InputEvent):

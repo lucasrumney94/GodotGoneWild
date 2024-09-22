@@ -73,6 +73,11 @@ func on_level_finished():
 		stats_screen.set_kills(kills, new_fewest_kills, new_most_kills)
 		stats_screen.set_restarts(restarts, new_fewest_restarts)
 		stats_screen.set_deaths(deaths, new_fewest_deaths)
+		
+		if deaths <= 0:
+			AchievementControl.earn_achievement("dont_die")
+		if kills <= 0:
+			AchievementControl.earn_achievement("no_kills")
 
 
 func on_level_finished_time(seconds: float):
@@ -118,13 +123,13 @@ func on_enemy_killed(enemy_type: Constants.EnemyType, _global_pos: Vector3):
 
 func check_kill_achievement(enemy_type: Constants.EnemyType):
 	if enemy_type == Constants.EnemyType.CHERUBIM:
-		if SaveControl.get_stat_cumulative("kill" + str(Constants.EnemyType.CHERUBIM)) > 10:
+		if SaveControl.get_stat_cumulative("kill" + str(Constants.EnemyType.CHERUBIM)) >= 10:
 			AchievementControl.earn_achievement("kill_10_cherubim")
 	if enemy_type == Constants.EnemyType.MALAKIM:
-		if SaveControl.get_stat_cumulative("kill" + str(Constants.EnemyType.MALAKIM)) > 10:
+		if SaveControl.get_stat_cumulative("kill" + str(Constants.EnemyType.MALAKIM)) >= 10:
 			AchievementControl.earn_achievement("kill_10_malakim")
 	if enemy_type == Constants.EnemyType.SERAPHIM:
-		if SaveControl.get_stat_cumulative("kill" + str(Constants.EnemyType.SERAPHIM)) > 10:
+		if SaveControl.get_stat_cumulative("kill" + str(Constants.EnemyType.SERAPHIM)) >= 10:
 			AchievementControl.earn_achievement("kill_10_seraphim")
 	
 	if enemy_type == Constants.EnemyType.ELOHIM:
