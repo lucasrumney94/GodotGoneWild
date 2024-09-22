@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Achievement" load_steps=2 format=3 uid="uid://bg74tgdvosln8"]
+
+[ext_resource type="Script" path="res://UI/Achievements/achievement.gd" id="1_6iohu"]
+
+[resource]
+script = ExtResource("1_6iohu")
+id = "view_options"
+title = "Tweaker"
+description = "view the options menu"
+stat = ""
+stat_goal = 0
+check_function = ""
+custom_string = ""

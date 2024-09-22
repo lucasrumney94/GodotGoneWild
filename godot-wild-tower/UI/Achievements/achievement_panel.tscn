@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://UI/Achievements/achievement_panel.gd" id="1_nuv0b"]
 [ext_resource type="Texture2D" uid="uid://c4agc4wxn88u2" path="res://icon.svg" id="1_wbrr4"]
-[ext_resource type="Texture2D" uid="uid://dt1l7laaw1wqw" path="res://TestingGrid.png" id="2_j1v05"]
+[ext_resource type="Texture2D" uid="uid://dt1l7laaw1wqw" path="res://Materials/Textures/TestingGrid.png" id="2_j1v05"]
 
 [node name="AchievementPanel" type="PanelContainer"]
 script = ExtResource("1_nuv0b")

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Achievement" load_steps=2 format=3 uid="uid://bmijqpdsiwot7"]
+
+[ext_resource type="Script" path="res://UI/Achievements/achievement.gd" id="1_njiae"]
+
+[resource]
+script = ExtResource("1_njiae")
+id = "play_twice"
+title = "Welcome Back!"
+description = "play the game more than once."
+stat = ""
+stat_goal = 0
+check_function = ""
+custom_string = ""

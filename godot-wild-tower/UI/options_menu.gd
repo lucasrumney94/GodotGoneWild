@@ -8,6 +8,9 @@ signal closing
 
 
 func _ready():
+	print("should be earning option achievement")
+	AchievementControl.earn_achievement("view_options")
+
 	%BackButton.pressed.connect(on_back_pressed)
 	
 	master_volume_slider.value = get_bus_volume_percent("Master")

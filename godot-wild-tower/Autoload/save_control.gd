@@ -18,6 +18,9 @@ func load_save_data():
 		printerr("NO SAVE FILE EXISTS")
 		return
 	
+	print("should be earning play_twice achievement")
+	AchievementControl.earn_achievement("play_twice")
+
 	var file = FileAccess.open(SAVE_FILE_PATH, FileAccess.READ)
 	save_data = file.get_var()
 
