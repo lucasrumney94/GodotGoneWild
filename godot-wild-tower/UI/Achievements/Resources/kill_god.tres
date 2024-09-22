@@ -7,8 +7,8 @@
 script = ExtResource("1_tcaki")
 id = "kill_god"
 icon = ExtResource("1_1ypyn")
-title = "Kill God"
-description = "Nietzsche was actually a pretty chill guy sometimes."
+title = "Murderer of All Murderers"
+description = "God is dead. God remains dead, and [you] have killed him. - Friedrich Nietzsche"
 stat = ""
 stat_goal = 0
 check_function = ""
