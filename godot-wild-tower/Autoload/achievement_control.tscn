@@ -1,14 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://7c5o71oyrx52"]
+[gd_scene load_steps=9 format=3 uid="uid://7c5o71oyrx52"]
 
 [ext_resource type="Script" path="res://Autoload/achievement_control.gd" id="1_lvx2p"]
 [ext_resource type="PackedScene" uid="uid://b1hxkyiomflv0" path="res://UI/Achievements/achievement_popup.tscn" id="2_uwhnw"]
 [ext_resource type="Script" path="res://UI/Achievements/achievement.gd" id="3_wmop3"]
-[ext_resource type="Resource" path="res://UI/Achievements/Resources/get_killed.tres" id="4_1sskk"]
+[ext_resource type="Resource" uid="uid://docoki0ppvpsu" path="res://UI/Achievements/Resources/get_killed.tres" id="4_1sskk"]
 [ext_resource type="Resource" uid="uid://qbhxgfjtb32q" path="res://UI/Achievements/Resources/view_credits.tres" id="4_c77lf"]
 [ext_resource type="Resource" uid="uid://bg74tgdvosln8" path="res://UI/Achievements/Resources/view_options.tres" id="6_7cfo6"]
 [ext_resource type="Resource" uid="uid://bmijqpdsiwot7" path="res://UI/Achievements/Resources/play_twice.tres" id="7_kv655"]
+[ext_resource type="Resource" uid="uid://rqlim4er2gp8" path="res://UI/Achievements/Resources/pause_long.tres" id="8_0uayn"]
 
 [node name="AchievementControl" type="Node"]
 script = ExtResource("1_lvx2p")
 achievement_popup_scene = ExtResource("2_uwhnw")
-achievements = Array[ExtResource("3_wmop3")]([ExtResource("4_1sskk"), ExtResource("4_c77lf"), ExtResource("6_7cfo6"), ExtResource("7_kv655")])
+achievements = Array[ExtResource("3_wmop3")]([ExtResource("4_1sskk"), ExtResource("4_c77lf"), ExtResource("6_7cfo6"), ExtResource("7_kv655"), ExtResource("8_0uayn")])

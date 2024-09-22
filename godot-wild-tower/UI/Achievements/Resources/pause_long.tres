@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Achievement" load_steps=3 format=3 uid="uid://rqlim4er2gp8"]
+
+[ext_resource type="Script" path="res://UI/Achievements/achievement.gd" id="1_76ts7"]
+[ext_resource type="Texture2D" uid="uid://c4agc4wxn88u2" path="res://icon.svg" id="1_cu7l1"]
+
+[resource]
+script = ExtResource("1_76ts7")
+id = "pause_long"
+icon = ExtResource("1_cu7l1")
+title = "Pee Break"
+description = "Pause the game for longer than 1 minute."
+stat = ""
+stat_goal = 0
+check_function = ""
+custom_string = ""

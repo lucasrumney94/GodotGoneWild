@@ -1,12 +1,14 @@
-[gd_resource type="Resource" script_class="Achievement" load_steps=2 format=3 uid="uid://bg74tgdvosln8"]
+[gd_resource type="Resource" script_class="Achievement" load_steps=3 format=3 uid="uid://bg74tgdvosln8"]
 
+[ext_resource type="Texture2D" uid="uid://c4agc4wxn88u2" path="res://icon.svg" id="1_5bp1g"]
 [ext_resource type="Script" path="res://UI/Achievements/achievement.gd" id="1_6iohu"]
 
 [resource]
 script = ExtResource("1_6iohu")
 id = "view_options"
+icon = ExtResource("1_5bp1g")
 title = "Tweaker"
-description = "view the options menu"
+description = "View the options menu"
 stat = ""
 stat_goal = 0
 check_function = ""

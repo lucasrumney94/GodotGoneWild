@@ -1,10 +1,12 @@
-[gd_resource type="Resource" script_class="Achievement" load_steps=2 format=3 uid="uid://bmijqpdsiwot7"]
+[gd_resource type="Resource" script_class="Achievement" load_steps=3 format=3 uid="uid://bmijqpdsiwot7"]
 
+[ext_resource type="Texture2D" uid="uid://c4agc4wxn88u2" path="res://icon.svg" id="1_3xjyw"]
 [ext_resource type="Script" path="res://UI/Achievements/achievement.gd" id="1_njiae"]
 
 [resource]
 script = ExtResource("1_njiae")
 id = "play_twice"
+icon = ExtResource("1_3xjyw")
 title = "Welcome Back!"
 description = "play the game more than once."
 stat = ""

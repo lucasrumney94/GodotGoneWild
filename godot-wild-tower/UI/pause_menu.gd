@@ -6,6 +6,8 @@ signal closing
 @export var options_scene: PackedScene
 var options_menu = null
 
+var seconds_paused:float = 0.0
+var seconds_to_earn_achievement = 60.0
 
 func _ready():
 	%ResumeButton.pressed.connect(on_resume_pressed)
@@ -15,6 +17,10 @@ func _ready():
 	
 	%ResumeButton.grab_focus()
 
+func _process(delta: float) -> void:
+	seconds_paused += delta;
+	if(seconds_paused>seconds_to_earn_achievement):
+		AchievementControl.earn_achievement("pause_long")
 
 func _input(event: InputEvent):
 	if event.is_action_pressed("ui_cancel"):
@@ -28,6 +34,7 @@ func restart_level():
 
 
 func on_resume_pressed():
+	seconds_paused = 0.0
 	closing.emit()
 	queue_free()
 
