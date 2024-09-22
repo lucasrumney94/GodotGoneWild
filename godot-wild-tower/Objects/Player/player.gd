@@ -73,6 +73,8 @@ var step_timer: float = 0
 var stepping_up: bool = false
 @export var step_up_speed: float = 200
 
+var crosshair_turnt: bool = false
+
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -546,11 +548,13 @@ func check_eye_ray():
 	if !%RayCastEyes.is_colliding():
 		%Crosshair.modulate = Color.WHITE
 		effect_enemy_outline(false)
+		turn_crosshair(false)
 	else:
 		var collider = %RayCastEyes.get_collider()
 		if collider != current_enemy && current_enemy != null:
 			%Crosshair.modulate = Color.WHITE
 			effect_enemy_outline(false)
+			turn_crosshair(false)
 		if collider == null:
 			return
 		if (collider.get_collision_layer() & 2):
@@ -558,6 +562,7 @@ func check_eye_ray():
 				if collider == current_enemy:
 					%Crosshair.modulate = Color.WHITE
 					effect_enemy_outline(false)
+					turn_crosshair(false)
 				return
 			if current_enemy != collider:
 				#effect_enemy_outline(false)
@@ -568,11 +573,20 @@ func check_eye_ray():
 						break
 			%Crosshair.modulate = Color.RED
 			effect_enemy_outline(true)
+			turn_crosshair(true)
 			#set outline on next_pass shader of enemy material
 			
 		else: 
 			%Crosshair.modulate = Color.WHITE
 			effect_enemy_outline(false)
+			turn_crosshair(false)
+
+
+func turn_crosshair(setting: bool):
+	if crosshair_turnt == setting: return
+	crosshair_turnt = setting
+	if setting: %CrosshairAnimator.play("turn")
+	else: %CrosshairAnimator.play_backwards("turn")
 
 
 func effect_enemy_outline(setting: bool):
