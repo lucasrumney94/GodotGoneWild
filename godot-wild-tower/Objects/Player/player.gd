@@ -55,6 +55,7 @@ var started: bool = false
 
 var was_on_floor: bool = false
 
+@export var long_fall_time: float = 1.3
 var fall_time: float = 0
 var long_fall: bool = false
 
@@ -174,7 +175,7 @@ func _physics_process(delta):
 			
 		if velocity.y < 0:
 			fall_time += delta
-			if fall_time > 1.3 && !long_fall:
+			if fall_time > long_fall_time && !long_fall:
 				long_fall = true
 				GameEvents.emit_long_fall_started()
 			
