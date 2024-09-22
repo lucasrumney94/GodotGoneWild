@@ -159,7 +159,7 @@ func play_player_enemy_dash():
 	# sfx_pitchshift.pitch_scale = pitch_shift_slomo_pitch_scale
 	# music_pitchshift.pitch_scale = pitch_shift_slomo_pitch_scale
 
-	play_2D_sound(player_enemy_dash_sound)
+	play_2D_sound(player_enemy_dash_sound,player_enemy_dash_sound_gain,"effects")
 	#await get_tree().create_timer(slomo_effect_length).timeout
 	#reset_pitch_and_cutoff()
 
@@ -174,7 +174,7 @@ func play_player_enemy_dash():
 # 	print("enemy dash time scale NORMAL", Time.get_ticks_msec())
 
 func play_restarting():
-	play_2D_sound(restarting_sound)
+	play_2D_sound(restarting_sound,restarting_sound_gain,"effects")
 
 func play_long_fall():
 	# print("playing long fall sound")
@@ -182,7 +182,7 @@ func play_long_fall():
 	#play_2D_sound(long_fall_sound, long_fall_sound_gain)
 
 func play_footstep(world_position: Vector3):
-	play_3D_sound(world_position, player_footstep_sounds.pick_random(),player_footstep_sound_gain, "effects")
+	play_3D_sound(world_position, player_footstep_sounds.pick_random(), player_footstep_sound_gain, "effects")
 
 
 func play_3D_sound(world_position: Vector3, file_to_play: Resource, gain:float=0.0, bus:String="effects"):
