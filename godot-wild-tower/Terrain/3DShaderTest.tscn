@@ -1,0 +1,73 @@
+[gd_scene load_steps=12 format=3 uid="uid://cm6td18rqo0kx"]
+
+[ext_resource type="Shader" path="res://Terrain/First3DShaderTest.gdshader" id="1_bea7v"]
+[ext_resource type="Script" path="res://Terrain/setHeightScale.gd" id="2_3gl2l"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ahklc"]
+noise_type = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_i5yfj"]
+seamless = true
+noise = SubResource("FastNoiseLite_ahklc")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_h531b"]
+noise_type = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4lotq"]
+seamless = true
+as_normal_map = true
+noise = SubResource("FastNoiseLite_h531b")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6o0o7"]
+render_priority = 0
+shader = ExtResource("1_bea7v")
+shader_parameter/height_scale = 0.5
+shader_parameter/noise = SubResource("NoiseTexture2D_i5yfj")
+shader_parameter/normalmap = SubResource("NoiseTexture2D_4lotq")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_x1oxw"]
+material = SubResource("ShaderMaterial_6o0o7")
+size = Vector2(5, 5)
+subdivide_width = 200
+subdivide_depth = 200
+
+[sub_resource type="Sky" id="Sky_k8m5w"]
+
+[sub_resource type="Environment" id="Environment_x3mkl"]
+background_mode = 1
+background_color = Color(0.268071, 0.0171921, 0.51292, 1)
+background_energy_multiplier = 8.97
+sky = SubResource("Sky_k8m5w")
+sky_custom_fov = 54.0
+
+[sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_0xrb0"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00551146, -0.00348878, 0.0371893)
+mesh = SubResource("PlaneMesh_x1oxw")
+script = ExtResource("2_3gl2l")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.136619, -0.901103, 0.41152, 0, 0.415415, 0.909632, -0.990624, -0.124273, 0.0567534, 0.297493, 1.37603, 0.109599)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.79022, 0)
+visible = false
+light_energy = 0.681
+light_indirect_energy = 5.701
+shadow_enabled = true
+directional_shadow_mode = 0
+directional_shadow_fade_start = 0.449
+directional_shadow_max_distance = 8192.0
+sky_mode = 1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_x3mkl")
+camera_attributes = SubResource("CameraAttributesPhysical_0xrb0")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.063051, 1.81519, 0.101671)
+light_color = Color(0.11781, 0.7294, 0.778415, 1)
+light_energy = 1.575

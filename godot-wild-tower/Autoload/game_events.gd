@@ -68,12 +68,10 @@ func emit_enemy_killed(enemy_type: Constants.EnemyType, global_pos: Vector3):
 
 
 func emit_player_hit_floor(global_pos: Vector3):
-	print("Player Hit Floor!")
 	player_hit_floor.emit(global_pos)
 
 
 func emit_player_jump(global_pos: Vector3):
-	print("PLAYER JUMPED!")
 	player_jump.emit(global_pos)
 
 
@@ -86,7 +84,6 @@ func emit_player_enemy_dash():
 
 
 func emit_long_fall_started():
-	print("player long fall started!")
 	long_fall_started.emit()
 
 
@@ -97,7 +94,6 @@ func emit_player_death():
 
 func emit_footstep(global_pos: Vector3):
 	footstep.emit(global_pos)
-	print("MAKE FOOTSTEP SOUND")
 
 
 func emit_projectile_impact(global_pos: Vector3):
