@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://Objects/Enemies/death_component.gd" id="4_odgkf"]
 [ext_resource type="PackedScene" uid="uid://deydyoodbbk77" path="res://Objects/Enemies/explosion_particles.tscn" id="5_34nv2"]
 [ext_resource type="Script" path="res://Objects/Enemies/projectile_emitter.gd" id="6_p1v71"]
-[ext_resource type="PackedScene" uid="uid://dpiq8w2bumil1" path="res://Objects/Enemies/projectile.tscn" id="7_lyiv6"]
+[ext_resource type="PackedScene" uid="uid://bsmilbkrhpb2i" path="res://Objects/Enemies/projectile.tscn" id="7_lyiv6"]
 [ext_resource type="AudioStream" uid="uid://7flx2545q0ew" path="res://Audio/EnemyFire.wav" id="8_la2wy"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j60eg"]
@@ -506,6 +506,7 @@ shadow_mesh = SubResource("ArrayMesh_51pju")
 collision_layer = 2
 script = ExtResource("1_lnmb2")
 gun = NodePath("HostileEnemy/Foot Base/Core/RotationRoot/Gun Body")
+activation_radius = 25.0
 
 [node name="OutlinerComponent" parent="." instance=ExtResource("2_p5d0b")]
 outline_material = SubResource("ShaderMaterial_j60eg")
@@ -516,6 +517,7 @@ enemy_type = 2
 explosion_particles = ExtResource("5_34nv2")
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)

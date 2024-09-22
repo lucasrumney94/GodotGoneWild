@@ -46,7 +46,6 @@ rings = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ubk3"]
 resource_name = "material_0"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_3q1xi"]
 _surfaces = [{
@@ -87,7 +86,6 @@ data = PackedVector3Array(31, -5.5, 0, 30.2228, -5.5, 6.8981, 30.2228, 5.5, 6.89
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_62x25"]
 resource_name = "material_1"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_as66v"]
 _surfaces = [{
@@ -128,7 +126,6 @@ data = PackedVector3Array(25.4366, 6.621, 5, 25.3481, 7.6612, 5.7855, 25.4366, 7
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v1oj0"]
 resource_name = "material_2"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_fnqjm"]
 _surfaces = [{
@@ -169,7 +166,6 @@ data = PackedVector3Array(-4, 2, -13, -4, 0, -8, -4, 0, -21.5493, -4, 0.2901, -2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n8dtc"]
 resource_name = "material_3"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_7whbf"]
 _surfaces = [{
@@ -210,7 +206,6 @@ data = PackedVector3Array(5, 10, 31.5, 5, 10, 21.5, 5, 0, 21.5, 5, 0, 21.5, 5, 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kv2wl"]
 resource_name = "material_4"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_03ndl"]
 _surfaces = [{
@@ -251,7 +246,6 @@ data = PackedVector3Array(29.0004, 0.2514, 7.3826, 27.0291, 2.2546, 13.0165, 28.
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ycd8f"]
 resource_name = "material_5"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_f24ab"]
 _surfaces = [{
@@ -292,7 +286,6 @@ data = PackedVector3Array(21.5035, -0.0583, 4.4066, 22, -0.5, 0, 21.5035, -0.5, 
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7vm84"]
 resource_name = "material_6"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_hjnsn"]
 _surfaces = [{
@@ -333,7 +326,6 @@ data = PackedVector3Array(30, -0.5, 0, 29.2478, -0.5, 6.6756, 29.2478, 0.5, 6.67
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lykng"]
 resource_name = "material_7"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_ae3v4"]
 _surfaces = [{
@@ -374,7 +366,6 @@ data = PackedVector3Array(31, -5.5, 0, 30.2228, -5.5, 6.8981, 30.2228, 5.5, 6.89
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ehdf3"]
 resource_name = "material_8"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_3e4w0"]
 _surfaces = [{
@@ -415,7 +406,6 @@ data = PackedVector3Array(22.147, -0.5, 5.9077, 20.7223, -0.5, 9.9793, 20.7223, 
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ijxnx"]
 resource_name = "material_9"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_gdb17"]
 _surfaces = [{
@@ -456,7 +446,6 @@ data = PackedVector3Array(2.5134, 21.9423, 11.012, 3.9337, 17.6777, 17.2345, 0.8
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yqoxs"]
 resource_name = "material_10"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_hs7j1"]
 _surfaces = [{
