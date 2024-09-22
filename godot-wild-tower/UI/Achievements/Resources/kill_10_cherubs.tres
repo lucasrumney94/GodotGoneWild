@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Achievement" load_steps=2 format=3 uid="uid://ciewphe0x31tl"]
+
+[ext_resource type="Script" path="res://UI/Achievements/achievement.gd" id="1_2inll"]
+
+[resource]
+script = ExtResource("1_2inll")
+id = "kill_10_cherubim"
+title = "Kill 10 Cherubim"
+description = "I don't know"
+stat = ""
+stat_goal = 0
+check_function = ""
+custom_string = ""
