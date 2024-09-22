@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://buhsb2ao2ykcr"]
+[gd_scene load_steps=20 format=3 uid="uid://buhsb2ao2ykcr"]
 
 [ext_resource type="Script" path="res://Main/main_game.gd" id="1_4bn8t"]
 [ext_resource type="PackedScene" uid="uid://do1pmtbmc423e" path="res://UI/pause_menu.tscn" id="2_v88ld"]
@@ -8,6 +8,7 @@
 [ext_resource type="Material" uid="uid://5dqiqxr4arwd" path="res://Materials/grid_material.tres" id="6_t6ra6"]
 [ext_resource type="ArrayMesh" uid="uid://dgy7dxognc1x3" path="res://Objects/Environment/Models/TowerTest1.obj" id="7_506fq"]
 [ext_resource type="PackedScene" uid="uid://dacvenlpyt2bp" path="res://Objects/Environment/Models/Column.tscn" id="8_j6044"]
+[ext_resource type="PackedScene" uid="uid://y00sgnh5ws4h" path="res://Objects/Environment/finish_area.tscn" id="8_xhnku"]
 [ext_resource type="PackedScene" uid="uid://b2oiak8dl30w2" path="res://Objects/Enemies/BasicEnemy.tscn" id="9_ixssy"]
 [ext_resource type="PackedScene" uid="uid://c08aetbdbnjbc" path="res://Objects/Enemies/MobileEnemy.tscn" id="9_tiv3e"]
 [ext_resource type="PackedScene" uid="uid://ddxtpi8u5fqe0" path="res://Objects/Environment/Models/bookcase.tscn" id="11_fqk5l"]
@@ -75,6 +76,9 @@ material_override = ExtResource("5_vivna")
 use_collision = true
 size = Vector3(50, 0.5, 50)
 material = ExtResource("6_t6ra6")
+
+[node name="FinishArea" parent="." instance=ExtResource("8_xhnku")]
+transform = Transform3D(2, 0, 0, 0, 0.5, 0, 0, 0, 2, 0, 46, 0)
 
 [node name="First Floor" type="Node3D" parent="."]
 
