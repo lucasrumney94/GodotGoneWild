@@ -29,7 +29,11 @@ func _physics_process(delta):
 	
 	if activation_radius <= 0 || global_position.distance_squared_to(target.global_position) > pow(activation_radius, 2):
 		return
+		
+	if $Timer.is_stopped():
+		$Timer.start()
 	
+	#TURN TOWARD TARGET
 	var target_pos = target.global_position
 	var local_tp = to_local(target_pos)
 	var theta = wrapf(atan2(local_tp.x, local_tp.z) - rotation_root.rotation.y, -PI, PI)
@@ -50,3 +54,4 @@ func on_timer_timeout():
 		return
 	
 	gun.fire_projectile()
+	$Timer.start()
