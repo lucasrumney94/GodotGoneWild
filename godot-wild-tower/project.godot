@@ -28,6 +28,10 @@ MissionControl="*res://Autoload/mission_control.tscn"
 AudioControl="*res://Autoload/audio_control.tscn"
 StatTracker="*res://Autoload/stat_tracker.tscn"
 
+[debug]
+
+shapes/collision/shape_color=Color(0, 1, 0, 0.776471)
+
 [display]
 
 window/size/viewport_width=1280

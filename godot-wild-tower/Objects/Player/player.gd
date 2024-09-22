@@ -225,6 +225,10 @@ func _physics_process(delta):
 	if input_dir.length_squared() > 0:
 		move_direction = %CameraRotationRoot.transform.basis * Vector3(input_dir.x, 0, input_dir.y)
 		move_direction = Vector3(move_direction.x, 0, move_direction.z).normalized()
+		if on_floor:
+			var side_move = transform.basis.y.cross(move_direction)
+			var floor_normal = get_floor_normal()
+			move_direction = side_move.cross(floor_normal)
 		if !started:
 			start()
 			

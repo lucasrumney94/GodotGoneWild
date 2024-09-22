@@ -4,10 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://bxfwjbkk62asb" path="res://Main/main_game.tscn" id="2_v0ewe"]
 [ext_resource type="PackedScene" uid="uid://ld24biyy5xkj" path="res://EnemyTest/EnemyTest1.tscn" id="3_61w4b"]
 [ext_resource type="PackedScene" uid="uid://b5jac6mtm6pg" path="res://Main/Stages/tower_outside_test.tscn" id="3_j6jsn"]
-[ext_resource type="PackedScene" uid="uid://drvs55gmmc1gj" path="res://Main/metric_playground.tscn" id="5_ayc5n"]
+[ext_resource type="PackedScene" uid="uid://c6l5ryse4oype" path="res://Main/metric_playground.tscn" id="5_ayc5n"]
 [ext_resource type="PackedScene" uid="uid://buhsb2ao2ykcr" path="res://Main/Stages/stage_1.tscn" id="5_jp2bf"]
-[ext_resource type="PackedScene" uid="uid://dirl388txghea" path="res://Main/Stages/stage_3_tower_splosion.tscn" id="7_65smr"]
-[ext_resource type="PackedScene" uid="uid://bdb186o67t1ta" path="res://Main/Stages/stage_4_boss_fight.tscn" id="8_hfsjj"]
+[ext_resource type="PackedScene" path="res://Main/Stages/stage_3_tower_splosion.tscn" id="7_65smr"]
+[ext_resource type="PackedScene" path="res://Main/Stages/stage_4_boss_fight.tscn" id="8_hfsjj"]
 
 [node name="MissionControl" type="Node"]
 script = ExtResource("1_dop84")
