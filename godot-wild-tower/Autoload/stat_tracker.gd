@@ -120,8 +120,10 @@ func check_kill_achievement(enemy_type: Constants.EnemyType):
 	if enemy_type == Constants.EnemyType.CHERUBIM:
 		if SaveControl.get_stat_cumulative("kill" + str(Constants.EnemyType.CHERUBIM)) > 10:
 			AchievementControl.earn_achievement("kill_10_cherubim")
+	if enemy_type == Constants.EnemyType.MALAKIM:
 		if SaveControl.get_stat_cumulative("kill" + str(Constants.EnemyType.MALAKIM)) > 10:
 			AchievementControl.earn_achievement("kill_10_malakim")
+	if enemy_type == Constants.EnemyType.SERAPHIM:
 		if SaveControl.get_stat_cumulative("kill" + str(Constants.EnemyType.SERAPHIM)) > 10:
 			AchievementControl.earn_achievement("kill_10_seraphim")
 	

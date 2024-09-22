@@ -13,7 +13,7 @@ step = 1.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Graphics/Elohim/Core/Node3D/HaloRotationRoot:rotation")
+tracks/0/path = NodePath("RotationRoot/Graphics/Elohim/Core/Node3D/HaloRotationRoot:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -28,7 +28,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Graphics/Elohim/Core/Node3D/HaloRotationRoot:rotation")
+tracks/0/path = NodePath("RotationRoot/Graphics/Elohim/Core/Node3D/HaloRotationRoot:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -518,8 +518,9 @@ shadow_mesh = SubResource("ArrayMesh_ner42")
 [node name="Elohim" type="CharacterBody3D" node_paths=PackedStringArray("spawn_patterns")]
 collision_layer = 2
 script = ExtResource("1_0b2vk")
-spawn_patterns = [NodePath("SpawnPatterns/Pattern1")]
-move_speed = 200.0
+spawn_patterns = [NodePath("SpawnPatterns/Pattern1"), NodePath("SpawnPatterns/Pattern2")]
+spawn_delay = 10.0
+move_speed = 500.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -536,92 +537,100 @@ health = 3
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 5.0
 
+[node name="InvincibilityTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0.183807, 0)
 shape = SubResource("SphereShape3D_8y0aq")
 
-[node name="Graphics" type="Node3D" parent="."]
+[node name="RotationRoot" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="Graphics" type="Node3D" parent="RotationRoot"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -7.06619, 0)
 
-[node name="Elohim" type="Node3D" parent="Graphics"]
+[node name="Elohim" type="Node3D" parent="RotationRoot/Graphics"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 
-[node name="Core" type="MeshInstance3D" parent="Graphics/Elohim" groups=["explode"]]
+[node name="Core" type="MeshInstance3D" parent="RotationRoot/Graphics/Elohim" groups=["explode"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -1)
 mesh = SubResource("ArrayMesh_itdcy")
 skeleton = NodePath("")
 
-[node name="Face" type="MeshInstance3D" parent="Graphics/Elohim/Core"]
+[node name="Face" type="MeshInstance3D" parent="RotationRoot/Graphics/Elohim/Core"]
 mesh = SubResource("ArrayMesh_to1nn")
 skeleton = NodePath("")
 
-[node name="Beard Center" type="MeshInstance3D" parent="Graphics/Elohim/Core/Face"]
+[node name="Beard Center" type="MeshInstance3D" parent="RotationRoot/Graphics/Elohim/Core/Face"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.4, 5.2)
 mesh = SubResource("ArrayMesh_y8ju5")
 skeleton = NodePath("")
 
-[node name="Beard Left" type="MeshInstance3D" parent="Graphics/Elohim/Core/Face"]
+[node name="Beard Left" type="MeshInstance3D" parent="RotationRoot/Graphics/Elohim/Core/Face"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.28, 5.4)
 mesh = SubResource("ArrayMesh_td2ug")
 skeleton = NodePath("")
 
-[node name="Beard Right" type="MeshInstance3D" parent="Graphics/Elohim/Core/Face"]
+[node name="Beard Right" type="MeshInstance3D" parent="RotationRoot/Graphics/Elohim/Core/Face"]
 transform = Transform3D(1, 0, 0, 0, -1, -3.25841e-07, 0, 3.25841e-07, -1, 0, -3.28, 5.4)
 mesh = SubResource("ArrayMesh_624hk")
 skeleton = NodePath("")
 
-[node name="Mustache Left" type="MeshInstance3D" parent="Graphics/Elohim/Core/Face"]
+[node name="Mustache Left" type="MeshInstance3D" parent="RotationRoot/Graphics/Elohim/Core/Face"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.1, 5.2)
 mesh = SubResource("ArrayMesh_a8iyx")
 skeleton = NodePath("")
 
-[node name="Mustache Right" type="MeshInstance3D" parent="Graphics/Elohim/Core/Face"]
+[node name="Mustache Right" type="MeshInstance3D" parent="RotationRoot/Graphics/Elohim/Core/Face"]
 transform = Transform3D(1, 0, 0, 0, -1, -3.25841e-07, 0, 3.25841e-07, -1, 0, -2.1, 5.2)
 mesh = SubResource("ArrayMesh_whwli")
 skeleton = NodePath("")
 
-[node name="Node3D" type="Node3D" parent="Graphics/Elohim/Core"]
+[node name="Node3D" type="Node3D" parent="RotationRoot/Graphics/Elohim/Core"]
 transform = Transform3D(1, 0, 0, 0, 0.766044, -0.642788, 0, 0.642788, 0.766044, 0, 0, 0)
 
-[node name="HaloRotationRoot" type="Node3D" parent="Graphics/Elohim/Core/Node3D"]
+[node name="HaloRotationRoot" type="Node3D" parent="RotationRoot/Graphics/Elohim/Core/Node3D"]
 unique_name_in_owner = true
 
-[node name="Halo" type="MeshInstance3D" parent="Graphics/Elohim/Core/Node3D/HaloRotationRoot"]
+[node name="Halo" type="MeshInstance3D" parent="RotationRoot/Graphics/Elohim/Core/Node3D/HaloRotationRoot"]
 transform = Transform3D(1, 0, 0, 3.55271e-15, 1, -8.9407e-08, -7.10543e-15, 8.9407e-08, 1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_rcg7v")
 skeleton = NodePath("")
 
-[node name="Halo_001" type="MeshInstance3D" parent="Graphics/Elohim/Core/Node3D/HaloRotationRoot"]
+[node name="Halo_001" type="MeshInstance3D" parent="RotationRoot/Graphics/Elohim/Core/Node3D/HaloRotationRoot"]
 transform = Transform3D(0.642788, -0.694272, 0.323744, 0.586824, 0.717923, 0.374465, -0.492404, -0.0507202, 0.868888, 0, 0, 0)
 mesh = SubResource("ArrayMesh_10l5u")
 skeleton = NodePath("")
 
-[node name="Halo_002" type="MeshInstance3D" parent="Graphics/Elohim/Core/Node3D/HaloRotationRoot"]
+[node name="Halo_002" type="MeshInstance3D" parent="RotationRoot/Graphics/Elohim/Core/Node3D/HaloRotationRoot"]
 transform = Transform3D(-0.173648, -0.969846, -0.17101, 0.754407, -0.24262, 0.609923, -0.633022, -0.0230992, 0.773789, 0, 0, 0)
 mesh = SubResource("ArrayMesh_gk0wj")
 skeleton = NodePath("")
 
-[node name="Halo_003" type="MeshInstance3D" parent="Graphics/Elohim/Core/Node3D/HaloRotationRoot"]
+[node name="Halo_003" type="MeshInstance3D" parent="RotationRoot/Graphics/Elohim/Core/Node3D/HaloRotationRoot"]
 transform = Transform3D(-0.866026, -0.383022, -0.321394, 0.383022, -0.921381, 0.0659695, -0.321394, -0.0659696, 0.944645, 0, 0, 0)
 mesh = SubResource("ArrayMesh_751u8")
 skeleton = NodePath("")
 
-[node name="Halo_004" type="MeshInstance3D" parent="Graphics/Elohim/Core/Node3D/HaloRotationRoot"]
+[node name="Halo_004" type="MeshInstance3D" parent="RotationRoot/Graphics/Elohim/Core/Node3D/HaloRotationRoot"]
 transform = Transform3D(0.642788, 0.694272, -0.323744, -0.586824, 0.717923, 0.374465, 0.492404, -0.0507202, 0.868888, 0, 0, 0)
 mesh = SubResource("ArrayMesh_g0g1t")
 skeleton = NodePath("")
 
-[node name="Halo_005" type="MeshInstance3D" parent="Graphics/Elohim/Core/Node3D/HaloRotationRoot"]
+[node name="Halo_005" type="MeshInstance3D" parent="RotationRoot/Graphics/Elohim/Core/Node3D/HaloRotationRoot"]
 transform = Transform3D(-0.173648, 0.969846, 0.17101, -0.754407, -0.24262, 0.609923, 0.633022, -0.0230992, 0.773789, 0, 0, 0)
 mesh = SubResource("ArrayMesh_klgym")
 skeleton = NodePath("")
 
-[node name="Halo_006" type="MeshInstance3D" parent="Graphics/Elohim/Core/Node3D/HaloRotationRoot"]
+[node name="Halo_006" type="MeshInstance3D" parent="RotationRoot/Graphics/Elohim/Core/Node3D/HaloRotationRoot"]
 transform = Transform3D(-0.866026, 0.383022, 0.321394, -0.383022, -0.921381, 0.0659696, 0.321394, -0.0659696, 0.944645, 0, 0, 0)
 mesh = SubResource("ArrayMesh_takby")
 skeleton = NodePath("")
 
 [node name="SpawnPatterns" type="Node3D" parent="."]
+unique_name_in_owner = true
 
 [node name="Pattern1" type="Node3D" parent="SpawnPatterns"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.869349, 0.329188, -4.63643)
@@ -641,3 +650,18 @@ enemy_type = 3
 [node name="EnemySpawnPoint3" parent="SpawnPatterns/Pattern1" instance=ExtResource("2_jnw1c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.22822, -3.67678, -4.18349)
 enemy_type = 3
+
+[node name="Pattern2" type="Node3D" parent="SpawnPatterns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.869349, 0.329188, -4.63643)
+
+[node name="EnemySpawnPoint" parent="SpawnPatterns/Pattern2" instance=ExtResource("2_jnw1c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.29684, -0.622673, -7.32122)
+enemy_type = 1
+
+[node name="EnemySpawnPoint2" parent="SpawnPatterns/Pattern2" instance=ExtResource("2_jnw1c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3859, -1.02139, -3.50506)
+enemy_type = 1
+
+[node name="EnemySpawnPoint4" parent="SpawnPatterns/Pattern2" instance=ExtResource("2_jnw1c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.71952, -0.843755, -2.12609)
+enemy_type = 1

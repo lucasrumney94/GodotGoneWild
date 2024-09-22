@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dtwnghgbgrs6k"]
+[gd_scene load_steps=13 format=3 uid="uid://dtwnghgbgrs6k"]
 
 [ext_resource type="Script" path="res://Main/main_game.gd" id="1_ssgvs"]
 [ext_resource type="PackedScene" uid="uid://do1pmtbmc423e" path="res://UI/pause_menu.tscn" id="2_35ieg"]
@@ -7,6 +7,7 @@
 [ext_resource type="ArrayMesh" uid="uid://dgy7dxognc1x3" path="res://Objects/Environment/Models/TowerTest1.obj" id="5_tf007"]
 [ext_resource type="PackedScene" path="res://Terrain/cloud layer.tscn" id="7_b217t"]
 [ext_resource type="PackedScene" uid="uid://dfvd2bwta7jmy" path="res://Objects/Enemies/Elohim.tscn" id="8_0ypp2"]
+[ext_resource type="Script" path="res://Objects/Environment/fall_kill_plane.gd" id="8_xdsyw"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_asy3g"]
 panorama = ExtResource("3_3bfky")
@@ -17,6 +18,8 @@ sky_material = SubResource("PanoramaSkyMaterial_asy3g")
 [sub_resource type="Environment" id="Environment_yg5si"]
 background_mode = 2
 sky = SubResource("Sky_seqca")
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_1p2d8"]
 
 [node name="Stage 4 Tower Boss Fight" type="Node3D"]
 script = ExtResource("1_ssgvs")
@@ -53,7 +56,15 @@ move_points = [NodePath("../GodMovePoints/Node3D"), NodePath("../GodMovePoints/N
 [node name="GodMovePoints" type="Node3D" parent="."]
 
 [node name="Node3D" type="Node3D" parent="GodMovePoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.0209, 10.99, 45.5206)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.0209, 10.99, -51.2928)
 
 [node name="Node3D2" type="Node3D" parent="GodMovePoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.4078, 20.7033, 58.4016)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.3248, 8.29836, -3.59291)
+
+[node name="FallKillPlane" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -189.9, 0)
+collision_layer = 16
+script = ExtResource("8_xdsyw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FallKillPlane"]
+shape = SubResource("WorldBoundaryShape3D_1p2d8")
