@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c6l5ryse4oype" path="res://Main/metric_playground.tscn" id="5_ayc5n"]
 [ext_resource type="PackedScene" uid="uid://buhsb2ao2ykcr" path="res://Main/Stages/stage_1.tscn" id="5_jp2bf"]
 [ext_resource type="PackedScene" path="res://Main/Stages/stage_3_tower_splosion.tscn" id="7_65smr"]
-[ext_resource type="PackedScene" path="res://Main/Stages/stage_4_boss_fight.tscn" id="8_hfsjj"]
+[ext_resource type="PackedScene" uid="uid://dtwnghgbgrs6k" path="res://Main/Stages/stage_4_boss_fight.tscn" id="8_hfsjj"]
 
 [node name="MissionControl" type="Node"]
 script = ExtResource("1_dop84")
