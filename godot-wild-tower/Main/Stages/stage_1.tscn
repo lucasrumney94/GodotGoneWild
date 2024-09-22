@@ -6,13 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://vssvdtmx3jx7" path="res://Objects/Player/player.tscn" id="4_dpxqh"]
 [ext_resource type="Material" uid="uid://bdgss0laad1u7" path="res://Materials/dirt.tres" id="4_efxj4"]
 [ext_resource type="Material" uid="uid://dfjferlg3bvsc" path="res://Materials/grass.tres" id="5_hdpsa"]
-[ext_resource type="PackedScene" uid="uid://dacvenlpyt2bp" path="res://Objects/Environment/Models/Column.tscn" id="8_j6044"]
+[ext_resource type="PackedScene" path="res://Objects/Environment/Models/Column.tscn" id="8_j6044"]
 [ext_resource type="PackedScene" uid="uid://y00sgnh5ws4h" path="res://Objects/Environment/finish_area.tscn" id="8_xhnku"]
 [ext_resource type="PackedScene" uid="uid://b2oiak8dl30w2" path="res://Objects/Enemies/BasicEnemy.tscn" id="9_ixssy"]
 [ext_resource type="PackedScene" uid="uid://c08aetbdbnjbc" path="res://Objects/Enemies/MobileEnemy.tscn" id="9_tiv3e"]
-[ext_resource type="PackedScene" uid="uid://ddxtpi8u5fqe0" path="res://Objects/Environment/Models/bookcase.tscn" id="11_fqk5l"]
-[ext_resource type="PackedScene" uid="uid://cge0083eia62r" path="res://Objects/Environment/Models/scaffold_support.tscn" id="12_bf34w"]
-[ext_resource type="PackedScene" uid="uid://bi8anegkhcuux" path="res://Objects/Environment/Models/scaffolding_plank.tscn" id="13_lt5jr"]
+[ext_resource type="PackedScene" path="res://Objects/Environment/Models/bookcase.tscn" id="11_fqk5l"]
+[ext_resource type="PackedScene" path="res://Objects/Environment/Models/scaffold_support.tscn" id="12_bf34w"]
+[ext_resource type="PackedScene" path="res://Objects/Environment/Models/scaffolding_plank.tscn" id="13_lt5jr"]
 [ext_resource type="PackedScene" uid="uid://b1cwlbpp2jlfk" path="res://Terrain/GrassTest.tscn" id="15_ycxwn"]
 [ext_resource type="Material" uid="uid://cxy3baspdt2jv" path="res://Materials/marble.tres" id="16_2xuf4"]
 
@@ -420,7 +420,7 @@ mesh = SubResource("CylinderMesh_wawc7")
 skeleton = NodePath("../Dirt Interior")
 
 [node name="Player" parent="." instance=ExtResource("4_dpxqh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 29.5608)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06562, 51.36)
 
 [node name="SkyLight" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22, 0)
@@ -943,3 +943,6 @@ skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CSG Mesh/Third Floor/3rdFloor2/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_l2oe4")
+
+[node name="Grass2" parent="." instance=ExtResource("15_ycxwn")]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0)
