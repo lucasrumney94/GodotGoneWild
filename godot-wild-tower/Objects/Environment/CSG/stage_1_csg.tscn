@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://dymksrxjqxqri"]
 
-[ext_resource type="Script" path="res://Main/main_game.gd" id="1_ersuw"]
-[ext_resource type="PackedScene" uid="uid://do1pmtbmc423e" path="res://UI/pause_menu.tscn" id="2_8crwl"]
+[ext_resource type="Script" path="res://Main/main_game.gd" id="1_12dbi"]
+[ext_resource type="PackedScene" uid="uid://do1pmtbmc423e" path="res://UI/pause_menu.tscn" id="2_ib8fp"]
 
 [node name="Stage 1" type="Node3D"]
-script = ExtResource("1_ersuw")
-pause_menu_scene = ExtResource("2_8crwl")
+script = ExtResource("1_12dbi")
+pause_menu_scene = ExtResource("2_ib8fp")
 
 [node name="First Floor" type="Node3D" parent="."]
 

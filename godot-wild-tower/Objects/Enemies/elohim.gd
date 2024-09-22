@@ -33,7 +33,8 @@ func _physics_process(delta):
 			print("GOD COULDN'T FIND PLAYER")
 			return
 	
-	look_at(target.global_position)
+	if target.global_position != global_position:
+		look_at(target.global_position)
 	
 	if activation_range > 0 && global_position.distance_squared_to(target.global_position) < pow(activation_range, 2):
 		if $SpawnTimer.is_stopped():
@@ -57,4 +58,5 @@ func on_spawn_timer_timeout():
 
 
 func on_hurt():
+	print("GOD HAS BEEN HURT!")
 	move_index += 1

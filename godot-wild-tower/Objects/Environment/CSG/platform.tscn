@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://bql3t4erbhucn"]
+
+[node name="Platform" type="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.88387, 0)
+
+[node name="Mesh" type="CSGCylinder3D" parent="."]
+radius = 20.0
+height = 1.0
+sides = 28
+
+[node name="CentralCut" type="CSGCylinder3D" parent="."]
+operation = 2
+radius = 13.0
+height = 1.5
+sides = 28
+
+[node name="Cut1" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0)
+operation = 2
+size = Vector3(22, 1.5, 50)
+
+[node name="Cut2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11)
+operation = 2
+size = Vector3(50, 1.5, 22)
