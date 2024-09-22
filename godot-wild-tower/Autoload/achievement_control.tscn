@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Autoload/achievement_control.gd" id="1_lvx2p"]
 [ext_resource type="PackedScene" uid="uid://b1hxkyiomflv0" path="res://UI/Achievements/achievement_popup.tscn" id="2_uwhnw"]
 [ext_resource type="Script" path="res://UI/Achievements/achievement.gd" id="3_wmop3"]
-[ext_resource type="Resource" uid="uid://docoki0ppvpsu" path="res://UI/Achievements/Resources/get_killed.tres" id="4_1sskk"]
+[ext_resource type="Resource" uid="uid://t8xc8d3b5cvo" path="res://UI/Achievements/Resources/get_killed.tres" id="4_1sskk"]
 [ext_resource type="Resource" uid="uid://qbhxgfjtb32q" path="res://UI/Achievements/Resources/view_credits.tres" id="4_c77lf"]
 [ext_resource type="Resource" uid="uid://bg74tgdvosln8" path="res://UI/Achievements/Resources/view_options.tres" id="6_7cfo6"]
 [ext_resource type="Resource" uid="uid://bmijqpdsiwot7" path="res://UI/Achievements/Resources/play_twice.tres" id="7_kv655"]

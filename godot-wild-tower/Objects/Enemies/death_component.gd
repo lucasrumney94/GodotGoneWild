@@ -1,14 +1,22 @@
 extends Node
 class_name DeathComponent
 
+signal hurt
+
 @export var enemy_type: Constants.EnemyType
 
 @export var explosion_particles: PackedScene
+
+@export var health: int = 0
 
 var crystal_script = preload("res://Scripts/crystal_shard.gd")
 
 
 func die(push_vector: Vector3):
+	health -= 1
+	if health > 0:
+		hurt.emit()
+		return
 	#find all visible mesh instance 3d
 	#for each, instantiate a RigidBody3D at their location
 	#add a child of type CollisionShape3D to the rb the size of mesh bounding box
