@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cvo2k0ochbnw"]
+[gd_scene load_steps=3 format=3 uid="uid://cvo2k0ochbnw"]
 
 [ext_resource type="Script" path="res://UI/credits.gd" id="1_y2vnb"]
+[ext_resource type="Texture2D" uid="uid://b2tm2n18ndeg5" path="res://UI/Image/god.png" id="2_txjmr"]
 
 [node name="Credits" type="CanvasLayer"]
 layer = 10
@@ -14,7 +15,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_txjmr")
+expand_mode = 2
+stretch_mode = 6
+flip_h = true
+
 [node name="ColorRect" type="ColorRect" parent="Control"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -39,33 +53,35 @@ uppercase = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 4
 anchor_top = 0.5
-anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
+offset_left = 300.0
+offset_top = -94.405
+offset_right = 407.0
+offset_bottom = 75.595
 grow_vertical = 2
+rotation = 0.0506145
+scale = Vector2(2, 2)
 
 [node name="Label" type="Label" parent="Control/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 39
 text = "Erik"
 horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="Control/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Lucas Rumney"
+theme_override_font_sizes/font_size = 39
+text = "Lucas"
 horizontal_alignment = 1
 
 [node name="Label3" type="Label" parent="Control/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 39
 text = "Mark"
 horizontal_alignment = 1
 
