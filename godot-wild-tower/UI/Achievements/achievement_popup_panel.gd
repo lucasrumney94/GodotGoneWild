@@ -4,7 +4,7 @@ signal popup_panel_remove(panel: Control)
 
 
 func _ready():
-	$Timer.timeout.connect(on_timer_timeout)
+	$TimerUnscaled.timeout.connect(on_timer_timeout)
 
 
 func setup_achievement(ach: Achievement):

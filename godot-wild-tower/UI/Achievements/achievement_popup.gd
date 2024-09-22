@@ -10,13 +10,13 @@ var panel_add_delay: float = 0.5
 
 
 func _ready():
-	$Timer.wait_time = panel_add_delay
-	$Timer.timeout.connect(on_timer_timeout)
+	$TimerUnscaled.wait_time = panel_add_delay
+	$TimerUnscaled.timeout.connect(on_timer_timeout)
 
 
 func add_achievement(ach: Achievement):
 	achievements_to_add.append(ach)
-	if $Timer.is_stopped():
+	if $TimerUnscaled.is_stopped():
 		add_panel()
 
 
@@ -33,7 +33,7 @@ func add_panel():
 	popup.popup_panel_remove.connect(on_popup_panel_remove)
 	
 	achievements_to_add.remove_at(0)
-	$Timer.start()
+	$TimerUnscaled.start()
 
 
 func on_popup_panel_remove(popup: Control):

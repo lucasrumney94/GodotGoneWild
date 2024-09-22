@@ -1,4 +1,5 @@
 extends Node
+class_name TimerUnscaled
 
 signal timeout
 
@@ -22,3 +23,18 @@ func _process(delta: float):
 	if time > wait_time:
 		time -= wait_time
 		timeout.emit()
+		if one_shot:
+			stopped = true
+			time = 0
+
+
+func is_stopped() -> bool:
+	return stopped
+
+
+func start(time_sec: float = -1):
+	if stopped:
+		time = 0
+	stopped = false
+	if time_sec > 0:
+		wait_time = time_sec
