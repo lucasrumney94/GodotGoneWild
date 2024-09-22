@@ -118,7 +118,7 @@ text = "NAME"
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 8
 text = "Description"
 text_overrun_behavior = 3
 

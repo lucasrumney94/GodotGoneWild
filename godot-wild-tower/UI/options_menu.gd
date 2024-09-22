@@ -54,5 +54,7 @@ func on_effects_volume_dragged(_changed: bool):
 
 
 func on_back_pressed():
+	if (get_bus_volume_percent("music")<0.01):
+		AchievementControl.earn_achievement("bad_music")
 	closing.emit()
 	queue_free()
