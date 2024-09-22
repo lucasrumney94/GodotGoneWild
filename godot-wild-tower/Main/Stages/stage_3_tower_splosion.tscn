@@ -30,7 +30,6 @@ script = ExtResource("1_33k6b")
 pause_menu_scene = ExtResource("2_vi14t")
 
 [node name="Player" parent="." instance=ExtResource("1_dcbag")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36.3385, 0)
 
 [node name="FallKillPlane" parent="." instance=ExtResource("2_tdiav")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -21.2011, 0)
