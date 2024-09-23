@@ -31,7 +31,8 @@ func _input(event):
 
 
 func restart_level():
-	get_tree().change_scene_to_file(get_tree().current_scene.scene_file_path)
+	get_tree().reload_current_scene()
+	#get_tree().change_scene_to_file(get_tree().current_scene.scene_file_path)
 
 
 func on_unpause():

@@ -24,6 +24,7 @@ class_name PlayerControl
 @export var constrain_dash_y: bool = true
 
 @export var slow_time_duration: float = 1.0
+@export var low_gravity_duration: float = 0.75
 @export var slow_time_delay: float = 0.5
 @export var death_look_mult: float = 0.2
 
@@ -113,8 +114,8 @@ func _ready():
 func _input(event: InputEvent):
 	var mouse_input: bool = event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED
 	if mouse_input && !is_dashing:
-		var rotation_input: float = -event.relative.x * mouse_sensitivity
-		var tilt_input: float = -event.relative.y * mouse_sensitivity
+		var rotation_input: float = -event.relative.x * Settings.mouse_sensitivity
+		var tilt_input: float = -event.relative.y * Settings.mouse_sensitivity
 		update_camera(get_process_delta_time(), rotation_input, tilt_input)
 	
 	if !alive: return
@@ -523,15 +524,17 @@ func temporal_shift():
 	time_tween = create_tween()
 	
 	#...Hopefully we don't change the scale, this is just a delay timer
-	time_tween.tween_property(self, "scale", Vector3.ONE, slow_time_delay)
-	time_tween.parallel().tween_method(slow_time, 1.0, 0.1, slow_time_delay)
+	if Settings.slowdown_duration > 0:
+		time_tween.tween_property(self, "scale", Vector3.ONE, slow_time_delay)
+		time_tween.parallel().tween_method(slow_time, 1.0, 0.1, slow_time_delay)
 	#time_tween.chain()
 	#time_tween.set_parallel()
 	
-	time_tween.tween_method(set_time_scale, 0.1, 1.0, slow_time_duration).set_ease(Tween.EASE_IN)
-	#time_tween.tween_property(Engine, "time_scale", 1.0, 1.0).set_ease(Tween.EASE_IN)
+	#FIRST IS OLD LINE
+	#time_tween.tween_method(set_time_scale, 0.1, 1.0, slow_time_duration).set_ease(Tween.EASE_IN)
+	time_tween.tween_method(set_time_scale, 0.1, 1.0, Settings.slowdown_duration).set_ease(Tween.EASE_IN)
 	
-	time_tween.parallel().tween_property(self, "gravity_mult", 1.0, slow_time_duration).set_ease(Tween.EASE_IN)
+	time_tween.parallel().tween_property(self, "gravity_mult", 1.0, low_gravity_duration).set_ease(Tween.EASE_IN)
 	time_tween.tween_callback(slomo_end)
 
 

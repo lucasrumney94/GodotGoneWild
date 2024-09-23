@@ -6,6 +6,13 @@ signal closing
 @onready var sfx_slider: Slider = %SfxSlider
 @onready var music_slider: Slider = %MusicSlider
 
+@onready var mouse_sensitivity_slider: HSlider = %MouseSensitivitySlider
+@onready var mouse_sensitivity_value: Label = %MouseSensitivityValue
+@onready var slowmo_duration_slider: HSlider = %SlowmoDurationSlider
+@onready var slowmo_duration_value: Label = %SlowmoDurationValue
+
+#TODO add PlayerPrefs save support
+
 
 func _ready():
 	print("should be earning option achievement")
@@ -22,6 +29,14 @@ func _ready():
 	sfx_slider.value_changed.connect(on_audio_slider_changed.bind("effects"))
 	sfx_slider.drag_ended.connect(on_effects_volume_dragged)
 	music_slider.value_changed.connect(on_audio_slider_changed.bind("music"))
+	
+	mouse_sensitivity_slider.value = Settings.mouse_sensitivity
+	mouse_sensitivity_value.text = str(Settings.mouse_sensitivity)
+	slowmo_duration_slider.value = Settings.slowdown_duration
+	slowmo_duration_value.text = str(Settings.slowdown_duration)
+	
+	mouse_sensitivity_slider.value_changed.connect(on_mouse_sensitivity_changed)
+	slowmo_duration_slider.value_changed.connect(on_slowmo_duration_changed)
 	
 	%BackButton.grab_focus()
 
@@ -51,6 +66,18 @@ func on_audio_slider_changed(new_value: float, bus_name: String):
 
 func on_effects_volume_dragged(_changed: bool):
 	$AudioStreamPlayer.play()
+
+
+func on_mouse_sensitivity_changed(new_value: float):
+	Settings.mouse_sensitivity = new_value
+	mouse_sensitivity_value.text = str(new_value)
+	#TODO save as playerpref
+
+
+func on_slowmo_duration_changed(new_value: float):
+	Settings.slowdown_duration = new_value
+	slowmo_duration_value.text = str(new_value)
+	#TODO save as playerpref
 
 
 func on_back_pressed():

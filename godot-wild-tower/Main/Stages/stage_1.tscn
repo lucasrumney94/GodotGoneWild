@@ -4,17 +4,17 @@
 [ext_resource type="PackedScene" uid="uid://do1pmtbmc423e" path="res://UI/pause_menu.tscn" id="2_v88ld"]
 [ext_resource type="Texture2D" uid="uid://bkchfco8pdnoh" path="res://Objects/Environment/Models/BlueSkySkybox.png" id="3_71idg"]
 [ext_resource type="PackedScene" uid="uid://vssvdtmx3jx7" path="res://Objects/Player/player.tscn" id="4_dpxqh"]
-[ext_resource type="Material" uid="uid://bdgss0laad1u7" path="res://Materials/dirt.tres" id="4_efxj4"]
-[ext_resource type="Material" uid="uid://dfjferlg3bvsc" path="res://Materials/grass.tres" id="5_hdpsa"]
+[ext_resource type="Material" path="res://Materials/dirt.tres" id="4_efxj4"]
+[ext_resource type="Material" path="res://Materials/grass.tres" id="5_hdpsa"]
 [ext_resource type="PackedScene" uid="uid://dacvenlpyt2bp" path="res://Objects/Environment/Models/Column.tscn" id="8_j6044"]
 [ext_resource type="PackedScene" uid="uid://y00sgnh5ws4h" path="res://Objects/Environment/finish_area.tscn" id="8_xhnku"]
 [ext_resource type="PackedScene" uid="uid://b2oiak8dl30w2" path="res://Objects/Enemies/BasicEnemy.tscn" id="9_ixssy"]
 [ext_resource type="PackedScene" uid="uid://c08aetbdbnjbc" path="res://Objects/Enemies/MobileEnemy.tscn" id="9_tiv3e"]
 [ext_resource type="PackedScene" uid="uid://ddxtpi8u5fqe0" path="res://Objects/Environment/Models/bookcase.tscn" id="11_fqk5l"]
-[ext_resource type="PackedScene" uid="uid://cge0083eia62r" path="res://Objects/Environment/Models/scaffold_support.tscn" id="12_bf34w"]
-[ext_resource type="PackedScene" uid="uid://bi8anegkhcuux" path="res://Objects/Environment/Models/scaffolding_plank.tscn" id="13_lt5jr"]
-[ext_resource type="PackedScene" uid="uid://b1cwlbpp2jlfk" path="res://Terrain/GrassTest.tscn" id="15_ycxwn"]
-[ext_resource type="Material" uid="uid://cxy3baspdt2jv" path="res://Materials/marble.tres" id="16_2xuf4"]
+[ext_resource type="PackedScene" path="res://Objects/Environment/Models/scaffold_support.tscn" id="12_bf34w"]
+[ext_resource type="PackedScene" path="res://Objects/Environment/Models/scaffolding_plank.tscn" id="13_lt5jr"]
+[ext_resource type="PackedScene" path="res://Terrain/GrassTest.tscn" id="15_ycxwn"]
+[ext_resource type="Material" path="res://Materials/marble.tres" id="16_2xuf4"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_26xkk"]
 panorama = ExtResource("3_71idg")
@@ -1518,8 +1518,6 @@ transform = Transform3D(0.993373, -0.114937, 7.45058e-09, 0.028778, 0.248721, 0.
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
 
 [node name="CSG" type="Node3D" parent="."]
-script = ExtResource("1_4bn8t")
-pause_menu_scene = ExtResource("2_v88ld")
 
 [node name="OuterWall" type="CSGCombiner3D" parent="CSG"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.5, 0)

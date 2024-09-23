@@ -27,6 +27,7 @@ SaveControl="*res://Autoload/save_control.tscn"
 MissionControl="*res://Autoload/mission_control.tscn"
 AudioControl="*res://Autoload/audio_control.tscn"
 StatTracker="*res://Autoload/stat_tracker.tscn"
+Settings="*res://Autoload/settings.tscn"
 
 [debug]
 
