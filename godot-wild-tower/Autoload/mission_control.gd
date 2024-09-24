@@ -8,6 +8,14 @@ var current_level = 0
 var loading_credits: bool = false
 
 
+func _ready():
+	Callable(init).call_deferred()
+
+
+func init():
+	GameEvents.returning_to_menu.connect(on_returning_to_menu)
+
+
 func load_next_level():
 	var next: int = current_level + 1
 	if next >= missions.size():
@@ -26,3 +34,7 @@ func load_end_credits():
 
 func do_load_next_level():
 	get_tree().change_scene_to_packed(missions[current_level])
+
+
+func on_returning_to_menu():
+	current_level = 0

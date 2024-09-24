@@ -4,6 +4,9 @@ const SAVE_FILE_PATH = "user://player_prefs.pref"
 
 var save_data: Dictionary = {}
 
+#TODO save this as an ini file or json
+#rather than the normal encrypted looking godot save type
+
 
 func _ready():
 	load_save_data()
