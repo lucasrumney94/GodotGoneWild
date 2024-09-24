@@ -131,6 +131,11 @@ max_value = 1.0
 step = 0.01
 value = 0.1
 
+[node name="InvertLookYCheckBox" type="CheckBox" parent="Control/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Invert Look Y"
+
 [node name="VBoxContainer5" type="VBoxContainer" parent="Control/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 

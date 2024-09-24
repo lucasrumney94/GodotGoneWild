@@ -116,6 +116,8 @@ func _input(event: InputEvent):
 	if mouse_input && !is_dashing:
 		var rotation_input: float = -event.relative.x * Settings.mouse_sensitivity
 		var tilt_input: float = -event.relative.y * Settings.mouse_sensitivity
+		if Settings.invert_look_y:
+			tilt_input *= -1
 		update_camera(get_process_delta_time(), rotation_input, tilt_input)
 	
 	if !alive: return

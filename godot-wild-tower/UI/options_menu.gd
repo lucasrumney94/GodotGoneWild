@@ -11,7 +11,11 @@ signal closing
 @onready var slowmo_duration_slider: HSlider = %SlowmoDurationSlider
 @onready var slowmo_duration_value: Label = %SlowmoDurationValue
 
+@onready var invert_look_y_check_box: CheckBox = %InvertLookYCheckBox
+
 #TODO add PlayerPrefs save support
+
+var settings_changed: bool = false
 
 
 func _ready():
@@ -38,6 +42,9 @@ func _ready():
 	mouse_sensitivity_slider.value_changed.connect(on_mouse_sensitivity_changed)
 	slowmo_duration_slider.value_changed.connect(on_slowmo_duration_changed)
 	
+	invert_look_y_check_box.button_pressed = Settings.invert_look_y
+	invert_look_y_check_box.toggled.connect(on_invert_look_y_toggled)
+	
 	%BackButton.grab_focus()
 
 
@@ -59,9 +66,8 @@ func set_bus_volume(volume_percent: float, bus_name: String):
 
 func on_audio_slider_changed(new_value: float, bus_name: String):
 	set_bus_volume(new_value, bus_name)
-	
-	#PlayerPrefs.update_setting("audio_" + bus_name, new_value)
-	#settings_changed = true
+	PlayerPrefs.update_setting("audio_" + bus_name, new_value)
+	settings_changed = true
 
 
 func on_effects_volume_dragged(_changed: bool):
@@ -71,17 +77,29 @@ func on_effects_volume_dragged(_changed: bool):
 func on_mouse_sensitivity_changed(new_value: float):
 	Settings.mouse_sensitivity = new_value
 	mouse_sensitivity_value.text = str(new_value)
-	#TODO save as playerpref
+	PlayerPrefs.update_setting("mouse_sensitivity", new_value)
+	settings_changed = true
 
 
 func on_slowmo_duration_changed(new_value: float):
 	Settings.slowdown_duration = new_value
 	slowmo_duration_value.text = str(new_value)
-	#TODO save as playerpref
+	PlayerPrefs.update_setting("slowdown_duration", new_value)
+	settings_changed = true
+
+
+func on_invert_look_y_toggled(toggled_on: bool):
+	Settings.invert_look_y = toggled_on
+	PlayerPrefs.update_setting("invert_look_y", int(toggled_on))
+	settings_changed = true
 
 
 func on_back_pressed():
 	if (get_bus_volume_percent("music")<0.01):
 		AchievementControl.earn_achievement("bad_music")
+	
+	if settings_changed:
+		PlayerPrefs.save()
+		
 	closing.emit()
 	queue_free()
