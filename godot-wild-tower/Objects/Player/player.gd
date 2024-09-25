@@ -23,6 +23,11 @@ class_name PlayerControl
 @export var vertical_dash_limit: float = 5
 @export var constrain_dash_y: bool = true
 
+@export var lock_look_on_dash: bool = true
+
+@export var coyote_time: float = 0.2
+var coyote_timer: float = 0
+
 @export var slow_time_duration: float = 1.0
 @export var low_gravity_duration: float = 0.75
 @export var slow_time_delay: float = 0.5
@@ -113,7 +118,7 @@ func _ready():
 #func _unhandled_input(event: InputEvent):
 func _input(event: InputEvent):
 	var mouse_input: bool = event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED
-	if mouse_input && !is_dashing:
+	if mouse_input && (!lock_look_on_dash || (lock_look_on_dash && !is_dashing)):
 		var rotation_input: float = -event.relative.x * Settings.mouse_sensitivity
 		var tilt_input: float = -event.relative.y * Settings.mouse_sensitivity
 		if Settings.invert_look_y:
@@ -162,6 +167,8 @@ func _physics_process(delta):
 	var on_floor: bool = is_on_floor() || stepping_up
 	if on_floor && !was_on_floor && !stepping_up:
 		GameEvents.emit_player_hit_floor(global_position)
+	elif was_on_floor && !on_floor:
+		coyote_timer = coyote_time
 	was_on_floor = on_floor
 	
 	if camera_shake:
@@ -175,6 +182,7 @@ func _physics_process(delta):
 		if on_floor:%DebugOnFloorLabel.text = "On Floor"
 		else: %DebugOnFloorLabel.text = "Not on Floor"
 		move_and_slide()
+		coyote_timer = 0.0
 		return
 	
 	
@@ -192,6 +200,9 @@ func _physics_process(delta):
 	# Add the gravity.
 	if !on_floor:# && !is_clambering:
 		step_timer = 0
+		
+		if coyote_timer > 0:
+			coyote_timer -= delta
 		
 		speed_mult = air_speed_mult
 		if !stepping_up:
@@ -215,13 +226,14 @@ func _physics_process(delta):
 		speed_mult = 1.0
 		short_dash_count = 1
 		jump_count = 0
+		coyote_timer = -1
 		%DebugOnFloorLabel.text = "On Floor"
 		#if crouched_up:
 			#animation_player.play("crouch_reset")
 			#GameEvents.emit_player_crouch(false)
 
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") and (on_floor || jump_count > 0):
+	if Input.is_action_just_pressed("jump") and (on_floor || jump_count > 0 || coyote_timer > 0.0):
 		if !started: start()
 		if jump_count > 0 && !on_floor:
 			velocity.y = JUMP_VELOCITY * 0.5
@@ -230,6 +242,8 @@ func _physics_process(delta):
 		else: velocity.y = JUMP_VELOCITY
 		is_jumping = true
 		on_floor = false
+		was_on_floor = false
+		coyote_timer = -1
 		
 		GameEvents.emit_player_jump(global_position)
 		
