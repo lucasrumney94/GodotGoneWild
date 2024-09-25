@@ -353,9 +353,11 @@ func detect_step(direction: Vector3, delta: float):
 		return false
 	
 	%FeetBaseShapecast.target_position = move_direction * delta * speed_mult
+	#print(str(%FeetBaseShapecast.target_position.length()))
 	%FeetBaseShapecast.force_shapecast_update()
 	if %FeetBaseShapecast.is_colliding():
 		var hit_normal: Vector3 = %FeetBaseShapecast.get_collision_normal(0)
+		#print(str(hit_normal.dot(Vector3.UP)))
 		if hit_normal.dot(Vector3.UP) < 0.5:
 			#print("PLAYER HAS DETECTED A STEP. LOW RAYCAST HITTING " + feet_step_low_raycast.get_collider().get_parent().name + " WITH NORMAL " + str(hit_normal))
 			return true

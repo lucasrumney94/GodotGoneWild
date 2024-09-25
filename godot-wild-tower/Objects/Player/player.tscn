@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://vssvdtmx3jx7"]
+[gd_scene load_steps=18 format=3 uid="uid://vssvdtmx3jx7"]
 
 [ext_resource type="Script" path="res://Objects/Player/player.gd" id="1_l1h35"]
 [ext_resource type="PackedScene" uid="uid://bueww8nstwpfl" path="res://UI/death_screen.tscn" id="2_l6nbw"]
@@ -39,6 +39,8 @@ colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1)
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dxmwe"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_kmsa4"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ph7xd"]
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 collision_layer = 4
@@ -212,5 +214,5 @@ target_position = Vector3(0, 0, 0)
 [node name="FeetUpperShapecast" type="ShapeCast3D" parent="FeetShapecastRoot"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.904514, 0)
-shape = SubResource("SphereShape3D_kmsa4")
+shape = SubResource("SphereShape3D_ph7xd")
 target_position = Vector3(0, 0, 0)
