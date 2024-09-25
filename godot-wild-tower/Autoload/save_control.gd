@@ -32,9 +32,9 @@ func save():
 
 func clear_save_data():
 	old_data = save_data.duplicate()
-	var file = FileAccess.open(SAVE_FILE_PATH, FileAccess.WRITE)
+	#var file = FileAccess.open(SAVE_FILE_PATH, FileAccess.WRITE)
 	var blank_data: Dictionary = {}
-	file.store_var(blank_data)
+	#file.store_var(blank_data)
 	save_data = blank_data.duplicate()
 	save_data_reset.emit()
 	save()
@@ -44,9 +44,9 @@ func clear_achievement_data():
 	if !save_data.has("achievements"): return
 	
 	old_data = save_data.duplicate()
-	var file = FileAccess.open(SAVE_FILE_PATH, FileAccess.WRITE)
+	#var file = FileAccess.open(SAVE_FILE_PATH, FileAccess.WRITE)
 	save_data.erase("achievements")
-	file.store_var(save_data)
+	#file.store_var(save_data)
 	save_data_reset.emit()
 	save()
 
@@ -55,9 +55,9 @@ func clear_stats_data():
 	if !save_data.has("stats"): return
 	
 	old_data = save_data.duplicate()
-	var file = FileAccess.open(SAVE_FILE_PATH, FileAccess.WRITE)
+	#var file = FileAccess.open(SAVE_FILE_PATH, FileAccess.WRITE)
 	save_data.erase("stats")
-	file.store_var(save_data)
+	#file.store_var(save_data)
 	save_data_reset.emit()
 	save()
 

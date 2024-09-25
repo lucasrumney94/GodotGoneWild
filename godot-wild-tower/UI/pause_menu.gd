@@ -25,13 +25,12 @@ func _process(delta: float) -> void:
 		AchievementControl.earn_achievement("pause_long")
 
 func _input(event: InputEvent):
-	
+	if !OS.has_feature("web"):
 	#IN HTML VERSION, ESCAPE CONFLICTS WITH BROWSER
-	#TODO REACTIVATE THIS FOR DESKTOP VERSION
-	#if event.is_action_pressed("ui_cancel"):
-		#if options_menu != null: return
-		#Callable(on_resume_pressed).call_deferred()
-	pass
+	#TO/DO REACTIVATE THIS FOR DESKTOP VERSION
+		if event.is_action_pressed("ui_cancel"):
+			if options_menu != null: return
+			Callable(on_resume_pressed).call_deferred()
 
 
 func restart_level():
