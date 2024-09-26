@@ -64,13 +64,14 @@ custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 16
+alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 
 [node name="Label" type="Label" parent="Control/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
-text = "Main Volume"
+text = "Master Volume"
 horizontal_alignment = 1
 
 [node name="MasterVolumeSlider" type="HSlider" parent="Control/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer"]
@@ -107,11 +108,42 @@ layout_mode = 2
 max_value = 1.0
 step = 0.01
 
+[node name="VBoxContainer6" type="VBoxContainer" parent="Control/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer6"]
+layout_mode = 2
+text = "Display Mode"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer6"]
+layout_mode = 2
+alignment = 1
+
+[node name="WindowedButton" type="Button" parent="Control/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer6/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = true
+text = "Windowed"
+
+[node name="WindowedFullscreenButton" type="Button" parent="Control/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer6/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = true
+text = "Windowed Fullscreen"
+
+[node name="FullscreenButton" type="Button" parent="Control/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer6/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = true
+text = "Fullscreen"
+
 [node name="VBoxContainer4" type="VBoxContainer" parent="Control/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer4"]
 layout_mode = 2
+alignment = 1
 
 [node name="Label" type="Label" parent="Control/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer4/HBoxContainer"]
 layout_mode = 2
@@ -134,6 +166,7 @@ value = 0.1
 [node name="InvertLookYCheckBox" type="CheckBox" parent="Control/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 4
 text = "Invert Look Y"
 
 [node name="VBoxContainer5" type="VBoxContainer" parent="Control/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
@@ -141,6 +174,7 @@ layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer5"]
 layout_mode = 2
+alignment = 1
 
 [node name="Label" type="Label" parent="Control/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer5/HBoxContainer"]
 layout_mode = 2

@@ -45,6 +45,15 @@ func _ready():
 	invert_look_y_check_box.button_pressed = Settings.invert_look_y
 	invert_look_y_check_box.toggled.connect(on_invert_look_y_toggled)
 	
+	var display_mode = DisplayServer.window_get_mode()
+	%FullscreenButton.button_pressed = display_mode == DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN
+	%WindowedButton.button_pressed = display_mode == DisplayServer.WINDOW_MODE_WINDOWED
+	%WindowedFullscreenButton.button_pressed = display_mode == DisplayServer.WINDOW_MODE_FULLSCREEN
+	
+	%FullscreenButton.pressed.connect(on_fullscreen_pressed)
+	%WindowedButton.pressed.connect(on_windowed_pressed)
+	%WindowedFullscreenButton.pressed.connect(on_windowed_fullscreen_pressed)
+	
 	%BackButton.grab_focus()
 
 
@@ -91,6 +100,48 @@ func on_slowmo_duration_changed(new_value: float):
 func on_invert_look_y_toggled(toggled_on: bool):
 	Settings.invert_look_y = toggled_on
 	PlayerPrefs.update_setting("invert_look_y", int(toggled_on))
+	settings_changed = true
+
+
+func on_fullscreen_pressed():
+	var mode = DisplayServer.window_get_mode()
+	if mode != DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
+		%WindowedButton.button_pressed = false
+		%WindowedFullscreenButton.button_pressed = false
+	
+	%FullscreenButton.button_pressed = true
+	
+	PlayerPrefs.update_setting("display_mode", DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN as int)
+	settings_changed = true
+
+
+func on_windowed_pressed():
+	var mode = DisplayServer.window_get_mode()
+	if mode != DisplayServer.WINDOW_MODE_WINDOWED:
+		#DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		if DisplayServer.screen_get_size().x > 1280:
+			DisplayServer.window_set_size(Vector2i(1280, 720))
+		%FullscreenButton.button_pressed = false
+		%WindowedFullscreenButton.button_pressed = false
+	
+	%WindowedButton.button_pressed = true
+	
+	PlayerPrefs.update_setting("display_mode", DisplayServer.WINDOW_MODE_WINDOWED as int)
+	settings_changed = true
+
+
+func on_windowed_fullscreen_pressed():
+	var mode = DisplayServer.window_get_mode()
+	if mode != DisplayServer.WINDOW_MODE_FULLSCREEN:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+		%WindowedButton.button_pressed = false
+		%FullscreenButton.button_pressed = false
+	
+	%WindowedFullscreenBwwwutton.button_pressed = true
+	
+	PlayerPrefs.update_setting("display_mode", DisplayServer.WINDOW_MODE_FULLSCREEN as int)
 	settings_changed = true
 
 

@@ -6,7 +6,7 @@ func _ready():
 	%RestartButton.pressed.connect(on_restart_pressed)
 	if MissionControl.current_level < MissionControl.campaign_levels - 1:
 		%NextLevelButton.pressed.connect(on_next_level_pressed)
-	elif MissionControl.current_level == MissionControl.campaign_level - 1: 
+	elif MissionControl.current_level == MissionControl.campaign_levels - 1: 
 		%NextLevelButton.text = "View Credits"
 		%NextLevelButton.pressed.connect(on_view_credits)
 		%LevelFinishedLabel.text = "You killed God!"
