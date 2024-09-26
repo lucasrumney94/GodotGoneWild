@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Achievement" load_steps=3 format=3 uid="uid://bb3aj76vj1ken"]
+
+[ext_resource type="Script" path="res://UI/Achievements/achievement.gd" id="1_8kv3y"]
+[ext_resource type="Texture2D" uid="uid://cv1af46vlbwjd" path="res://UI/Image/trophy.png" id="1_yvt3t"]
+
+[resource]
+script = ExtResource("1_8kv3y")
+id = "spree_killer"
+icon = ExtResource("1_yvt3t")
+title = "Spree Killer"
+description = "You killed 5 angels without touching the ground. That's pretty cool."
+stat = ""
+stat_goal = 0
+check_function = ""
+custom_string = ""

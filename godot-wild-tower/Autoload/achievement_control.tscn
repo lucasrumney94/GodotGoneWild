@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://7c5o71oyrx52"]
+[gd_scene load_steps=19 format=3 uid="uid://7c5o71oyrx52"]
 
 [ext_resource type="Script" path="res://Autoload/achievement_control.gd" id="1_lvx2p"]
 [ext_resource type="PackedScene" uid="uid://b1hxkyiomflv0" path="res://UI/Achievements/achievement_popup.tscn" id="2_uwhnw"]
@@ -17,8 +17,9 @@
 [ext_resource type="Resource" uid="uid://bptdl684ha1fa" path="res://UI/Achievements/Resources/kill_god.tres" id="15_cffy7"]
 [ext_resource type="Resource" uid="uid://ctmyr2fyc5esn" path="res://UI/Achievements/Resources/dont_die.tres" id="15_vkanb"]
 [ext_resource type="Resource" uid="uid://conh76xayw6v1" path="res://UI/Achievements/Resources/no_kills.tres" id="16_jxx6t"]
+[ext_resource type="Resource" uid="uid://bb3aj76vj1ken" path="res://UI/Achievements/Resources/spree_killer.tres" id="17_iad0j"]
 
 [node name="AchievementControl" type="Node"]
 script = ExtResource("1_lvx2p")
 achievement_popup_scene = ExtResource("2_uwhnw")
-achievements = Array[ExtResource("3_wmop3")]([ExtResource("7_kv655"), ExtResource("4_c77lf"), ExtResource("6_7cfo6"), ExtResource("10_14g8x"), ExtResource("8_0uayn"), ExtResource("12_i287n"), ExtResource("11_t2t38"), ExtResource("4_1sskk"), ExtResource("8_868mt"), ExtResource("13_1ogen"), ExtResource("14_o3was"), ExtResource("15_vkanb"), ExtResource("16_jxx6t"), ExtResource("15_cffy7")])
+achievements = Array[ExtResource("3_wmop3")]([ExtResource("7_kv655"), ExtResource("4_c77lf"), ExtResource("6_7cfo6"), ExtResource("10_14g8x"), ExtResource("8_0uayn"), ExtResource("12_i287n"), ExtResource("11_t2t38"), ExtResource("4_1sskk"), ExtResource("8_868mt"), ExtResource("13_1ogen"), ExtResource("14_o3was"), ExtResource("15_vkanb"), ExtResource("16_jxx6t"), ExtResource("17_iad0j"), ExtResource("15_cffy7")])

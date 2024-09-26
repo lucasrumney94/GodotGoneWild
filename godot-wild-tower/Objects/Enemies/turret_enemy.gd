@@ -45,6 +45,11 @@ func _physics_process(delta):
 	rotation_root.rotation.x = clampf(xrot, -tilt_limit, tilt_limit)
 
 
+func fire_projectile():
+	gun.fire_projectile()
+	$Timer.start()
+
+
 func on_timer_timeout():
 	if activation_radius <= 0 || global_position.distance_squared_to(target.global_position) > pow(activation_radius, 2):
 		return
@@ -53,5 +58,4 @@ func on_timer_timeout():
 	if gun == null:
 		return
 	
-	gun.fire_projectile()
-	$Timer.start()
+	Callable(fire_projectile).call_deferred()

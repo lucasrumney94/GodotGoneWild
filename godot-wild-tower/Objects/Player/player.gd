@@ -86,6 +86,8 @@ var crosshair_rotation: float = 0
 @export var crosshair_unturn_delay: float = 0.25
 var crosshair_unturn_time: float = 0
 
+var chain_count: int = 0
+
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -95,6 +97,7 @@ func _ready():
 	$Hitbox.area_entered.connect(on_hitbox_area_entered)
 	
 	GameEvents.level_finished.connect(on_level_finished)
+	GameEvents.enemy_killed.connect(on_enemy_killed)
 	
 	camera_base_pos = %Camera3D.position
 	
@@ -221,6 +224,7 @@ func _physics_process(delta):
 			#on_steps = false
 		%DebugOnFloorLabel.text = "Not on Floor"
 	else:
+		chain_count = 0
 		fall_time = 0
 		long_fall = false
 		speed_mult = 1.0
@@ -676,3 +680,10 @@ func on_level_finished():
 	GameEvents.emit_slomo_start()
 	Engine.time_scale = 0.1
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+
+
+func on_enemy_killed(_enemy_type: Constants.EnemyType, _global_pos: Vector3):
+	chain_count += 1
+	#print("YOU'VE CHAINED " + str(chain_count) + " ENEMIES")
+	if chain_count >= 5:
+		AchievementControl.earn_achievement("spree_killer")
