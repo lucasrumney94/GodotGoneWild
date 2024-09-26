@@ -16,22 +16,28 @@ func _ready():
 	
 
 func on_body_entered(body):
-	if falling: return
+	#if falling: return
 	
 	if !(body is PlayerControl):
 		return
+	
+	if body.is_dashing: return
+	
+	player_body = body
+	player_body.toggle_camera_shake(true)
+	
+	if falling: return
 	
 	$Timer.start()
 	falling = true
 	#make_rumble()
 	$AudioStreamPlayer3D.play()
-	player_body = body
-	player_body.toggle_camera_shake(true)
 
 
 func on_body_exited(body):
 	if body == player_body:
 		player_body.toggle_camera_shake(false)
+		player_body = null
 
 
 func make_rumble():
@@ -48,3 +54,4 @@ func on_timer_timeout():
 	freeze = false
 	if player_body != null:
 		player_body.toggle_camera_shake(false)
+	$Area3D.queue_free()
