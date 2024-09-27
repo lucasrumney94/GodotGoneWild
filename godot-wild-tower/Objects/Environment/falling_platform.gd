@@ -1,7 +1,7 @@
 extends RigidBody3D
 
 @export var fall_delay: float = 1.0
-@export var rumble_intensity: float = 0.1
+@export var rumble_intensity: float = 0.2
 
 var falling: bool = false
 
@@ -30,7 +30,7 @@ func on_body_entered(body):
 	
 	$Timer.start()
 	falling = true
-	#make_rumble()
+	make_rumble()
 	$AudioStreamPlayer3D.play()
 
 
@@ -46,7 +46,9 @@ func make_rumble():
 
 
 func rumble(percent: float):
-	rotation = Vector3(randf_range(-rumble_intensity, rumble_intensity), 0, randf_range(-rumble_intensity, rumble_intensity)) * percent
+	if player_body != null:
+		player_body.camera_shake_intensity = rumble_intensity * percent
+	#rotation = Vector3(randf_range(-rumble_intensity, rumble_intensity), 0, randf_range(-rumble_intensity, rumble_intensity)) * percent
 
 
 func on_timer_timeout():
