@@ -41,6 +41,14 @@ func get_player_prefs():
 		invert_look_y = bool(value)
 	else: invert_look_y = default_invert_look_y
 	
+	value = PlayerPrefs.get_setting("display_mode")
+	if value >= 0:
+		DisplayServer.window_set_mode(value)
+	
+	value = PlayerPrefs.get_setting("vsync_mode")
+	if value >= 0:
+		DisplayServer.window_set_vsync_mode(value)
+	
 	for i in AudioServer.bus_count:
 		var bus_name = AudioServer.get_bus_name(i)
 		value = PlayerPrefs.get_setting("audio_" + bus_name)

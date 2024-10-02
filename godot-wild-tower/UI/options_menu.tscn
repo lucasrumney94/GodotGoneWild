@@ -138,6 +138,33 @@ layout_mode = 2
 toggle_mode = true
 text = "Fullscreen"
 
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Control/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "VSync: "
+
+[node name="VsyncMenuButton" type="MenuButton" parent="Control/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Disabled"
+item_count = 4
+popup/item_0/text = "Disabled"
+popup/item_1/text = "Enabled"
+popup/item_1/id = 1
+popup/item_2/text = "Adaptive"
+popup/item_2/id = 2
+popup/item_3/text = "Mailbox"
+popup/item_3/id = 3
+
+[node name="InvertLookYCheckBox" type="CheckBox" parent="Control/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Invert Look Y"
+
 [node name="VBoxContainer4" type="VBoxContainer" parent="Control/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 
@@ -159,15 +186,9 @@ text = "0"
 unique_name_in_owner = true
 layout_mode = 2
 min_value = 0.1
-max_value = 1.0
+max_value = 2.0
 step = 0.01
 value = 0.1
-
-[node name="InvertLookYCheckBox" type="CheckBox" parent="Control/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 4
-text = "Invert Look Y"
 
 [node name="VBoxContainer5" type="VBoxContainer" parent="Control/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2

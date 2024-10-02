@@ -54,6 +54,11 @@ func _ready():
 	%WindowedButton.pressed.connect(on_windowed_pressed)
 	%WindowedFullscreenButton.pressed.connect(on_windowed_fullscreen_pressed)
 	
+	var vsync_mode = DisplayServer.window_get_vsync_mode()
+	var vsync_popup = %VsyncMenuButton.get_popup()
+	%VsyncMenuButton.text = vsync_popup.get_item_text(vsync_mode)
+	vsync_popup.id_pressed.connect(on_vsync_changed)
+	
 	%BackButton.grab_focus()
 
 
@@ -142,6 +147,14 @@ func on_windowed_fullscreen_pressed():
 	%WindowedFullscreenBwwwutton.button_pressed = true
 	
 	PlayerPrefs.update_setting("display_mode", DisplayServer.WINDOW_MODE_FULLSCREEN as int)
+	settings_changed = true
+
+
+func on_vsync_changed(id: int):
+	DisplayServer.window_set_vsync_mode(id)
+	%VsyncMenuButton.text = %VsyncMenuButton.get_popup().get_item_text(id)
+	
+	PlayerPrefs.update_setting("vsync_mode", id)
 	settings_changed = true
 
 
